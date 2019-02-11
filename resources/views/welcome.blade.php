@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>A Week With Wanda</title>
 
@@ -38,11 +39,15 @@
     <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
 </head>
 <body>
-<div class="container">
-    <div class="content" id="app">
-        <botman-tinker api-endpoint="/botman"></botman-tinker>
-    </div>
-</div>
+  <div id="root">
+    
+  </div>
+  
+  <div class="container">
+      <div class="content" id="app">
+          <botman-tinker api-endpoint="/botman"></botman-tinker>
+      </div>
+  </div>
 
 <script src="/js/app.js"></script>
 </body>

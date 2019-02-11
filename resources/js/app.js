@@ -7,10 +7,27 @@
 
 require('./bootstrap');
 
-/**
- * Next, we will create a fresh React component instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 
-require('./components/Example');
+class App extends Component {
+    render() {
+        return (
+            <div className="container">
+                <div className="row justify-content-center">
+                    <div className="col-md-8">
+                        <div className="card">
+                            <div className="card-header">Example Component</div>
+
+                            <div className="card-body">
+                                I'm an example component!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
+
+ReactDOM.render(<App />, document.querySelector('#root'));

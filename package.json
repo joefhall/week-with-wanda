@@ -26,6 +26,7 @@
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
-        "botman-tinker": "^0.0.1"
+        "botman-tinker": "^0.0.1",
+        "botman-web-widget": "github:joefhall/botman-web-widget"
     }
 }
