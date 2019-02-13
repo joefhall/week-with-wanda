@@ -1,21 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { inputMessage } from '../actions';
+import { addMessage } from '../actions';
+import { sendMessage } from '../api/botman';
 
 class ChatInput extends React.Component {
   state = { inputText: '' };
+
+  addAndSendMessage = (message) => {
+    this.props.addMessage(message, 'user');
+    sendMessage(message);
+  };
   
   onFormSubmit = event => {
     event.preventDefault();
-
-    this.props.inputMessage(this.state.inputText);
-  }
+    this.addAndSendMessage(this.state.inputText);
+  };
   
   render() {
     return (
       <div className="chat__input">
         <div className="chat__input__choices">
-          <div className="chat__input__choices__choice" onClick={() => this.props.inputMessage('hi')}>Hi</div>
+          <div className="chat__input__choices__choice" onClick={() => this.props.addMessage('hi')}>Hi</div>
         </div>
         <form className="chat__input__form" onSubmit={this.onFormSubmit}>
           <input type="text" value={this.state.inputText} onChange={(event) => this.setState({inputText: event.target.value})} />
@@ -30,4 +35,4 @@ const mapStateToProps = (state) => {
   return { message: state.message };
 };
 
-export default connect(mapStateToProps, { inputMessage })(ChatInput);
+export default connect(mapStateToProps, { addMessage })(ChatInput);
