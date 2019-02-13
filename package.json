@@ -10,6 +10,7 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
+        "@babel/plugin-proposal-class-properties": "^7.3.0",
         "@babel/preset-react": "^7.0.0",
         "axios": "^0.18",
         "babel-preset-react": "^6.23.0",
@@ -28,6 +29,7 @@
     },
     "dependencies": {
         "botman-tinker": "^0.0.1",
-        "botman-web-widget": "file:../botman-web-widget"
+        "botman-web-widget": "file:../botman-web-widget",
+        "preact": "^8.4.2"
     }
 }
