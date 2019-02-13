@@ -36,6 +36,6 @@
     <div id="root">
     </div>
 
-    <script src="/js/app.js"></script>
+    <script src="/js/index.js"></script>
   </body>
 </html>
