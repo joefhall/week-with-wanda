@@ -1,10 +1,6 @@
 import  { combineReducers } from 'redux';
 
-const messagesReducer = (state = [], action) => {
-  console.log('At Reducer');
-  console.log(state);
-  console.log(action);
-  
+const messagesReducer = (state = [], action) => {  
   if (action.type === 'USER_MESSAGE_INPUTTED' || action.type === 'WANDA_MESSAGE_RECEIVED') {
     return [
       ...state,

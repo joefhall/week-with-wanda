@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { addMessage } from '../actions';
+import store from '../store';
 
 const api = axios.create({
   baseURL: '/botman',
@@ -23,6 +25,10 @@ export const sendMessage = async (text, interactive = false) => {
 
   const response = await api.post('', data);
 
-  const messages = response.data.messages || [];
   console.log(response.data);
+  
+  const messages = response.data.messages || [];
+  if (messages.length) {
+    store.dispatch(addMessage(messages[0].text, 'wanda'));
+  }
 };
