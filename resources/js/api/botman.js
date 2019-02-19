@@ -25,7 +25,7 @@ export const sendMessage = async (text, interactive = false) => {
 
   const response = await api.post('', data);
 
-  console.log(response.data);
+  console.log(response.data.messages);
   
   const messages = response.data.messages || [];
   if (messages.length) {

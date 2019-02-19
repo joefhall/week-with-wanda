@@ -16,6 +16,7 @@
         "babel-preset-react": "^6.23.0",
         "bootstrap": "^4.0.0",
         "cross-env": "^5.1",
+        "handlebars": "^4.1.0",
         "jquery": "^3.2",
         "laravel-mix": "^4.0.14",
         "lodash": "^4.17.4",
@@ -29,8 +30,8 @@
     },
     "dependencies": {
         "botman-tinker": "^0.0.1",
-        "botman-web-widget": "file:../botman-web-widget",
         "preact": "^8.4.2",
+        "react-facebook-login": "^4.1.1",
         "react-redux": "^6.0.0",
         "redux": "^4.0.1"
     }

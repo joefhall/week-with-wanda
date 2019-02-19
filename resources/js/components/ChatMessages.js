@@ -28,8 +28,6 @@ class ChatMessages extends React.Component {
 };
 
 const mapStateToProps = (state) => {
-  console.log('mapStateToProps state.messages');
-  console.log(state.messages);
   return { messages: state.messages };
 };
 
