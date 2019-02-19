@@ -49436,7 +49436,9 @@ function (_React$Component) {
       });
     };
 
-    _this.facebookResponse = function (e) {};
+    _this.facebookResponse = function (response) {
+      console.log(response);
+    };
 
     _this.onFailure = function (error) {
       console.log(error);

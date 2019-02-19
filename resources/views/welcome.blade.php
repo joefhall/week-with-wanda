@@ -36,6 +36,6 @@
     <div id="root">
     </div>
 
-    <script src="/js/index.js"></script>
+    <script src="{{ mix('/js/index.js') }}"></script>
   </body>
 </html>
