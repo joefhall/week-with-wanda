@@ -77,4 +77,11 @@ class UserController extends Controller
         
         return response()->json($response, 201);
     }
+  
+  public function show() {
+    $users = User::all();
+    dump($users);
+    
+    return 'hello';
+  }
 }

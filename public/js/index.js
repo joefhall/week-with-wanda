@@ -49032,6 +49032,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Chat__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Chat */ "./resources/js/components/Chat.js");
 /* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Login */ "./resources/js/components/Login.js");
+/* harmony import */ var _LoginFacebook__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./LoginFacebook */ "./resources/js/components/LoginFacebook.js");
+/* harmony import */ var _Register__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Register */ "./resources/js/components/Register.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -49054,6 +49056,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var App =
 /*#__PURE__*/
 function (_React$Component) {
@@ -49071,14 +49075,143 @@ function (_React$Component) {
     }
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(App)).call.apply(_getPrototypeOf2, [this].concat(args)));
-    _this.state = {};
+    _this.state = {
+      isAuthenticated: false,
+      isLoggedIn: false,
+      token: '',
+      user: null
+    };
+
+    _this.loginUser = function (email, password) {
+      //     $("#login-form button")
+      //       .attr("disabled", "disabled")
+      //       .html(
+      //         '<i class="fa fa-spinner fa-spin fa-1x fa-fw"></i><span class="sr-only">Loading...</span>'
+      //       );
+      var formData = new FormData();
+      formData.append("email", email);
+      formData.append("password", password);
+      axios.post('https://weekwithwanda.com/api/user/login/', formData).then(function (response) {
+        console.log(response);
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          console.log("Login successful!");
+          var userData = {
+            name: json.data.data.name,
+            id: json.data.data.id,
+            email: json.data.data.email,
+            auth_token: json.data.data.auth_token,
+            timestamp: new Date().toString()
+          };
+          var appState = {
+            isLoggedIn: true,
+            user: userData
+          }; // save app state with user date in local storage
+
+          localStorage["appState"] = JSON.stringify(appState);
+
+          _this.setState({
+            isLoggedIn: appState.isLoggedIn,
+            user: appState.user
+          });
+        } else {
+          console.log("Login failed!");
+        } //         $("#login-form button")
+        //           .removeAttr("disabled")
+        //           .html("Login");
+
+      }).catch(function (error) {
+        console.log("An error occured! ".concat(error)); //         $("#login-form button")
+        //           .removeAttr("disabled")
+        //           .html("Login");
+      });
+    };
+
+    _this.registerUser = function (name, email, password) {
+      //       $("#email-login-btn")
+      //         .attr("disabled", "disabled")
+      //         .html(
+      //           '<i class="fa fa-spinner fa-spin fa-1x fa-fw"></i><span class="sr-only">Loading...</span>'
+      //         );
+      var formData = new FormData();
+      formData.append("password", password);
+      formData.append("email", email);
+      formData.append("name", name);
+      console.log('Sending request to register user');
+      axios.post('https://weekwithwanda.com/api/user/register', formData).then(function (response) {
+        console.log(response);
+        return response;
+      }).then(function (json) {
+        if (json.data.success) {
+          console.log('Registration successful!');
+          var userData = {
+            name: json.data.data.name,
+            id: json.data.data.id,
+            email: json.data.data.email,
+            auth_token: json.data.data.auth_token,
+            timestamp: new Date().toString()
+          };
+          var appState = {
+            isLoggedIn: true,
+            user: userData
+          }; // save app state with user date in local storage
+
+          localStorage["appState"] = JSON.stringify(appState);
+
+          _this.setState({
+            isLoggedIn: appState.isLoggedIn,
+            user: appState.user
+          });
+        } else {
+          console.log("Registration failed!"); //             $("#email-login-btn")
+          //               .removeAttr("disabled")
+          //               .html("Register");
+        }
+      }).catch(function (error) {
+        console.log("An error occured!");
+        console.log("".concat(formData, " ").concat(error)); //           $("#email-login-btn")
+        //             .removeAttr("disabled")
+        //             .html("Register");
+      });
+    };
+
+    _this.logoutUser = function () {
+      var appState = {
+        isAuthenticated: false,
+        isLoggedIn: false,
+        token: '',
+        user: {}
+      }; // save app state with user date in local storage
+
+      localStorage['appState'] = JSON.stringify(appState);
+
+      _this.setState(appState);
+    };
+
     return _this;
   }
 
   _createClass(App, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var state = localStorage['appState'];
+
+      if (state) {
+        var AppState = JSON.parse(state);
+        console.log(AppState);
+        this.setState({
+          isLoggedIn: AppState.isLoggedIn,
+          user: AppState
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Login__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Chat__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Register__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        registerUser: this.registerUser
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Chat__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }
   }]);
 
@@ -49377,7 +49510,76 @@ var mapStateToProps = function mapStateToProps(state) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Login; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Login = function Login(_ref) {
+  var history = _ref.history,
+      _ref$loginUser = _ref.loginUser,
+      loginUser = _ref$loginUser === void 0 ? function (f) {
+    return f;
+  } : _ref$loginUser;
+  var email, password;
+
+  var handleLogin = function handleLogin(e) {
+    e.preventDefault();
+    loginUser(email.value, password.value);
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "main"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    id: "login-form",
+    action: "",
+    onSubmit: handleLogin,
+    method: "post"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    style: {
+      padding: 15
+    }
+  }, "Login Form"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    ref: function ref(input) {
+      return email = input;
+    },
+    autoComplete: "off",
+    id: "email-input",
+    name: "email",
+    type: "text",
+    className: "center-block",
+    placeholder: "email"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    ref: function ref(input) {
+      return password = input;
+    },
+    autoComplete: "off",
+    id: "password-input",
+    name: "password",
+    type: "password",
+    className: "center-block",
+    placeholder: "password"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit",
+    className: "landing-page-btn center-block text-center",
+    id: "email-login-btn",
+    href: "#facebook"
+  }, "Login")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Login);
+
+/***/ }),
+
+/***/ "./resources/js/components/LoginFacebook.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/LoginFacebook.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return LoginFacebook; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_facebook_login__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-facebook-login */ "./node_modules/react-facebook-login/dist/facebook-login-with-button.js");
@@ -49405,39 +49607,40 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 var config = __webpack_require__(/*! ../config.json */ "./resources/js/config.json");
 
-var Login =
+var LoginFacebook =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(Login, _React$Component);
+  _inherits(LoginFacebook, _React$Component);
 
-  function Login() {
+  function LoginFacebook() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _classCallCheck(this, Login);
+    _classCallCheck(this, LoginFacebook);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Login)).call.apply(_getPrototypeOf2, [this].concat(args)));
-    _this.state = {
-      isAuthenticated: false,
-      user: null,
-      token: ''
-    };
-
-    _this.logout = function () {
-      _this.setState({
-        isAuthenticated: false,
-        token: '',
-        user: null
-      });
-    };
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(LoginFacebook)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _this.facebookResponse = function (response) {
-      console.log(response);
+      console.log(response); //     const tokenBlob = new Blob([JSON.stringify({access_token: response.accessToken}, null, 2)], {type : 'application/json'});
+      //     const options = {
+      //       method: 'POST',
+      //       body: tokenBlob,
+      //       mode: 'cors',
+      //       cache: 'default'
+      //     };
+      //     fetch('https://weekwithwanda.com/api/v1/auth/facebook', options).then(r => {
+      //       const token = r.headers.get('x-auth-token');
+      //       r.json().then(user => {
+      //         if (token) {
+      //           this.setState({isAuthenticated: true, user, token})
+      //         }
+      //       });
+      //     })
     };
 
     _this.onFailure = function (error) {
@@ -49445,36 +49648,125 @@ function (_React$Component) {
     };
 
     _this.renderContent = function () {
-      if (!!_this.state.isAuthenticated) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Authenticated"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, _this.state.user.email), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          onClick: _this.logout,
-          className: "button"
-        }, "Log out")));
-      } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_facebook_login__WEBPACK_IMPORTED_MODULE_1___default.a, {
-          appId: config.FACEBOOK_APP_ID,
-          autoLoad: false,
-          fields: "name,email,picture",
-          callback: _this.facebookResponse
-        }));
-      }
+      //     if (!!this.state.isAuthenticated) {
+      //       return (
+
+      /*        <div>
+                <p>Authenticated</p>
+                <div>
+                  {this.state.user.email}
+                </div>
+                <div>
+                  <button onClick={this.props.logout} className="button">
+                    Log out
+                  </button>
+                </div>
+              </div> */
+      //       );
+      //     } else {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_facebook_login__WEBPACK_IMPORTED_MODULE_1___default.a, {
+        appId: config.FACEBOOK_APP_ID,
+        autoLoad: false,
+        fields: "name,email,picture",
+        callback: _this.facebookResponse
+      })); //     }
     };
 
     return _this;
   }
 
-  _createClass(Login, [{
+  _createClass(LoginFacebook, [{
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.renderContent());
     }
   }]);
 
-  return Login;
+  return LoginFacebook;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 
 ;
+
+/***/ }),
+
+/***/ "./resources/js/components/Register.js":
+/*!*********************************************!*\
+  !*** ./resources/js/components/Register.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Register = function Register(_ref) {
+  var history = _ref.history,
+      _ref$registerUser = _ref.registerUser,
+      registerUser = _ref$registerUser === void 0 ? function (f) {
+    return f;
+  } : _ref$registerUser;
+  var email, password, name;
+
+  var handleLogin = function handleLogin(e) {
+    e.preventDefault();
+    console.log('Trying to register user');
+    registerUser(name.value, email.value, password.value);
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "main"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    id: "login-form",
+    action: "",
+    onSubmit: handleLogin,
+    method: "post"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    style: {
+      padding: 15
+    }
+  }, "Register Form"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    ref: function ref(input) {
+      return name = input;
+    },
+    autoComplete: "off",
+    id: "name-input",
+    name: "name",
+    type: "text",
+    className: "center-block",
+    placeholder: "Name"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    ref: function ref(input) {
+      return email = input;
+    },
+    autoComplete: "off",
+    id: "email-input",
+    name: "email",
+    type: "text",
+    className: "center-block",
+    placeholder: "email"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    ref: function ref(input) {
+      return password = input;
+    },
+    autoComplete: "off",
+    id: "password-input",
+    name: "password",
+    type: "password",
+    className: "center-block",
+    placeholder: "password"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit",
+    className: "landing-page-btn center-block text-center",
+    id: "email-login-btn",
+    href: "#facebook"
+  }, "Register")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Register);
 
 /***/ }),
 
