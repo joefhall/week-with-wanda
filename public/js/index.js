@@ -48994,7 +48994,7 @@ function () {
         switch (_context.prev = _context.next) {
           case 0:
             console.log('Trying to get list of users');
-            axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://weekwithwanda.com/user").then(function (response) {
+            axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://weekwithwanda.com/api/user").then(function (response) {
               console.log(response);
               return response;
             }).catch(function (error) {

@@ -4,7 +4,7 @@ export const getUsers = async () => {
   console.log('Trying to get list of users');
   
   axios
-  .get(`https://weekwithwanda.com/user`)
+  .get(`https://weekwithwanda.com/api/user`)
   .then(response => {
     console.log(response);
     return response;

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.base')
 
 @section('content')
 <div class="container">
@@ -8,6 +8,10 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
+                    <div class="text-center my-5">
+                      <a class="btn btn-primary" href="{{ url('/login/facebook') }}" class="btn btn-facebook"><i class="fa fa-facebook"></i>Log in with Facebook</a>
+                    </div>
+                  
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

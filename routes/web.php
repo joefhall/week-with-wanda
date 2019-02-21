@@ -11,13 +11,17 @@
 |
 */
 
+Auth::routes();
+Route::get('login/facebook', 'Auth\FacebookLoginController@redirectToProvider');
+Route::get('login/facebook/callback', 'Auth\FacebookLoginController@handleProviderCallback');
+Route::get('logged-out', function () {
+    return view('auth.logged-out');
+})->name('logged-out');
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::match(['get', 'post'], '/botman', 'BotManController@handle');
-Route::get('/botman/tinker', 'BotManController@tinker');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth')->get('/app', 'AppController@index')->name('app');
