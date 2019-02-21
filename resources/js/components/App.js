@@ -16,7 +16,7 @@ export default class App extends React.Component {
       <div>
         {/* <LoginFacebook logout={this.logout} /> */}
         <Login />
-        <Register />
+        {/* <Register />*/}
         <Chat />
       </div>
     );

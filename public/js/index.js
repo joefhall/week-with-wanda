@@ -49148,147 +49148,15 @@ function (_React$Component) {
     _this.state = {
       isAuthenticated: false,
       isLoggedIn: false,
-      token: '',
       user: null
     };
-
-    _this.loginUser = function (email, password) {
-      //     $("#login-form button")
-      //       .attr("disabled", "disabled")
-      //       .html(
-      //         '<i class="fa fa-spinner fa-spin fa-1x fa-fw"></i><span class="sr-only">Loading...</span>'
-      //       );
-      var formData = new FormData(); //     formData.append("email", email);
-      //     formData.append("password", password);
-
-      formData.append("_token", 'aShWbYUiUUZJZgBMwfmzl5uCYNKjChO2QzpIJ2m0');
-      formData.append("email", 'joefhall@gmail.com');
-      formData.append("password", 'blibby');
-      axios //       .post('https://weekwithwanda.com/api/user/login/', formData)
-      .post('https://weekwithwanda.com/login/', formData).then(function (response) {
-        console.log(response);
-        return response;
-      }).then(function (json) {
-        if (json.data.success) {
-          console.log("Login successful!");
-          var userData = {
-            name: json.data.data.name,
-            id: json.data.data.id,
-            email: json.data.data.email,
-            auth_token: json.data.data.auth_token,
-            timestamp: new Date().toString()
-          };
-          var appState = {
-            isLoggedIn: true,
-            user: userData
-          }; // save app state with user date in local storage
-
-          localStorage["appState"] = JSON.stringify(appState);
-
-          _this.setState({
-            isLoggedIn: appState.isLoggedIn,
-            user: appState.user
-          });
-        } else {
-          console.log("Login failed!");
-        } //         $("#login-form button")
-        //           .removeAttr("disabled")
-        //           .html("Login");
-
-      }).catch(function (error) {
-        console.log("An error occured! ".concat(error)); //         $("#login-form button")
-        //           .removeAttr("disabled")
-        //           .html("Login");
-      });
-    };
-
-    _this.registerUser = function (name, email, password) {
-      //       $("#email-login-btn")
-      //         .attr("disabled", "disabled")
-      //         .html(
-      //           '<i class="fa fa-spinner fa-spin fa-1x fa-fw"></i><span class="sr-only">Loading...</span>'
-      //         );
-      var formData = new FormData();
-      formData.append("password", password);
-      formData.append("email", email);
-      formData.append("name", name);
-      console.log('Sending request to register user');
-      axios.post('https://weekwithwanda.com/api/user/register', formData).then(function (response) {
-        console.log(response);
-        return response;
-      }).then(function (json) {
-        if (json.data.success) {
-          console.log('Registration successful!');
-          var userData = {
-            name: json.data.data.name,
-            id: json.data.data.id,
-            email: json.data.data.email,
-            auth_token: json.data.data.auth_token,
-            timestamp: new Date().toString()
-          };
-          var appState = {
-            isLoggedIn: true,
-            user: userData
-          }; // save app state with user date in local storage
-
-          localStorage["appState"] = JSON.stringify(appState);
-
-          _this.setState({
-            isLoggedIn: appState.isLoggedIn,
-            user: appState.user
-          });
-        } else {
-          console.log("Registration failed!"); //             $("#email-login-btn")
-          //               .removeAttr("disabled")
-          //               .html("Register");
-        }
-      }).catch(function (error) {
-        console.log("An error occured!");
-        console.log("".concat(formData, " ").concat(error)); //           $("#email-login-btn")
-        //             .removeAttr("disabled")
-        //             .html("Register");
-      });
-    };
-
-    _this.logoutUser = function () {
-      var appState = {
-        isAuthenticated: false,
-        isLoggedIn: false,
-        token: '',
-        user: {}
-      }; // save app state with user date in local storage
-
-      localStorage['appState'] = JSON.stringify(appState);
-
-      _this.setState(appState);
-    };
-
     return _this;
   }
 
   _createClass(App, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var state = localStorage['appState'];
-
-      if (state) {
-        var AppState = JSON.parse(state);
-        console.log(AppState);
-        this.setState({
-          isLoggedIn: AppState.isLoggedIn,
-          user: AppState
-        });
-      }
-    }
-  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Login__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        loginUser: this.loginUser,
-        logout: this.logout
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Register__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        registerUser: this.registerUser
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Chat__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Login__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Chat__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }
   }]);
 
@@ -49594,17 +49462,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
-var Login = function Login(_ref) {
-  var history = _ref.history,
-      _ref$loginUser = _ref.loginUser,
-      loginUser = _ref$loginUser === void 0 ? function (f) {
-    return f;
-  } : _ref$loginUser;
+var Login = function Login() {
   var email, password;
 
   var handleLogin = function handleLogin(e) {
-    e.preventDefault();
-    loginUser(email.value, password.value);
+    e.preventDefault(); //     loginUser(email.value, password.value);
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -49783,18 +49645,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
-var Register = function Register(_ref) {
-  var history = _ref.history,
-      _ref$registerUser = _ref.registerUser,
-      registerUser = _ref$registerUser === void 0 ? function (f) {
-    return f;
-  } : _ref$registerUser;
+var Register = function Register() {
   var email, password, name;
 
   var handleLogin = function handleLogin(e) {
     e.preventDefault();
-    console.log('Trying to register user');
-    registerUser(name.value, email.value, password.value);
+    console.log('Trying to register user'); //     registerUser(name.value, email.value, password.value);
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
