@@ -16,6 +16,11 @@ Route::get('/', function () {
 });
 
 Route::get('/blah', 'UserController@show');
+Route::middleware('auth')->get('/user', 'UserController@show');
 
 Route::match(['get', 'post'], '/botman', 'BotManController@handle');
 Route::get('/botman/tinker', 'BotManController@tinker');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

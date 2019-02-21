@@ -1,10 +1,10 @@
 import React from "react";
 
-const Login = ({ history, loginUser = f => f }) => {
+const Login = () => {
   let email, password;
   const handleLogin = e => {
     e.preventDefault();
-    loginUser(email.value, password.value);
+//     loginUser(email.value, password.value);
   };
   return (
     <div id="main">

@@ -1,13 +1,13 @@
 import React from "react";
 
-const Register = ({ history, registerUser = f => f }) => {
+const Register = () => {
   let email, password, name;
 
   const handleLogin = e => {
     e.preventDefault();
 
     console.log('Trying to register user');
-    registerUser(name.value, email.value, password.value);
+//     registerUser(name.value, email.value, password.value);
   };
   return (
     <div id="main">
