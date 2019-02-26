@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
+use App\Repositories\UserRepository;
+use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -28,15 +30,32 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
+  
+    /**
+     * Request.
+     *
+     * @var Request
+     */
+    protected $request;
+  
+    /**
+     * User repository.
+     */
+    protected $userRepository;
 
     /**
      * Create a new controller instance.
      *
+     * @param Request $request
+     * @param UserRepository $userRepository
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request, UserRepository $userRepository)
     {
-        $this->middleware('guest');
+      $this->request = $request;
+      $this->userRepository = $userRepository;
+      
+      $this->middleware('guest');
     }
 
     /**
@@ -62,10 +81,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+      $user = User::create([
+        'name' => $data['name'],
+        'email' => $data['email'],
+        'password' => bcrypt($data['password']),
+      ]);
+      
+      $this->userRepository->storeCountryFromIp($user->id, $this->request->ip());
+      
+      return $user;
     }
 }

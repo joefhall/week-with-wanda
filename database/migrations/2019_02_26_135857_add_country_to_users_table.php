@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddProfilePicToUsersTable extends Migration
+class AddCountryToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddProfilePicToUsersTable extends Migration
      */
     public function up()
     {
-      Schema::table('users', function (Blueprint $table) {
-        $table->boolean('profile_pic')->nullable();
-      });
+        Schema::table('users', function (Blueprint $table) {
+           $table->string('country', 2)->nullable();
+        });
     }
 
     /**
@@ -25,8 +25,8 @@ class AddProfilePicToUsersTable extends Migration
      */
     public function down()
     {
-      Schema::table('users', function (Blueprint $table) {
-        //
-      });
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }
