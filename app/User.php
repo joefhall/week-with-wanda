@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
   use HasApiTokens, Notifiable;
 
@@ -17,7 +17,7 @@ class User extends Authenticatable
    * @var array
    */
   protected $fillable = [
-      'name', 'email', 'password', 'facebook_id', 'profile_pic',
+      'email', 'email_verified_at', 'facebook_id', 'name', 'password', 'profile_pic',
   ];
 
   /**

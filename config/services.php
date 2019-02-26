@@ -19,6 +19,11 @@ return [
         'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
         'redirect' => '/login/facebook/callback',
     ],
+  
+    'mandrill' => [
+        'secret' => env('MANDRILL_KEY'),
+    ],
+  
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),

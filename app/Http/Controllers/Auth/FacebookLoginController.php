@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
 use App\User;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Socialite;
 
@@ -77,8 +78,9 @@ class FacebookLoginController extends Controller
       }
       
       $newUser = User::create([
-        'name'     => $user->user['first_name'],
-        'email'    => $user->email,
+        'name' => $user->user['first_name'],
+        'email' => $user->email,
+        'email_verified_at' => Carbon::now(),
         'facebook_id' => $user->id,
       ]);
       

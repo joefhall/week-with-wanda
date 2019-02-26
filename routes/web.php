@@ -11,7 +11,7 @@
 |
 */
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::get('login/facebook', 'Auth\FacebookLoginController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\FacebookLoginController@handleProviderCallback');
 Route::get('logged-out', function () {
@@ -19,7 +19,7 @@ Route::get('logged-out', function () {
 })->name('logged-out');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('app');
 });
 
 Route::match(['get', 'post'], '/botman', 'BotManController@handle');
