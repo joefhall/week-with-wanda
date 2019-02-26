@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class SetupSocialLoginOnUsersTable extends Migration
+class AddProfilePicToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class SetupSocialLoginOnUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-          $table->string('password')->nullable()->change();
-          $table->string('facebook_id');
-        });
+      Schema::table('users', function (Blueprint $table) {
+        $table->string('profile_pic')->nullable();
+      });
     }
 
     /**
@@ -26,8 +25,8 @@ class SetupSocialLoginOnUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-//           
-        });
+      Schema::table('users', function (Blueprint $table) {
+        //
+      });
     }
 }

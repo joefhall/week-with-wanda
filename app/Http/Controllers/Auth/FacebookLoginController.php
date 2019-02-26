@@ -16,7 +16,8 @@ class FacebookLoginController extends Controller
      */
     public function redirectToProvider()
     {
-        return Socialite::driver('facebook')->redirect();
+      return Socialite::driver('facebook')
+        ->redirect();
     }
 
     /**
@@ -26,13 +27,20 @@ class FacebookLoginController extends Controller
      */
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('facebook')->user();
-
-        $authUser = $this->findOrCreateUser($user);
-        
-        Auth::login($authUser, true);
+      $socialite = Socialite::driver('facebook');
+      $user = $socialite
+        ->fields([
+          'first_name',
+          'email',
+        ])->stateless()->userFromToken($socialite->user()->token);
       
-        return redirect()->action('AppController@index');
+//       dd($user);
+
+      $authUser = $this->findOrCreateUser($user);
+
+      Auth::login($authUser, true);
+
+      return redirect()->action('AppController@index');
     }
 
     /**
@@ -50,10 +58,14 @@ class FacebookLoginController extends Controller
         return $authUser;
       }
       
-      return User::create([
-        'name'     => explode(' ', trim($user->name))[0], // use first word of name - likely to be first name
+      $newUser = User::create([
+        'name'     => $user->user['first_name'],
         'email'    => $user->email,
-        'facebook_id' => $user->id
+        'facebook_id' => $user->id,
       ]);
+      
+      $newUser->storeProfilePic($user->avatar_original);
+      
+      return $newUser;
     }
 }

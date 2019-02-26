@@ -20,7 +20,9 @@
         "laravel/framework": "5.7.*",
         "laravel/passport": "^7.2",
         "laravel/socialite": "^4.1",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "league/flysystem-cached-adapter": "^1.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
