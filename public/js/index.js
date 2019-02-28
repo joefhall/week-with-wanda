@@ -48962,20 +48962,22 @@ function () {
 
 /***/ }),
 
-/***/ "./resources/js/api/user.js":
+/***/ "./resources/js/api/chat.js":
 /*!**********************************!*\
-  !*** ./resources/js/api/user.js ***!
+  !*** ./resources/js/api/chat.js ***!
   \**********************************/
-/*! exports provided: getUsers */
+/*! exports provided: respond */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUsers", function() { return getUsers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "respond", function() { return respond; });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -48983,49 +48985,56 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
-var getUsers =
+
+
+var respond =
 /*#__PURE__*/
 function () {
   var _ref = _asyncToGenerator(
   /*#__PURE__*/
-  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(message) {
+    var sendData, response;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            console.log('Trying to get list of users');
-            axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("https://weekwithwanda.com/api/user").then(function (response) {
-              console.log(response);
-              return response;
-            }).catch(function (error) {
-              console.log("An Error Occured! ".concat(error));
-            }); //   axios
-            //     .get(`https://weekwithwanda.com/api/users/list?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3dlZWt3aXRod2FuZGEuY29tL2FwaS91c2VyL3JlZ2lzdGVyIiwiaWF0IjoxNTUwNjY4Mzk0LCJleHAiOjE1NTA2NzE5OTQsIm5iZiI6MTU1MDY2ODM5NCwianRpIjoiZXJ6UnZFY1RZUXMzaXZldCIsInN1YiI6MTMsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.WHpcrX10bkSGspyjmjd8vOTiHptGuJSRTmk0MUcgdfs`)
-            //     .then(response => {
-            //       console.log(response);
-            //       return response;
-            //     })
-            //     .then(json => {
-            //       if (json.data.success) {
-            // //         this.setState({ users: json.data.data });
-            //         console.log(json.data.data);
-            //       } else {
-            //         console.log("Failed getting list of users");
-            //       }
-            //     })
-            //     .catch(error => {
-            //       console.log(`An Error Occured! ${error}`);
-            //     });
+            console.log('Trying to send user response');
+            sendData = {
+              scenario: 'welcome',
+              wanda: 'hello',
+              user: message
+            };
+            _context.prev = 2;
+            _context.next = 5;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/respond', sendData);
 
-          case 2:
+          case 5:
+            response = _context.sent;
+
+            if (response.data.error) {
+              console.log("An error occured! ".concat(response.data.error));
+            } else {
+              console.log(response.data);
+              _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["addMessage"])(response.data.wanda, 'wanda'));
+            }
+
+            _context.next = 12;
+            break;
+
+          case 9:
+            _context.prev = 9;
+            _context.t0 = _context["catch"](2);
+            console.log("An error occured! ".concat(_context.t0));
+
+          case 12:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, this);
+    }, _callee, this, [[2, 9]]);
   }));
 
-  return function getUsers() {
+  return function respond(_x) {
     return _ref.apply(this, arguments);
   };
 }();
@@ -49255,7 +49264,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
 /* harmony import */ var _api_botman__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api/botman */ "./resources/js/api/botman.js");
-/* harmony import */ var _api_user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../api/user */ "./resources/js/api/user.js");
+/* harmony import */ var _api_chat__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../api/chat */ "./resources/js/api/chat.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -49302,10 +49311,10 @@ function (_React$Component) {
     };
 
     _this.addAndSendMessage = function (message) {
-      _this.props.addMessage(message, 'user');
+      _this.props.addMessage(message, 'user'); //     sendMessage(message);
 
-      Object(_api_botman__WEBPACK_IMPORTED_MODULE_3__["sendMessage"])(message);
-      Object(_api_user__WEBPACK_IMPORTED_MODULE_4__["getUsers"])();
+
+      Object(_api_chat__WEBPACK_IMPORTED_MODULE_4__["respond"])(message);
     };
 
     _this.onFormSubmit = function (event) {

@@ -2,15 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addMessage } from '../actions';
 import { sendMessage } from '../api/botman';
-import { getUsers } from '../api/user';
+import { respond } from '../api/chat';
 
 class ChatInput extends React.Component {
   state = { inputText: '' };
 
   addAndSendMessage = (message) => {
     this.props.addMessage(message, 'user');
-    sendMessage(message);
-    getUsers();
+//     sendMessage(message);
+    respond(message);
   };
   
   onFormSubmit = event => {

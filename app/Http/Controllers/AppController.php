@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\SendTextMessage;
-use Illuminate\Http\Request;
-
 class AppController extends Controller
 {
   /**
@@ -14,6 +11,8 @@ class AppController extends Controller
    */
   public function index()
   {
+//     dd(config("scenarios.welcome.wanda.howareyou"));
+    
     return view('app');
   }
 }
