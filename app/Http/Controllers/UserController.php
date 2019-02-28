@@ -11,7 +11,7 @@ class UserController extends Controller
     $user = User::first();
     
     return response()->json([
-        'name' => $user->name,
+        'name' => $user->first_name,
         'email' => $user->email,
     ]);
   }

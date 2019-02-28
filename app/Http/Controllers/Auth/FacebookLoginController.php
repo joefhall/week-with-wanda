@@ -84,7 +84,7 @@ class FacebookLoginController extends Controller
       }
       
       $newAuthUser = User::create([
-        'name' => $facebookUser->user['first_name'],
+        'first_name' => $facebookUser->user['first_name'],
         'email' => $facebookUser->email,
         'email_verified_at' => Carbon::now(),
         'facebook_id' => $facebookUser->id,
