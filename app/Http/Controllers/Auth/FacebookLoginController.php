@@ -48,13 +48,13 @@ class FacebookLoginController extends Controller
     public function handleProviderCallback(Request $request)
     {
       $socialite = Socialite::driver('facebook');
-      $user = $socialite
+      $facebookUser = $socialite
         ->fields([
           'first_name',
           'email',
         ])->stateless()->userFromToken($socialite->user()->token);
 
-      $authUser = $this->findOrCreateUser($user, $request);
+      $authUser = $this->findOrCreateUser($facebookUser, $request);
 
       Auth::login($authUser, true);
 
@@ -65,28 +65,34 @@ class FacebookLoginController extends Controller
      * If a user has registered before using Facebook, return the user
      * else, create a new user object.
      * 
-     * @param $user Socialite user object
+     * @param $facebookUser Socialite user object
      * @param  Request $request
      * @return User
      */
-    private function findOrCreateUser($user, $request)
+    private function findOrCreateUser($facebookUser, $request)
     {
-      $authUser = User::where('facebook_id', $user->id)->first();
+      $authUser = User::where('facebook_id', $facebookUser->id)->first();
+      
+      if (!$authUser) {
+        $authUser = User::where('email', $facebookUser->email)->first();
+        $authUser->facebook_id = $facebookUser->id;
+        $authUser->save();
+      }
       
       if ($authUser) {
         return $authUser;
       }
       
-      $newUser = User::create([
-        'name' => $user->user['first_name'],
-        'email' => $user->email,
+      $newAuthUser = User::create([
+        'name' => $facebookUser->user['first_name'],
+        'email' => $facebookUser->email,
         'email_verified_at' => Carbon::now(),
-        'facebook_id' => $user->id,
+        'facebook_id' => $facebookUser->id,
       ]);
       
-      $this->userRepository->storeProfilePic($newUser->id, $user->avatar_original);
-      $this->userRepository->storeCountryFromIp($newUser->id, $request->ip());
+      $this->userRepository->storeProfilePic($newAuthUser->id, $facebookUser->avatar_original);
+      $this->userRepository->storeCountryFromIp($newAuthUser->id, $request->ip());
       
-      return $newUser;
+      return $newAuthUser;
     }
 }
