@@ -10,6 +10,13 @@ use Laravel\Passport\HasApiTokens;
 class User extends Authenticatable implements MustVerifyEmail
 {
   use HasApiTokens, Notifiable;
+  
+  /**
+   * The filename of a user's profile pic.
+   *
+   * @var string
+   */
+  const PROFILE_PIC_FILENAME = 'profile_pic.jpg';
 
   /**
    * The attributes that are mass assignable.
