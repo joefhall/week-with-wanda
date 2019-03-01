@@ -23,10 +23,12 @@ trait GetsResponse
     
     $nextWanda = $this->getNextWanda($scenario, $userInput);
     $nextScenario = $this->getNextScenario($scenario, $userInput);
-    $nextInteraction = $this->getInteraction($nextScenario, $nextWanda);
     
-    $nextWandaMessage = $this->getWandaChat($nextScenario, $nextWanda);
-    $nextUserMessages = $this->getInteractionUserChats($nextScenario, $nextInteraction);
+    if ($nextWanda && $nextScenario) {
+      $nextInteraction = $this->getInteraction($nextScenario, $nextWanda);
+      $nextWandaMessage = $this->getWandaChat($nextScenario, $nextWanda);
+      $nextUserMessages = $this->getInteractionUserChats($nextScenario, $nextInteraction);
+    }
     
     if ($user && $nextWanda && $nextScenario && $nextInteraction) {
       $response = [
