@@ -19,7 +19,7 @@ class ChatController extends Controller
   {
     // TODO: store interaction in JSON chat history
     
-    $response = $this->getResponse($request->input('scenario', 'welcome'), $request->input('user', 'begin'));
+    $response = $this->getResponse($request->input('scenario'), $request->input('user'));
     
     return response()->json($response);
   }

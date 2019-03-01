@@ -31,6 +31,9 @@ return [
     ],
   
     'user' => [
+      'begin' => [
+        'wanda' => 'hello',
+      ],
       'hello' => [
         'wanda' => 'howareyou',
       ],

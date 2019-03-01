@@ -11,6 +11,19 @@ const messagesReducer = (state = [], action) => {
   return state;
 };
 
+const inputReducer = (state = [], action) => {
+  if (action && action.type === 'INPUT_SET') {
+    return action.payload;
+  }
+  
+  return {
+    scenario: null,
+    type: null,
+    userInput: null
+  };
+};
+
 export default combineReducers({
-  messages: messagesReducer
+  messages: messagesReducer,
+  input: inputReducer
 });

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Utilities\GetsResponse;
+
 class AppController extends Controller
 {
+  use GetsResponse;
+  
   /**
    * Show the React app.
    *
@@ -11,7 +15,7 @@ class AppController extends Controller
    */
   public function index()
   {
-//     dd(config("scenarios.welcome.wanda.howareyou"));
+//     dd($this->getResponse('welcome', 'hi'));
     
     return view('app');
   }

@@ -48858,19 +48858,32 @@ module.exports = function(module) {
 /*!***************************************!*\
   !*** ./resources/js/actions/index.js ***!
   \***************************************/
-/*! exports provided: addMessage */
+/*! exports provided: addMessage, setInput */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addMessage", function() { return addMessage; });
-var addMessage = function addMessage(message, sender) {
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setInput", function() { return setInput; });
+var addMessage = function addMessage(scenario, sender, id, message) {
   return {
     type: sender === 'user' ? 'USER_MESSAGE_INPUTTED' : 'WANDA_MESSAGE_RECEIVED',
     payload: {
       time: Date.now(),
-      message: message,
-      sender: sender
+      scenario: scenario,
+      sender: sender,
+      id: id,
+      message: message
+    }
+  };
+};
+var setInput = function setInput(scenario, type, userInput) {
+  return {
+    type: 'INPUT_SET',
+    payload: {
+      scenario: scenario,
+      type: type,
+      userInput: userInput
     }
   };
 };
@@ -48902,22 +48915,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
 var respond =
 /*#__PURE__*/
 function () {
   var _ref = _asyncToGenerator(
   /*#__PURE__*/
-  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(message) {
-    var sendData, response;
+  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(scenario, messageId, message) {
+    var sendData, response, wandaMessageId;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             console.log('Trying to send user response');
             sendData = {
-              scenario: 'welcome',
-              wanda: 'hello',
-              user: message
+              scenario: scenario,
+              user: messageId
             };
             _context.prev = 2;
             _context.next = 5;
@@ -48930,7 +48943,9 @@ function () {
               console.log("An error occured! ".concat(response.data.error));
             } else {
               console.log(response.data);
-              _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["addMessage"])(response.data.wanda, 'wanda'));
+              wandaMessageId = Object.keys(response.data.wanda)[0];
+              _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["addMessage"])(response.data.scenario, 'wanda', wandaMessageId, response.data.wanda[wandaMessageId]));
+              _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setInput"])(response.data.scenario, response.data.type, response.data.user));
             }
 
             _context.next = 12;
@@ -48949,7 +48964,7 @@ function () {
     }, _callee, this, [[2, 9]]);
   }));
 
-  return function respond(_x) {
+  return function respond(_x, _x2, _x3) {
     return _ref.apply(this, arguments);
   };
 }();
@@ -49204,6 +49219,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var ChatInput =
 /*#__PURE__*/
 function (_React$Component) {
@@ -49225,47 +49241,79 @@ function (_React$Component) {
       inputText: ''
     };
 
-    _this.addAndSendMessage = function (message) {
-      _this.props.addMessage(message, 'user');
+    _this.addAndSendMessage = function (messageId, message) {
+      _this.props.addMessage(_this.props.input.scenario, 'user', messageId, message);
 
-      Object(_api_chat__WEBPACK_IMPORTED_MODULE_3__["respond"])(message);
+      Object(_api_chat__WEBPACK_IMPORTED_MODULE_3__["respond"])(_this.props.input.scenario, messageId, message);
     };
 
     _this.onFormSubmit = function (event) {
-      event.preventDefault();
-
-      _this.addAndSendMessage(_this.state.inputText);
+      event.preventDefault(); //     this.addAndSendMessage(this.state.inputText);
     };
 
     return _this;
   }
 
   _createClass(ChatInput, [{
-    key: "render",
-    value: function render() {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      Object(_api_chat__WEBPACK_IMPORTED_MODULE_3__["respond"])('welcome', 'begin', '');
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      console.log('Chat input updated');
+    }
+  }, {
+    key: "renderInputChoices",
+    value: function renderInputChoices() {
       var _this2 = this;
 
+      var userInput = this.props.input.userInput;
+      return Object.keys(userInput).map(function (inputId) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "chat__input__choices__choice",
+          key: inputId,
+          onClick: function onClick() {
+            return _this2.addAndSendMessage(inputId, userInput[inputId]);
+          }
+        }, userInput[inputId]);
+      });
+    }
+  }, {
+    key: "renderInput",
+    value: function renderInput() {
+      var _this3 = this;
+
+      console.log('Render input:', this.props.input);
+
+      if (this.props.input) {
+        if (this.props.input.type === 'choice' && this.props.input.userInput) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "chat__input__choices"
+          }, this.renderInputChoices());
+        } else if (this.props.input.type === 'text') {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+            className: "chat__input__form",
+            onSubmit: this.onFormSubmit
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+            type: "text",
+            value: this.state.inputText,
+            onChange: function onChange(event) {
+              return _this3.setState({
+                inputText: event.target.value
+              });
+            }
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Send"));
+        }
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat__input"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "chat__input__choices"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "chat__input__choices__choice",
-        onClick: function onClick() {
-          return _this2.props.addMessage('hi');
-        }
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "chat__input__form",
-        onSubmit: this.onFormSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.state.inputText,
-        onChange: function onChange(event) {
-          return _this2.setState({
-            inputText: event.target.value
-          });
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Send")));
+      }, this.renderInput());
     }
   }]);
 
@@ -49276,12 +49324,14 @@ function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
+    input: state.input,
     message: state.message
   };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
-  addMessage: _actions__WEBPACK_IMPORTED_MODULE_2__["addMessage"]
+  addMessage: _actions__WEBPACK_IMPORTED_MODULE_2__["addMessage"],
+  setInput: _actions__WEBPACK_IMPORTED_MODULE_2__["setInput"]
 })(ChatInput));
 
 /***/ }),
@@ -49355,6 +49405,7 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
+      console.log('Chat messages updated');
       this.jumpToBottom();
     }
   }, {
@@ -49729,8 +49780,24 @@ var messagesReducer = function messagesReducer() {
   return state;
 };
 
+var inputReducer = function inputReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  if (action && action.type === 'INPUT_SET') {
+    return action.payload;
+  }
+
+  return {
+    scenario: null,
+    type: null,
+    userInput: null
+  };
+};
+
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  messages: messagesReducer
+  messages: messagesReducer,
+  input: inputReducer
 }));
 
 /***/ }),

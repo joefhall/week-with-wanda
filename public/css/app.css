@@ -10668,7 +10668,7 @@ a.text-dark:focus {
 }
 
 .chat__messages {
-  height: 90%;
+  height: 80%;
   overflow-y: auto;
 }
 

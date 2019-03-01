@@ -31,12 +31,12 @@ trait GetsResponse
     if ($user && $nextWanda && $nextScenario && $nextInteraction) {
       $response = [
         'scenario' => $nextScenario,
-        'wanda' => $nextWanda,
-        'wandaMessage' => $nextWandaMessage,
+        'wanda' => [
+          $nextWanda => $nextWandaMessage
+        ],
         'emotion' => array_get($nextInteraction, 'emotion'),
         'type' => array_get($nextInteraction, 'type'),
-        'user' => array_get($nextInteraction, 'user'),
-        'userMessages' => $nextUserMessages,
+        'user' => $nextUserMessages,
       ];
     } else {
       if (!$user) {
