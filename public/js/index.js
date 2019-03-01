@@ -48877,91 +48877,6 @@ var addMessage = function addMessage(message, sender) {
 
 /***/ }),
 
-/***/ "./resources/js/api/botman.js":
-/*!************************************!*\
-  !*** ./resources/js/api/botman.js ***!
-  \************************************/
-/*! exports provided: sendMessage */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sendMessage", function() { return sendMessage; });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
-
-
-var _this = undefined;
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-
-
-
-var api = axios__WEBPACK_IMPORTED_MODULE_1___default.a.create({
-  baseURL: '/botman',
-  headers: {//     Authorization: 'Client-ID '
-  }
-});
-var sendMessage =
-/*#__PURE__*/
-function () {
-  var _ref = _asyncToGenerator(
-  /*#__PURE__*/
-  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(text) {
-    var interactive,
-        data,
-        response,
-        messages,
-        _args = arguments;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            interactive = _args.length > 1 && _args[1] !== undefined ? _args[1] : false;
-            console.log('Sending message');
-            console.log(_this);
-            data = {
-              driver: 'web',
-              userId: 12345,
-              message: text,
-              attachment: null,
-              interactive: interactive ? '1' : '0'
-            };
-            console.log(data);
-            _context.next = 7;
-            return api.post('', data);
-
-          case 7:
-            response = _context.sent;
-            console.log(response.data.messages);
-            messages = response.data.messages || [];
-
-            if (messages.length) {
-              _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["addMessage"])(messages[0].text, 'wanda'));
-            }
-
-          case 11:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee, this);
-  }));
-
-  return function sendMessage(_x) {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-/***/ }),
-
 /***/ "./resources/js/api/chat.js":
 /*!**********************************!*\
   !*** ./resources/js/api/chat.js ***!
@@ -49165,7 +49080,9 @@ function (_React$Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Login__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Chat__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row align-items-center justify-content-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Chat__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }
   }]);
 
@@ -49263,8 +49180,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
-/* harmony import */ var _api_botman__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api/botman */ "./resources/js/api/botman.js");
-/* harmony import */ var _api_chat__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../api/chat */ "./resources/js/api/chat.js");
+/* harmony import */ var _api_chat__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api/chat */ "./resources/js/api/chat.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -49282,7 +49198,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -49311,10 +49226,9 @@ function (_React$Component) {
     };
 
     _this.addAndSendMessage = function (message) {
-      _this.props.addMessage(message, 'user'); //     sendMessage(message);
+      _this.props.addMessage(message, 'user');
 
-
-      Object(_api_chat__WEBPACK_IMPORTED_MODULE_4__["respond"])(message);
+      Object(_api_chat__WEBPACK_IMPORTED_MODULE_3__["respond"])(message);
     };
 
     _this.onFormSubmit = function (event) {
@@ -49340,7 +49254,7 @@ function (_React$Component) {
         onClick: function onClick() {
           return _this2.props.addMessage('hi');
         }
-      }, "Hi")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "chat__input__form",
         onSubmit: this.onFormSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -49413,12 +49327,37 @@ function (_React$Component) {
   _inherits(ChatMessages, _React$Component);
 
   function ChatMessages() {
+    var _getPrototypeOf2;
+
+    var _this;
+
     _classCallCheck(this, ChatMessages);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ChatMessages).apply(this, arguments));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ChatMessages)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _this.jumpToBottom = function () {
+      var chatMessages = document.querySelector('.chat__messages');
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    };
+
+    return _this;
   }
 
   _createClass(ChatMessages, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.jumpToBottom();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.jumpToBottom();
+    }
+  }, {
     key: "renderMessages",
     value: function renderMessages() {
       if (this.props.messages.length) {
@@ -49426,9 +49365,13 @@ function (_React$Component) {
           var date = new Date(message.time);
           var formattedTime = date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2);
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "chat__messages__message chat__messages__message--{message.sender}",
+            className: 'chat__messages__message chat__messages__message--' + message.sender,
             key: message.time
-          }, message.message, " ", formattedTime);
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: 'chat__messages__message__bubble--' + message.sender
+          }, message.message), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "chat__messages__message__time"
+          }, formattedTime));
         });
       }
     }

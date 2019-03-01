@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addMessage } from '../actions';
-import { sendMessage } from '../api/botman';
 import { respond } from '../api/chat';
 
 class ChatInput extends React.Component {
@@ -9,7 +8,6 @@ class ChatInput extends React.Component {
 
   addAndSendMessage = (message) => {
     this.props.addMessage(message, 'user');
-//     sendMessage(message);
     respond(message);
   };
   
@@ -22,7 +20,7 @@ class ChatInput extends React.Component {
     return (
       <div className="chat__input">
         <div className="chat__input__choices">
-          <div className="chat__input__choices__choice" onClick={() => this.props.addMessage('hi')}>Hi</div>
+          <div className="chat__input__choices__choice" onClick={() => this.props.addMessage('hi')}></div>
         </div>
         <form className="chat__input__form" onSubmit={this.onFormSubmit}>
           <input type="text" value={this.state.inputText} onChange={(event) => this.setState({inputText: event.target.value})} />

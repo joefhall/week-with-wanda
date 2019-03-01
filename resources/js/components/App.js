@@ -13,10 +13,7 @@ export default class App extends React.Component {
   
   render() {
     return (
-      <div>
-        {/* <LoginFacebook logout={this.logout} /> */}
-        <Login />
-        {/* <Register />*/}
+      <div className="row align-items-center justify-content-center">
         <Chat />
       </div>
     );

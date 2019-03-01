@@ -1,12 +1,40 @@
 .chat {
   height: 100vh;
   width: 100vw;
+  
+  @include media-breakpoint-up(lg) {
+    max-height: 600px;
+    max-width: 400px;
+  }
+  
+  &__messages {
+    height: 90%;
+    overflow-y: auto;
+    
+    &__message {
+      &--user {
+        text-align: right;
+      }
+
+      &--wanda {
+        text-align: left;
+      }
+      
+      &__bubble {
+        &--user {
+          
+        }
+
+        &--wanda {
+          
+        }
+      }
+    }
+  }
+
+  &__input {
+
+  }
 }
 
-.chat__messages {
-  
-}
 
-.chat__input {
-  
-}

@@ -7,6 +7,8 @@
 
       <title>A Week With Wanda</title>
 
+      <link href="{{ mix('/css/app.css') }}" rel="stylesheet" type="text/css" />
+    
       <!-- Fonts -->
       <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" type="text/css">
 

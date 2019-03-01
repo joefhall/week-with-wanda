@@ -10660,3 +10660,23 @@ a.text-dark:focus {
   width: 100vw;
 }
 
+@media (min-width: 992px) {
+  .chat {
+    max-height: 600px;
+    max-width: 400px;
+  }
+}
+
+.chat__messages {
+  height: 90%;
+  overflow-y: auto;
+}
+
+.chat__messages__message--user {
+  text-align: right;
+}
+
+.chat__messages__message--wanda {
+  text-align: left;
+}
+
