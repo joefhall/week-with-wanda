@@ -28,6 +28,18 @@ return [
           'notbad',
         ],
       ],
+      'tellmesomething' => [
+        'type' => 'text',
+        'user' => [
+          'something'
+        ],
+      ],
+      'ooh' => [
+        'type' => 'choice',
+        'user' => [
+          'whatever',
+        ],
+      ],
     ],
   
     'user' => [
@@ -39,6 +51,15 @@ return [
       ],
       'hi' => [
         'wanda' => 'howareyou',
+      ],
+      'goodthanks' => [
+        'wanda' => 'tellmesomething',
+      ],
+      'notbad' => [
+        'wanda' => 'tellmesomething',
+      ],
+      'something' => [
+        'wanda' => 'ooh',
       ],
     ],
 

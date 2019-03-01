@@ -48940,7 +48940,7 @@ function () {
             response = _context.sent;
 
             if (response.data.error) {
-              console.log("An error occured! ".concat(response.data.error));
+              console.log("An error occured getting data back from the server: ".concat(response.data.error));
             } else {
               console.log(response.data);
               wandaMessageId = Object.keys(response.data.wanda)[0];
@@ -48954,7 +48954,7 @@ function () {
           case 9:
             _context.prev = 9;
             _context.t0 = _context["catch"](2);
-            console.log("An error occured! ".concat(_context.t0));
+            console.log("An error occured getting data back from the server: ".concat(_context.t0));
 
           case 12:
           case "end":
@@ -49248,7 +49248,9 @@ function (_React$Component) {
     };
 
     _this.onFormSubmit = function (event) {
-      event.preventDefault(); //     this.addAndSendMessage(this.state.inputText);
+      event.preventDefault();
+
+      _this.addAndSendMessage(Object.keys(_this.props.input.userInput)[0], _this.state.inputText);
     };
 
     return _this;
@@ -49258,11 +49260,6 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       Object(_api_chat__WEBPACK_IMPORTED_MODULE_3__["respond"])('welcome', 'begin', '');
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      console.log('Chat input updated');
     }
   }, {
     key: "renderInputChoices",

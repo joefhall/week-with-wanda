@@ -14,15 +14,11 @@ class ChatInput extends React.Component {
   
   onFormSubmit = event => {
     event.preventDefault();
-//     this.addAndSendMessage(this.state.inputText);
+    this.addAndSendMessage(Object.keys(this.props.input.userInput)[0], this.state.inputText);
   };
 
   componentDidMount() {
     respond('welcome', 'begin', '');
-  }
-
-  componentDidUpdate() {
-    console.log('Chat input updated');
   }
 
   renderInputChoices() {

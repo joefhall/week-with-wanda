@@ -56,6 +56,8 @@ trait GetsChat
       foreach (array_get($interaction, 'user') as $userResponse) {
         $userMessages[$userResponse] = $this->getUserChat($scenario, $userResponse);
       }
+    } else {
+      $userMessages[$interaction['user'][0]] = null;
     }
     
     return $userMessages;
