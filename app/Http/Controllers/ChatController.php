@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Utilities\GetsResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
@@ -22,7 +19,7 @@ class ChatController extends Controller
   {
     // TODO: store interaction in JSON chat history
     
-    $response = $this->getResponse($request->input('scenario'), $request->input('user'));
+    $response = $this->getResponse($request->input('scenario', 'welcome'), $request->input('user', 'begin'));
     
     return response()->json($response);
   }
