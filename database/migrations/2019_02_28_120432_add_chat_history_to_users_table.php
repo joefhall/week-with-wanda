@@ -14,7 +14,7 @@ class AddConversationHistoryToUsersTable extends Migration
     public function up()
     {
       Schema::table('users', function (Blueprint $table) {
-        $table->json('conversation_history');
+        $table->json('chat_history')->nullable();
       });
     }
 

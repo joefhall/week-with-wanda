@@ -25,6 +25,7 @@ class User extends Authenticatable implements MustVerifyEmail
    * @var array
    */
   protected $fillable = [
+    'chat_history',
     'email',
     'email_verified_at',
     'facebook_id',
