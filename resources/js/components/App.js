@@ -13,7 +13,7 @@ export default class App extends React.Component {
   
   render() {
     return (
-      <div className="row align-items-center justify-content-center">
+      <div className="d-flex align-items-center justify-content-center">
         <Chat />
       </div>
     );

@@ -49211,7 +49211,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row align-items-center justify-content-center"
+        className: "d-flex align-items-center justify-content-center"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Chat__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }
   }]);
@@ -49505,6 +49505,17 @@ function (_React$Component) {
       chatMessages.scrollTop = chatMessages.scrollHeight;
     };
 
+    _this.renderDay = function (previousDay, currentDay) {
+      var daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+      if (currentDay !== previousDay) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "chat__messages__day",
+          key: daysOfWeek[currentDay]
+        }, daysOfWeek[currentDay]);
+      }
+    };
+
     return _this;
   }
 
@@ -49522,18 +49533,28 @@ function (_React$Component) {
   }, {
     key: "renderMessages",
     value: function renderMessages() {
+      var _this2 = this;
+
       if (this.props.messages.length) {
-        return this.props.messages.map(function (message) {
+        return this.props.messages.map(function (message, index, messages) {
           var date = new Date(message.time);
           var formattedTime = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ', ' + date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2);
+          var previousDay = null;
+
+          if (index > 0) {
+            var previousTime = messages[index - 1].time;
+            previousDay = new Date(previousTime).getDay();
+          }
+
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: 'chat__messages__message chat__messages__message--' + message.sender,
             key: message.time
+          }, _this2.renderDay(previousDay, date.getDay()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: 'chat__messages__message chat__messages__message--' + message.sender
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: 'chat__messages__message__bubble--' + message.sender
-          }, message.message), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: 'chat__messages__message__bubble chat__messages__message__bubble--' + message.sender
+          }, message.message, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "chat__messages__message__time"
-          }, formattedTime));
+          }, formattedTime))));
         });
       }
     }

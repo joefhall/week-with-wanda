@@ -8,33 +8,138 @@
   }
   
   &__messages {
+    background-color: white;
     height: 80%;
     overflow-y: auto;
+    padding: $spacer 0;
+    
+    &__day {
+      background-color: lightgoldenrodyellow;
+      font-size: $font-size-xxsm;
+      font-weight: $font-weight-bold;
+      margin: $spacer 0;
+      padding: $spacer * .25;
+      text-align: center;
+    }
     
     &__message {
+      clear: both;
+      display: flex;
+      margin-bottom: $spacer * .25;
+      
+      &__time {
+        font-size: $font-size-xxsm;
+      }
+      
       &--user {
-        text-align: right;
+        justify-content: flex-end;
+        margin-right: $spacer;
       }
 
       &--wanda {
-        text-align: left;
+        justify-content: flex-start;
+        margin-left: $spacer;
       }
       
       &__bubble {
+        border-radius: $border-radius-xxxxxlg;
+        font-size: $font-size-base;
+        max-width: 65%;
+        padding: $spacer * .25 $spacer * .7 $spacer * .25;
+        word-wrap: break-word;
+        
         &--user {
-          
+          background-color: darkviolet;
+          border-top-right-radius: 0;
+          color: white;
+          text-align: right;
         }
 
         &--wanda {
-          
+          background-color: linen;
+          border-top-left-radius: 0;
+          color: black;
+          text-align: left;
         }
       }
+    }
+    
+    &__typing {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      -webkit-animation: typing 1s linear infinite alternate;
+      -moz-animation: typing 1s linear infinite alternate;
+      -ms-animation: typing 1s linear infinite alternate;
+      animation: typing 1s linear infinite alternate;
+      position: relative;
+      left: -12px;
+      margin: 7px 15px 6px;
     }
   }
 
   &__input {
-
+    background-color: beige;
+    padding: $spacer;
   }
 }
 
+@-webkit-keyframes typing {
+  0% {
+    background-color: rgba(255,255,255, 1);
+    box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.4), 24px 0px 0px 0px rgba(255,255,255,0.2);
+  }
+  50% {
+    background-color: rgba(255,255,255, 0.4);
+    box-shadow: 12px 0px 0px 0px rgba(255,255,255,1), 24px 0px 0px 0px rgba(255,255,255,0.4);
+  }
+  100% {
+    background-color: rgba(255,255,255, 0.2);
+    box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.4), 24px 0px 0px 0px rgba(255,255,255,1);
+  }
+}
 
+@-moz-keyframes typing {
+    0% {
+      background-color: rgba(255,255,255, 1);
+      box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.4), 24px 0px 0px 0px rgba(255,255,255,0.2);
+    }
+    50% {
+      background-color: rgba(255,255,255, 0.4);
+      box-shadow: 12px 0px 0px 0px rgba(255,255,255,1), 24px 0px 0px 0px rgba(255,255,255,0.4);
+    }
+    100% {
+      background-color: rgba(255,255,255, 0.2);
+      box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.4), 24px 0px 0px 0px rgba(255,255,255,1);
+    }
+}
+
+@keyframes typing-black {
+    0% {
+      background-color: rgba(74, 74, 74, 1);
+      box-shadow: 12px 0px 0px 0px rgba(74, 74, 74, 0.4), 24px 0px 0px 0px rgba(74, 74, 74, 0.2);
+    }
+    50% {
+      background-color: rgba(74, 74, 74, 0.4);
+      box-shadow: 12px 0px 0px 0px rgba(74, 74, 74, 1), 24px 0px 0px 0px rgba(74, 74, 74,0.4);
+    }
+    100% {
+      background-color: rgba(74, 74, 74, 0.2);
+      box-shadow: 12px 0px 0px 0px rgba(74, 74, 74,0.4), 24px 0px 0px 0px rgba(74, 74, 74,1);
+    }
+}
+
+@keyframes typing {
+    0% {
+      background-color: rgba(255,255,255, 1);
+      box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.4), 24px 0px 0px 0px rgba(255,255,255,0.2);
+    }
+    50% {
+      background-color: rgba(255,255,255, 0.4);
+      box-shadow: 12px 0px 0px 0px rgba(255,255,255,1), 24px 0px 0px 0px rgba(255,255,255,0.4);
+    }
+    100% {
+      background-color: rgba(255,255,255, 0.2);
+      box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.4), 24px 0px 0px 0px rgba(255,255,255,1);
+    }
+}
