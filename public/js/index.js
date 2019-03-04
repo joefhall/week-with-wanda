@@ -48865,11 +48865,11 @@ module.exports = function(module) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addMessage", function() { return addMessage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setInput", function() { return setInput; });
-var addMessage = function addMessage(scenario, sender, id, message) {
+var addMessage = function addMessage(time, scenario, sender, id, message) {
   return {
     type: sender === 'user' ? 'USER_MESSAGE_INPUTTED' : 'WANDA_MESSAGE_RECEIVED',
     payload: {
-      time: Date.now(),
+      time: time,
       scenario: scenario,
       sender: sender,
       id: id,
@@ -48894,12 +48894,13 @@ var setInput = function setInput(scenario, type, userInput) {
 /*!**********************************!*\
   !*** ./resources/js/api/chat.js ***!
   \**********************************/
-/*! exports provided: respond */
+/*! exports provided: respond, getHistory */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "respond", function() { return respond; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getHistory", function() { return getHistory; });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -48933,40 +48934,153 @@ function () {
               user: messageId,
               message: message
             };
-            _context.prev = 2;
-            _context.next = 5;
+            console.log('Send data', sendData);
+            _context.prev = 3;
+            _context.next = 6;
             return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/respond', sendData);
 
-          case 5:
+          case 6:
             response = _context.sent;
 
             if (response.data.error) {
-              console.log("An error occured getting data back from the server: ".concat(response.data.error));
+              console.log("An error occured getting Wanda's response back from the server: ".concat(response.data.error));
             } else {
-              console.log(response.data);
+              console.log('Message response:', response.data);
               wandaMessageId = Object.keys(response.data.wanda)[0];
-              _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["addMessage"])(response.data.scenario, 'wanda', wandaMessageId, response.data.wanda[wandaMessageId]));
+              _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["addMessage"])(Date.now(), response.data.scenario, 'wanda', wandaMessageId, response.data.wanda[wandaMessageId]));
               _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setInput"])(response.data.scenario, response.data.type, response.data.user));
             }
 
-            _context.next = 12;
+            _context.next = 13;
             break;
 
-          case 9:
-            _context.prev = 9;
-            _context.t0 = _context["catch"](2);
-            console.log("An error occured getting data back from the server: ".concat(_context.t0));
+          case 10:
+            _context.prev = 10;
+            _context.t0 = _context["catch"](3);
+            console.log("An error occured getting Wanda's response back from the server: ".concat(_context.t0));
 
-          case 12:
+          case 13:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, this, [[2, 9]]);
+    }, _callee, this, [[3, 10]]);
   }));
 
   return function respond(_x, _x2, _x3) {
     return _ref.apply(this, arguments);
+  };
+}();
+var getHistory =
+/*#__PURE__*/
+function () {
+  var _ref2 = _asyncToGenerator(
+  /*#__PURE__*/
+  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+    var response, chatHistory, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, chatEntry, latestChatEntry;
+
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            console.log('Trying to get user chat history');
+            _context2.prev = 1;
+            _context2.next = 4;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/history');
+
+          case 4:
+            response = _context2.sent;
+
+            if (!response.data.error) {
+              _context2.next = 9;
+              break;
+            }
+
+            console.log("An error occured getting user's chat history back from the server: ".concat(response.data.error));
+            _context2.next = 37;
+            break;
+
+          case 9:
+            chatHistory = response.data;
+            console.log('User chat history:', chatHistory); // TODO: do something different if chat history empty - assume is new user
+
+            if (!chatHistory.length) {
+              _context2.next = 36;
+              break;
+            }
+
+            _iteratorNormalCompletion = true;
+            _didIteratorError = false;
+            _iteratorError = undefined;
+            _context2.prev = 15;
+
+            for (_iterator = chatHistory[Symbol.iterator](); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+              chatEntry = _step.value;
+              _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["addMessage"])(chatEntry.time * 1000, chatEntry.scenario, chatEntry.sender, chatEntry.id, chatEntry.message));
+            }
+
+            _context2.next = 23;
+            break;
+
+          case 19:
+            _context2.prev = 19;
+            _context2.t0 = _context2["catch"](15);
+            _didIteratorError = true;
+            _iteratorError = _context2.t0;
+
+          case 23:
+            _context2.prev = 23;
+            _context2.prev = 24;
+
+            if (!_iteratorNormalCompletion && _iterator.return != null) {
+              _iterator.return();
+            }
+
+          case 26:
+            _context2.prev = 26;
+
+            if (!_didIteratorError) {
+              _context2.next = 29;
+              break;
+            }
+
+            throw _iteratorError;
+
+          case 29:
+            return _context2.finish(26);
+
+          case 30:
+            return _context2.finish(23);
+
+          case 31:
+            latestChatEntry = chatHistory.slice(-1)[0];
+            console.log('Latest chat entry:', latestChatEntry);
+            _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setInput"])(latestChatEntry.scenario, latestChatEntry.type, latestChatEntry.userInput));
+            _context2.next = 37;
+            break;
+
+          case 36:
+            respond('welcome', 'begin', '');
+
+          case 37:
+            _context2.next = 42;
+            break;
+
+          case 39:
+            _context2.prev = 39;
+            _context2.t1 = _context2["catch"](1);
+            console.log("An error occured getting user's chat history back from the server: ".concat(_context2.t1));
+
+          case 42:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2, this, [[1, 39], [15, 19, 23, 31], [24,, 26, 30]]);
+  }));
+
+  return function getHistory() {
+    return _ref2.apply(this, arguments);
   };
 }();
 
@@ -49220,7 +49334,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var ChatInput =
 /*#__PURE__*/
 function (_React$Component) {
@@ -49243,7 +49356,7 @@ function (_React$Component) {
     };
 
     _this.addAndSendMessage = function (messageId, message) {
-      _this.props.addMessage(_this.props.input.scenario, 'user', messageId, message);
+      _this.props.addMessage(Date.now(), _this.props.input.scenario, 'user', messageId, message);
 
       Object(_api_chat__WEBPACK_IMPORTED_MODULE_3__["respond"])(_this.props.input.scenario, messageId, message);
     };
@@ -49260,7 +49373,7 @@ function (_React$Component) {
   _createClass(ChatInput, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      Object(_api_chat__WEBPACK_IMPORTED_MODULE_3__["respond"])('welcome', 'begin', '');
+      Object(_api_chat__WEBPACK_IMPORTED_MODULE_3__["getHistory"])();
     }
   }, {
     key: "renderInputChoices",
@@ -49412,7 +49525,7 @@ function (_React$Component) {
       if (this.props.messages.length) {
         return this.props.messages.map(function (message) {
           var date = new Date(message.time);
-          var formattedTime = date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2);
+          var formattedTime = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ', ' + date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2);
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: 'chat__messages__message chat__messages__message--' + message.sender,
             key: message.time

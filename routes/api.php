@@ -14,5 +14,6 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware(['auth:api', 'verified'])->group(function () {
+  Route::get('/history', 'ChatController@history');
   Route::post('/respond', 'ChatController@respond');
 });

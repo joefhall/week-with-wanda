@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addMessage } from '../actions';
-import { setInput } from '../actions';
-import { respond } from '../api/chat';
+import { addMessage, setInput } from '../actions';
+import { getHistory, respond } from '../api/chat';
 
 class ChatInput extends React.Component {
   state = { inputText: '' };
 
   addAndSendMessage = (messageId, message) => {
-    this.props.addMessage(this.props.input.scenario, 'user', messageId, message);
+    this.props.addMessage(Date.now(), this.props.input.scenario, 'user', messageId, message);
     respond(this.props.input.scenario, messageId, message);
   };
   
@@ -18,7 +17,7 @@ class ChatInput extends React.Component {
   };
 
   componentDidMount() {
-    respond('welcome', 'begin', '');
+    getHistory();
   }
 
   renderInputChoices() {

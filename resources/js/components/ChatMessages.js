@@ -21,7 +21,7 @@ class ChatMessages extends React.Component {
     if (this.props.messages.length) {
       return this.props.messages.map((message) => {
         const date = new Date(message.time);
-        const formattedTime = date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2);
+        const formattedTime = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ', ' + date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2);
         
         return (
           <div className={'chat__messages__message chat__messages__message--' + message.sender} key={message.time}>

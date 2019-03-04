@@ -1,8 +1,8 @@
-export const addMessage = (scenario, sender, id, message) => {
+export const addMessage = (time, scenario, sender, id, message) => {
   return {
     type: sender === 'user' ? 'USER_MESSAGE_INPUTTED' : 'WANDA_MESSAGE_RECEIVED',
     payload: {
-      time: Date.now(),
+      time: time,
       scenario: scenario,
       sender: sender,
       id: id,

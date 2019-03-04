@@ -32,6 +32,7 @@ class UserRepository
    *
    * @param int $userId
    * @param string $originalProfilePic
+   * @return void
    */
   function storeProfilePic(int $userId, string $originalProfilePic) {    
     $image = $this->client->get($originalProfilePic)->getBody()->getContents();
@@ -47,6 +48,7 @@ class UserRepository
    *
    * @param int $userId
    * @param string $ip
+   * @return void
    */
   function storeCountryFromIp(int $userId, string $ip) {
     $lookupUrl = env('IP_GEO_LOOKUP_URL') . '/' . env('IP_GEO_LOOKUP_KEY') . '/' . $ip;
@@ -63,6 +65,7 @@ class UserRepository
    *
    * @param int $userId
    * @param array $newChat
+   * @return void
    */
   function addToChatHistory(int $userId, array $newChat) {
     $user = User::find($userId);
@@ -72,5 +75,17 @@ class UserRepository
     
     $user->chat_history = json_encode($chatHistory);
     $user->save();
+  }
+  
+  /**
+   * Get the user's chat history.
+   *
+   * @param int $userId
+   * @return array
+   */
+  function getChatHistory(int $userId) {
+    $user = User::find($userId);
+    
+    return json_decode($user->chat_history) ?? [];
   }
 }

@@ -60,8 +60,28 @@ class ChatController extends Controller
       'scenario' => array_get($response, 'scenario'),      
       'id' => key(array_get($response, 'wanda')),
       'message' => current(array_get($response, 'wanda')),
-      'time' => Carbon::now()->timestamp,
+      'type' => array_get($response, 'type'),
+      'userInput' => array_get($response, 'user'),
+      'time' => Carbon::now()->timestamp + 1,
     ]);
+    
+    return response()->json($response);
+  }
+  
+  /**
+   * Get the user's chat history, if any.
+   *
+   * @param Request $request
+   * @return string
+   */
+  public function history(Request $request)
+  {
+    $response = [];
+    $user = Auth::user();
+    
+    if ($user) {
+      $response = $this->userRepository->getChatHistory($user->id);
+    }
     
     return response()->json($response);
   }
