@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\User;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class UserRepository
@@ -54,6 +55,22 @@ class UserRepository
     
     $user = User::find($userId);
     $user->country = $ipData->country_code;
+    $user->save();
+  }
+  
+  /**
+   * Add to the end of the user's chat history.
+   *
+   * @param int $userId
+   * @param array $newChat
+   */
+  function addToChatHistory(int $userId, array $newChat) {
+    $user = User::find($userId);
+    
+    $chatHistory = json_decode($user->chat_history) ?? [];
+    $chatHistory[] = $newChat;
+    
+    $user->chat_history = json_encode($chatHistory);
     $user->save();
   }
 }

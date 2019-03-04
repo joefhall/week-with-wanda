@@ -48930,7 +48930,8 @@ function () {
             console.log('Trying to send user response');
             sendData = {
               scenario: scenario,
-              user: messageId
+              user: messageId,
+              message: message
             };
             _context.prev = 2;
             _context.next = 5;

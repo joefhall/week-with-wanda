@@ -8,7 +8,8 @@ export const respond = async (scenario, messageId, message) => {
   
   const sendData = {
     scenario: scenario,
-    user: messageId
+    user: messageId,
+    message: message
   };
   
   try {

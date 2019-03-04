@@ -2,9 +2,9 @@
 
 namespace App\Utilities;
 
+use App\User;
 use App\Utilities\GetsChat;
 use App\Utilities\GetsScenarioDetails;
-use Illuminate\Support\Facades\Auth;
 
 trait GetsResponse
 {
@@ -13,14 +13,13 @@ trait GetsResponse
   /**
    * Looks at input from the user and gets the next response to send.
    *
+   * @param User $user
    * @param string $scenario
    * @param string $userInput
    * @return array
    */
-  public function getResponse(string $scenario, string $userInput)
+  public function getResponse(User $user, string $scenario, string $userInput)
   {
-    $user = Auth::user();
-    
     $nextWanda = $this->getNextWanda($scenario, $userInput);
     $nextScenario = $this->getNextScenario($scenario, $userInput);
     
