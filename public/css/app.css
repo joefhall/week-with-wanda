@@ -10656,6 +10656,8 @@ a.text-dark:focus {
 }
 
 .chat {
+  display: flex;
+  flex-flow: column;
   height: 100vh;
   width: 100vw;
 }
@@ -10669,6 +10671,7 @@ a.text-dark:focus {
 
 .chat__messages {
   background-color: white;
+  flex: 1 1 auto;
   height: 80%;
   overflow-y: auto;
   padding: 1rem 0;
@@ -10740,6 +10743,7 @@ a.text-dark:focus {
 
 .chat__input {
   background-color: beige;
+  flex: 1 1 auto;
   padding: 1rem;
 }
 

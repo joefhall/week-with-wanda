@@ -2,12 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setTyping } from '../actions';
 
-class ChatTyping extends React.Component {
-  componentDidUpdate() {
-    const chatMessages = document.querySelector('.chat__messages');
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-  
+class ChatTyping extends React.Component {  
   render() {
     console.log('Typing is...', this.props.typing);
     return (

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addMessage, setInput } from '../actions';
 import { getHistory, respond } from '../api/chat';
+import ChatMessages from './ChatMessages';
 
 class ChatInput extends React.Component {
   state = { inputText: '' };

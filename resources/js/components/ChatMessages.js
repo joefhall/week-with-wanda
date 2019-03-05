@@ -72,7 +72,11 @@ class ChatMessages extends React.Component {
 };
 
 const mapStateToProps = (state) => {
-  return { messages: state.messages };
+  return {
+    input: state.input,
+    messages: state.messages,
+    typing: state.typing
+  };
 };
 
 export default connect(mapStateToProps, { addMessage })(ChatMessages);

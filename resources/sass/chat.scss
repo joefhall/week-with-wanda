@@ -1,4 +1,6 @@
 .chat {
+  display: flex;
+  flex-flow: column;
   height: 100vh;
   width: 100vw;
   
@@ -9,6 +11,7 @@
   
   &__messages {
     background-color: white;
+    flex: 1 1 auto;
     height: 80%;
     overflow-y: auto;
     padding: $spacer 0;
@@ -84,6 +87,7 @@
 
   &__input {
     background-color: beige;
+    flex: 1 1 auto;
     padding: $spacer;
   }
 }
