@@ -21,3 +21,12 @@ export const setInput = (scenario, type, userInput) => {
     }
   };
 };
+
+export const setTyping = typing => {
+  return {
+    type: 'TYPING_STATUS_SET',
+    payload: {
+      typing: typing,
+    }
+  };
+};

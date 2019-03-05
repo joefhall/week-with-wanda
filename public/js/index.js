@@ -48858,13 +48858,14 @@ module.exports = function(module) {
 /*!***************************************!*\
   !*** ./resources/js/actions/index.js ***!
   \***************************************/
-/*! exports provided: addMessage, setInput */
+/*! exports provided: addMessage, setInput, setTyping */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addMessage", function() { return addMessage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setInput", function() { return setInput; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setTyping", function() { return setTyping; });
 var addMessage = function addMessage(time, scenario, sender, id, message) {
   return {
     type: sender === 'user' ? 'USER_MESSAGE_INPUTTED' : 'WANDA_MESSAGE_RECEIVED',
@@ -48884,6 +48885,14 @@ var setInput = function setInput(scenario, type, userInput) {
       scenario: scenario,
       type: type,
       userInput: userInput
+    }
+  };
+};
+var setTyping = function setTyping(typing) {
+  return {
+    type: 'TYPING_STATUS_SET',
+    payload: {
+      typing: typing
     }
   };
 };
@@ -48917,13 +48926,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
+var typingDelay = function typingDelay(messageText) {
+  return messageText.length * 150;
+};
+
+var showResponse = function showResponse(responseData, wandaMessageId, wandaMessage) {
+  _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setTyping"])(false));
+  _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["addMessage"])(Date.now(), responseData.scenario, 'wanda', wandaMessageId, wandaMessage));
+  _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setInput"])(responseData.scenario, responseData.type, responseData.user));
+};
+
 var respond =
 /*#__PURE__*/
 function () {
   var _ref = _asyncToGenerator(
   /*#__PURE__*/
   _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(scenario, messageId, message) {
-    var sendData, response, wandaMessageId;
+    var sendData, response, wandaMessageId, wandaMessage;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -48946,9 +48966,10 @@ function () {
               console.log("An error occured getting Wanda's response back from the server: ".concat(response.data.error));
             } else {
               console.log('Message response:', response.data);
+              _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setTyping"])(true));
               wandaMessageId = Object.keys(response.data.wanda)[0];
-              _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["addMessage"])(Date.now(), response.data.scenario, 'wanda', wandaMessageId, response.data.wanda[wandaMessageId]));
-              _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setInput"])(response.data.scenario, response.data.type, response.data.user));
+              wandaMessage = response.data.wanda[wandaMessageId];
+              setTimeout(showResponse, typingDelay(wandaMessage), response.data, wandaMessageId, wandaMessage);
             }
 
             _context.next = 13;
@@ -49235,8 +49256,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Chat; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _ChatMessages__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ChatMessages */ "./resources/js/components/ChatMessages.js");
-/* harmony import */ var _ChatInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ChatInput */ "./resources/js/components/ChatInput.js");
+/* harmony import */ var _ChatInput__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ChatInput */ "./resources/js/components/ChatInput.js");
+/* harmony import */ var _ChatMessages__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ChatMessages */ "./resources/js/components/ChatMessages.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -49285,7 +49306,7 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatMessages__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInput__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatMessages__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInput__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }
   }]);
 
@@ -49460,6 +49481,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
+/* harmony import */ var _ChatTyping__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ChatTyping */ "./resources/js/components/ChatTyping.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -49477,6 +49499,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -49563,7 +49586,7 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat__messages"
-      }, this.renderMessages());
+      }, this.renderMessages(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatTyping__WEBPACK_IMPORTED_MODULE_3__["default"], null));
     }
   }]);
 
@@ -49581,6 +49604,91 @@ var mapStateToProps = function mapStateToProps(state) {
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
   addMessage: _actions__WEBPACK_IMPORTED_MODULE_2__["addMessage"]
 })(ChatMessages));
+
+/***/ }),
+
+/***/ "./resources/js/components/ChatTyping.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/ChatTyping.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var ChatTyping =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ChatTyping, _React$Component);
+
+  function ChatTyping() {
+    _classCallCheck(this, ChatTyping);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ChatTyping).apply(this, arguments));
+  }
+
+  _createClass(ChatTyping, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var chatMessages = document.querySelector('.chat__messages');
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      console.log('Typing is...', this.props.typing);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: 'chat__messages__typing chat__messages__message chat__messages__message--wanda ' + (this.props.typing ? 'd-block' : 'd-none')
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chat__messages__message__bubble chat__messages__message__bubble--wanda chat__messages__message__bubble--typing"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chat__messages__typing"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chat__messages__typing__indicator"
+      }))));
+    }
+  }]);
+
+  return ChatTyping;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+;
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    typing: state.typing
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {
+  setTyping: _actions__WEBPACK_IMPORTED_MODULE_2__["setTyping"]
+})(ChatTyping));
 
 /***/ }),
 
@@ -49927,9 +50035,21 @@ var inputReducer = function inputReducer() {
   };
 };
 
+var typingReducer = function typingReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  if (action && action.type === 'TYPING_STATUS_SET') {
+    return action.payload.typing;
+  }
+
+  return false;
+};
+
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   messages: messagesReducer,
-  input: inputReducer
+  input: inputReducer,
+  typing: typingReducer
 }));
 
 /***/ }),

@@ -48,6 +48,10 @@
         padding: $spacer * .25 $spacer * .7 $spacer * .25;
         word-wrap: break-word;
         
+        &--typing {
+          width: $spacer * 5;
+        }
+        
         &--user {
           background-color: darkviolet;
           border-top-right-radius: 0;
@@ -65,16 +69,16 @@
     }
     
     &__typing {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      -webkit-animation: typing 1s linear infinite alternate;
-      -moz-animation: typing 1s linear infinite alternate;
-      -ms-animation: typing 1s linear infinite alternate;
-      animation: typing 1s linear infinite alternate;
-      position: relative;
-      left: -12px;
-      margin: 7px 15px 6px;
+      &__indicator {
+        -webkit-animation: typing-black 1s linear infinite alternate;
+        -moz-animation: typing-black 1s linear infinite alternate;
+        -ms-animation: typing-black 1s linear infinite alternate;
+        animation: typing-black 1s linear infinite alternate;
+        border-radius: 50%;
+        height: 6px;
+        margin: 7px 15px 6px;
+        width: 6px;
+      }
     }
   }
 

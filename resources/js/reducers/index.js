@@ -23,7 +23,16 @@ const inputReducer = (state = [], action) => {
   };
 };
 
+const typingReducer = (state = [], action) => {
+  if (action && action.type === 'TYPING_STATUS_SET') {
+    return action.payload.typing;
+  }
+  
+  return false;
+};
+
 export default combineReducers({
   messages: messagesReducer,
-  input: inputReducer
+  input: inputReducer,
+  typing: typingReducer
 });

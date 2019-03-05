@@ -1,6 +1,6 @@
 import React from 'react';
-import ChatMessages from './ChatMessages';
 import ChatInput from './ChatInput';
+import ChatMessages from './ChatMessages';
 
 export default class Chat extends React.Component {
   state = {};

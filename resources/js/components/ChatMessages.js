@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addMessage } from '../actions';
+import ChatTyping from './ChatTyping';
 
 class ChatMessages extends React.Component {
   jumpToBottom = () => {
@@ -64,6 +65,7 @@ class ChatMessages extends React.Component {
     return (
       <div className="chat__messages">
         { this.renderMessages() }
+        <ChatTyping />
       </div>
     );
   }

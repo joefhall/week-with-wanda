@@ -10711,6 +10711,10 @@ a.text-dark:focus {
   word-wrap: break-word;
 }
 
+.chat__messages__message__bubble--typing {
+  width: 5rem;
+}
+
 .chat__messages__message__bubble--user {
   background-color: darkviolet;
   border-top-right-radius: 0;
@@ -10725,15 +10729,13 @@ a.text-dark:focus {
   text-align: left;
 }
 
-.chat__messages__typing {
-  width: 6px;
-  height: 6px;
+.chat__messages__typing__indicator {
+  -webkit-animation: typing-black 1s linear infinite alternate;
+  animation: typing-black 1s linear infinite alternate;
   border-radius: 50%;
-  -webkit-animation: typing 1s linear infinite alternate;
-  animation: typing 1s linear infinite alternate;
-  position: relative;
-  left: -12px;
+  height: 6px;
   margin: 7px 15px 6px;
+  width: 6px;
 }
 
 .chat__input {

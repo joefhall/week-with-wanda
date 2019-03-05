@@ -1,7 +1,17 @@
 import axios from 'axios';
 import { addMessage } from '../actions';
-import { setInput } from '../actions';
+import { setInput, setTyping } from '../actions';
 import store from '../store';
+
+const typingDelay = messageText => {
+  return messageText.length * 150;
+}
+
+const showResponse = (responseData, wandaMessageId, wandaMessage) => {
+  store.dispatch(setTyping(false));
+  store.dispatch(addMessage(Date.now(), responseData.scenario, 'wanda', wandaMessageId, wandaMessage));
+  store.dispatch(setInput(responseData.scenario, responseData.type, responseData.user));
+}
 
 export const respond = async (scenario, messageId, message) => {
   console.log('Trying to send user response');
@@ -21,9 +31,12 @@ export const respond = async (scenario, messageId, message) => {
       console.log(`An error occured getting Wanda's response back from the server: ${response.data.error}`);
     } else {
       console.log('Message response:', response.data);
+      
+      store.dispatch(setTyping(true));
+      
       const wandaMessageId = Object.keys(response.data.wanda)[0];
-      store.dispatch(addMessage(Date.now(), response.data.scenario, 'wanda', wandaMessageId, response.data.wanda[wandaMessageId]));
-      store.dispatch(setInput(response.data.scenario, response.data.type, response.data.user));
+      const wandaMessage = response.data.wanda[wandaMessageId];
+      setTimeout(showResponse, typingDelay(wandaMessage), response.data, wandaMessageId, wandaMessage);
     }
   } catch(error) {
     console.log(`An error occured getting Wanda's response back from the server: ${error}`);
