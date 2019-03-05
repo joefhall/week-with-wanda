@@ -23,6 +23,7 @@ trait GetsResponse
     $nextWanda = $this->getNextWanda($scenario, $userInput);
     $nextScenario = $this->getNextScenario($scenario, $userInput);
     
+    $nextInteraction = null;
     if ($nextWanda && $nextScenario) {
       $nextInteraction = $this->getInteraction($nextScenario, $nextWanda);
       $nextWandaMessage = $this->getWandaChat($nextScenario, $nextWanda);
