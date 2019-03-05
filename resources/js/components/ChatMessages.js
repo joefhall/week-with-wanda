@@ -4,6 +4,17 @@ import { addMessage } from '../actions';
 import ChatTyping from './ChatTyping';
 
 class ChatMessages extends React.Component {
+  constructor(){
+    super();
+    
+    this.specialMessageSeparator = '*';
+    this.specialMessageTypes = {
+      image: {
+        params: ['src']
+      }
+    };
+   }
+  
   jumpToBottom = () => {
     const chatMessages = document.querySelector('.chat__messages');
     chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -18,17 +29,52 @@ class ChatMessages extends React.Component {
     this.jumpToBottom();
   }
 
+  specialMessageType = message => {
+    for (let specialMessageType of Object.keys(this.specialMessageTypes)) {
+      if (message.includes(this.specialMessageSeparator + specialMessageType)) {
+        return specialMessageType;    
+      }
+    }
+    
+    return null;
+  };
+
+  renderMessage = message => {
+    const specialMessageType = this.specialMessageType(message);
+    
+    if (specialMessageType) {      
+      const regExp = /\(([^)]+)\)/;
+      const parameterValues = regExp.exec(message)[1].split(',');
+      let parameters = {};
+      let paramCount = 0;
+      for (let paramKey of this.specialMessageTypes[specialMessageType].params) {
+        parameters[paramKey] = parameterValues[paramCount];
+        paramCount++;
+      }
+      
+      switch(specialMessageType) {
+        case 'image':
+          return (
+            <img src={parameters.src} className="chat__messages__message__bubble__image" />
+          );
+          break;
+      }
+    }
+    
+    return message;
+  };
+
   renderDay = (previousDay, currentDay) => {
-    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     
     if (currentDay !== previousDay) {
-      return(
+      return (
         <div className="chat__messages__day" key={daysOfWeek[currentDay]}>
           {daysOfWeek[currentDay]}
         </div>
       );
     }
-  }
+  };
   
   renderMessages() {
     if (this.props.messages.length) {
@@ -48,7 +94,7 @@ class ChatMessages extends React.Component {
 
             <div className={'chat__messages__message chat__messages__message--' + message.sender}>
               <div className={'chat__messages__message__bubble chat__messages__message__bubble--' + message.sender}>
-                {message.message}
+                { this.renderMessage(message.message) }
                 <div className="chat__messages__message__time">
                   {formattedTime}
                 </div>

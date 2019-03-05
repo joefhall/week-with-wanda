@@ -48928,7 +48928,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var typingDelay = function typingDelay(messageText) {
-  return messageText.length * 100;
+  return messageText.length * 50;
 };
 
 var showResponse = function showResponse(responseData, wandaMessageId, wandaMessage) {
@@ -49513,25 +49513,79 @@ function (_React$Component) {
   _inherits(ChatMessages, _React$Component);
 
   function ChatMessages() {
-    var _getPrototypeOf2;
-
     var _this;
 
     _classCallCheck(this, ChatMessages);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ChatMessages)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ChatMessages).call(this));
 
     _this.jumpToBottom = function () {
       var chatMessages = document.querySelector('.chat__messages');
       chatMessages.scrollTop = chatMessages.scrollHeight;
     };
 
+    _this.specialMessageType = function (message) {
+      var _arr = Object.keys(_this.specialMessageTypes);
+
+      for (var _i = 0; _i < _arr.length; _i++) {
+        var specialMessageType = _arr[_i];
+
+        if (message.includes(_this.specialMessageSeparator + specialMessageType)) {
+          return specialMessageType;
+        }
+      }
+
+      return null;
+    };
+
+    _this.renderMessage = function (message) {
+      var specialMessageType = _this.specialMessageType(message);
+
+      if (specialMessageType) {
+        var regExp = /\(([^)]+)\)/;
+        var parameterValues = regExp.exec(message)[1].split(',');
+        var parameters = {};
+        var paramCount = 0;
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = _this.specialMessageTypes[specialMessageType].params[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var paramKey = _step.value;
+            parameters[paramKey] = parameterValues[paramCount];
+            paramCount++;
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return != null) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+
+        switch (specialMessageType) {
+          case 'image':
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+              src: parameters.src,
+              className: "chat__messages__message__bubble__image"
+            });
+            break;
+        }
+      }
+
+      return message;
+    };
+
     _this.renderDay = function (previousDay, currentDay) {
-      var daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+      var daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
       if (currentDay !== previousDay) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -49541,6 +49595,12 @@ function (_React$Component) {
       }
     };
 
+    _this.specialMessageSeparator = '*';
+    _this.specialMessageTypes = {
+      image: {
+        params: ['src']
+      }
+    };
     return _this;
   }
 
@@ -49577,7 +49637,7 @@ function (_React$Component) {
             className: 'chat__messages__message chat__messages__message--' + message.sender
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: 'chat__messages__message__bubble chat__messages__message__bubble--' + message.sender
-          }, message.message, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          }, _this2.renderMessage(message.message), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "chat__messages__message__time"
           }, formattedTime))));
         });
@@ -49658,11 +49718,6 @@ function (_React$Component) {
   }
 
   _createClass(ChatTyping, [{
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {//     const chatMessages = document.querySelector('.chat__messages');
-      //     chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-  }, {
     key: "render",
     value: function render() {
       console.log('Typing is...', this.props.typing);

@@ -28,10 +28,11 @@
     &__message {
       clear: both;
       display: flex;
-      margin-bottom: $spacer * .25;
+      margin-bottom: $spacer * .5;
       
       &__time {
         font-size: $font-size-xxsm;
+        text-align: right;
       }
       
       &--user {
@@ -67,6 +68,12 @@
           border-top-left-radius: 0;
           color: black;
           text-align: left;
+        }
+        
+        &__image {
+          border-radius: inherit;
+          margin: #{-$spacer * .25} #{-$spacer * .7} #{$spacer * .25} #{-$spacer * .7};
+          width: calc(100% + (#{$spacer} * 1.4));
         }
       }
     }

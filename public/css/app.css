@@ -10689,11 +10689,12 @@ a.text-dark:focus {
 .chat__messages__message {
   clear: both;
   display: flex;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .chat__messages__message__time {
   font-size: 0.65rem;
+  text-align: right;
 }
 
 .chat__messages__message--user {
@@ -10730,6 +10731,12 @@ a.text-dark:focus {
   border-top-left-radius: 0;
   color: black;
   text-align: left;
+}
+
+.chat__messages__message__bubble__image {
+  border-radius: inherit;
+  margin: -0.25rem -0.7rem 0.25rem -0.7rem;
+  width: calc(100% + (1rem * 1.4));
 }
 
 .chat__messages__typing__indicator {
