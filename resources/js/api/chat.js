@@ -4,7 +4,7 @@ import { setInput, setTyping } from '../actions';
 import store from '../store';
 
 const typingDelay = messageText => {
-  return messageText.length * 150;
+  return messageText.length * 100;
 }
 
 const showResponse = (responseData, wandaMessageId, wandaMessage) => {

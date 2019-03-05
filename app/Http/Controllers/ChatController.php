@@ -55,15 +55,17 @@ class ChatController extends Controller
       ]);
     }
     
-    $this->userRepository->addToChatHistory($user->id, [
-      'sender' => 'wanda',
-      'scenario' => array_get($response, 'scenario'),      
-      'id' => key(array_get($response, 'wanda')),
-      'message' => current(array_get($response, 'wanda')),
-      'type' => array_get($response, 'type'),
-      'userInput' => array_get($response, 'user'),
-      'time' => Carbon::now()->timestamp + 1,
-    ]);
+    if (!array_has($response, 'error')) {
+      $this->userRepository->addToChatHistory($user->id, [
+        'sender' => 'wanda',
+        'scenario' => array_get($response, 'scenario'),      
+        'id' => key(array_get($response, 'wanda')),
+        'message' => current(array_get($response, 'wanda')),
+        'type' => array_get($response, 'type'),
+        'userInput' => array_get($response, 'user'),
+        'time' => Carbon::now()->timestamp + 1,
+      ]);
+    }
     
     return response()->json($response);
   }

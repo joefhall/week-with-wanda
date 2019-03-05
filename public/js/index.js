@@ -48928,7 +48928,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var typingDelay = function typingDelay(messageText) {
-  return messageText.length * 150;
+  return messageText.length * 100;
 };
 
 var showResponse = function showResponse(responseData, wandaMessageId, wandaMessage) {
