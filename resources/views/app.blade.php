@@ -8,30 +8,6 @@
       <title>A Week With Wanda</title>
 
       <link href="{{ mix('/css/app.css') }}" rel="stylesheet" type="text/css" />
-    
-      <!-- Fonts -->
-      <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" type="text/css">
-
-      <!-- Styles -->
-      <style>
-          body {
-              font-family: "Source Sans Pro", sans-serif;
-              margin: 0;
-              padding: 0;
-              background: radial-gradient(#57bfc7, #45a6b3);
-          }
-
-          .container {
-              display: flex;
-              height: 100vh;
-              align-items: center;
-              justify-content: center;
-          }
-
-          .content {
-              text-align: center;
-          }
-      </style>
 
   </head>
   <body>
@@ -75,7 +51,7 @@
       </ul>
   </div>
     
-    <div id="root">
+    <div id="root" class="vh-100">
     </div>
 
     <script src="{{ mix('/js/index.js') }}"></script>
