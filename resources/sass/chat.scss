@@ -100,6 +100,23 @@
     background-color: beige;
     flex: 1 1 auto;
     padding: $spacer;
+    
+    &__choices {
+      &__choice {
+        background-color: white;
+        border: 1px solid $main-colour;
+        border-radius: $spacer;
+        color: $main-colour;
+        cursor: pointer;
+        display: inline-block;
+        margin: $spacer * .75;
+        padding: $spacer * .5 $spacer * .75;
+        
+        &:hover {
+          background-color: lavender;
+        }
+      }
+    }
   }
 }
 
