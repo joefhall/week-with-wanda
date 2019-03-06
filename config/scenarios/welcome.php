@@ -35,6 +35,12 @@ return [
         ],
       ],
       'ooh' => [
+        'type' => 'none',
+        'user' => [
+          'oohNone',
+        ],
+      ],
+      'youreInteresting' => [
         'type' => 'choice',
         'user' => [
           'whatever',
@@ -60,6 +66,9 @@ return [
       ],
       'something' => [
         'wanda' => 'ooh',
+      ],
+      'oohNone' => [
+        'wanda' => 'youreInteresting',
       ],
       'whatever' => [
       ],

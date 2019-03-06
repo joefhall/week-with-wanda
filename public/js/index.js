@@ -56635,6 +56635,13 @@ function (_React$Component) {
       Object(_api_chat__WEBPACK_IMPORTED_MODULE_3__["getHistory"])();
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      if (this.props.input && this.props.input.type && this.props.input.type === 'none' && this.props.input.userInput) {
+        this.addAndSendMessage(Object.keys(this.props.input.userInput)[0], null);
+      }
+    }
+  }, {
     key: "renderInputChoices",
     value: function renderInputChoices() {
       var _this2 = this;
@@ -56657,24 +56664,34 @@ function (_React$Component) {
 
       console.log('Render input:', this.props.input);
 
-      if (this.props.input) {
-        if (this.props.input.type === 'choice' && this.props.input.userInput) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "chat__input__choices"
-          }, this.renderInputChoices());
-        } else if (this.props.input.type === 'text') {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-            className: "chat__input__form",
-            onSubmit: this.onFormSubmit
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-            type: "text",
-            value: this.state.inputText,
-            onChange: function onChange(event) {
-              return _this3.setState({
-                inputText: event.target.value
-              });
+      if (this.props.input && this.props.input.type) {
+        switch (this.props.input.type) {
+          case 'choice':
+            if (this.props.input.userInput) {
+              return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+                className: "chat__input__choices"
+              }, this.renderInputChoices());
             }
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Send"));
+
+            break;
+
+          case 'text':
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+              className: "chat__input__form",
+              onSubmit: this.onFormSubmit
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+              type: "text",
+              value: this.state.inputText,
+              onChange: function onChange(event) {
+                return _this3.setState({
+                  inputText: event.target.value
+                });
+              }
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Send"));
+            break;
+
+          case 'none':
+            break;
         }
       }
     }
@@ -56765,11 +56782,10 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ChatMessages)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _this.jumpToBottom = function () {
-      //     const chatMessages = document.querySelector('.chat__messages');
       var chatMessagesBottom = document.querySelector('.chat__messages__bottom');
       chatMessagesBottom.scrollIntoView({
         behavior: 'smooth'
-      }); //     chatMessages.scrollTop = chatMessages.scrollHeight;
+      });
     };
 
     _this.addImagesOnLoad = function () {
@@ -56814,6 +56830,10 @@ function (_React$Component) {
 
       if (this.props.messages.length) {
         return this.props.messages.map(function (message, index, messages) {
+          if (!message.message || !message.message.length) {
+            return;
+          }
+
           var date = new Date(message.time);
           var formattedTime = date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2);
           var previousDay = null;

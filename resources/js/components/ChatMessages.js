@@ -44,6 +44,10 @@ class ChatMessages extends React.Component {
   renderMessages() {
     if (this.props.messages.length) {
       return this.props.messages.map((message, index, messages) => {
+        if (!message.message || !message.message.length) {
+          return;
+        }
+            
         const date = new Date(message.time);
         const formattedTime = date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2);
         

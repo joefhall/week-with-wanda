@@ -21,6 +21,12 @@ class ChatInput extends React.Component {
     getHistory();
   }
 
+  componentDidUpdate() {
+    if (this.props.input && this.props.input.type && this.props.input.type === 'none' && this.props.input.userInput) {
+      this.addAndSendMessage(Object.keys(this.props.input.userInput)[0], null);
+    }
+  }
+
   renderInputChoices() {
     const userInput = this.props.input.userInput;
 
@@ -35,20 +41,30 @@ class ChatInput extends React.Component {
 
   renderInput() {
     console.log('Render input:', this.props.input);
-    if (this.props.input) {
-      if (this.props.input.type === 'choice' && this.props.input.userInput) {
-        return (
-          <div className="chat__input__choices">
-            { this.renderInputChoices() }
-          </div>
-        );
-      } else if (this.props.input.type === 'text') {
-        return (
-          <form className="chat__input__form" onSubmit={this.onFormSubmit}>
-            <input type="text" value={this.state.inputText} onChange={(event) => this.setState({inputText: event.target.value})} />
-            <button>Send</button>
-          </form>
-        );
+    
+    if (this.props.input && this.props.input.type) {
+      switch(this.props.input.type) {
+        case 'choice':
+          if (this.props.input.userInput) {
+            return (
+              <div className="chat__input__choices">
+                { this.renderInputChoices() }
+              </div>
+            );
+          }
+          break;
+
+        case 'text':
+          return (
+            <form className="chat__input__form" onSubmit={this.onFormSubmit}>
+              <input type="text" value={this.state.inputText} onChange={(event) => this.setState({inputText: event.target.value})} />
+              <button>Send</button>
+            </form>
+          );
+          break;
+
+        case 'none':
+          break;
       }
     }
   }
