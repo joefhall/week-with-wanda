@@ -2,8 +2,32 @@
 
 namespace App\Utilities;
 
+use Illuminate\Support\Facades\Auth;
+
 trait GetsChat
 {
+  /**
+   * Get user data that may need to be inserted into a chat response.
+   *
+   * @return array
+   */
+  public function getUserData()
+  {
+    $user = Auth::user();
+    
+    if ($user) {
+      return [
+        'name' => $user->first_name,
+        'email' => $user->email,
+        'mobileNumber' => $user->mobile_number,
+        'profilePic' => $user->profile_pic,
+        'country' => $user->country,
+      ];
+    }
+
+    return [];
+  }
+  
   /**
    * Gets the actual chat text from language file.
    *
@@ -14,7 +38,7 @@ trait GetsChat
    */
   public function getChat(string $scenario, string $who, string $messageId)
   {
-    return __("chats/{$scenario}.{$who}.{$messageId}");
+    return __("chats/{$scenario}.{$who}.{$messageId}", $this->getUserData());
   }
   
   /**
