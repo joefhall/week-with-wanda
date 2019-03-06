@@ -56765,8 +56765,11 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ChatMessages)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _this.jumpToBottom = function () {
-      var chatMessages = document.querySelector('.chat__messages');
-      chatMessages.scrollTop = chatMessages.scrollHeight;
+      //     const chatMessages = document.querySelector('.chat__messages');
+      var chatMessagesBottom = document.querySelector('.chat__messages__bottom');
+      chatMessagesBottom.scrollIntoView({
+        behavior: 'smooth'
+      }); //     chatMessages.scrollTop = chatMessages.scrollHeight;
     };
 
     _this.addImagesOnLoad = function () {
@@ -56837,7 +56840,9 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat__messages"
-      }, this.renderMessages(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatTyping__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+      }, this.renderMessages(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatTyping__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chat__messages__bottom"
+      }));
     }
   }]);
 

@@ -16,6 +16,10 @@
     overflow-y: auto;
     padding: $spacer 0;
     
+    &__bottom {
+      max-height: 1px;
+    }
+    
     &__day {
       background-color: lightgoldenrodyellow;
       font-size: $font-size-xxsm;
