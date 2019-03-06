@@ -32,7 +32,9 @@
         "botman-tinker": "^0.0.1",
         "preact": "^8.4.2",
         "react-facebook-login": "^4.1.1",
+        "react-html-parser": "^2.0.2",
         "react-redux": "^6.0.0",
-        "redux": "^4.0.1"
+        "redux": "^4.0.1",
+        "striptags": "^3.1.1"
     }
 }

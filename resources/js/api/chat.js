@@ -2,9 +2,12 @@ import axios from 'axios';
 import { addMessage } from '../actions';
 import { setInput, setTyping } from '../actions';
 import store from '../store';
+import striptags from 'striptags';
+
+const timeToBeginTyping = 500;
 
 const typingDelay = messageText => {
-  return messageText.length * 50;
+  return timeToBeginTyping + (striptags(messageText).length * 70);
 }
 
 const showResponse = (responseData, wandaMessageId, wandaMessage) => {
@@ -32,10 +35,12 @@ export const respond = async (scenario, messageId, message) => {
     } else {
       console.log('Message response:', response.data);
       
-      store.dispatch(setTyping(true));
+//       store.dispatch(setTyping(true));
       
       const wandaMessageId = Object.keys(response.data.wanda)[0];
       const wandaMessage = response.data.wanda[wandaMessageId];
+      
+      setTimeout(store.dispatch, timeToBeginTyping, setTyping(true));
       setTimeout(showResponse, typingDelay(wandaMessage), response.data, wandaMessageId, wandaMessage);
     }
   } catch(error) {

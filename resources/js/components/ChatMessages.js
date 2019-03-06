@@ -2,23 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addMessage } from '../actions';
 import ChatTyping from './ChatTyping';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
-class ChatMessages extends React.Component {
-  constructor(){
-    super();
-    
-    this.specialMessageSeparator = '*';
-    this.specialMessageTypes = {
-      image: {
-        params: ['src']
-      }
-    };
-   }
-  
+class ChatMessages extends React.Component {  
   jumpToBottom = () => {
     const chatMessages = document.querySelector('.chat__messages');
     chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
+  };
+  
+  addImagesOnLoad = () => {
+    const dataAttribute = 'data-loaded-listener';
+    const chatImagesWithoutLoadListener = document.querySelectorAll(`.chat__messages__message__bubble--wanda img:not([dataAttribute])`);
+    chatImagesWithoutLoadListener.forEach(image => {
+      image.addEventListener('load', this.jumpToBottom);
+      image.setAttribute(dataAttribute, 'true');
+    });
+  };
   
   componentDidMount() {
     this.jumpToBottom();
@@ -27,42 +26,8 @@ class ChatMessages extends React.Component {
   componentDidUpdate() {
     console.log('Chat messages updated');
     this.jumpToBottom();
+    this.addImagesOnLoad();
   }
-
-  specialMessageType = message => {
-    for (let specialMessageType of Object.keys(this.specialMessageTypes)) {
-      if (message.includes(this.specialMessageSeparator + specialMessageType)) {
-        return specialMessageType;    
-      }
-    }
-    
-    return null;
-  };
-
-  renderMessage = message => {
-    const specialMessageType = this.specialMessageType(message);
-    
-    if (specialMessageType) {      
-      const regExp = /\(([^)]+)\)/;
-      const parameterValues = regExp.exec(message)[1].split(',');
-      let parameters = {};
-      let paramCount = 0;
-      for (let paramKey of this.specialMessageTypes[specialMessageType].params) {
-        parameters[paramKey] = parameterValues[paramCount];
-        paramCount++;
-      }
-      
-      switch(specialMessageType) {
-        case 'image':
-          return (
-            <img src={parameters.src} className="chat__messages__message__bubble__image" />
-          );
-          break;
-      }
-    }
-    
-    return message;
-  };
 
   renderDay = (previousDay, currentDay) => {
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -80,7 +45,7 @@ class ChatMessages extends React.Component {
     if (this.props.messages.length) {
       return this.props.messages.map((message, index, messages) => {
         const date = new Date(message.time);
-        const formattedTime = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ', ' + date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2);
+        const formattedTime = date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2);
         
         let previousDay = null;
         if (index > 0) {
@@ -94,7 +59,7 @@ class ChatMessages extends React.Component {
 
             <div className={'chat__messages__message chat__messages__message--' + message.sender}>
               <div className={'chat__messages__message__bubble chat__messages__message__bubble--' + message.sender}>
-                { this.renderMessage(message.message) }
+                { ReactHtmlParser(message.message) }
                 <div className="chat__messages__message__time">
                   {formattedTime}
                 </div>
