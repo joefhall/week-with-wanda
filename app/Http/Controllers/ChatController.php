@@ -37,13 +37,13 @@ class ChatController extends Controller
    * @return string
    */
   public function respond(Request $request)
-  {
-    $user = Auth::user();
+  { 
+    $user = Auth::user() ?? $this->userRepository->findOrCreateFromSession($request->input('session'));
     
     $currentScenario = $request->input('scenario');
     $userMessageId = $request->input('user');
     $userMessage = $request->input('message');
-    $response = $this->getResponse($user, $currentScenario, $userMessageId);
+    $response = $this->getResponse($user, $currentScenario, $userMessageId, $userMessage);
     
     if ($userMessageId !== 'begin') {
       $this->userRepository->addToChatHistory($user->id, [

@@ -26,6 +26,25 @@ class UserRepository
   {
     $this->client = $client;
   }
+  
+  /**
+   * Find or create a user from their session ID.
+   * We need this in order to start storing the user's chat history before they are actually registered.
+   *
+   * @param string $sessionId
+   * @return User
+   */
+  function findOrCreateFromSession(string $sessionId) {
+    $user = User::where('session_id', $sessionId)->first();
+    
+    if (!$user) {
+      $user = new User;
+      $user->session_id = $sessionId;
+      $user->save();
+    }
+    
+    return $user;
+  }
 
   /**
    * Get a user's Facebook profile pic, store it ourselves and add the URL to user's record.

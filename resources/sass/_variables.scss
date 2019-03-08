@@ -1,5 +1,6 @@
 // Colours
-$main-colour: darkcyan;
+$main-colour: darkviolet;
+$main-background-colour: darkcyan;
 
 // Components
 $border-radius-xlg: .4rem !default;
@@ -10,6 +11,8 @@ $border-radius-xxxxxlg: .8rem !default;
 
 // Typography
 $font-family-sans-serif: "Raleway", sans-serif;
+$font-size-xxlg: $font-size-base * 2 !default;
+$font-size-xlg: $font-size-base * 1.5 !default;
 $font-size-xsm: $font-size-base * .75 !default;
 $font-size-xxsm: $font-size-base * .65 !default;
 $font-size-xxxsm: $font-size-base * .5 !default;

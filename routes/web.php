@@ -18,10 +18,4 @@ Route::get('logged-out', function () {
     return view('auth.logged-out');
 })->name('logged-out');
 
-Route::get('/', function () {
-    return view('app');
-});
-
-Route::match(['get', 'post'], '/botman', 'BotManController@handle');
-
-Route::middleware('auth')->get('/app', 'AppController@index')->name('app');
+Route::get('/', 'AppController@index')->name('app');

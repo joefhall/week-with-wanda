@@ -35,6 +35,7 @@ class User extends Authenticatable implements MustVerifyEmail
     'profile_pic',
     'send_emails',
     'send_text_messages',
+    'session_id',
   ];
 
   /**

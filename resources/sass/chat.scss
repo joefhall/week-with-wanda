@@ -61,7 +61,7 @@
         }
         
         &--user {
-          background-color: darkviolet;
+          background-color: $main-colour;
           border-top-right-radius: 0;
           color: white;
           text-align: right;
@@ -102,10 +102,14 @@
     padding: $spacer;
     
     &__choices {
+      display: flex;
+      justify-content: space-around;
+      
       &__choice {
         background-color: white;
         border: 1px solid $main-colour;
         border-radius: $spacer;
+        border-top-right-radius: 0;
         color: $main-colour;
         cursor: pointer;
         display: inline-block;
@@ -115,6 +119,25 @@
         &:hover {
           background-color: lavender;
         }
+      }
+    }
+    
+    &__form {
+      display: flex;
+      align-items: center;
+      
+      &__submit-button {
+        color: $main-colour;
+        cursor: pointer;
+        font-size: $font-size-xlg !important;
+        line-height: 1.5rem;
+        margin: 0 0 0 ($spacer * .5) !important;
+      }
+      
+      &__text-input {
+        flex-grow: 1;
+        vertical-align: middle;
+        width: calc(100% - (1.18em + #{$spacer * .5}));
       }
     }
   }

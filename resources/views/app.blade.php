@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
+  
   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-      <title>A Week With Wanda</title>
+    <title>A Week With Wanda</title>
 
-      <link href="{{ mix('/css/app.css') }}" rel="stylesheet" type="text/css" />
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ mix('/css/app.css') }}" rel="stylesheet" type="text/css" />
   </head>
+  
   <body>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Left Side Of Navbar -->
@@ -56,4 +58,5 @@
 
     <script src="{{ mix('/js/index.js') }}"></script>
   </body>
+  
 </html>

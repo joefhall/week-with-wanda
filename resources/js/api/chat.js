@@ -3,7 +3,9 @@ import { addMessage } from '../actions';
 import { setInput, setTyping } from '../actions';
 import store from '../store';
 import striptags from 'striptags';
+import uuidv4 from 'uuid/v4';
 
+const sessionId = uuidv4();
 const timeToBeginTyping = 500;
 
 const typingDelay = messageText => {
@@ -20,6 +22,7 @@ export const respond = async (scenario, messageId, message) => {
   console.log('Trying to send user response');
   
   const sendData = {
+    session: sessionId,
     scenario: scenario,
     user: messageId,
     message: message
@@ -34,8 +37,6 @@ export const respond = async (scenario, messageId, message) => {
       console.log(`An error occured getting Wanda's response back from the server: ${response.data.error}`);
     } else {
       console.log('Message response:', response.data);
-      
-//       store.dispatch(setTyping(true));
       
       const wandaMessageId = Object.keys(response.data.wanda)[0];
       const wandaMessage = response.data.wanda[wandaMessageId];
@@ -60,8 +61,6 @@ export const getHistory = async () => {
       let chatHistory = response.data;
       console.log('User chat history:', chatHistory);
       
-      // TODO: do something different if chat history empty - assume is new user
-      
       if (chatHistory.length) {
         for (let chatEntry of chatHistory) {
           store.dispatch(addMessage(chatEntry.time * 1000, chatEntry.scenario, chatEntry.sender, chatEntry.id, chatEntry.message));
@@ -71,7 +70,7 @@ export const getHistory = async () => {
         console.log('Latest chat entry:', latestChatEntry);
         store.dispatch(setInput(latestChatEntry.scenario, latestChatEntry.type, latestChatEntry.userInput));
       } else {
-        respond('welcome', 'begin', '');
+        respond('welcomeSignup', 'begin', '');
       }
     }
   } catch(error) {

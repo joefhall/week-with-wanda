@@ -6,6 +6,7 @@ import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from
 
 class ChatMessages extends React.Component {  
   jumpToBottom = () => {
+    console.log('Scrolling to bottom');
     const chatMessagesBottom = document.querySelector('.chat__messages__bottom');
     chatMessagesBottom.scrollIntoView({ behavior: 'smooth' });
   };
@@ -25,6 +26,7 @@ class ChatMessages extends React.Component {
 
   componentDidUpdate() {
     console.log('Chat messages updated');
+    console.log(document.querySelector('.chat__input').clientHeight);
     this.jumpToBottom();
     this.addImagesOnLoad();
   }

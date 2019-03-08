@@ -30,3 +30,13 @@ export const setTyping = typing => {
     }
   };
 };
+
+export const setUserProperty = (property, value) => {
+  return {
+    type: 'USER_PROPERTY_SET',
+    payload: {
+      property: property,
+      value: value
+    }
+  };
+};

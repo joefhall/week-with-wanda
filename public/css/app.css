@@ -10762,11 +10762,17 @@ body {
   padding: 1rem;
 }
 
+.chat__input__choices {
+  display: flex;
+  justify-content: space-around;
+}
+
 .chat__input__choices__choice {
   background-color: white;
-  border: 1px solid darkcyan;
+  border: 1px solid darkviolet;
   border-radius: 1rem;
-  color: darkcyan;
+  border-top-right-radius: 0;
+  color: darkviolet;
   cursor: pointer;
   display: inline-block;
   margin: 0.75rem;
@@ -10775,6 +10781,25 @@ body {
 
 .chat__input__choices__choice:hover {
   background-color: lavender;
+}
+
+.chat__input__form {
+  display: flex;
+  align-items: center;
+}
+
+.chat__input__form__submit-button {
+  color: darkviolet;
+  cursor: pointer;
+  font-size: 1.5rem !important;
+  line-height: 1.5rem;
+  margin: 0 0 0 0.5rem !important;
+}
+
+.chat__input__form__text-input {
+  flex-grow: 1;
+  vertical-align: middle;
+  width: calc(100% - (1.18em + 0.5rem));
 }
 
 @-webkit-keyframes typing {

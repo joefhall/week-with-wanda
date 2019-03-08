@@ -1,21 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addMessage, setInput } from '../actions';
+import { addMessage, setInput, setUserProperty } from '../actions';
 import { getHistory, respond } from '../api/chat';
+import store from '../store';
+import ChatInputText from './ChatInputText';
 import ChatMessages from './ChatMessages';
 
 class ChatInput extends React.Component {
-  state = { inputText: '' };
-
   addAndSendMessage = (messageId, message) => {
-    this.props.addMessage(Date.now(), this.props.input.scenario, 'user', messageId, message);
+    store.dispatch(addMessage(Date.now(), this.props.input.scenario, 'user', messageId, message));
     respond(this.props.input.scenario, messageId, message);
   };
-  
-  onFormSubmit = event => {
-    event.preventDefault();
-    this.addAndSendMessage(Object.keys(this.props.input.userInput)[0], this.state.inputText);
-  };
+
+  receiveTextInput = inputText => {
+    console.log('Input type', this.props.input.type);
+    switch(this.props.input.type) {
+      case 'signupEmail':
+        store.dispatch(setUserProperty('email', inputText));
+        break;
+      case 'signupName':
+        store.dispatch(setUserProperty('name', inputText));
+        break;
+    }
+    
+    this.addAndSendMessage(Object.keys(this.props.input.userInput)[0], inputText);
+  }
 
   componentDidMount() {
     getHistory();
@@ -54,12 +63,21 @@ class ChatInput extends React.Component {
           }
           break;
 
+        case 'signupEmail':
+          return (
+            <ChatInputText placeholder="Your email" onFormSubmit={this.receiveTextInput} />
+          );
+          break;
+        
+        case 'signupName':
+          return (
+            <ChatInputText placeholder="Your first name" onFormSubmit={this.receiveTextInput} />
+          );
+          break;
+          
         case 'text':
           return (
-            <form className="chat__input__form" onSubmit={this.onFormSubmit}>
-              <input type="text" value={this.state.inputText} onChange={(event) => this.setState({inputText: event.target.value})} />
-              <button>Send</button>
-            </form>
+            <ChatInputText placeholder="" buttonText="Go" onFormSubmit={this.receiveTextInput} />
           );
           break;
 

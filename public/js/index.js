@@ -55986,6 +55986,126 @@ function symbolObservablePonyfill(root) {
 
 /***/ }),
 
+/***/ "./node_modules/uuid/lib/bytesToUuid.js":
+/*!**********************************************!*\
+  !*** ./node_modules/uuid/lib/bytesToUuid.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * Convert array of 16 byte values to UUID string format of the form:
+ * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ */
+var byteToHex = [];
+for (var i = 0; i < 256; ++i) {
+  byteToHex[i] = (i + 0x100).toString(16).substr(1);
+}
+
+function bytesToUuid(buf, offset) {
+  var i = offset || 0;
+  var bth = byteToHex;
+  // join used to fix memory issue caused by concatenation: https://bugs.chromium.org/p/v8/issues/detail?id=3175#c4
+  return ([bth[buf[i++]], bth[buf[i++]], 
+	bth[buf[i++]], bth[buf[i++]], '-',
+	bth[buf[i++]], bth[buf[i++]], '-',
+	bth[buf[i++]], bth[buf[i++]], '-',
+	bth[buf[i++]], bth[buf[i++]], '-',
+	bth[buf[i++]], bth[buf[i++]],
+	bth[buf[i++]], bth[buf[i++]],
+	bth[buf[i++]], bth[buf[i++]]]).join('');
+}
+
+module.exports = bytesToUuid;
+
+
+/***/ }),
+
+/***/ "./node_modules/uuid/lib/rng-browser.js":
+/*!**********************************************!*\
+  !*** ./node_modules/uuid/lib/rng-browser.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// Unique ID creation requires a high quality random # generator.  In the
+// browser this is a little complicated due to unknown quality of Math.random()
+// and inconsistent support for the `crypto` API.  We do the best we can via
+// feature-detection
+
+// getRandomValues needs to be invoked in a context where "this" is a Crypto
+// implementation. Also, find the complete implementation of crypto on IE11.
+var getRandomValues = (typeof(crypto) != 'undefined' && crypto.getRandomValues && crypto.getRandomValues.bind(crypto)) ||
+                      (typeof(msCrypto) != 'undefined' && typeof window.msCrypto.getRandomValues == 'function' && msCrypto.getRandomValues.bind(msCrypto));
+
+if (getRandomValues) {
+  // WHATWG crypto RNG - http://wiki.whatwg.org/wiki/Crypto
+  var rnds8 = new Uint8Array(16); // eslint-disable-line no-undef
+
+  module.exports = function whatwgRNG() {
+    getRandomValues(rnds8);
+    return rnds8;
+  };
+} else {
+  // Math.random()-based (RNG)
+  //
+  // If all else fails, use Math.random().  It's fast, but is of unspecified
+  // quality.
+  var rnds = new Array(16);
+
+  module.exports = function mathRNG() {
+    for (var i = 0, r; i < 16; i++) {
+      if ((i & 0x03) === 0) r = Math.random() * 0x100000000;
+      rnds[i] = r >>> ((i & 0x03) << 3) & 0xff;
+    }
+
+    return rnds;
+  };
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/uuid/v4.js":
+/*!*********************************!*\
+  !*** ./node_modules/uuid/v4.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var rng = __webpack_require__(/*! ./lib/rng */ "./node_modules/uuid/lib/rng-browser.js");
+var bytesToUuid = __webpack_require__(/*! ./lib/bytesToUuid */ "./node_modules/uuid/lib/bytesToUuid.js");
+
+function v4(options, buf, offset) {
+  var i = buf && offset || 0;
+
+  if (typeof(options) == 'string') {
+    buf = options === 'binary' ? new Array(16) : null;
+    options = null;
+  }
+  options = options || {};
+
+  var rnds = options.random || (options.rng || rng)();
+
+  // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+  rnds[6] = (rnds[6] & 0x0f) | 0x40;
+  rnds[8] = (rnds[8] & 0x3f) | 0x80;
+
+  // Copy bytes to buffer, if provided
+  if (buf) {
+    for (var ii = 0; ii < 16; ++ii) {
+      buf[i + ii] = rnds[ii];
+    }
+  }
+
+  return buf || bytesToUuid(rnds);
+}
+
+module.exports = v4;
+
+
+/***/ }),
+
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -56089,7 +56209,7 @@ module.exports = function(module) {
 /*!***************************************!*\
   !*** ./resources/js/actions/index.js ***!
   \***************************************/
-/*! exports provided: addMessage, setInput, setTyping */
+/*! exports provided: addMessage, setInput, setTyping, setUserProperty */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56097,6 +56217,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addMessage", function() { return addMessage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setInput", function() { return setInput; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setTyping", function() { return setTyping; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setUserProperty", function() { return setUserProperty; });
 var addMessage = function addMessage(time, scenario, sender, id, message) {
   return {
     type: sender === 'user' ? 'USER_MESSAGE_INPUTTED' : 'WANDA_MESSAGE_RECEIVED',
@@ -56127,6 +56248,15 @@ var setTyping = function setTyping(typing) {
     }
   };
 };
+var setUserProperty = function setUserProperty(property, value) {
+  return {
+    type: 'USER_PROPERTY_SET',
+    payload: {
+      property: property,
+      value: value
+    }
+  };
+};
 
 /***/ }),
 
@@ -56149,6 +56279,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
 /* harmony import */ var striptags__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! striptags */ "./node_modules/striptags/src/striptags.js");
 /* harmony import */ var striptags__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(striptags__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var uuid_v4__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! uuid/v4 */ "./node_modules/uuid/v4.js");
+/* harmony import */ var uuid_v4__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(uuid_v4__WEBPACK_IMPORTED_MODULE_5__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -56160,6 +56292,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
+var sessionId = uuid_v4__WEBPACK_IMPORTED_MODULE_5___default()();
 var timeToBeginTyping = 500;
 
 var typingDelay = function typingDelay(messageText) {
@@ -56185,6 +56319,7 @@ function () {
           case 0:
             console.log('Trying to send user response');
             sendData = {
+              session: sessionId,
               scenario: scenario,
               user: messageId,
               message: message
@@ -56200,8 +56335,7 @@ function () {
             if (response.data.error) {
               console.log("An error occured getting Wanda's response back from the server: ".concat(response.data.error));
             } else {
-              console.log('Message response:', response.data); //       store.dispatch(setTyping(true));
-
+              console.log('Message response:', response.data);
               wandaMessageId = Object.keys(response.data.wanda)[0];
               wandaMessage = response.data.wanda[wandaMessageId];
               setTimeout(_store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch, timeToBeginTyping, Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setTyping"])(true));
@@ -56259,7 +56393,7 @@ function () {
 
           case 9:
             chatHistory = response.data;
-            console.log('User chat history:', chatHistory); // TODO: do something different if chat history empty - assume is new user
+            console.log('User chat history:', chatHistory);
 
             if (!chatHistory.length) {
               _context2.next = 36;
@@ -56317,7 +56451,7 @@ function () {
             break;
 
           case 36:
-            respond('welcome', 'begin', '');
+            respond('welcomeSignup', 'begin', '');
 
           case 37:
             _context2.next = 42;
@@ -56568,7 +56702,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
 /* harmony import */ var _api_chat__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api/chat */ "./resources/js/api/chat.js");
-/* harmony import */ var _ChatMessages__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ChatMessages */ "./resources/js/components/ChatMessages.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
+/* harmony import */ var _ChatInputText__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ChatInputText */ "./resources/js/components/ChatInputText.js");
+/* harmony import */ var _ChatMessages__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ChatMessages */ "./resources/js/components/ChatMessages.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56593,6 +56729,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var ChatInput =
 /*#__PURE__*/
 function (_React$Component) {
@@ -56610,20 +56748,26 @@ function (_React$Component) {
     }
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ChatInput)).call.apply(_getPrototypeOf2, [this].concat(args)));
-    _this.state = {
-      inputText: ''
-    };
 
     _this.addAndSendMessage = function (messageId, message) {
-      _this.props.addMessage(Date.now(), _this.props.input.scenario, 'user', messageId, message);
-
+      _store__WEBPACK_IMPORTED_MODULE_4__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["addMessage"])(Date.now(), _this.props.input.scenario, 'user', messageId, message));
       Object(_api_chat__WEBPACK_IMPORTED_MODULE_3__["respond"])(_this.props.input.scenario, messageId, message);
     };
 
-    _this.onFormSubmit = function (event) {
-      event.preventDefault();
+    _this.receiveTextInput = function (inputText) {
+      console.log('Input type', _this.props.input.type);
 
-      _this.addAndSendMessage(Object.keys(_this.props.input.userInput)[0], _this.state.inputText);
+      switch (_this.props.input.type) {
+        case 'signupEmail':
+          _store__WEBPACK_IMPORTED_MODULE_4__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setUserProperty"])('email', inputText));
+          break;
+
+        case 'signupName':
+          _store__WEBPACK_IMPORTED_MODULE_4__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setUserProperty"])('name', inputText));
+          break;
+      }
+
+      _this.addAndSendMessage(Object.keys(_this.props.input.userInput)[0], inputText);
     };
 
     return _this;
@@ -56660,8 +56804,6 @@ function (_React$Component) {
   }, {
     key: "renderInput",
     value: function renderInput() {
-      var _this3 = this;
-
       console.log('Render input:', this.props.input);
 
       if (this.props.input && this.props.input.type) {
@@ -56675,19 +56817,28 @@ function (_React$Component) {
 
             break;
 
+          case 'signupEmail':
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_5__["default"], {
+              placeholder: "Your email",
+              buttonText: "Go",
+              onFormSubmit: this.receiveTextInput
+            });
+            break;
+
+          case 'signupName':
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_5__["default"], {
+              placeholder: "Your first name",
+              buttonText: "Go",
+              onFormSubmit: this.receiveTextInput
+            });
+            break;
+
           case 'text':
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-              className: "chat__input__form",
-              onSubmit: this.onFormSubmit
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-              type: "text",
-              value: this.state.inputText,
-              onChange: function onChange(event) {
-                return _this3.setState({
-                  inputText: event.target.value
-                });
-              }
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Send"));
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_5__["default"], {
+              placeholder: "",
+              buttonText: "Go",
+              onFormSubmit: this.receiveTextInput
+            });
             break;
 
           case 'none':
@@ -56720,6 +56871,107 @@ var mapStateToProps = function mapStateToProps(state) {
   addMessage: _actions__WEBPACK_IMPORTED_MODULE_2__["addMessage"],
   setInput: _actions__WEBPACK_IMPORTED_MODULE_2__["setInput"]
 })(ChatInput));
+
+/***/ }),
+
+/***/ "./resources/js/components/ChatInputText.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/ChatInputText.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ChatInputText; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var ChatInputText =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ChatInputText, _React$Component);
+
+  function ChatInputText() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, ChatInputText);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ChatInputText)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this.state = {
+      inputText: ''
+    };
+
+    _this.onFormSubmit = function (event) {
+      event.preventDefault();
+
+      _this.props.onFormSubmit(_this.state.inputText);
+    };
+
+    return _this;
+  }
+
+  _createClass(ChatInputText, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var textInput = document.querySelector('.chat__input__form__text-input');
+      textInput.focus();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "chat__input__form",
+        onSubmit: this.onFormSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "chat__input__form__text-input",
+        type: "text",
+        placeholder: this.props.placeholder,
+        value: this.state.inputText,
+        onChange: function onChange(event) {
+          return _this2.setState({
+            inputText: event.target.value
+          });
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "chevron circle right icon chat__input__form__submit-button",
+        onClick: this.onFormSubmit
+      }));
+    }
+  }]);
+
+  return ChatInputText;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+;
 
 /***/ }),
 
@@ -56782,6 +57034,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ChatMessages)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _this.jumpToBottom = function () {
+      console.log('Scrolling to bottom');
       var chatMessagesBottom = document.querySelector('.chat__messages__bottom');
       chatMessagesBottom.scrollIntoView({
         behavior: 'smooth'
@@ -56820,6 +57073,7 @@ function (_React$Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
       console.log('Chat messages updated');
+      console.log(document.querySelector('.chat__input').clientHeight);
       this.jumpToBottom();
       this.addImagesOnLoad();
     }
@@ -57284,6 +57538,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 var messagesReducer = function messagesReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
+  console.log('Messages reducer state', state);
+  console.log('Messages reducer action', action);
 
   if (action.type === 'USER_MESSAGE_INPUTTED' || action.type === 'WANDA_MESSAGE_RECEIVED') {
     return [].concat(_toConsumableArray(state), [action.payload]);
@@ -57293,8 +57549,10 @@ var messagesReducer = function messagesReducer() {
 };
 
 var inputReducer = function inputReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
+  console.log('Input reducer state', state);
+  console.log('Input reducer action', action);
 
   if (action && action.type === 'INPUT_SET') {
     return action.payload;
@@ -57318,10 +57576,24 @@ var typingReducer = function typingReducer() {
   return false;
 };
 
+var userPropertyReducer = function userPropertyReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  console.log('User property reducer state', state);
+  console.log('User property reducer action', action);
+
+  if (action.type === 'USER_PROPERTY_SET') {
+    state[action.payload.property] = action.payload.value;
+  }
+
+  return state;
+};
+
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  messages: messagesReducer,
   input: inputReducer,
-  typing: typingReducer
+  messages: messagesReducer,
+  typing: typingReducer,
+  user: userPropertyReducer
 }));
 
 /***/ }),
