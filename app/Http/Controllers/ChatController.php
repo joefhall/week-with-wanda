@@ -55,11 +55,7 @@ class ChatController extends Controller
       ]);
       
       if ($userMessageId === 'signupPasswordNone') {
-        $this->userRepository->updateField($user->id, 'first_name', $this->userRepository->getMessageFromChatHistory($user->id, 'user', 'myName'));
-        $this->userRepository->updateField($user->id, 'email', $this->userRepository->getMessageFromChatHistory($user->id, 'user', 'myEmail'));
-        $this->userRepository->updateField($user->id, 'password', bcrypt($userMessage));
-        $this->userRepository->updateMessageFromChatHistory($user->id, 'user', $userMessageId, str_repeat('*', strlen($userMessage)));
-        $this->userRepository->storeCountryFromIp($user->id, $request->ip());
+        $this->userRepository->register($user->id, $userMessage, $request->ip());
       }
     }
     

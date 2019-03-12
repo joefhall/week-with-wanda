@@ -34,7 +34,7 @@ class UserRepository
    * @param string $sessionId
    * @return User
    */
-  function findOrCreateFromSession(string $sessionId) {
+  public function findOrCreateFromSession(string $sessionId) {
     $user = User::where('session_id', $sessionId)->first();
     
     if (!$user) {
@@ -54,10 +54,26 @@ class UserRepository
    * @param int|string $value
    * @return void
    */
-  function updateField(int $userId, string $field, $value) {    
+  public function updateField(int $userId, string $field, $value) {    
     $user = User::find($userId);
     $user->{$field} = $value;
     $user->save();
+  }
+  
+  /**
+   * Update a field of a user's record.
+   *
+   * @param int $userId
+   * @param string $password
+   * @param string $ip
+   * @return void
+   */
+  public function register(int $userId, string $password, string $ip) {    
+    $this->updateField($userId, 'first_name', $this->getMessageFromChatHistory($userId, 'user', 'myName'));
+    $this->updateField($userId, 'email', $this->getMessageFromChatHistory($userId, 'user', 'myEmail'));
+    $this->updateField($userId, 'password', bcrypt($password));
+    $this->updateMessageFromChatHistory($userId, 'user', 'signupPasswordNone', str_repeat('*', strlen($password)));
+    $this->storeCountryFromIp($userId, $ip);
   }
 
   /**
@@ -67,7 +83,7 @@ class UserRepository
    * @param string $originalProfilePic
    * @return void
    */
-  function storeProfilePic(int $userId, string $originalProfilePic) {    
+  public function storeProfilePic(int $userId, string $originalProfilePic) {    
     $image = $this->client->get($originalProfilePic)->getBody()->getContents();
     Storage::disk('s3')->put($userId . '/' . User::PROFILE_PIC_FILENAME, $image);
     
@@ -83,7 +99,7 @@ class UserRepository
    * @param string $ip
    * @return void
    */
-  function storeCountryFromIp(int $userId, string $ip) {
+  public function storeCountryFromIp(int $userId, string $ip) {
     $lookupUrl = env('IP_GEO_LOOKUP_URL') . '/' . env('IP_GEO_LOOKUP_KEY') . '/' . $ip;
     $ipDataJson = $this->client->get($lookupUrl)->getBody()->getContents();
     $ipData = json_decode($ipDataJson);
@@ -100,7 +116,7 @@ class UserRepository
    * @param array $newChat
    * @return void
    */
-  function addToChatHistory(int $userId, array $newChat) {
+  public function addToChatHistory(int $userId, array $newChat) {
     $user = User::find($userId);
     
     $chatHistory = json_decode($user->chat_history) ?? [];
@@ -116,7 +132,7 @@ class UserRepository
    * @param int $userId
    * @return array
    */
-  function getChatHistory(int $userId) {
+  public function getChatHistory(int $userId) {
     $user = User::find($userId);
     
     return json_decode($user->chat_history) ?? [];
@@ -130,7 +146,7 @@ class UserRepository
    * @param string $messageId
    * @return string|null
    */
-  function getMessageFromChatHistory(int $userId, string $sender, string $messageId) {
+  public function getMessageFromChatHistory(int $userId, string $sender, string $messageId) {
     $user = User::find($userId);
     
     $chatHistory = json_decode($user->chat_history);
@@ -153,7 +169,7 @@ class UserRepository
    * @param string $newMessageText
    * @return void
    */
-  function updateMessageFromChatHistory(int $userId, string $sender, string $messageId, string $newMessageText) {
+  public function updateMessageFromChatHistory(int $userId, string $sender, string $messageId, string $newMessageText) {
     $user = User::find($userId);
     
     $chatHistory = json_decode($user->chat_history);
