@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 import { addMessage, setInput, setUserProperty } from '../actions';
-import { getHistory, respond } from '../api/chat';
+import { getHistory, getSessionId, respond } from '../api/chat';
 import store from '../store';
 import ChatInputPasswordCreate from './ChatInputPasswordCreate';
 import ChatInputText from './ChatInputText';
 import ChatMessages from './ChatMessages';
+import LoginFacebook from './LoginFacebook';
 import LoginHidden from './LoginHidden';
 import { toTitleCase } from '../utils/text';
 
@@ -37,14 +39,20 @@ class ChatInput extends React.Component {
   }
 
   componentDidMount() {
+    this.setState({ sessionId: getSessionId() });
     getHistory();
   }
 
   componentDidUpdate() {
     document.querySelector('.chat__messages__bottom').scrollIntoView({ behavior: 'smooth' });
     
-    if (this.props.input && this.props.input.type && this.props.input.type === 'none' && this.props.input.userInput) {
-      this.addAndSendMessage(Object.keys(this.props.input.userInput)[0], null);
+    if (this.props.input && this.props.input.type) {
+      if (this.props.input.type === 'none' && this.props.input.userInput) {
+        this.addAndSendMessage(Object.keys(this.props.input.userInput)[0], null);
+      }
+      if (this.props.input.type === 'doLoginFacebook' && this.props.input.userInput && document.head.querySelector('meta[name="logged-in"]').content === 'true') {
+        this.addAndSendMessage(Object.keys(this.props.input.userInput)[0], null);
+      }
     }
   }
 
@@ -54,7 +62,7 @@ class ChatInput extends React.Component {
     return Object.keys(userInput).map((inputId) => {
       return (
         <div className="chat__input__choices__choice" key={inputId} onClick={() => this.addAndSendMessage(inputId, userInput[inputId])}>
-          {userInput[inputId]}
+          {ReactHtmlParser(userInput[inputId])}
         </div>
       );
     });
@@ -78,6 +86,17 @@ class ChatInput extends React.Component {
         case 'doLogin':
           return (
             <LoginHidden followUpAction={this.addAndSendMessage} />
+          );
+          break;
+          
+        case 'signupChoice':
+          return (
+            <div className="chat__input__choices">
+              <a className="chat__input__choices__choice" href={'/login/facebook?state=' + this.state.sessionId} key="signupFacebook" onClick={() => this.addAndSendMessage('signupFacebook', '')}>
+                Sign up with Facebook (recommended)
+              </a>
+              { this.renderInputChoices() }
+            </div>
           );
           break;
 

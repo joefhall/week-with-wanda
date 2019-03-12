@@ -10783,6 +10783,14 @@ body {
   background-color: lavender;
 }
 
+.chat__input__choices a,
+.chat__input__choices a:hover,
+.chat__input__choices a:focus,
+.chat__input__choices a:visited {
+  color: darkviolet;
+  text-decoration: none;
+}
+
 .chat__input__form {
   display: flex;
   align-items: center;

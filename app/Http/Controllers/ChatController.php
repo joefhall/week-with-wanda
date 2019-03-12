@@ -59,6 +59,7 @@ class ChatController extends Controller
         $this->userRepository->updateField($user->id, 'email', $this->userRepository->getMessageFromChatHistory($user->id, 'user', 'myEmail'));
         $this->userRepository->updateField($user->id, 'password', bcrypt($userMessage));
         $this->userRepository->updateMessageFromChatHistory($user->id, 'user', $userMessageId, str_repeat('*', strlen($userMessage)));
+        $this->userRepository->storeCountryFromIp($user->id, $request->ip());
       }
     }
     

@@ -77,3 +77,7 @@ export const getHistory = async () => {
     console.log(`An error occured getting user's chat history back from the server: ${error}`);
   }
 };
+
+export const getSessionId = () => {
+  return sessionId;
+};

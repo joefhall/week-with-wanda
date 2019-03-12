@@ -34,6 +34,12 @@ return [
           'signMeUp',
         ],
       ],
+      'signupChoice' => [
+        'type' => 'signupChoice',
+        'user' => [
+          'signupRegular',
+        ],
+      ],
       'whatsYourName' => [
         'type' => 'signupName',
         'user' => [
@@ -70,6 +76,12 @@ return [
           'doLogin',
         ],
       ],
+      'greatThanksFacebook' => [
+        'type' => 'doLoginFacebook',
+        'user' => [
+          'doLoginFacebook',
+        ],
+      ],
       'giveMeASec' => [
         'type' => 'none',
         'user' => [
@@ -95,6 +107,12 @@ return [
         'wanda' => 'whatWantDo',
       ],
       'signMeUp' => [
+        'wanda' => 'signupChoice',
+      ],
+      'signupFacebook' => [
+        'wanda' => 'greatThanksFacebook',
+      ],
+      'signupRegular' => [
         'wanda' => 'whatsYourName',
       ],
       'findOutMore' => [
@@ -119,6 +137,9 @@ return [
         'wanda' => 'greatThanks',
       ],
       'doLogin' => [
+        'wanda' => 'okWereBack',
+      ],
+      'doLoginFacebook' => [
         'wanda' => 'okWereBack',
       ],
       'great' => [

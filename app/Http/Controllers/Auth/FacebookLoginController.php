@@ -31,11 +31,13 @@ class FacebookLoginController extends Controller
     /**
      * Redirect the user to the Facebook authentication page.
      *
+     * @param  Request $request
      * @return \Illuminate\Http\Response
      */
-    public function redirectToProvider()
-    {
+    public function redirectToProvider(Request $request)
+    { 
       return Socialite::driver('facebook')
+        ->with(['state' => $request->input('state')])
         ->redirect();
     }
 
@@ -75,24 +77,23 @@ class FacebookLoginController extends Controller
       
       if (!$authUser) {
         $authUser = User::where('email', $facebookUser->email)->first();
-        $authUser->facebook_id = $facebookUser->id;
-        $authUser->save();
+        
+        if ($authUser) {
+          $authUser->facebook_id = $facebookUser->id;
+          $authUser->save();
+          
+          return $authUser;
+        }
       }
       
-      if ($authUser) {
-        return $authUser;
-      }
+      $user = User::where('session_id', $request->input('state'))->first();
+      $user->first_name = $facebookUser->user['first_name'];
+      $user->email = $facebookUser->email;
+      $user->email_verified_at = Carbon::now();
+      $user->facebook_id = $facebookUser->id;
+      $this->userRepository->storeProfilePic($user->id, $facebookUser->avatar_original);
+      $this->userRepository->storeCountryFromIp($user->id, $request->ip());
       
-      $newAuthUser = User::create([
-        'first_name' => $facebookUser->user['first_name'],
-        'email' => $facebookUser->email,
-        'email_verified_at' => Carbon::now(),
-        'facebook_id' => $facebookUser->id,
-      ]);
-      
-      $this->userRepository->storeProfilePic($newAuthUser->id, $facebookUser->avatar_original);
-      $this->userRepository->storeCountryFromIp($newAuthUser->id, $request->ip());
-      
-      return $newAuthUser;
+      return $user;
     }
 }

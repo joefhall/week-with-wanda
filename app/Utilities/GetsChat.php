@@ -17,11 +17,11 @@ trait GetsChat
     
     if ($user) {
       return [
-        'name' => $user->first_name,
+        'country' => $user->country,
         'email' => $user->email,
         'mobileNumber' => $user->mobile_number,
+        'name' => $user->first_name,
         'profilePic' => $user->profile_pic,
-        'country' => $user->country,
       ];
     }
 
@@ -76,7 +76,7 @@ trait GetsChat
   {
     $userMessages = [];
     
-    if (array_get($interaction, 'type') === 'choice') {
+    if (array_get($interaction, 'type') === 'choice' || array_get($interaction, 'type') === 'signupChoice') {
       foreach (array_get($interaction, 'user') as $userResponse) {
         $userMessages[$userResponse] = $this->getUserChat($scenario, $userResponse);
       }

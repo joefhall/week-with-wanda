@@ -120,6 +120,11 @@
           background-color: lavender;
         }
       }
+      
+      a, a:hover, a:focus, a:visited {
+        color: $main-colour;
+        text-decoration: none;
+      }
     }
     
     &__form {
