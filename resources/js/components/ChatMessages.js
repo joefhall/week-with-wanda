@@ -29,13 +29,15 @@ class ChatMessages extends React.Component {
     this.addImagesOnLoad();
   }
 
-  renderDay = (previousDay, currentDay) => {
+  renderDay = (previousDay, previousDate, currentDay, currentDate) => {
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const dayToday = new Date().getDay();
+    const dateToday = new Date().getDate();
     
-    if (currentDay !== previousDay) {
+    if (currentDay !== previousDay && currentDate !== previousDate) {
       return (
         <div className="chat__messages__day" key={daysOfWeek[currentDay]}>
-          {daysOfWeek[currentDay]}
+          {(currentDate === dateToday) ? 'Today' : daysOfWeek[currentDay]}
         </div>
       );
     }
@@ -52,14 +54,16 @@ class ChatMessages extends React.Component {
         const formattedTime = date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2);
         
         let previousDay = null;
+        let previousDate = null;
         if (index > 0) {
           const previousTime = messages[index -1].time;
           previousDay = new Date(previousTime).getDay();
+          previousDate = new Date(previousTime).getDate();
         }
         
         return (
           <div key={message.time}>
-            { this.renderDay(previousDay, date.getDay()) }
+            { this.renderDay(previousDay, previousDate, date.getDay(), date.getDate()) }
 
             <div className={'chat__messages__message chat__messages__message--' + message.sender}>
               <div className={'chat__messages__message__bubble chat__messages__message__bubble--' + message.sender}>
