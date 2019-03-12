@@ -3,8 +3,11 @@ import { connect } from 'react-redux';
 import { addMessage, setInput, setUserProperty } from '../actions';
 import { getHistory, respond } from '../api/chat';
 import store from '../store';
+import ChatInputPasswordCreate from './ChatInputPasswordCreate';
 import ChatInputText from './ChatInputText';
 import ChatMessages from './ChatMessages';
+import LoginHidden from './LoginHidden';
+import { toTitleCase } from '../utils/text';
 
 class ChatInput extends React.Component {
   addAndSendMessage = (messageId, message) => {
@@ -17,13 +20,20 @@ class ChatInput extends React.Component {
     switch(this.props.input.type) {
       case 'signupEmail':
         store.dispatch(setUserProperty('email', inputText));
+        this.addAndSendMessage(Object.keys(this.props.input.userInput)[0], inputText);
         break;
       case 'signupName':
+        inputText = toTitleCase(inputText);
         store.dispatch(setUserProperty('name', inputText));
+        this.addAndSendMessage(Object.keys(this.props.input.userInput)[0], inputText);
+        break;
+      case 'signupPassword':
+        const messageId = Object.keys(this.props.input.userInput)[0];        
+        store.dispatch(setUserProperty('password', inputText));
+        store.dispatch(addMessage(Date.now(), this.props.input.scenario, 'user', messageId, '*'.repeat(inputText.length)));
+        respond(this.props.input.scenario, messageId, inputText);
         break;
     }
-    
-    this.addAndSendMessage(Object.keys(this.props.input.userInput)[0], inputText);
   }
 
   componentDidMount() {
@@ -31,6 +41,8 @@ class ChatInput extends React.Component {
   }
 
   componentDidUpdate() {
+    document.querySelector('.chat__messages__bottom').scrollIntoView({ behavior: 'smooth' });
+    
     if (this.props.input && this.props.input.type && this.props.input.type === 'none' && this.props.input.userInput) {
       this.addAndSendMessage(Object.keys(this.props.input.userInput)[0], null);
     }
@@ -62,6 +74,12 @@ class ChatInput extends React.Component {
             );
           }
           break;
+          
+        case 'doLogin':
+          return (
+            <LoginHidden followUpAction={this.addAndSendMessage} />
+          );
+          break;
 
         case 'signupEmail':
           return (
@@ -75,9 +93,15 @@ class ChatInput extends React.Component {
           );
           break;
           
+        case 'signupPassword':
+          return (
+            <ChatInputPasswordCreate onFormSubmit={this.receiveTextInput} />
+          );
+          break;
+          
         case 'text':
           return (
-            <ChatInputText placeholder="" buttonText="Go" onFormSubmit={this.receiveTextInput} />
+            <ChatInputText placeholder="" onFormSubmit={this.receiveTextInput} />
           );
           break;
 

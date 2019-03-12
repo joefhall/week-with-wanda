@@ -19,3 +19,8 @@ Route::get('logged-out', function () {
 })->name('logged-out');
 
 Route::get('/', 'AppController@index')->name('app');
+
+Route::group(['middleware' => ['web'], 'prefix' => 'api/'], function () {
+  Route::get('history', 'ChatController@history');
+  Route::post('respond', 'ChatController@respond');
+});

@@ -10788,6 +10788,14 @@ body {
   align-items: center;
 }
 
+.chat__input__form__error-message {
+  font-size: 0.65rem;
+}
+
+.chat__input__form__error-message--has-error {
+  color: red;
+}
+
 .chat__input__form__submit-button {
   color: darkviolet;
   cursor: pointer;

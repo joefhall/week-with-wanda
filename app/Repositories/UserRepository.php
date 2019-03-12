@@ -45,6 +45,20 @@ class UserRepository
     
     return $user;
   }
+  
+  /**
+   * Update a field of a user's record.
+   *
+   * @param int $userId
+   * @param string $field
+   * @param int|string $value
+   * @return void
+   */
+  function updateField(int $userId, string $field, $value) {    
+    $user = User::find($userId);
+    $user->{$field} = $value;
+    $user->save();
+  }
 
   /**
    * Get a user's Facebook profile pic, store it ourselves and add the URL to user's record.
@@ -106,5 +120,51 @@ class UserRepository
     $user = User::find($userId);
     
     return json_decode($user->chat_history) ?? [];
+  }
+  
+  /**
+   * Get the text of a particular message from the user's chat history.
+   *
+   * @param int $userId
+   * @param string $sender
+   * @param string $messageId
+   * @return string|null
+   */
+  function getMessageFromChatHistory(int $userId, string $sender, string $messageId) {
+    $user = User::find($userId);
+    
+    $chatHistory = json_decode($user->chat_history);
+    
+    foreach(array_reverse($chatHistory) as $chatInteraction) {
+      if ($chatInteraction->sender === $sender && $chatInteraction->id === $messageId) {
+        return $chatInteraction->message;
+      }
+    }
+    
+    return null;
+  }
+  
+  /**
+   * Update the text of a particular message from the user's chat history.
+   *
+   * @param int $userId
+   * @param string $sender
+   * @param string $messageId
+   * @param string $newMessageText
+   * @return void
+   */
+  function updateMessageFromChatHistory(int $userId, string $sender, string $messageId, string $newMessageText) {
+    $user = User::find($userId);
+    
+    $chatHistory = json_decode($user->chat_history);
+    
+    foreach(array_reverse($chatHistory) as $chatInteraction) {
+      if ($chatInteraction->sender === $sender && $chatInteraction->id === $messageId) {
+        $chatInteraction->message = $newMessageText;
+      }
+    }
+    
+    $user->chat_history = json_encode($chatHistory);
+    $user->save();
   }
 }

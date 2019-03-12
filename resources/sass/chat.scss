@@ -126,6 +126,13 @@
       display: flex;
       align-items: center;
       
+      &__error-message {
+        font-size: $font-size-xxsm;
+        &--has-error {
+          color: red;
+        }
+      }
+      
       &__submit-button {
         color: $main-colour;
         cursor: pointer;

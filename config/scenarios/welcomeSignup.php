@@ -59,21 +59,27 @@ return [
         ],
       ],
       'choosePassword' => [
-        'type' => 'signupSubmit',
+        'type' => 'signupPassword',
         'user' => [
-          'signupSubmitNone',
+          'signupPasswordNone',
+        ],
+      ],
+      'greatThanks' => [
+        'type' => 'doLogin',
+        'user' => [
+          'doLogin',
         ],
       ],
       'giveMeASec' => [
         'type' => 'none',
         'user' => [
-          'giveMeASecNone',
+          '',
         ],
       ],
       'okWereBack' => [
         'type' => 'none',
         'user' => [
-          'okWereBackNone',
+          'great',
         ],
       ],
     ],
@@ -109,11 +115,15 @@ return [
           ]
         ],
       ],
-      'signupSubmitNone' => [
-        'wanda' => 'giveMeASec',
+      'signupPasswordNone' => [
+        'wanda' => 'greatThanks',
       ],
-      'giveMeASecNone' => [
+      'doLogin' => [
         'wanda' => 'okWereBack',
+      ],
+      'great' => [
+        'scenario' => 'postSignupDetails',
+        'wanda' => 'hiAgain',
       ],
     ],
 

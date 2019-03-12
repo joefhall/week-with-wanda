@@ -53,6 +53,13 @@ class ChatController extends Controller
         'message' => $userMessage,
         'time' => Carbon::now()->timestamp,
       ]);
+      
+      if ($userMessageId === 'signupPasswordNone') {
+        $this->userRepository->updateField($user->id, 'first_name', $this->userRepository->getMessageFromChatHistory($user->id, 'user', 'myName'));
+        $this->userRepository->updateField($user->id, 'email', $this->userRepository->getMessageFromChatHistory($user->id, 'user', 'myEmail'));
+        $this->userRepository->updateField($user->id, 'password', bcrypt($userMessage));
+        $this->userRepository->updateMessageFromChatHistory($user->id, 'user', $userMessageId, str_repeat('*', strlen($userMessage)));
+      }
     }
     
     if (!array_has($response, 'error')) {
@@ -80,6 +87,7 @@ class ChatController extends Controller
   {
     $response = [];
     $user = Auth::user();
+    $response['user'] = $user ? $user->id : 'none';
     
     if ($user) {
       $response = $this->userRepository->getChatHistory($user->id);

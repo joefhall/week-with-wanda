@@ -56703,8 +56703,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
 /* harmony import */ var _api_chat__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api/chat */ "./resources/js/api/chat.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
-/* harmony import */ var _ChatInputText__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ChatInputText */ "./resources/js/components/ChatInputText.js");
-/* harmony import */ var _ChatMessages__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ChatMessages */ "./resources/js/components/ChatMessages.js");
+/* harmony import */ var _ChatInputPasswordCreate__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ChatInputPasswordCreate */ "./resources/js/components/ChatInputPasswordCreate.js");
+/* harmony import */ var _ChatInputText__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ChatInputText */ "./resources/js/components/ChatInputText.js");
+/* harmony import */ var _ChatMessages__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ChatMessages */ "./resources/js/components/ChatMessages.js");
+/* harmony import */ var _LoginHidden__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./LoginHidden */ "./resources/js/components/LoginHidden.js");
+/* harmony import */ var _utils_text__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/text */ "./resources/js/utils/text.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56722,6 +56725,9 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
 
 
 
@@ -56760,14 +56766,26 @@ function (_React$Component) {
       switch (_this.props.input.type) {
         case 'signupEmail':
           _store__WEBPACK_IMPORTED_MODULE_4__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setUserProperty"])('email', inputText));
+
+          _this.addAndSendMessage(Object.keys(_this.props.input.userInput)[0], inputText);
+
           break;
 
         case 'signupName':
+          inputText = Object(_utils_text__WEBPACK_IMPORTED_MODULE_9__["toTitleCase"])(inputText);
           _store__WEBPACK_IMPORTED_MODULE_4__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setUserProperty"])('name', inputText));
+
+          _this.addAndSendMessage(Object.keys(_this.props.input.userInput)[0], inputText);
+
+          break;
+
+        case 'signupPassword':
+          var messageId = Object.keys(_this.props.input.userInput)[0];
+          _store__WEBPACK_IMPORTED_MODULE_4__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setUserProperty"])('password', inputText));
+          _store__WEBPACK_IMPORTED_MODULE_4__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["addMessage"])(Date.now(), _this.props.input.scenario, 'user', messageId, '*'.repeat(inputText.length)));
+          Object(_api_chat__WEBPACK_IMPORTED_MODULE_3__["respond"])(_this.props.input.scenario, messageId, inputText);
           break;
       }
-
-      _this.addAndSendMessage(Object.keys(_this.props.input.userInput)[0], inputText);
     };
 
     return _this;
@@ -56781,6 +56799,10 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
+      document.querySelector('.chat__messages__bottom').scrollIntoView({
+        behavior: 'smooth'
+      });
+
       if (this.props.input && this.props.input.type && this.props.input.type === 'none' && this.props.input.userInput) {
         this.addAndSendMessage(Object.keys(this.props.input.userInput)[0], null);
       }
@@ -56817,26 +56839,35 @@ function (_React$Component) {
 
             break;
 
+          case 'doLogin':
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LoginHidden__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              followUpAction: this.addAndSendMessage
+            });
+            break;
+
           case 'signupEmail':
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_6__["default"], {
               placeholder: "Your email",
-              buttonText: "Go",
               onFormSubmit: this.receiveTextInput
             });
             break;
 
           case 'signupName':
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_6__["default"], {
               placeholder: "Your first name",
-              buttonText: "Go",
+              onFormSubmit: this.receiveTextInput
+            });
+            break;
+
+          case 'signupPassword':
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputPasswordCreate__WEBPACK_IMPORTED_MODULE_5__["default"], {
               onFormSubmit: this.receiveTextInput
             });
             break;
 
           case 'text':
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_6__["default"], {
               placeholder: "",
-              buttonText: "Go",
               onFormSubmit: this.receiveTextInput
             });
             break;
@@ -56871,6 +56902,146 @@ var mapStateToProps = function mapStateToProps(state) {
   addMessage: _actions__WEBPACK_IMPORTED_MODULE_2__["addMessage"],
   setInput: _actions__WEBPACK_IMPORTED_MODULE_2__["setInput"]
 })(ChatInput));
+
+/***/ }),
+
+/***/ "./resources/js/components/ChatInputPasswordCreate.js":
+/*!************************************************************!*\
+  !*** ./resources/js/components/ChatInputPasswordCreate.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _ChatInputText__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ChatInputText */ "./resources/js/components/ChatInputText.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var ChatInputPasswordCreate =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ChatInputPasswordCreate, _React$Component);
+
+  function ChatInputPasswordCreate() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, ChatInputPasswordCreate);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ChatInputPasswordCreate)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this.state = {
+      errorMessage: 'Enter a password',
+      hasError: false,
+      inputText: ''
+    };
+
+    _this.validatePasswords = function () {
+      var passwordInputs = document.querySelectorAll('input.chat__input__form__text-input[type="password"]');
+
+      _this.setState({
+        errorMessage: '',
+        hasError: false
+      });
+
+      if (!passwordInputs[0].value || passwordInputs[0].value.length < 5) {
+        _this.setState({
+          errorMessage: 'Enter a password',
+          hasError: false
+        });
+      } else if (passwordInputs[0].value.length >= 5 && !passwordInputs[1].value) {
+        _this.setState({
+          errorMessage: 'Please confirm your password',
+          hasError: false
+        });
+      } else if (passwordInputs[0].value !== passwordInputs[1].value) {
+        _this.setState({
+          errorMessage: 'Please make sure the passwords match',
+          hasError: true
+        });
+      }
+    };
+
+    _this.onChange = function (event) {
+      _this.setState({
+        inputText: event.target.value
+      });
+
+      _this.validatePasswords();
+    };
+
+    _this.onFormSubmit = function (event) {
+      _this.validatePasswords();
+
+      if (!_this.state.errorMessage) {
+        _this.props.onFormSubmit(_this.state.inputText);
+      }
+    };
+
+    return _this;
+  }
+
+  _createClass(ChatInputPasswordCreate, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: (this.state.errorMessage ? '' : 'd-none ') + (this.state.hasError ? 'chat__input__form__error-message--has-error ' : '') + 'chat__input__form__error-message'
+      }, this.state.errorMessage), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        hideButton: "true",
+        placeholder: "Password",
+        type: "password",
+        onChange: this.onChange,
+        onFocus: this.onChange,
+        onFormSubmit: this.onFormSubmit
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        placeholder: "Confirm password",
+        type: "password",
+        onChange: this.onChange,
+        onFocus: this.onChange,
+        onFormSubmit: this.onFormSubmit
+      }));
+    }
+  }]);
+
+  return ChatInputPasswordCreate;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+;
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    user: state.user
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {})(ChatInputPasswordCreate));
 
 /***/ }),
 
@@ -56927,10 +57098,28 @@ function (_React$Component) {
       inputText: ''
     };
 
+    _this.onChange = function (event) {
+      _this.setState({
+        inputText: event.target.value
+      });
+
+      if (_this.props.onChange) {
+        _this.props.onChange(event);
+      }
+    };
+
+    _this.onFocus = function (event) {
+      if (_this.props.onFocus) {
+        _this.props.onFocus(event);
+      }
+    };
+
     _this.onFormSubmit = function (event) {
       event.preventDefault();
 
-      _this.props.onFormSubmit(_this.state.inputText);
+      if (!_this.props.minLength || _this.state.inputText.length >= _this.props.minLength) {
+        _this.props.onFormSubmit(_this.state.inputText);
+      }
     };
 
     return _this;
@@ -56939,31 +57128,34 @@ function (_React$Component) {
   _createClass(ChatInputText, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var textInput = document.querySelector('.chat__input__form__text-input');
+      var textInput = document.querySelectorAll('.chat__input__form__text-input')[0];
       textInput.focus();
+    }
+  }, {
+    key: "renderInner",
+    value: function renderInner() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chat__input__form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "chat__input__form__text-input",
+        name: this.props.name,
+        type: this.props.type || 'text',
+        placeholder: this.props.placeholder,
+        value: this.state.inputText,
+        onChange: this.onChange,
+        onFocus: this.onFocus
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: (this.props.hideButton ? 'invisible ' : '') + 'chevron circle right icon chat__input__form__submit-button',
+        name: this.props.name,
+        onClick: this.onFormSubmit
+      }));
     }
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "chat__input__form",
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, !this.props.form || this.props.form === 'true' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.onFormSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "chat__input__form__text-input",
-        type: "text",
-        placeholder: this.props.placeholder,
-        value: this.state.inputText,
-        onChange: function onChange(event) {
-          return _this2.setState({
-            inputText: event.target.value
-          });
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "chevron circle right icon chat__input__form__submit-button",
-        onClick: this.onFormSubmit
-      }));
+      }, this.renderInner()) : this.renderInner());
     }
   }]);
 
@@ -57034,7 +57226,6 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ChatMessages)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _this.jumpToBottom = function () {
-      console.log('Scrolling to bottom');
       var chatMessagesBottom = document.querySelector('.chat__messages__bottom');
       chatMessagesBottom.scrollIntoView({
         behavior: 'smooth'
@@ -57073,7 +57264,6 @@ function (_React$Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
       console.log('Chat messages updated');
-      console.log(document.querySelector('.chat__input').clientHeight);
       this.jumpToBottom();
       this.addImagesOnLoad();
     }
@@ -57401,6 +57591,110 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/LoginHidden.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/LoginHidden.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var LoginHidden =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(LoginHidden, _React$Component);
+
+  function LoginHidden() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, LoginHidden);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(LoginHidden)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this.state = {
+      token: document.head.querySelector('meta[name="csrf-token"]').content
+    };
+    return _this;
+  }
+
+  _createClass(LoginHidden, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (document.head.querySelector('meta[name="logged-in"]').content === 'true') {
+        this.props.followUpAction(Object.keys(this.props.input.userInput)[0], '');
+      } else {
+        document.querySelector('#hidden-login-form').submit();
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        id: "hidden-login-form",
+        method: "POST",
+        action: "/login"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "_token",
+        value: this.state.token
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "email",
+        value: this.props.user.email
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "password",
+        value: this.props.user.password
+      }));
+    }
+  }]);
+
+  return LoginHidden;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+;
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    input: state.input,
+    user: state.user
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {})(LoginHidden));
+
+/***/ }),
+
 /***/ "./resources/js/components/Register.js":
 /*!*********************************************!*\
   !*** ./resources/js/components/Register.js ***!
@@ -57612,6 +57906,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_1__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_0__["default"]));
+
+/***/ }),
+
+/***/ "./resources/js/utils/text.js":
+/*!************************************!*\
+  !*** ./resources/js/utils/text.js ***!
+  \************************************/
+/*! exports provided: toTitleCase */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toTitleCase", function() { return toTitleCase; });
+var toTitleCase = function toTitleCase(text) {
+  return text.replace(/\w\S*/g, function (cleanedText) {
+    return cleanedText.charAt(0).toUpperCase() + cleanedText.substr(1).toLowerCase();
+  });
+};
 
 /***/ }),
 
