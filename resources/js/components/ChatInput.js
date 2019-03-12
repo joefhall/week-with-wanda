@@ -108,7 +108,7 @@ class ChatInput extends React.Component {
         
         case 'signupName':
           return (
-            <ChatInputText placeholder="Your first name" onFormSubmit={this.receiveTextInput} />
+            <ChatInputText minLength={2} placeholder="Your first name" onFormSubmit={this.receiveTextInput} />
           );
           break;
           

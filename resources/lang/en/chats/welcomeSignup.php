@@ -33,7 +33,7 @@ return [
       'hello' => 'Hello, nice to meet you!',
       'hi' => 'Hi Wanda!',
       'signMeUp' => "Sign me up",
-      'signupRegular' => "Sign up without",
+      'signupRegular' => "Sign up the old-fashioned way",
       'findOutMore' => "I'd like to find out more",
       'great' => 'Great',
     ],

@@ -56887,6 +56887,7 @@ function (_React$Component) {
 
           case 'signupName':
             return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_7__["default"], {
+              minLength: 2,
               placeholder: "Your first name",
               onFormSubmit: this.receiveTextInput
             });
