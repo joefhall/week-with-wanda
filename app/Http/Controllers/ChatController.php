@@ -32,38 +32,35 @@ class ChatController extends Controller
   }
   
   /**
-   * Deal with user input and return a response.
+   * Store the chat history in the user's record.
    *
-   * @param Request $request
+   * @param int $userId
+   * @param string $currentScenario
+   * @param string $userMessageId
+   * @param string $userMessage
+   * @param array $response
    * @return string
    */
-  public function respond(Request $request)
-  { 
-    $user = Auth::user() ?? $this->userRepository->findOrCreateFromSession($request->input('session'));
-    
-    $currentScenario = $request->input('scenario');
-    $userMessageId = $request->input('user');
-    $userMessage = $request->input('message');
-    $response = $this->getResponse($user, $currentScenario, $userMessageId, $userMessage);
-    
-    $this->doSpecialMessageActions($user->id, $response);
-    
+  private function storeChatHistory(
+    int $userId,
+    string $currentScenario,
+    string $userMessageId,
+    string $userMessage = null,
+    array $response
+  )
+  {
     if (!($currentScenario === 'welcomeSignup' && $userMessageId === 'begin')) {
-      $this->userRepository->addToChatHistory($user->id, [
+      $this->userRepository->addToChatHistory($userId, [
         'sender' => 'user',
         'scenario' => $currentScenario,
         'id' => $userMessageId,
         'message' => $userMessage,
         'time' => Carbon::now()->timestamp,
       ]);
-      
-      if ($userMessageId === 'signupPasswordNone') {
-        $this->userRepository->register($user->id, $userMessage, $request->ip());
-      }
     }
     
     if (!array_has($response, 'error')) {
-      $this->userRepository->addToChatHistory($user->id, [
+      $this->userRepository->addToChatHistory($userId, [
         'sender' => 'wanda',
         'scenario' => array_get($response, 'scenario'),      
         'id' => key(array_get($response, 'wanda')),
@@ -73,6 +70,25 @@ class ChatController extends Controller
         'time' => Carbon::now()->timestamp + 1,
       ]);
     }
+  }
+  
+  /**
+   * Deal with user input and return a response.
+   *
+   * @param Request $request
+   * @return string
+   */
+  public function respond(Request $request)
+  {
+    $user = Auth::user() ?? $this->userRepository->findOrCreateFromSession($request->input('session'));
+    
+    $currentScenario = $request->input('scenario');
+    $userMessageId = $request->input('user');
+    $userMessage = $request->input('message');
+    $response = $this->getResponse($user, $currentScenario, $userMessageId, $userMessage);
+    
+    $this->storeChatHistory($user->id, $currentScenario, $userMessageId, $userMessage, $response);
+    $this->doSpecialMessageActions($user->id, $request, $userMessageId, $userMessage, $response);
     
     return response()->json($response);
   }
