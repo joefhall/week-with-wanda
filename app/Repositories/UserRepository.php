@@ -197,7 +197,6 @@ class UserRepository
 
     $token = $user->verificationTokens()->create([
       'type' => $type,
-//       'user_id' => $userId,
       'uuid' => (string) Str::uuid(),
     ]);
     
