@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\UserRepository;
+use App\Utilities\DoesSpecialMessageActions;
 use App\Utilities\GetsResponse;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
-  use GetsResponse;
+  use DoesSpecialMessageActions, GetsResponse;
   
   /**
    * User Repository.
@@ -45,7 +46,9 @@ class ChatController extends Controller
     $userMessage = $request->input('message');
     $response = $this->getResponse($user, $currentScenario, $userMessageId, $userMessage);
     
-    if ($userMessageId !== 'begin') {
+    $this->doSpecialMessageActions($user->id, $response);
+    
+    if (!($currentScenario === 'welcomeSignup' && $userMessageId === 'begin')) {
       $this->userRepository->addToChatHistory($user->id, [
         'sender' => 'user',
         'scenario' => $currentScenario,
@@ -84,7 +87,6 @@ class ChatController extends Controller
   {
     $response = [];
     $user = Auth::user();
-    $response['user'] = $user ? $user->id : 'none';
     
     if ($user) {
       $response = $this->userRepository->getChatHistory($user->id);

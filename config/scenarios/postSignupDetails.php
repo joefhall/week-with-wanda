@@ -14,17 +14,45 @@ return [
     'category' => 'beginning',
   
     'wanda' => [
-      'hiAgain' => [
+      'checkEmail' => [
         'type' => 'choice',
         'user' => [
-          'helloAgain',
+          'doneEmail',
+          'resendEmail',
+        ],
+      ],
+      'checkEmailAgain' => [
+        'type' => 'choice',
+        'user' => [
+          'doneEmail',
+          'resendEmail',
+        ],
+      ],
+      
+      'contactPreferences' => [
+        'type' => 'choice',
+        'user' => [
+          'emailOnly',
+          'textMessageOnly',
+          'both',
         ],
       ],
     ],
   
     'user' => [
-      'helloAgain' => [
-        'wanda' => 'blahhh',
+      'doneEmail' => [
+        'wanda' => [
+          'validate' => [
+            'validator' => 'emailVerify',
+            'responses' => [
+              'verified' => 'contactPreferences',
+              'notVerified' => 'checkEmailAgain',
+            ],
+          ],
+        ],
+      ],
+      'resendEmail' => [
+        'wanda' => 'checkEmailAgain',
       ],
     ],
 

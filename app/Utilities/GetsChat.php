@@ -22,6 +22,10 @@ trait GetsChat
         'mobileNumber' => $user->mobile_number,
         'name' => $user->first_name,
         'profilePic' => $user->profile_pic,
+        'rand2' => rand(1, 2),
+        'rand3' => rand(1, 3),
+        'rand4' => rand(1, 4),
+        'rand5' => rand(1, 5),
       ];
     }
 

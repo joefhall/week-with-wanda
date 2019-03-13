@@ -3,12 +3,12 @@
 namespace App;
 
 use App\Scenario;
+use App\VerificationToken;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
   use HasApiTokens, Notifiable;
   
@@ -31,6 +31,7 @@ class User extends Authenticatable implements MustVerifyEmail
     'facebook_id',
     'first_name',
     'mobile_number',
+    'mobile_number_verified_at',
     'password',
     'profile_pic',
     'send_emails',
@@ -53,5 +54,13 @@ class User extends Authenticatable implements MustVerifyEmail
   public function scenarios()
   {
     return $this->belongsToMany(Scenario::class);
+  }
+  
+  /**
+   * Get the verification tokens for the user.
+   */
+  public function verificationTokens()
+  {
+    return $this->hasMany(VerificationToken::class);
   }
 }

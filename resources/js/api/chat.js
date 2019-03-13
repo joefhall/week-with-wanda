@@ -9,7 +9,7 @@ const sessionId = uuidv4();
 const timeToBeginTyping = 500;
 
 const typingDelay = messageText => {
-  return timeToBeginTyping + (striptags(messageText).length * 70);
+  return timeToBeginTyping + (striptags(messageText).length * 50);
 }
 
 const showResponse = (responseData, wandaMessageId, wandaMessage) => {

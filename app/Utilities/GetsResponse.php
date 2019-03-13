@@ -25,7 +25,7 @@ trait GetsResponse
   {
     $nextWanda = $this->getNextWanda($scenario, $userInput);
     if (is_array($nextWanda) && array_has($nextWanda, 'validate')) {
-      $nextWanda = $this->validateUserInputAndGetNextWanda($scenario, $userInput, $userMessage, $nextWanda);
+      $nextWanda = $this->validateUserInputAndGetNextWanda($user->id, $scenario, $userInput, $userMessage, $nextWanda);
     }
     
     $nextScenario = $this->getNextScenario($scenario, $userInput);

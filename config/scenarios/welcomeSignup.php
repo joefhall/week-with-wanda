@@ -91,7 +91,13 @@ return [
       'okWereBack' => [
         'type' => 'none',
         'user' => [
-          'great',
+          'okWereBackNone',
+        ],
+      ],
+      'okWereBackFacebook' => [
+        'type' => 'none',
+        'user' => [
+          'okWereBackFacebookNone',
         ],
       ],
     ],
@@ -130,7 +136,7 @@ return [
               'invalid' => 'invalidEmail',
               'userExists' => 'userExists',
             ],
-          ]
+          ],
         ],
       ],
       'signupPasswordNone' => [
@@ -140,11 +146,15 @@ return [
         'wanda' => 'okWereBack',
       ],
       'doLoginFacebook' => [
-        'wanda' => 'okWereBack',
+        'wanda' => 'okWereBackFacebook',
       ],
-      'great' => [
+      'okWereBackNone' => [
         'scenario' => 'postSignupDetails',
-        'wanda' => 'hiAgain',
+        'wanda' => 'checkEmail',
+      ],
+      'okWereBackFacebookNone' => [
+        'scenario' => 'postSignupDetails',
+        'wanda' => 'contactPreferences',
       ],
     ],
 

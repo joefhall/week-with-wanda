@@ -27,6 +27,7 @@ return [
       'greatThanks' => 'Great, thanks. Now just give me a sec to save your details...',
       'greatThanksFacebook' => 'Great, thanks. Now just give me a sec to save your details...',
       'okWereBack' => "Ok we're back",
+      'okWereBackFacebook' => "Ok we're back",
     ],
   
     'user' => [
@@ -35,7 +36,6 @@ return [
       'signMeUp' => "Sign me up",
       'signupRegular' => "Sign up the old-fashioned way",
       'findOutMore' => "I'd like to find out more",
-      'great' => 'Great',
     ],
 
 ];

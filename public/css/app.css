@@ -10768,13 +10768,14 @@ body {
 }
 
 .chat__input__choices__choice {
+  align-items: center;
   background-color: white;
   border: 1px solid darkviolet;
   border-radius: 1rem;
   border-top-right-radius: 0;
   color: darkviolet;
   cursor: pointer;
-  display: inline-block;
+  display: flex;
   margin: 0.75rem;
   padding: 0.5rem 0.75rem;
 }
@@ -10814,6 +10815,7 @@ body {
 
 .chat__input__form__text-input {
   flex-grow: 1;
+  padding: 0.25rem;
   vertical-align: middle;
   width: calc(100% - (1.18em + 0.5rem));
 }

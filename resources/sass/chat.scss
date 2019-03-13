@@ -106,13 +106,14 @@
       justify-content: space-around;
       
       &__choice {
+        align-items: center;
         background-color: white;
         border: 1px solid $main-colour;
         border-radius: $spacer;
         border-top-right-radius: 0;
         color: $main-colour;
         cursor: pointer;
-        display: inline-block;
+        display: flex;
         margin: $spacer * .75;
         padding: $spacer * .5 $spacer * .75;
         
@@ -142,12 +143,13 @@
         color: $main-colour;
         cursor: pointer;
         font-size: $font-size-xlg !important;
-        line-height: 1.5rem;
+        line-height: $font-size-base * 1.5;
         margin: 0 0 0 ($spacer * .5) !important;
       }
       
       &__text-input {
         flex-grow: 1;
+        padding: $spacer * .25;
         vertical-align: middle;
         width: calc(100% - (1.18em + #{$spacer * .5}));
       }

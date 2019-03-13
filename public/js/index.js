@@ -56298,7 +56298,7 @@ var sessionId = uuid_v4__WEBPACK_IMPORTED_MODULE_5___default()();
 var timeToBeginTyping = 500;
 
 var typingDelay = function typingDelay(messageText) {
-  return timeToBeginTyping + striptags__WEBPACK_IMPORTED_MODULE_4___default()(messageText).length * 70;
+  return timeToBeginTyping + striptags__WEBPACK_IMPORTED_MODULE_4___default()(messageText).length * 50;
 };
 
 var showResponse = function showResponse(responseData, wandaMessageId, wandaMessage) {

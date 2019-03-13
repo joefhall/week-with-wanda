@@ -6,6 +6,7 @@ use App\User;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class UserRepository
 {
@@ -182,5 +183,24 @@ class UserRepository
     
     $user->chat_history = json_encode($chatHistory);
     $user->save();
+  }
+  
+  /**
+   * Get the user the verification token belongs to.
+   *
+   * @param int $userId
+   * @param string $type
+   */
+  public function addVerificationToken(int $userId, string $type)
+  {
+    $user = User::find($userId);
+
+    $token = $user->verificationTokens()->create([
+      'type' => $type,
+//       'user_id' => $userId,
+      'uuid' => (string) Str::uuid(),
+    ]);
+    
+    return $token;
   }
 }
