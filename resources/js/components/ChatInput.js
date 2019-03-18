@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { addMessage, setInput, setUserProperty } from '../actions';
 import { getHistory, getSessionId, respond } from '../api/chat';
+import ChatInputChoices from './ChatInputChoices';
 import ChatInputPasswordCreate from './ChatInputPasswordCreate';
 import ChatInputPhone from './ChatInputPhone';
 import ChatInputText from './ChatInputText';
@@ -74,16 +75,6 @@ class ChatInput extends React.Component {
     }
   }
 
-  renderInputChoices(userInput) {
-    return Object.keys(userInput).map((inputId) => {
-      return (
-        <div className="chat__input__choices__choice" key={inputId} onClick={() => this.addAndSendMessage(inputId, userInput[inputId])}>
-          {ReactHtmlParser(userInput[inputId])}
-        </div>
-      );
-    });
-  }
-
   renderInput() {
     console.log('Render input:', this.props.input);
     
@@ -91,9 +82,7 @@ class ChatInput extends React.Component {
       switch(this.props.input.type) {
         case 'choice':
           return (
-            <div className="chat__input__choices">
-              { this.renderInputChoices(this.props.input.userInput) }
-            </div>
+            <ChatInputChoices onClick={this.addAndSendMessage} userInput={this.props.input.userInput} />
           );
           break;
           
@@ -104,15 +93,8 @@ class ChatInput extends React.Component {
           break;
           
         case 'signupChoice':
-          const messageText = 'Sign up with Facebook (quickest)';
-          
           return (
-            <div className="chat__input__choices">
-              <a className="chat__input__choices__choice" href={'/login/facebook?state=' + this.state.sessionId} key="signupFacebook" onClick={() => this.addAndSendMessage('signupFacebook', messageText)}>
-                {messageText}
-              </a>
-              { this.renderInputChoices(this.props.input.userInput) }
-            </div>
+            <ChatInputChoices onClick={this.addAndSendMessage} sessionId={this.state.sessionId} type={this.props.input.type} userInput={this.props.input.userInput} />
           );
           break;
 
@@ -149,14 +131,11 @@ class ChatInput extends React.Component {
         case 'textAndChoice':
           let userInputFiltered = Object.assign({}, this.props.input.userInput);
           delete userInputFiltered[Object.keys(userInputFiltered)[0]];
-          console.log('User input filtered', userInputFiltered);
           
           return (
             <div>
               <ChatInputText minLength={7} placeholder="Enter the code I sent you" onFormSubmit={this.receiveTextInput} />
-              <div className="chat__input__choices">
-                { this.renderInputChoices(userInputFiltered) }
-              </div>
+              <ChatInputChoices onClick={this.addAndSendMessage} userInput={userInputFiltered} />
             </div>
           );
           break;
