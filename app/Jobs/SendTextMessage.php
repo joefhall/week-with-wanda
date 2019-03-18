@@ -9,6 +9,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Support\Facades\Log;
 
 class SendTextMessage implements ShouldQueue
 {
@@ -53,6 +54,8 @@ class SendTextMessage implements ShouldQueue
     $mobileNumber = $user->mobile_number;
     $sendTextMessages = $user->send_text_messages;
     
+    Log::info("Sending text message to user({$this->userId}), mobile number($mobileNumber), message({$this->message})");
+    
     if ($mobileNumber && $sendTextMessages) {
       $headers = [
         'Authorization' => 'AccessKey ' . env('SMS_SENDER_KEY'),
@@ -72,6 +75,8 @@ class SendTextMessage implements ShouldQueue
             'form_params' => $params,
           ]
         )->getBody()->getContents();
+      
+      Log::info("SMS sender response: $response");
     }
   }
 }

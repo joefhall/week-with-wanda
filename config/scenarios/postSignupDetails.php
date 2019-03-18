@@ -28,13 +28,52 @@ return [
           'resendEmail',
         ],
       ],
-      
+      'checkEmailResend' => [
+        'type' => 'choice',
+        'user' => [
+          'doneEmail',
+          'resendEmail',
+        ],
+      ],
       'contactPreferences' => [
         'type' => 'choice',
         'user' => [
-          'emailOnly',
-          'textMessageOnly',
-          'both',
+          'contactEmailOnly',
+          'contactTextMessageOnly',
+          'contactBoth',
+        ],
+      ],
+      'whatsMobileNumber' => [
+        'type' => 'signupMobileNumber',
+        'user' => [
+          'myMobileNumber',
+        ],
+      ],
+      'checkMobileNumber' => [
+        'type' => 'textAndChoice',
+        'user' => [
+          'doneMobileNumber',
+          'resendMobileNumber',
+        ],
+      ],
+      'checkMobileNumberAgain' => [
+        'type' => 'textAndChoice',
+        'user' => [
+          'doneMobileNumber',
+          'resendMobileNumber',
+        ],
+      ],
+      'checkMobileNumberResend' => [
+        'type' => 'textAndChoice',
+        'user' => [
+          'doneMobileNumber',
+          'resendMobileNumber',
+        ],
+      ],
+      'allDone' => [
+        'type' => 'none',
+        'user' => [
+          'allDoneNone',
         ],
       ],
     ],
@@ -52,7 +91,33 @@ return [
         ],
       ],
       'resendEmail' => [
-        'wanda' => 'checkEmailAgain',
+        'wanda' => 'checkEmailResend',
+      ],
+      'contactEmailOnly' => [
+        'wanda' => 'XXXXXXXXXXXXXX',
+      ],
+      'contactTextMessageOnly' => [
+        'wanda' => 'whatsMobileNumber',
+      ],
+      'contactBoth' => [
+        'wanda' => 'whatsMobileNumber',
+      ],
+      'myMobileNumber' => [
+        'wanda' => 'checkMobileNumber',
+      ],
+      'doneMobileNumber' => [
+        'wanda' => [
+          'validate' => [
+            'validator' => 'mobileNumberVerify',
+            'responses' => [
+              'verified' => 'allDone',
+              'notVerified' => 'checkMobileNumberAgain',
+            ],
+          ],
+        ],
+      ],
+      'resendMobileNumber' => [
+        'wanda' => 'checkMobileNumberResend',
       ],
     ],
 

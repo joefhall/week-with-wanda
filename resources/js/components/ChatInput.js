@@ -1,14 +1,16 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import { connect } from 'react-redux';
+
 import { addMessage, setInput, setUserProperty } from '../actions';
 import { getHistory, getSessionId, respond } from '../api/chat';
-import store from '../store';
 import ChatInputPasswordCreate from './ChatInputPasswordCreate';
+import ChatInputPhone from './ChatInputPhone';
 import ChatInputText from './ChatInputText';
 import ChatMessages from './ChatMessages';
 import LoginFacebook from './LoginFacebook';
 import LoginHidden from './LoginHidden';
+import store from '../store';
 import { toTitleCase } from '../utils/text';
 
 class ChatInput extends React.Component {
@@ -20,20 +22,36 @@ class ChatInput extends React.Component {
   receiveTextInput = inputText => {
     console.log('Input type', this.props.input.type);
     switch(this.props.input.type) {
+      case 'choiceAndText':
+        const userInputKeys = Object.keys(this.props.input.userInput); 
+        this.addAndSendMessage(userInputKeys[userInputKeys.length -1], inputText);
+        break;
+        
       case 'signupEmail':
         store.dispatch(setUserProperty('email', inputText));
         this.addAndSendMessage(Object.keys(this.props.input.userInput)[0], inputText);
         break;
+        
+      case 'signupMobileNumber':
+        store.dispatch(setUserProperty('mobileNumber', inputText));
+        this.addAndSendMessage(Object.keys(this.props.input.userInput)[0], inputText);
+        break;
+        
       case 'signupName':
         inputText = toTitleCase(inputText);
         store.dispatch(setUserProperty('name', inputText));
         this.addAndSendMessage(Object.keys(this.props.input.userInput)[0], inputText);
         break;
+        
       case 'signupPassword':
         const messageId = Object.keys(this.props.input.userInput)[0];        
         store.dispatch(setUserProperty('password', inputText));
         store.dispatch(addMessage(Date.now(), this.props.input.scenario, 'user', messageId, '*'.repeat(inputText.length)));
         respond(this.props.input.scenario, messageId, inputText);
+        break;
+        
+      case 'textAndChoice':
+        this.addAndSendMessage(Object.keys(this.props.input.userInput)[0], inputText);
         break;
     }
   }
@@ -56,9 +74,7 @@ class ChatInput extends React.Component {
     }
   }
 
-  renderInputChoices() {
-    const userInput = this.props.input.userInput;
-
+  renderInputChoices(userInput) {
     return Object.keys(userInput).map((inputId) => {
       return (
         <div className="chat__input__choices__choice" key={inputId} onClick={() => this.addAndSendMessage(inputId, userInput[inputId])}>
@@ -74,13 +90,11 @@ class ChatInput extends React.Component {
     if (this.props.input && this.props.input.type) {
       switch(this.props.input.type) {
         case 'choice':
-          if (this.props.input.userInput) {
-            return (
-              <div className="chat__input__choices">
-                { this.renderInputChoices() }
-              </div>
-            );
-          }
+          return (
+            <div className="chat__input__choices">
+              { this.renderInputChoices(this.props.input.userInput) }
+            </div>
+          );
           break;
           
         case 'doLogin':
@@ -90,12 +104,14 @@ class ChatInput extends React.Component {
           break;
           
         case 'signupChoice':
+          const messageText = 'Sign up with Facebook (quickest)';
+          
           return (
             <div className="chat__input__choices">
-              <a className="chat__input__choices__choice" href={'/login/facebook?state=' + this.state.sessionId} key="signupFacebook" onClick={() => this.addAndSendMessage('signupFacebook', '')}>
-                Sign up with Facebook (recommended)
+              <a className="chat__input__choices__choice" href={'/login/facebook?state=' + this.state.sessionId} key="signupFacebook" onClick={() => this.addAndSendMessage('signupFacebook', messageText)}>
+                {messageText}
               </a>
-              { this.renderInputChoices() }
+              { this.renderInputChoices(this.props.input.userInput) }
             </div>
           );
           break;
@@ -103,6 +119,12 @@ class ChatInput extends React.Component {
         case 'signupEmail':
           return (
             <ChatInputText placeholder="Your email" onFormSubmit={this.receiveTextInput} />
+          );
+          break;
+          
+        case 'signupMobileNumber':
+          return (
+            <ChatInputPhone onFormSubmit={this.receiveTextInput} />
           );
           break;
         
@@ -121,6 +143,21 @@ class ChatInput extends React.Component {
         case 'text':
           return (
             <ChatInputText placeholder="" onFormSubmit={this.receiveTextInput} />
+          );
+          break;
+          
+        case 'textAndChoice':
+          let userInputFiltered = Object.assign({}, this.props.input.userInput);
+          delete userInputFiltered[Object.keys(userInputFiltered)[0]];
+          console.log('User input filtered', userInputFiltered);
+          
+          return (
+            <div>
+              <ChatInputText minLength={7} placeholder="Enter the code I sent you" onFormSubmit={this.receiveTextInput} />
+              <div className="chat__input__choices">
+                { this.renderInputChoices(userInputFiltered) }
+              </div>
+            </div>
           );
           break;
 

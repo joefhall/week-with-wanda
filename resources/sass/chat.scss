@@ -107,23 +107,24 @@
       
       &__choice {
         align-items: center;
-        background-color: white;
+        background-color: $main-colour;
         border: 1px solid $main-colour;
         border-radius: $spacer;
         border-top-right-radius: 0;
-        color: $main-colour;
+        color: white;
         cursor: pointer;
         display: flex;
         margin: $spacer * .75;
         padding: $spacer * .5 $spacer * .75;
         
         &:hover {
-          background-color: lavender;
+          background-color: white;
+          color: $main-colour;
         }
       }
       
       a, a:hover, a:focus, a:visited {
-        color: $main-colour;
+        color: white;
         text-decoration: none;
       }
     }
@@ -147,13 +148,26 @@
         margin: 0 0 0 ($spacer * .5) !important;
       }
       
-      &__text-input {
+      &__input {
+        border-radius: $spacer * .25;
         flex-grow: 1;
         padding: $spacer * .25;
         vertical-align: middle;
         width: calc(100% - (1.18em + #{$spacer * .5}));
       }
     }
+  }
+}
+
+.react-phone-number-input {
+  flex-grow: 1;
+  
+  &__icon {
+    border: none !important;
+    line-height: 0 !important;
+  }
+  &__country-select-arrow {
+    color: black;
   }
 }
 

@@ -10,7 +10,7 @@ class ChatInputPasswordCreate extends React.Component {
   };
 
   validatePasswords = () => {
-    const passwordInputs = document.querySelectorAll('input.chat__input__form__text-input[type="password"]');
+    const passwordInputs = document.querySelectorAll('input.chat__input__form__input[type="password"]');
     
     this.setState({
       errorMessage: '',

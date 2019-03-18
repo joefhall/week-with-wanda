@@ -9,6 +9,7 @@ const sessionId = uuidv4();
 const timeToBeginTyping = 500;
 
 const typingDelay = messageText => {
+  console.log('Typing delay', timeToBeginTyping + (striptags(messageText).length * 50));
   return timeToBeginTyping + (striptags(messageText).length * 50);
 }
 

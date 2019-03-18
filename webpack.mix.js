@@ -13,4 +13,9 @@ let mix = require('laravel-mix');
 
 mix.react('resources/js/index.js', 'public/js')
   .sass('resources/sass/app.scss', 'public/css')
+  .options({
+    postCss: [
+      require('postcss-css-variables')()
+    ]
+   })
   .version();

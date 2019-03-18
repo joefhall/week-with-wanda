@@ -25,15 +25,15 @@ export default class ChatInputText extends React.Component {
   };
   
   componentDidMount() {
-    const textInput = document.querySelectorAll('.chat__input__form__text-input')[0];
+    const textInput = document.querySelectorAll('.chat__input__form__input')[0];
     textInput.focus();
   }
 
  renderInner() {
    return (
      <div className="chat__input__form">
-       <input className="chat__input__form__text-input" name={this.props.name} type={this.props.type || 'text'} placeholder={this.props.placeholder} value={this.state.inputText} onChange={this.onChange} onFocus={this.onFocus} />
-       <i className={(this.props.hideButton ? 'invisible ' : '') + 'chevron circle right icon chat__input__form__submit-button'} name={this.props.name} onClick={this.onFormSubmit}></i>
+       <input className="chat__input__form__input" name={this.props.name} type={this.props.type || 'text'} placeholder={this.props.placeholder} value={this.state.inputText} onChange={this.onChange} onFocus={this.onFocus} />
+       <i className={(this.props.hideButton ? 'invisible ' : '') + 'chevron circle right icon chat__input__form__submit-button'} onClick={this.onFormSubmit}></i>
      </div>
    );
  }

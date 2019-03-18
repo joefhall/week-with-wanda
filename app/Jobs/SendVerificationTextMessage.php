@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-use App\Mail\EmailVerification;
 use App\Repositories\UserRepository;
 use App\User;
 use Illuminate\Bus\Queueable;
@@ -11,9 +10,8 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 
-class SendVerificationEmail implements ShouldQueue
+class SendVerificationTextMessage implements ShouldQueue
 {
   use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -43,11 +41,11 @@ class SendVerificationEmail implements ShouldQueue
    */
   public function handle(UserRepository $userRepository)
   {
-    Log::info('Sending verification email for user id ' . $this->userId);
+    Log::info('Sending verification text message for user id ' . $this->userId);
     
     $user = User::find($this->userId);
-    $token = $userRepository->addVerificationToken($this->userId, 'email');
+    $token = $userRepository->addVerificationToken($this->userId, 'mobile_number');
     
-    Mail::to($user->email)->send(new EmailVerification($user->first_name, $token->uuid));
+    SendTextMessage::dispatch($this->userId, __('texts.verification', ['name' => $user->first_name]) . $token->uuid);
   }
 }

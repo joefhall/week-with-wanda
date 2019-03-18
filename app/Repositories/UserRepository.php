@@ -52,7 +52,7 @@ class UserRepository
    *
    * @param int $userId
    * @param string $field
-   * @param int|string $value
+   * @param bool|int|string $value
    * @return void
    */
   public function updateField(int $userId, string $field, $value) {    
@@ -186,7 +186,7 @@ class UserRepository
   }
   
   /**
-   * Get the user the verification token belongs to.
+   * Add a verification token belonging to the user.
    *
    * @param int $userId
    * @param string $type
@@ -194,10 +194,19 @@ class UserRepository
   public function addVerificationToken(int $userId, string $type)
   {
     $user = User::find($userId);
+    
+    switch ($type) {
+      case 'email':
+        $uuid = (string) Str::uuid();
+        break;
+      case 'mobile_number':
+        $uuid = (string) rand(1000000, 9999999);
+        break;
+    }
 
     $token = $user->verificationTokens()->create([
       'type' => $type,
-      'uuid' => (string) Str::uuid(),
+      'uuid' => $uuid,
     ]);
     
     return $token;

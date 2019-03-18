@@ -3,6 +3,7 @@
 namespace App\Utilities;
 
 use App\User;
+use Carbon\Carbon;
 use Validator;
 
 trait ValidatesChatInput
@@ -57,6 +58,20 @@ trait ValidatesChatInput
         $user = User::find($userId);
         
         if ($user->email_verified_at) {
+          return 'verified';
+        }
+        
+        return 'notVerified';
+        
+        break;
+        
+      case 'mobileNumberVerify':
+        $user = User::find($userId);
+        
+        if ($user->verificationTokens()->where('uuid', $userMessage)->count()) {
+          $user->mobile_number_verified_at = Carbon::now();
+          $user->save();
+          
           return 'verified';
         }
         
