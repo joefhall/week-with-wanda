@@ -12953,10 +12953,14 @@ body {
 }
 
 .chat__input__choices a,
-.chat__input__choices a:hover,
 .chat__input__choices a:focus,
 .chat__input__choices a:visited {
   color: white;
+  text-decoration: none;
+}
+
+.chat__input__choices a:hover {
+  color: darkviolet;
   text-decoration: none;
 }
 
@@ -12967,6 +12971,7 @@ body {
 
 .chat__input__form__error-message {
   font-size: 0.65rem;
+  min-height: 1rem;
 }
 
 .chat__input__form__error-message--has-error {

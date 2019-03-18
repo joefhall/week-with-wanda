@@ -118,7 +118,7 @@ class ChatInput extends React.Component {
 
         case 'signupEmail':
           return (
-            <ChatInputText placeholder="Your email" onFormSubmit={this.receiveTextInput} />
+            <ChatInputText name="email" placeholder="Your email" onFormSubmit={this.receiveTextInput} />
           );
           break;
           
@@ -130,7 +130,7 @@ class ChatInput extends React.Component {
         
         case 'signupName':
           return (
-            <ChatInputText minLength={2} placeholder="Your first name" onFormSubmit={this.receiveTextInput} />
+            <ChatInputText minLength={2} name="first_name" placeholder="Your first name" onFormSubmit={this.receiveTextInput} />
           );
           break;
           

@@ -1,13 +1,35 @@
 import React from 'react';
 
 export default class ChatInputText extends React.Component {
-  state = { inputText: '' };
+  state = { 
+    errorMessage: '',
+    hasError: false,
+    inputText: ''
+  };
+
+  validate = () => {
+    const input = document.querySelectorAll('.chat__input__form__input')[0];
+    
+    this.setState({
+      errorMessage: '',
+      hasError: false
+    });
+    
+    if (this.props.minLength && input.value.length < this.props.minLength) {
+      this.setState({
+        errorMessage: `Please enter at least ${this.props.minLength} characters`,
+        hasError: true
+      });
+    }
+  };
 
   onChange = event => {
     this.setState({inputText: event.target.value});
     if (this.props.onChange) {
       this.props.onChange(event);
     }
+    
+    this.validate();
   };
 
   onFocus = event => {
@@ -19,36 +41,29 @@ export default class ChatInputText extends React.Component {
   onFormSubmit = event => {
     event.preventDefault();
     
-    if (!this.props.minLength || this.state.inputText.length >= this.props.minLength) {
+    this.validate();
+    
+    if (!this.state.errorMessage) {
       this.props.onFormSubmit(this.state.inputText);
     }
   };
   
   componentDidMount() {
-    const textInput = document.querySelectorAll('.chat__input__form__input')[0];
-    textInput.focus();
+    const input = document.querySelectorAll('.chat__input__form__input')[0];
+    input.focus();
   }
-
- renderInner() {
-   return (
-     <div className="chat__input__form">
-       <input className="chat__input__form__input" name={this.props.name} type={this.props.type || 'text'} placeholder={this.props.placeholder} value={this.state.inputText} onChange={this.onChange} onFocus={this.onFocus} />
-       <i className={(this.props.hideButton ? 'invisible ' : '') + 'chevron circle right icon chat__input__form__submit-button'} onClick={this.onFormSubmit}></i>
-     </div>
-   );
- }
 
   render() {
     return (
-      <div>
-        {(!this.props.form || this.props.form === 'true') ? (
-          <form onSubmit={this.onFormSubmit}>
-            {this.renderInner()}
-          </form>
-        ) : (
-          this.renderInner()
-        )}
-      </div>
+      <form onSubmit={this.onFormSubmit}>
+        <div className={(this.state.hasError ? 'chat__input__form__error-message--has-error ' : '') + 'chat__input__form__error-message'}>
+          {this.state.errorMessage}
+        </div>
+        <div className="chat__input__form">
+          <input className="chat__input__form__input" name={this.props.name} type={this.props.type || 'text'} placeholder={this.props.placeholder} value={this.state.inputText} onChange={this.onChange} onFocus={this.onFocus} />
+          <i className={(this.props.hideButton ? 'invisible ' : '') + 'chevron circle right icon chat__input__form__submit-button'} onClick={this.onFormSubmit}></i>
+        </div>
+      </form>
     );
   }
 };

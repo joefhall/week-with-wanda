@@ -123,8 +123,12 @@
         }
       }
       
-      a, a:hover, a:focus, a:visited {
+      a, a:focus, a:visited {
         color: white;
+        text-decoration: none;
+      }
+      a:hover {
+        color: $main-colour;
         text-decoration: none;
       }
     }
@@ -135,6 +139,7 @@
       
       &__error-message {
         font-size: $font-size-xxsm;
+        min-height: $spacer;
         &--has-error {
           color: red;
         }

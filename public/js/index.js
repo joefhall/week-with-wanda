@@ -64954,6 +64954,7 @@ function (_React$Component) {
 
           case 'signupEmail':
             return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_7__["default"], {
+              name: "email",
               placeholder: "Your email",
               onFormSubmit: this.receiveTextInput
             });
@@ -64968,6 +64969,7 @@ function (_React$Component) {
           case 'signupName':
             return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_7__["default"], {
               minLength: 2,
+              name: "first_name",
               placeholder: "Your first name",
               onFormSubmit: this.receiveTextInput
             });
@@ -65044,7 +65046,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _ChatInputText__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ChatInputText */ "./resources/js/components/ChatInputText.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65062,7 +65063,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -65087,7 +65087,8 @@ function (_React$Component) {
     _this.state = {
       errorMessage: 'Enter a password',
       hasError: false,
-      inputText: ''
+      password: '',
+      passwordConfirm: ''
     };
 
     _this.validatePasswords = function () {
@@ -65100,7 +65101,7 @@ function (_React$Component) {
 
       if (!passwordInputs[0].value || passwordInputs[0].value.length < 5) {
         _this.setState({
-          errorMessage: 'Enter a password',
+          errorMessage: 'Enter a password, at least 5 characters long',
           hasError: false
         });
       } else if (passwordInputs[0].value.length >= 5 && !passwordInputs[1].value) {
@@ -65117,18 +65118,23 @@ function (_React$Component) {
     };
 
     _this.onChange = function (event) {
+      var passwordInputs = document.querySelectorAll('input.chat__input__form__input[type="password"]');
+
       _this.setState({
-        inputText: event.target.value
+        password: passwordInputs[0].value,
+        passwordConfirm: passwordInputs[1].value
       });
 
       _this.validatePasswords();
     };
 
     _this.onFormSubmit = function (event) {
+      event.preventDefault();
+
       _this.validatePasswords();
 
       if (!_this.state.errorMessage) {
-        _this.props.onFormSubmit(_this.state.inputText);
+        _this.props.onFormSubmit(_this.state.password);
       }
     };
 
@@ -65138,21 +65144,38 @@ function (_React$Component) {
   _createClass(ChatInputPasswordCreate, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: (this.state.errorMessage ? '' : 'd-none ') + (this.state.hasError ? 'chat__input__form__error-message--has-error ' : '') + 'chat__input__form__error-message'
-      }, this.state.errorMessage), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        hideButton: "true",
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.onFormSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: (this.state.hasError ? 'chat__input__form__error-message--has-error ' : '') + 'chat__input__form__error-message'
+      }, this.state.errorMessage), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chat__input__form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "chat__input__form__input",
+        name: "password",
+        type: "password",
         placeholder: "Password",
-        type: "password",
+        value: this.state.password,
         onChange: this.onChange,
-        onFocus: this.onChange,
-        onFormSubmit: this.onFormSubmit
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        onFocus: this.onFocus
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "invisible chevron circle right icon chat__input__form__submit-button"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chat__input__form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "chat__input__form__input",
+        name: "password-confirm",
+        type: "password",
         placeholder: "Confirm password",
-        type: "password",
+        value: this.state.passwordConfirm,
         onChange: this.onChange,
-        onFocus: this.onChange,
-        onFormSubmit: this.onFormSubmit
+        onFocus: this.onFocus
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "chevron circle right icon chat__input__form__submit-button",
+        onClick: this.onFormSubmit
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "d-none",
+        type: "submit"
       }));
     }
   }]);
@@ -65370,7 +65393,25 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ChatInputText)).call.apply(_getPrototypeOf2, [this].concat(args)));
     _this.state = {
+      errorMessage: '',
+      hasError: false,
       inputText: ''
+    };
+
+    _this.validate = function () {
+      var input = document.querySelectorAll('.chat__input__form__input')[0];
+
+      _this.setState({
+        errorMessage: '',
+        hasError: false
+      });
+
+      if (_this.props.minLength && input.value.length < _this.props.minLength) {
+        _this.setState({
+          errorMessage: "Please enter at least ".concat(_this.props.minLength, " characters"),
+          hasError: true
+        });
+      }
     };
 
     _this.onChange = function (event) {
@@ -65381,6 +65422,8 @@ function (_React$Component) {
       if (_this.props.onChange) {
         _this.props.onChange(event);
       }
+
+      _this.validate();
     };
 
     _this.onFocus = function (event) {
@@ -65392,7 +65435,9 @@ function (_React$Component) {
     _this.onFormSubmit = function (event) {
       event.preventDefault();
 
-      if (!_this.props.minLength || _this.state.inputText.length >= _this.props.minLength) {
+      _this.validate();
+
+      if (!_this.state.errorMessage) {
         _this.props.onFormSubmit(_this.state.inputText);
       }
     };
@@ -65403,13 +65448,17 @@ function (_React$Component) {
   _createClass(ChatInputText, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var textInput = document.querySelectorAll('.chat__input__form__input')[0];
-      textInput.focus();
+      var input = document.querySelectorAll('.chat__input__form__input')[0];
+      input.focus();
     }
   }, {
-    key: "renderInner",
-    value: function renderInner() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.onFormSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: (this.state.hasError ? 'chat__input__form__error-message--has-error ' : '') + 'chat__input__form__error-message'
+      }, this.state.errorMessage), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat__input__form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "chat__input__form__input",
@@ -65422,14 +65471,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: (this.props.hideButton ? 'invisible ' : '') + 'chevron circle right icon chat__input__form__submit-button',
         onClick: this.onFormSubmit
-      }));
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, !this.props.form || this.props.form === 'true' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.onFormSubmit
-      }, this.renderInner()) : this.renderInner());
+      })));
     }
   }]);
 
