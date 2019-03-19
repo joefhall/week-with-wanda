@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\User;
+use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -185,6 +186,47 @@ class UserRepository
     $user->save();
   }
   
+  /**
+   * Store the chat history in the user's record.
+   *
+   * @param int $userId
+   * @param string $currentScenario
+   * @param string $userMessageId
+   * @param string $userMessage
+   * @param array $response
+   * @return string
+   */
+  public function storeChatHistory(
+    int $userId,
+    string $currentScenario,
+    string $userMessageId,
+    string $userMessage = null,
+    array $response
+  )
+  {
+    if (!($currentScenario === 'welcomeSignup' && $userMessageId === 'begin')) {
+      $this->addToChatHistory($userId, [
+        'sender' => 'user',
+        'scenario' => $currentScenario,
+        'id' => $userMessageId,
+        'message' => $userMessage,
+        'time' => Carbon::now()->timestamp,
+      ]);
+    }
+
+    if (!array_has($response, 'error')) {
+      $this->addToChatHistory($userId, [
+        'sender' => 'wanda',
+        'scenario' => array_get($response, 'scenario'),
+        'id' => key(array_get($response, 'wanda')),
+        'message' => current(array_get($response, 'wanda')),
+        'type' => array_get($response, 'type'),
+        'userInput' => array_get($response, 'user'),
+        'time' => Carbon::now()->timestamp + 1,
+      ]);
+    }
+  }
+
   /**
    * Add a verification token belonging to the user.
    *
