@@ -43,7 +43,8 @@ class ChatController extends Controller
     $currentScenario = $request->input('scenario');
     $userMessageId = $request->input('user');
     $userMessage = $request->input('message');
-    $response = $this->getResponse($user, $currentScenario, $userMessageId, $userMessage);
+    $requiresResponse = $request->input('requiresResponse');
+    $response = $this->getResponse($user, $currentScenario, $userMessageId, $userMessage, $requiresResponse);
     
     $this->userRepository->storeChatHistory($user->id, $currentScenario, $userMessageId, $userMessage, $response);
     $this->doSpecialMessageActions($user->id, $request, $userMessageId, $userMessage, $response);

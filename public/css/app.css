@@ -12943,13 +12943,23 @@ body {
   color: white;
   cursor: pointer;
   display: flex;
-  margin: 0.75rem;
+  margin: 0.25rem;
   padding: 0.5rem 0.75rem;
 }
 
 .chat__input__choices__choice:hover {
   background-color: white;
   color: darkviolet;
+}
+
+.chat__input__choices__choice--selected {
+  background-color: darkviolet !important;
+  color: white !important;
+}
+
+.chat__input__choices__choice--unselected {
+  background-color: white !important;
+  color: darkviolet !important;
 }
 
 .chat__input__choices a,
@@ -13007,23 +13017,6 @@ body {
   color: black;
 }
 
-@-webkit-keyframes typing {
-  0% {
-    background-color: white;
-    box-shadow: 12px 0px 0px 0px rgba(255, 255, 255, 0.4), 24px 0px 0px 0px rgba(255, 255, 255, 0.2);
-  }
-
-  50% {
-    background-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 12px 0px 0px 0px white, 24px 0px 0px 0px rgba(255, 255, 255, 0.4);
-  }
-
-  100% {
-    background-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 12px 0px 0px 0px rgba(255, 255, 255, 0.4), 24px 0px 0px 0px white;
-  }
-}
-
 @-webkit-keyframes typing-black {
   0% {
     background-color: #4a4a4a;
@@ -13055,23 +13048,6 @@ body {
   100% {
     background-color: rgba(74, 74, 74, 0.2);
     box-shadow: 12px 0px 0px 0px rgba(74, 74, 74, 0.4), 24px 0px 0px 0px #4a4a4a;
-  }
-}
-
-@keyframes typing {
-  0% {
-    background-color: white;
-    box-shadow: 12px 0px 0px 0px rgba(255, 255, 255, 0.4), 24px 0px 0px 0px rgba(255, 255, 255, 0.2);
-  }
-
-  50% {
-    background-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 12px 0px 0px 0px white, 24px 0px 0px 0px rgba(255, 255, 255, 0.4);
-  }
-
-  100% {
-    background-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 12px 0px 0px 0px rgba(255, 255, 255, 0.4), 24px 0px 0px 0px white;
   }
 }
 

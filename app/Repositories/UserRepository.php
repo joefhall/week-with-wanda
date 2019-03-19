@@ -6,6 +6,7 @@ use App\User;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -205,6 +206,8 @@ class UserRepository
   )
   {
     if (!($currentScenario === 'welcomeSignup' && $userMessageId === 'begin')) {
+      Log::info("Storing chat history - user($userId), scenario($currentScenario), userMessage($userMessageId)");
+      
       $this->addToChatHistory($userId, [
         'sender' => 'user',
         'scenario' => $currentScenario,
@@ -214,11 +217,14 @@ class UserRepository
       ]);
     }
 
-    if (!array_has($response, 'error')) {
+    if ($response && array_get($response, 'wanda') && !array_has($response, 'error')) {
+      $wandaMessageId = key(array_get($response, 'wanda'));
+      Log::info("Storing chat history - user($userId), scenario($currentScenario), wandaMessage($wandaMessageId)");
+      
       $this->addToChatHistory($userId, [
         'sender' => 'wanda',
         'scenario' => array_get($response, 'scenario'),
-        'id' => key(array_get($response, 'wanda')),
+        'id' => $wandaMessageId,
         'message' => current(array_get($response, 'wanda')),
         'type' => array_get($response, 'type'),
         'userInput' => array_get($response, 'user'),

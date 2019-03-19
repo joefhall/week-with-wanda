@@ -15,9 +15,9 @@ import store from '../store';
 import { toTitleCase } from '../utils/text';
 
 class ChatInput extends React.Component {
-  addAndSendMessage = (messageId, message) => {
-    store.dispatch(addMessage(Date.now(), this.props.input.scenario, 'user', messageId, message));
-    respond(this.props.input.scenario, messageId, message);
+  addAndSendMessage = (messageId, message, scenario = this.props.input.scenario, requiresResponse = true) => {
+    store.dispatch(addMessage(Date.now(), scenario, 'user', messageId, message));
+    respond(scenario, messageId, message, requiresResponse);
   };
 
   receiveTextInput = inputText => {
@@ -83,6 +83,12 @@ class ChatInput extends React.Component {
         case 'choice':
           return (
             <ChatInputChoices onClick={this.addAndSendMessage} userInput={this.props.input.userInput} />
+          );
+          break;
+          
+        case 'choiceMulti':
+          return (
+            <ChatInputChoices onFormSubmit={this.addAndSendMessage} scenario={this.props.input.scenario} sessionId={this.state.sessionId} type={this.props.input.type} userInput={this.props.input.userInput} />
           );
           break;
           

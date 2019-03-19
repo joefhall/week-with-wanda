@@ -19,14 +19,15 @@ const showResponse = (responseData, wandaMessageId, wandaMessage) => {
   store.dispatch(setInput(responseData.scenario, responseData.type, responseData.user));
 }
 
-export const respond = async (scenario, messageId, message) => {
+export const respond = async (scenario, messageId, message, requiresResponse = true) => {
   console.log('Trying to send user response');
   
   const sendData = {
     session: sessionId,
     scenario: scenario,
     user: messageId,
-    message: message
+    message: message,
+    requiresResponse: requiresResponse
   };
   
   console.log('Send data', sendData);
@@ -39,11 +40,13 @@ export const respond = async (scenario, messageId, message) => {
     } else {
       console.log('Message response:', response.data);
       
-      const wandaMessageId = Object.keys(response.data.wanda)[0];
-      const wandaMessage = response.data.wanda[wandaMessageId];
-      
-      setTimeout(store.dispatch, timeToBeginTyping, setTyping(true));
-      setTimeout(showResponse, typingDelay(wandaMessage), response.data, wandaMessageId, wandaMessage);
+      if (response.data.wanda) {
+        const wandaMessageId = Object.keys(response.data.wanda)[0];
+        const wandaMessage = response.data.wanda[wandaMessageId];
+
+        setTimeout(store.dispatch, timeToBeginTyping, setTyping(true));
+        setTimeout(showResponse, typingDelay(wandaMessage), response.data, wandaMessageId, wandaMessage);
+      }
     }
   } catch(error) {
     console.log(`An error occured getting Wanda's response back from the server: ${error}`);

@@ -19,10 +19,17 @@ trait GetsResponse
    * @param string $scenario
    * @param string $userInput
    * @param string $userMessage
+   * @param bool $requiresResponse
    * @return array
    */
-  public function getResponse(User $user, string $scenario, string $userInput, string $userMessage = null)
+  public function getResponse(User $user, string $scenario, string $userInput, string $userMessage = null, bool $requiresResponse)
   {
+    if (!$requiresResponse) {
+      return [
+        'scenario' => $scenario,
+      ];
+    }
+    
     $nextWanda = $this->getNextWanda($scenario, $userInput);
     if (is_array($nextWanda) && array_has($nextWanda, 'validate')) {
       $nextWanda = $this->validateUserInputAndGetNextWanda($user->id, $scenario, $userInput, $userMessage, $nextWanda);
@@ -41,12 +48,12 @@ trait GetsResponse
     if ($user && $nextWanda && $nextScenario && $nextScenarioAllowed && $nextInteraction) {
       $response = [
         'scenario' => $nextScenario,
-        'wanda' => [
+        'wanda' => $requiresResponse ? [
           $nextWanda => $nextWandaMessage
-        ],
-        'emotion' => array_get($nextInteraction, 'emotion'),
-        'type' => array_get($nextInteraction, 'type'),
-        'user' => $nextUserMessages,
+        ] : [],
+        'emotion' => $requiresResponse ? array_get($nextInteraction, 'emotion') : null,
+        'type' => $requiresResponse ? array_get($nextInteraction, 'type') : null,
+        'user' => $requiresResponse ? $nextUserMessages : null,
       ];
     } else {
       if (!$user) {

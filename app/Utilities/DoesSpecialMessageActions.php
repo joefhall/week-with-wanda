@@ -45,10 +45,19 @@ trait DoesSpecialMessageActions
     $wandaResponse = array_get($response, 'wanda');
     $wandaMessageId = $wandaResponse ? array_keys($wandaResponse)[0] : null;
     
-    Log::info("Checking for special message user actions - user($userId), scenario($scenario), wanda($wandaMessageId)");
+    Log::info("Checking for special message user actions - user($userId), scenario($scenario), wandaMessage($wandaMessageId), userMessage($userMessageId)");
     
     switch ($scenario) {
       case 'welcomeSignup':
+        if ($userMessageId === 'betterHealth') {
+          $this->userRepository->updateField($userId, 'better_health', true);
+        }
+        if ($userMessageId === 'betterWealth') {
+          $this->userRepository->updateField($userId, 'better_wealth', true);
+        }
+        if ($userMessageId === 'betterRelationships') {
+          $this->userRepository->updateField($userId, 'better_relationships', true);
+        }
         if ($userMessageId === 'signupPasswordNone') {
           $this->userRepository->register($userId, $userMessage, $request->ip());
         }

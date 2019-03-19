@@ -64369,50 +64369,60 @@ function () {
   var _ref = _asyncToGenerator(
   /*#__PURE__*/
   _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(scenario, messageId, message) {
-    var sendData, response, wandaMessageId, wandaMessage;
+    var requiresResponse,
+        sendData,
+        response,
+        wandaMessageId,
+        wandaMessage,
+        _args = arguments;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
+            requiresResponse = _args.length > 3 && _args[3] !== undefined ? _args[3] : true;
             console.log('Trying to send user response');
             sendData = {
               session: sessionId,
               scenario: scenario,
               user: messageId,
-              message: message
+              message: message,
+              requiresResponse: requiresResponse
             };
             console.log('Send data', sendData);
-            _context.prev = 3;
-            _context.next = 6;
+            _context.prev = 4;
+            _context.next = 7;
             return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/respond', sendData);
 
-          case 6:
+          case 7:
             response = _context.sent;
 
             if (response.data.error) {
               console.log("An error occured getting Wanda's response back from the server: ".concat(response.data.error));
             } else {
               console.log('Message response:', response.data);
-              wandaMessageId = Object.keys(response.data.wanda)[0];
-              wandaMessage = response.data.wanda[wandaMessageId];
-              setTimeout(_store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch, timeToBeginTyping, Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setTyping"])(true));
-              setTimeout(showResponse, typingDelay(wandaMessage), response.data, wandaMessageId, wandaMessage);
+
+              if (response.data.wanda) {
+                wandaMessageId = Object.keys(response.data.wanda)[0];
+                wandaMessage = response.data.wanda[wandaMessageId];
+                setTimeout(_store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch, timeToBeginTyping, Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setTyping"])(true));
+                setTimeout(showResponse, typingDelay(wandaMessage), response.data, wandaMessageId, wandaMessage);
+              }
             }
 
-            _context.next = 13;
+            _context.next = 14;
             break;
 
-          case 10:
-            _context.prev = 10;
-            _context.t0 = _context["catch"](3);
+          case 11:
+            _context.prev = 11;
+            _context.t0 = _context["catch"](4);
             console.log("An error occured getting Wanda's response back from the server: ".concat(_context.t0));
 
-          case 13:
+          case 14:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, this, [[3, 10]]);
+    }, _callee, this, [[4, 11]]);
   }));
 
   return function respond(_x, _x2, _x3) {
@@ -64825,8 +64835,11 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ChatInput)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _this.addAndSendMessage = function (messageId, message) {
-      _store__WEBPACK_IMPORTED_MODULE_12__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["addMessage"])(Date.now(), _this.props.input.scenario, 'user', messageId, message));
-      Object(_api_chat__WEBPACK_IMPORTED_MODULE_4__["respond"])(_this.props.input.scenario, messageId, message);
+      var scenario = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _this.props.input.scenario;
+      var requiresResponse = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+      console.log('Scenario is...', _this.props.input.scenario);
+      _store__WEBPACK_IMPORTED_MODULE_12__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["addMessage"])(Date.now(), scenario, 'user', messageId, message));
+      Object(_api_chat__WEBPACK_IMPORTED_MODULE_4__["respond"])(scenario, messageId, message, requiresResponse);
     };
 
     _this.receiveTextInput = function (inputText) {
@@ -64914,6 +64927,16 @@ function (_React$Component) {
           case 'choice':
             return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputChoices__WEBPACK_IMPORTED_MODULE_5__["default"], {
               onClick: this.addAndSendMessage,
+              userInput: this.props.input.userInput
+            });
+            break;
+
+          case 'choiceMulti':
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputChoices__WEBPACK_IMPORTED_MODULE_5__["default"], {
+              onFormSubmit: this.addAndSendMessage,
+              scenario: this.props.input.scenario,
+              sessionId: this.state.sessionId,
+              type: this.props.input.type,
               userInput: this.props.input.userInput
             });
             break;
@@ -65068,56 +65091,82 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ChatInputChoices)).call.apply(_getPrototypeOf2, [this].concat(args)));
     _this.state = {
-      errorMessage: '',
+      errorMessage: _this.props.type && _this.props.type === 'choiceMulti' ? 'Please choose one or more - or all!' : '',
       hasError: false,
       inputText: ''
     };
 
     _this.validate = function () {
-      var input = document.querySelectorAll('.chat__input__form__input')[0];
-
       _this.setState({
         errorMessage: '',
         hasError: false
       });
 
-      if (_this.props.minLength && input.value.length < _this.props.minLength) {
-        _this.setState({
-          errorMessage: "Please enter at least ".concat(_this.props.minLength, " characters"),
-          hasError: true
-        });
+      if (_this.props.type && _this.props.type === 'choiceMulti') {
+        var selectedChoices = document.querySelectorAll('.chat__input__choices__choice--selected');
+
+        if (!selectedChoices.length) {
+          _this.setState({
+            errorMessage: 'Please choose one or more',
+            hasError: true
+          });
+        }
       }
-    };
-
-    _this.onChange = function (event) {
-      _this.setState({
-        inputText: event.target.value
-      });
-
-      if (_this.props.onChange) {
-        _this.props.onChange(event);
-      }
-
-      _this.validate();
     };
 
     _this.onClick = function (inputId, userInputSelected) {
-      _this.props.onClick(inputId, userInputSelected);
-    };
+      if (_this.props.type && _this.props.type === 'choiceMulti') {
+        var choiceDiv = document.querySelector('#' + inputId);
+        var classSelected = 'chat__input__choices__choice--selected';
+        var classUnselected = 'chat__input__choices__choice--unselected';
 
-    _this.onFocus = function (event) {
-      if (_this.props.onFocus) {
-        _this.props.onFocus(event);
+        if (choiceDiv.classList.contains(classUnselected)) {
+          choiceDiv.classList.remove(classUnselected);
+          choiceDiv.classList.add(classSelected);
+        } else {
+          choiceDiv.classList.remove(classSelected);
+          choiceDiv.classList.add(classUnselected);
+        }
       }
-    };
-
-    _this.onFormSubmit = function (event) {
-      event.preventDefault();
 
       _this.validate();
 
+      if (_this.props.onClick) {
+        _this.props.onClick(inputId, userInputSelected);
+      }
+    };
+
+    _this.onFormSubmit = function () {
+      _this.validate();
+
       if (!_this.state.errorMessage) {
-        _this.props.onFormSubmit(_this.state.inputText);
+        var selectedChoices = document.querySelectorAll('.chat__input__choices__choice--selected');
+        var count = 1;
+        console.log('Submitting multi choice', 'Scenario...', _this.props.scenario);
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = selectedChoices[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var selectedChoice = _step.value;
+            setTimeout(_this.props.onFormSubmit, count * 500, selectedChoice.id, selectedChoice.innerText, _this.props.scenario, count === selectedChoices.length);
+            count++;
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return != null) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
       }
     };
 
@@ -65125,9 +65174,6 @@ function (_React$Component) {
   }
 
   _createClass(ChatInputChoices, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {}
-  }, {
     key: "renderBefore",
     value: function renderBefore() {
       var _this2 = this;
@@ -65147,14 +65193,26 @@ function (_React$Component) {
       }
     }
   }, {
+    key: "renderButton",
+    value: function renderButton() {
+      if (this.props.type && this.props.type === 'choiceMulti') {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "chevron circle right icon chat__input__form__submit-button",
+          onClick: this.onFormSubmit
+        });
+      }
+    }
+  }, {
     key: "renderChoices",
     value: function renderChoices(userInput) {
       var _this3 = this;
 
+      var choiceMulti = this.props.type && this.props.type === 'choiceMulti';
       return Object.keys(userInput).map(function (inputId) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "chat__input__choices__choice",
+          className: 'chat__input__choices__choice' + (choiceMulti ? ' chat__input__choices__choice--unselected' : ''),
           key: inputId,
+          id: inputId,
           onClick: function onClick() {
             return _this3.onClick(inputId, userInput[inputId]);
           }
@@ -65167,8 +65225,10 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: (this.state.hasError ? 'chat__input__form__error-message--has-error ' : '') + 'chat__input__form__error-message'
       }, this.state.errorMessage), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chat__input__form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat__input__choices"
-      }, this.renderBefore(), this.renderChoices(this.props.userInput)));
+      }, this.renderBefore(), this.renderChoices(this.props.userInput)), this.renderButton()));
     }
   }]);
 
@@ -65749,6 +65809,11 @@ function (_React$Component) {
 
           if (index > 0) {
             var previousTime = messages[index - 1].time;
+
+            if (message.time === previousTime) {
+              message.time = message.time + 1;
+            }
+
             previousDay = new Date(previousTime).getDay();
             previousDate = new Date(previousTime).getDate();
           }

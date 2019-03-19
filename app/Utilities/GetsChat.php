@@ -81,7 +81,7 @@ trait GetsChat
     $userMessages = [];
     $type = array_get($interaction, 'type');
     
-    if (in_array($type, ['choice', 'choiceAndText', 'signupChoice', 'textAndChoice'])) {
+    if (!in_array($type, ['doLogin', 'none', 'signupEmail', 'signupMobileNumber', 'signupName', 'signupPassword', 'text'])) {
       foreach (array_get($interaction, 'user') as $userResponse) {
         $userMessages[$userResponse] = $this->getUserChat($scenario, $userResponse);
       }

@@ -25,6 +25,9 @@ class User extends Authenticatable
    * @var array
    */
   protected $fillable = [
+    'better_health',
+    'better_wealth',
+    'better_relationships',
     'chat_history',
     'email',
     'email_verified_at',

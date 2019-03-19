@@ -57,6 +57,9 @@ class ChatMessages extends React.Component {
         let previousDate = null;
         if (index > 0) {
           const previousTime = messages[index -1].time;
+          if (message.time === previousTime) {
+            message.time = message.time + 1;
+          }
           previousDay = new Date(previousTime).getDay();
           previousDate = new Date(previousTime).getDate();
         }

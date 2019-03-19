@@ -21,6 +21,14 @@ return [
           'hi',
         ],
       ],
+      'howLifeBetter' => [
+        'type' => 'choiceMulti',
+        'user' => [
+          'betterHealth',
+          'betterWealth',
+          'betterRelationships',
+        ],
+      ],
       'whatWantDo' => [
         'type' => 'choice',
         'user' => [
@@ -107,9 +115,18 @@ return [
         'wanda' => 'hello',
       ],
       'hello' => [
-        'wanda' => 'whatWantDo',
+        'wanda' => 'howLifeBetter',
       ],
       'hi' => [
+        'wanda' => 'howLifeBetter',
+      ],
+      'betterHealth' => [
+        'wanda' => 'whatWantDo',
+      ],
+      'betterWealth' => [
+        'wanda' => 'whatWantDo',
+      ],
+      'betterRelationships' => [
         'wanda' => 'whatWantDo',
       ],
       'signMeUp' => [

@@ -12,6 +12,7 @@ return [
   
     'wanda' => [
       'hello' => 'Well hi there!',
+      'howLifeBetter' => 'How do you want your life to be better?',
       'whatWantDo' => 'What do you feel like doing?',
       'moreInfo' => 
         "I'm a super AI bot from the future. 
@@ -33,6 +34,9 @@ return [
     'user' => [
       'hello' => 'Hello, nice to meet you!',
       'hi' => 'Hi Wanda!',
+      'betterHealth' => "Better health",
+      'betterWealth' => "More wealth",
+      'betterRelationships' => "Better relationships",
       'signMeUp' => "Sign me up",
       'signupRegular' => "Sign up the old-fashioned way",
       'findOutMore' => "I'd like to find out more",

@@ -114,12 +114,21 @@
         color: white;
         cursor: pointer;
         display: flex;
-        margin: $spacer * .75;
+        margin: $spacer * .25;
         padding: $spacer * .5 $spacer * .75;
         
         &:hover {
           background-color: white;
           color: $main-colour;
+        }
+        
+        &--selected {
+          background-color: $main-colour !important;
+          color: white !important;
+        }
+        &--unselected {
+          background-color: white !important;
+          color: $main-colour !important;
         }
       }
       
@@ -176,62 +185,17 @@
   }
 }
 
-@-webkit-keyframes typing {
+@keyframes typing-black {
   0% {
-    background-color: rgba(255,255,255, 1);
-    box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.4), 24px 0px 0px 0px rgba(255,255,255,0.2);
+    background-color: rgba(74, 74, 74, 1);
+    box-shadow: 12px 0px 0px 0px rgba(74, 74, 74, 0.4), 24px 0px 0px 0px rgba(74, 74, 74, 0.2);
   }
   50% {
-    background-color: rgba(255,255,255, 0.4);
-    box-shadow: 12px 0px 0px 0px rgba(255,255,255,1), 24px 0px 0px 0px rgba(255,255,255,0.4);
+    background-color: rgba(74, 74, 74, 0.4);
+    box-shadow: 12px 0px 0px 0px rgba(74, 74, 74, 1), 24px 0px 0px 0px rgba(74, 74, 74,0.4);
   }
   100% {
-    background-color: rgba(255,255,255, 0.2);
-    box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.4), 24px 0px 0px 0px rgba(255,255,255,1);
+    background-color: rgba(74, 74, 74, 0.2);
+    box-shadow: 12px 0px 0px 0px rgba(74, 74, 74,0.4), 24px 0px 0px 0px rgba(74, 74, 74,1);
   }
-}
-
-@-moz-keyframes typing {
-    0% {
-      background-color: rgba(255,255,255, 1);
-      box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.4), 24px 0px 0px 0px rgba(255,255,255,0.2);
-    }
-    50% {
-      background-color: rgba(255,255,255, 0.4);
-      box-shadow: 12px 0px 0px 0px rgba(255,255,255,1), 24px 0px 0px 0px rgba(255,255,255,0.4);
-    }
-    100% {
-      background-color: rgba(255,255,255, 0.2);
-      box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.4), 24px 0px 0px 0px rgba(255,255,255,1);
-    }
-}
-
-@keyframes typing-black {
-    0% {
-      background-color: rgba(74, 74, 74, 1);
-      box-shadow: 12px 0px 0px 0px rgba(74, 74, 74, 0.4), 24px 0px 0px 0px rgba(74, 74, 74, 0.2);
-    }
-    50% {
-      background-color: rgba(74, 74, 74, 0.4);
-      box-shadow: 12px 0px 0px 0px rgba(74, 74, 74, 1), 24px 0px 0px 0px rgba(74, 74, 74,0.4);
-    }
-    100% {
-      background-color: rgba(74, 74, 74, 0.2);
-      box-shadow: 12px 0px 0px 0px rgba(74, 74, 74,0.4), 24px 0px 0px 0px rgba(74, 74, 74,1);
-    }
-}
-
-@keyframes typing {
-    0% {
-      background-color: rgba(255,255,255, 1);
-      box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.4), 24px 0px 0px 0px rgba(255,255,255,0.2);
-    }
-    50% {
-      background-color: rgba(255,255,255, 0.4);
-      box-shadow: 12px 0px 0px 0px rgba(255,255,255,1), 24px 0px 0px 0px rgba(255,255,255,0.4);
-    }
-    100% {
-      background-color: rgba(255,255,255, 0.2);
-      box-shadow: 12px 0px 0px 0px rgba(255,255,255,0.4), 24px 0px 0px 0px rgba(255,255,255,1);
-    }
 }
