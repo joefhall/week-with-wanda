@@ -21,25 +21,26 @@ return [
           'hi',
         ],
       ],
+      'whatWantDo' => [
+        'type' => 'choice',
+        'user' => [
+          'getStarted',
+          'findOutMore',
+          'logBackIn',
+        ],
+      ],
+      'moreInfo' => [
+        'type' => 'choice',
+        'user' => [
+          'makeLifeBetter',
+        ],
+      ],
       'howLifeBetter' => [
         'type' => 'choiceMulti',
         'user' => [
           'betterHealth',
           'betterWealth',
           'betterRelationships',
-        ],
-      ],
-      'whatWantDo' => [
-        'type' => 'choice',
-        'user' => [
-          'signMeUp',
-          'findOutMore',
-        ],
-      ],
-      'moreInfo' => [
-        'type' => 'choice',
-        'user' => [
-          'signMeUp',
         ],
       ],
       'signupChoice' => [
@@ -115,19 +116,28 @@ return [
         'wanda' => 'hello',
       ],
       'hello' => [
-        'wanda' => 'howLifeBetter',
+        'wanda' => 'whatWantDo',
       ],
       'hi' => [
+        'wanda' => 'whatWantDo',
+      ],
+      'getStarted' => [
+        'wanda' => 'howLifeBetter',
+      ],
+      'makeLifeBetter' => [
         'wanda' => 'howLifeBetter',
       ],
       'betterHealth' => [
-        'wanda' => 'whatWantDo',
+        'wanda' => 'signupChoice',
       ],
       'betterWealth' => [
-        'wanda' => 'whatWantDo',
+        'wanda' => 'signupChoice',
       ],
       'betterRelationships' => [
-        'wanda' => 'whatWantDo',
+        'wanda' => 'signupChoice',
+      ],
+      'logBackIn' => [
+        'wanda' => 'logBackInNone',
       ],
       'signMeUp' => [
         'wanda' => 'signupChoice',

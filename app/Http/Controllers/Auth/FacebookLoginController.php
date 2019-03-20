@@ -85,19 +85,17 @@ class FacebookLoginController extends Controller
         if ($authUser) {
           $authUser->facebook_id = $facebookUser->id;
           $authUser->save();
-          
-          return $authUser;
+        } else {
+          $authUser = User::where('session_id', $request->input('state'))->first();
+          $authUser->first_name = $facebookUser->user['first_name'];
+          $authUser->email = $facebookUser->email;
+          $authUser->email_verified_at = Carbon::now();
+          $authUser->facebook_id = $facebookUser->id;
+          $authUser->userRepository->storeProfilePic($authUser->id, $facebookUser->avatar_original);
+          $authUser->userRepository->storeCountryFromIp($authUser->id, $request->ip());
         }
       }
       
-      $user = User::where('session_id', $request->input('state'))->first();
-      $user->first_name = $facebookUser->user['first_name'];
-      $user->email = $facebookUser->email;
-      $user->email_verified_at = Carbon::now();
-      $user->facebook_id = $facebookUser->id;
-      $this->userRepository->storeProfilePic($user->id, $facebookUser->avatar_original);
-      $this->userRepository->storeCountryFromIp($user->id, $request->ip());
-      
-      return $user;
+      return $authUser;
     }
 }

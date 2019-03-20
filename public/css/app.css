@@ -12901,11 +12901,25 @@ body {
   text-align: right;
 }
 
+.chat__messages__message__bubble--user a,
+.chat__messages__message__bubble--user a:hover,
+.chat__messages__message__bubble--user a:focus,
+.chat__messages__message__bubble--user a:visited {
+  color: white;
+}
+
 .chat__messages__message__bubble--wanda {
   background-color: linen;
   border-top-left-radius: 0;
   color: black;
   text-align: left;
+}
+
+.chat__messages__message__bubble--wanda a,
+.chat__messages__message__bubble--wanda a:hover,
+.chat__messages__message__bubble--wanda a:focus,
+.chat__messages__message__bubble--wanda a:visited {
+  color: black;
 }
 
 .chat__messages__message__bubble__image {
@@ -12914,13 +12928,57 @@ body {
   width: calc(100% + (1rem * 1.4));
 }
 
+.chat__messages__message a,
+.chat__messages__message a:focus,
+.chat__messages__message a:visited {
+  text-decoration: none;
+}
+
+.chat__messages__message a:hover {
+  text-decoration: none;
+}
+
 .chat__messages__typing__indicator {
-  -webkit-animation: typing-black 1s linear infinite alternate;
-  animation: typing-black 1s linear infinite alternate;
+  -webkit-animation: typing 1s linear infinite alternate;
+  animation: typing 1s linear infinite alternate;
   border-radius: 50%;
   height: 6px;
   margin: 7px 15px 6px;
   width: 6px;
+}
+
+@-webkit-keyframes typing {
+  0% {
+    background-color: #4a4a4a;
+    box-shadow: 12px 0px 0px 0px rgba(74, 74, 74, 0.4), 24px 0px 0px 0px rgba(74, 74, 74, 0.2);
+  }
+
+  50% {
+    background-color: rgba(74, 74, 74, 0.4);
+    box-shadow: 12px 0px 0px 0px #4a4a4a, 24px 0px 0px 0px rgba(74, 74, 74, 0.4);
+  }
+
+  100% {
+    background-color: rgba(74, 74, 74, 0.2);
+    box-shadow: 12px 0px 0px 0px rgba(74, 74, 74, 0.4), 24px 0px 0px 0px #4a4a4a;
+  }
+}
+
+@keyframes typing {
+  0% {
+    background-color: #4a4a4a;
+    box-shadow: 12px 0px 0px 0px rgba(74, 74, 74, 0.4), 24px 0px 0px 0px rgba(74, 74, 74, 0.2);
+  }
+
+  50% {
+    background-color: rgba(74, 74, 74, 0.4);
+    box-shadow: 12px 0px 0px 0px #4a4a4a, 24px 0px 0px 0px rgba(74, 74, 74, 0.4);
+  }
+
+  100% {
+    background-color: rgba(74, 74, 74, 0.2);
+    box-shadow: 12px 0px 0px 0px rgba(74, 74, 74, 0.4), 24px 0px 0px 0px #4a4a4a;
+  }
 }
 
 .chat__input {
@@ -13015,39 +13073,5 @@ body {
 
 .react-phone-number-input__country-select-arrow {
   color: black;
-}
-
-@-webkit-keyframes typing-black {
-  0% {
-    background-color: #4a4a4a;
-    box-shadow: 12px 0px 0px 0px rgba(74, 74, 74, 0.4), 24px 0px 0px 0px rgba(74, 74, 74, 0.2);
-  }
-
-  50% {
-    background-color: rgba(74, 74, 74, 0.4);
-    box-shadow: 12px 0px 0px 0px #4a4a4a, 24px 0px 0px 0px rgba(74, 74, 74, 0.4);
-  }
-
-  100% {
-    background-color: rgba(74, 74, 74, 0.2);
-    box-shadow: 12px 0px 0px 0px rgba(74, 74, 74, 0.4), 24px 0px 0px 0px #4a4a4a;
-  }
-}
-
-@keyframes typing-black {
-  0% {
-    background-color: #4a4a4a;
-    box-shadow: 12px 0px 0px 0px rgba(74, 74, 74, 0.4), 24px 0px 0px 0px rgba(74, 74, 74, 0.2);
-  }
-
-  50% {
-    background-color: rgba(74, 74, 74, 0.4);
-    box-shadow: 12px 0px 0px 0px #4a4a4a, 24px 0px 0px 0px rgba(74, 74, 74, 0.4);
-  }
-
-  100% {
-    background-color: rgba(74, 74, 74, 0.2);
-    box-shadow: 12px 0px 0px 0px rgba(74, 74, 74, 0.4), 24px 0px 0px 0px #4a4a4a;
-  }
 }
 

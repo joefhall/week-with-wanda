@@ -34,12 +34,15 @@ return [
     'user' => [
       'hello' => 'Hello, nice to meet you!',
       'hi' => 'Hi Wanda!',
-      'betterHealth' => "Better health",
-      'betterWealth' => "More wealth",
-      'betterRelationships' => "Better relationships",
+      'findOutMore' => "I'd like to find out more",
+      'getStarted' => "Get started",
+      'makeLifeBetter' => "Make my life better",
       'signMeUp' => "Sign me up",
       'signupRegular' => "Sign up the old-fashioned way",
-      'findOutMore' => "I'd like to find out more",
+      'logBackIn' => '<a href="/login">Log back in</a>',
+      'betterHealth' => "Healthier",
+      'betterWealth' => "Richer",
+      'betterRelationships' => "Better relationships",
     ],
 
 ];

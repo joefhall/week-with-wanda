@@ -66204,6 +66204,9 @@ function (_React$Component) {
         type: "hidden",
         name: "password",
         value: this.props.user.password
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "remember"
       }));
     }
   }]);

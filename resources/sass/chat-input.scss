@@ -1,0 +1,87 @@
+.chat__input {
+  background-color: beige;
+  flex: 1 1 auto;
+  padding: $spacer;
+
+  &__choices {
+    display: flex;
+    justify-content: space-around;
+
+    &__choice {
+      align-items: center;
+      background-color: $main-colour;
+      border: 1px solid $main-colour;
+      border-radius: $spacer;
+      border-top-right-radius: 0;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      margin: $spacer * .25;
+      padding: $spacer * .5 $spacer * .75;
+
+      &:hover {
+        background-color: white;
+        color: $main-colour;
+      }
+
+      &--selected {
+        background-color: $main-colour !important;
+        color: white !important;
+      }
+      &--unselected {
+        background-color: white !important;
+        color: $main-colour !important;
+      }
+    }
+
+    a, a:focus, a:visited {
+      color: white;
+      text-decoration: none;
+    }
+    a:hover {
+      color: $main-colour;
+      text-decoration: none;
+    }
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+
+    &__error-message {
+      font-size: $font-size-xxsm;
+      min-height: $spacer;
+      &--has-error {
+        color: red;
+      }
+    }
+
+    &__submit-button {
+      color: $main-colour;
+      cursor: pointer;
+      font-size: $font-size-xlg !important;
+      line-height: $font-size-base * 1.5;
+      margin: 0 0 0 ($spacer * .5) !important;
+    }
+
+    &__input {
+      border-radius: $spacer * .25;
+      flex-grow: 1;
+      padding: $spacer * .25;
+      vertical-align: middle;
+      width: calc(100% - (1.18em + #{$spacer * .5}));
+    }
+  }
+}
+
+.react-phone-number-input {
+  flex-grow: 1;
+  
+  &__icon {
+    border: none !important;
+    line-height: 0 !important;
+  }
+  &__country-select-arrow {
+    color: black;
+  }
+}

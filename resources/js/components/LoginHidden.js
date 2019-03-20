@@ -18,6 +18,7 @@ class LoginHidden extends React.Component {
         <input type="hidden" name="_token" value={this.state.token} />
         <input type="hidden" name="email" value={this.props.user.email} />
         <input type="hidden" name="password" value={this.props.user.password} />
+        <input type="hidden" name="remember" />
       </form>
     );
   }
