@@ -49,6 +49,10 @@ class FacebookLoginController extends Controller
      */
     public function handleProviderCallback(Request $request)
     {
+      if (!$request->has('code') || $request->has('denied')) {
+        return redirect()->route('facebook-signup-denied');
+      }
+      
       $socialite = Socialite::driver('facebook');
       $facebookUser = $socialite
         ->fields([
