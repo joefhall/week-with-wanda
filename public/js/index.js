@@ -64837,7 +64837,6 @@ function (_React$Component) {
     _this.addAndSendMessage = function (messageId, message) {
       var scenario = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _this.props.input.scenario;
       var requiresResponse = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
-      console.log('Scenario is...', _this.props.input.scenario);
       _store__WEBPACK_IMPORTED_MODULE_12__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["addMessage"])(Date.now(), scenario, 'user', messageId, message));
       Object(_api_chat__WEBPACK_IMPORTED_MODULE_4__["respond"])(scenario, messageId, message, requiresResponse);
     };
@@ -65091,7 +65090,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ChatInputChoices)).call.apply(_getPrototypeOf2, [this].concat(args)));
     _this.state = {
-      errorMessage: _this.props.type && _this.props.type === 'choiceMulti' ? 'Please choose one or more - or all!' : '',
+      errorMessage: _this.props.type && _this.props.type === 'choiceMulti' ? 'Please choose one or more' : '',
       hasError: false,
       inputText: ''
     };
@@ -65142,7 +65141,6 @@ function (_React$Component) {
       if (!_this.state.errorMessage) {
         var selectedChoices = document.querySelectorAll('.chat__input__choices__choice--selected');
         var count = 1;
-        console.log('Submitting multi choice', 'Scenario...', _this.props.scenario);
         var _iteratorNormalCompletion = true;
         var _didIteratorError = false;
         var _iteratorError = undefined;
@@ -65180,7 +65178,7 @@ function (_React$Component) {
 
       switch (this.props.type) {
         case 'signupChoice':
-          var messageText = 'Sign up with Facebook (quickest)';
+          var messageText = 'Sign up using Facebook (quickest)';
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
             className: "chat__input__choices__choice",
             href: '/login/facebook?state=' + this.props.sessionId,

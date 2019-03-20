@@ -64,7 +64,10 @@ trait DoesSpecialMessageActions
         break;
         
       case 'postSignupDetails':
-        if ($wandaMessageId === 'checkEmail' || $userMessageId === 'resendEmail') {
+        if ($userMessageId === 'myEmail') {
+          $this->userRepository->updateField($userId, 'email', $userMessage);
+        }
+        if (in_array($wandaMessageId, ['checkEmail', 'checkEmailChange', 'resendEmail'])) {
           SendVerificationEmail::dispatch($userId);
         }
         if ($userMessageId === 'contactTextMessageOnly' || $userMessageId === 'contactBoth') {
@@ -73,10 +76,10 @@ trait DoesSpecialMessageActions
         if ($userMessageId === 'contactEmailOnly' || $userMessageId === 'contactBoth') {
           $this->userRepository->updateField($userId, 'send_emails', true);
         }
-        if ($userMessageId === 'myMobileNumber') {
+        if (in_array($userMessageId, ['myMobileNumber', 'myMobileNumberChange'])) {
           $this->userRepository->updateField($userId, 'mobile_number', preg_replace('~\D~', '', $userMessage));
         }
-        if ($wandaMessageId === 'checkMobileNumber' || $userMessageId === 'resendMobileNumber') {
+        if (in_array($wandaMessageId, ['checkMobileNumber', 'checkMobileNumberChange', 'resendMobileNumber'])) {
           SendVerificationTextMessage::dispatch($userId);
         }
         if ($wandaMessageId === 'allDone') {

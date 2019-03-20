@@ -3,7 +3,7 @@ import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from
 
 export default class ChatInputChoices extends React.Component {  
   state = { 
-    errorMessage: (this.props.type && this.props.type === 'choiceMulti') ? 'Please choose one or more - or all!' : '',
+    errorMessage: (this.props.type && this.props.type === 'choiceMulti') ? 'Please choose one or more' : '',
     hasError: false,
     inputText: ''
   };
@@ -64,7 +64,7 @@ export default class ChatInputChoices extends React.Component {
   renderBefore() {
     switch(this.props.type) {
       case 'signupChoice':
-        const messageText = 'Sign up with Facebook (quickest)';
+        const messageText = 'Sign up using Facebook (quickest)';
         return (
           <a className="chat__input__choices__choice" href={'/login/facebook?state=' + this.props.sessionId} key="signupFacebook" onClick={() => this.onClick('signupFacebook', messageText)}>
             {messageText}
