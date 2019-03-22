@@ -12826,6 +12826,13 @@ body {
   background-color: darkcyan;
 }
 
+a,
+a:hover,
+a:focus,
+a:visited {
+  color: inherit;
+}
+
 .chat {
   display: flex;
   flex-flow: column;

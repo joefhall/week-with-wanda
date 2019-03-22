@@ -21,8 +21,9 @@ Route::get('logged-out', function () {
 })->name('logged-out');
 
 Route::get('/', 'AppController@index')->name('app');
-
 Route::get('/verify/{verificationTokenId}', 'VerifyController@verify')->name('verify');
+Route::get('/scenarios', 'ScenarioController@index');
+Route::get('/scenarios/{scenarioId}', 'ScenarioController@show');
 
 Route::group(['middleware' => ['web'], 'prefix' => 'api/'], function () {
   Route::get('history', 'ChatController@history');

@@ -1,3 +1,7 @@
 body {
   background-color: $main-background-colour;
 }
+
+a, a:hover, a:focus, a:visited {
+  color: inherit;
+}
