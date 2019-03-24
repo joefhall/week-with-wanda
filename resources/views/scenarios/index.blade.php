@@ -13,7 +13,7 @@
   
   <body>
     
-    <div class="jumbotron" style="background-color: palegreen;">
+    <div class="jumbotron">
       <h1 class="display-4">Scenarios</h1>
       <p class="lead">See all the different scenarios Wanda might present you with and the chat decision trees.</p>
       <hr class="my-4">

@@ -1,0 +1,81 @@
+.scenarios {
+  &__connectors {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    
+    &__connector {
+      stroke-width: 2;
+      
+      &--user {
+        stroke: darkviolet;
+      }
+      
+      &--wanda {
+        stroke: plum;
+      }
+      
+      &__arrow {
+        fill: black;
+      }
+    }
+  }
+  
+  &__level {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: $spacer * 3;
+  }
+
+  &__node {
+    border-radius: 15px;
+    margin-right: $spacer;
+    padding: $spacer;
+
+    &--user {
+      background-color: darkviolet;
+      color: white;
+    }
+
+    &--wanda {
+      background-color: plum;
+    }
+    
+    a, a:hover, a:focus, a:visited {
+      text-decoration: underline;
+    }
+    
+    img {
+      display: block;
+      height: auto !important;
+      width: 100% !important;
+    }
+    
+    &__message {
+      font-size: $font-size-xxsm;
+    }
+    
+    &__name {
+      font-weight: bold;
+      text-align: center;
+    }
+    
+    &__type {
+      font-size: $font-size-xsm;
+      font-style: italic;
+      text-align: center;
+    }
+  }
+  
+  &__orphaned {
+    margin-top: $spacer * 4;
+  }
+  
+  &__tree {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: $spacer * 2;
+  }
+}

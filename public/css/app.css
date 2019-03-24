@@ -13082,3 +13082,86 @@ a:visited {
   color: black;
 }
 
+.scenarios__connectors {
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.scenarios__connectors__connector {
+  stroke-width: 2;
+}
+
+.scenarios__connectors__connector--user {
+  stroke: darkviolet;
+}
+
+.scenarios__connectors__connector--wanda {
+  stroke: plum;
+}
+
+.scenarios__connectors__connector__arrow {
+  fill: black;
+}
+
+.scenarios__level {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 3rem;
+}
+
+.scenarios__node {
+  border-radius: 15px;
+  margin-right: 1rem;
+  padding: 1rem;
+}
+
+.scenarios__node--user {
+  background-color: darkviolet;
+  color: white;
+}
+
+.scenarios__node--wanda {
+  background-color: plum;
+}
+
+.scenarios__node a,
+.scenarios__node a:hover,
+.scenarios__node a:focus,
+.scenarios__node a:visited {
+  text-decoration: underline;
+}
+
+.scenarios__node img {
+  display: block;
+  height: auto !important;
+  width: 100% !important;
+}
+
+.scenarios__node__message {
+  font-size: 0.65rem;
+}
+
+.scenarios__node__name {
+  font-weight: bold;
+  text-align: center;
+}
+
+.scenarios__node__type {
+  font-size: 0.75rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.scenarios__orphaned {
+  margin-top: 4rem;
+}
+
+.scenarios__tree {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+

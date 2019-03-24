@@ -52,11 +52,7 @@ class ScenarioController extends Controller
   
   private function getNodeList(string $scenarioId, array $scenario) {
     $nodeList = [];
-    $nodeList[] = [
-      'who' => 'user',
-      'name' => array_keys($scenario['user'])[0],
-      'depth' => 0,
-    ];
+    $nodeList[] = $this->getFirstNode($scenarioId, $scenario);
 
     while(count($nodeList) < count($scenario['user']) + count($scenario['wanda'])) {
       $current = $this->firstIncomplete($nodeList);
@@ -66,10 +62,30 @@ class ScenarioController extends Controller
 
       $nodeList = $this->addChildren($scenarioId, $scenario, $nodeList, $current);
       $nodeList = $this->crawlChildren($scenarioId, $scenario, $nodeList, $current);
-      // TODO: add type if present
     }
     
     return $nodeList;
+  }
+  
+  private function getFirstNode(string $scenarioId, array $scenario) {
+    $firstNode = [
+      'depth' => 0,
+    ];
+    
+    $firstWandaNodeId = array_keys($scenario['wanda'])[0];
+    $firstWandaNode = $scenario['wanda'][$firstWandaNodeId];
+    $firstUserNodeId = array_keys($scenario['user'])[0];
+    $firstUserNode = $scenario['user'][$firstUserNodeId];
+    
+    if (in_array($firstUserNodeId, $firstWandaNode['user'])) {
+      $firstNode['who'] = 'wanda';
+      $firstNode['name'] = $firstWandaNodeId;
+    } else {
+      $firstNode['who'] = 'user';
+      $firstNode['name'] = $firstUserNodeId;
+    }
+    
+    return $firstNode;
   }
   
   private function opposite($who) {
@@ -145,6 +161,8 @@ class ScenarioController extends Controller
             'name' => $child,
             'who' => $this->opposite($nodeList[$current]['who']),
             'depth' => $nodeList[$current]['depth'] + 1,
+            'type' => array_has($scenario[$this->opposite($nodeList[$current]['who'])], $child) ?
+              array_get($scenario[$this->opposite($nodeList[$current]['who'])][$child], 'type', null) : null,
           ];
         }
       }
