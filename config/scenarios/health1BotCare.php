@@ -14,12 +14,11 @@ return [
   'category' => 'health',
 
   'wanda' => [
-    'helloAgain' => [
+    'hello' => [
       'type' => 'choice',
       'user' => [
-        'blah',
-        'blah',
-        'blah',
+        'hello1',
+        'hello2',
       ],
     ],
     
@@ -27,7 +26,7 @@ return [
 
   'user' => [
     'begin' => [
-      'wanda' => 'helloAgain',
+      'wanda' => 'hello',
     ],
     
   ],

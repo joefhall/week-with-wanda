@@ -11,11 +11,12 @@ return [
     */
   
     'wanda' => [
-      'helloAgain' => "Hello again!",
+      'hello' => ":wandaHello",
     ],
   
     'user' => [
-      'blah' => "Blah",
+      'hello1' => ":userHello1",
+      'hello2' => ":userHello2",
     ],
 
 ];

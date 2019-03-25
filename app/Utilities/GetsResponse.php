@@ -41,7 +41,7 @@ trait GetsResponse
     $nextInteraction = null;
     if ($nextWanda && $nextScenario && $nextScenarioAllowed) {
       $nextInteraction = $this->getInteraction($nextScenario, $nextWanda);
-      $nextWandaMessage = $this->getWandaChat($nextScenario, $nextWanda);
+      $nextWandaMessage = $this->getWandaChat($nextScenario, $nextWanda, $this->getChatData());
       $nextUserMessages = $this->getInteractionUserChats($nextScenario, $nextInteraction);
     }
     
