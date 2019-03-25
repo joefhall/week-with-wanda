@@ -42,8 +42,10 @@ class AppController extends Controller
   public function index(Request $request)
   {
     $loggedIn = Auth::user() ? 'true' : 'false';
+    $startScenario = 'health1BotCare' ?? null;
+    $startMessage = 'begin' ?? null;
 
     return response()
-            ->view('app', compact('loggedIn'));
+            ->view('app', compact('loggedIn', 'startScenario', 'startMessage'));
   }
 }

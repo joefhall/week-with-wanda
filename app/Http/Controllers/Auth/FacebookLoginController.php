@@ -91,8 +91,8 @@ class FacebookLoginController extends Controller
           $authUser->email = $facebookUser->email;
           $authUser->email_verified_at = Carbon::now();
           $authUser->facebook_id = $facebookUser->id;
-          $authUser->userRepository->storeProfilePic($authUser->id, $facebookUser->avatar_original);
-          $authUser->userRepository->storeCountryFromIp($authUser->id, $request->ip());
+          $this->userRepository->storeProfilePic($authUser->id, $facebookUser->avatar_original);
+          $this->userRepository->storeCountryFromIp($authUser->id, $request->ip());
         }
       }
       

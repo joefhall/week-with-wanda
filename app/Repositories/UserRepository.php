@@ -205,7 +205,7 @@ class UserRepository
     array $response
   )
   {
-    if (!($currentScenario === 'welcomeSignup' && $userMessageId === 'begin')) {
+    if ($userMessageId !== 'begin') {
       Log::info("Storing chat history - user($userId), scenario($currentScenario), userMessage($userMessageId)");
       
       $this->addToChatHistory($userId, [

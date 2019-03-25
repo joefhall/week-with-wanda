@@ -73,6 +73,12 @@ export const getHistory = async () => {
         const latestChatEntry = chatHistory.slice(-1)[0];
         console.log('Latest chat entry:', latestChatEntry);
         store.dispatch(setInput(latestChatEntry.scenario, latestChatEntry.type, latestChatEntry.userInput));
+        
+        const startScenario = document.head.querySelector('meta[name="start-scenario"]').content;
+        const startMessage = document.head.querySelector('meta[name="start-message"]').content;
+        if (startScenario && startMessage) {
+          respond(startScenario, startMessage, '');
+        }
       } else {
         respond('welcomeSignup', 'begin', '');
       }

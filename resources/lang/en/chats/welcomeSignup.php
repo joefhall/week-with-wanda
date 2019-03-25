@@ -4,9 +4,9 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Welcome and signup stage - chat content
+    | Chat content - Welcome and signup stage
     |--------------------------------------------------------------------------
-    |
+    | Flow structure of the chat can be found in config/scenarios directory
     |
     */
   

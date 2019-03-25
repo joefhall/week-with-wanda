@@ -64435,7 +64435,7 @@ function () {
   var _ref2 = _asyncToGenerator(
   /*#__PURE__*/
   _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-    var response, chatHistory, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, chatEntry, latestChatEntry;
+    var response, chatHistory, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, chatEntry, latestChatEntry, startScenario, startMessage;
 
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
       while (1) {
@@ -64455,7 +64455,7 @@ function () {
             }
 
             console.log("An error occured getting user's chat history back from the server: ".concat(response.data.error));
-            _context2.next = 37;
+            _context2.next = 40;
             break;
 
           case 9:
@@ -64463,7 +64463,7 @@ function () {
             console.log('User chat history:', chatHistory);
 
             if (!chatHistory.length) {
-              _context2.next = 36;
+              _context2.next = 39;
               break;
             }
 
@@ -64514,27 +64514,34 @@ function () {
             latestChatEntry = chatHistory.slice(-1)[0];
             console.log('Latest chat entry:', latestChatEntry);
             _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setInput"])(latestChatEntry.scenario, latestChatEntry.type, latestChatEntry.userInput));
-            _context2.next = 37;
-            break;
+            startScenario = document.head.querySelector('meta[name="start-scenario"]').content;
+            startMessage = document.head.querySelector('meta[name="start-message"]').content;
 
-          case 36:
-            respond('welcomeSignup', 'begin', '');
+            if (startScenario && startMessage) {
+              respond(startScenario, startMessage, '');
+            }
 
-          case 37:
-            _context2.next = 42;
+            _context2.next = 40;
             break;
 
           case 39:
-            _context2.prev = 39;
+            respond('welcomeSignup', 'begin', '');
+
+          case 40:
+            _context2.next = 45;
+            break;
+
+          case 42:
+            _context2.prev = 42;
             _context2.t1 = _context2["catch"](1);
             console.log("An error occured getting user's chat history back from the server: ".concat(_context2.t1));
 
-          case 42:
+          case 45:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, this, [[1, 39], [15, 19, 23, 31], [24,, 26, 30]]);
+    }, _callee2, this, [[1, 42], [15, 19, 23, 31], [24,, 26, 30]]);
   }));
 
   return function getHistory() {
