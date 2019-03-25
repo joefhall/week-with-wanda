@@ -21,7 +21,7 @@
         <h3>
           {{ $category }}
         </h3>
-        <ul class="list-group">
+        <ul class="list-group mb-4">
           @foreach (array_keys($scenarios) as $scenarioId)
             @if (array_has($scenarios[$scenarioId], 'category') && $scenarios[$scenarioId]['category'] === $category)
               <li class="list-group-item" style="order: {{ $scenarios[$scenarioId]['day'] }}">

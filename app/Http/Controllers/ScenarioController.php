@@ -22,6 +22,7 @@ class ScenarioController extends Controller
         $categories[] = $scenario['category'];
       }
     }
+    sort($categories);
     
     return view('scenarios.index', compact('scenarios', 'categories'));
   }
@@ -54,7 +55,7 @@ class ScenarioController extends Controller
     $nodeList = [];
     $nodeList[] = $this->getFirstNode($scenarioId, $scenario);
 
-    while(count($nodeList) < count($scenario['user']) + count($scenario['wanda'])) {
+    while(count($nodeList) <= count($scenario['user']) + count($scenario['wanda'])) {
       $current = $this->firstIncomplete($nodeList);
       if (is_null($current)) {
         break;

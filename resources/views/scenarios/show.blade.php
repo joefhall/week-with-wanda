@@ -33,7 +33,7 @@
                    class="scenarios__node scenarios__node--{{ $node['who'] }}"
                    data-who="{{ $node['who'] }}"
                    data-name="{{ $node['name'] }}"
-                   data-children="{{ $node['children'] ? implode(',', $node['children']) : '' }}"
+                   data-children="{{ array_has($node, 'children') && $node['children'] ? implode(',', $node['children']) : '' }}"
                    data-type="{{ array_get($node, 'type', '') }}"
               >
                 <div class="scenarios__node__name">
