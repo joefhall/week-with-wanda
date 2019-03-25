@@ -10,13 +10,16 @@ trait GetsChat
   /**
    * Get data that may need to be inserted into a chat response.
    *
+   * @param string $previousUserMessageId
    * @return array
    */
-  public function getChatData()
+  public function getChatData(string $previousUserMessageId)
   {
     $user = Auth::user();
     
+    $userAcknowledge = $this->randomCommon('user', 'acknowledge', 2);
     $userHello = $this->randomCommon('user', 'hello', 2);
+    $userGetStarted = $this->randomCommon('user', 'getStarted', 2);
     
     if ($user) {
       return [
@@ -29,16 +32,67 @@ trait GetsChat
         'rand3' => rand(1, 3),
         'rand4' => rand(1, 4),
         'rand5' => rand(1, 5),
+        'userAcknowledge1' => $userAcknowledge[0],
+        'userAcknowledge2' => $userAcknowledge[1],
+        'userAgree' => $this->randomCommon('user', 'agree'),
+        'userDisagree' => $this->randomCommon('user', 'disagree'),
         'userHello1' => $userHello[0],
         'userHello2' => $userHello[1],
+        'userGetStarted1' => $userGetStarted[0],
+        'userGetStarted2' => $userGetStarted[1],
+        'wandaAcknowledgeResponse' => $this->randomCommon('wanda', 'acknowledgeResponse'),
+        'wandaConjunction' => $this->getConjunction('user', $previousUserMessageId),
         'wandaHello' => $this->randomCommon('wanda', 'hello'),
         'wandaHello' => $this->randomCommon('wanda', 'hello'),
         'wandaObservation' => $this->randomCommon('wanda', 'observation'),
+        'wandaPreviousSentimentResponse' => $this->getResponseToSentiment('user', $previousUserMessageId),
         'wandaStartEnthusiastic' => $this->randomCommon('wanda', 'startEnthusiastic'),
       ];
     }
 
     return [];
+  }
+  
+  /**
+   * Gets a phrase/sentence responding to the sentiment of the message received.
+   *
+   * @param string $previousWho
+   * @param string $previousMessageId
+   * @return string
+   */
+  public function getResponseToSentiment(string $previousWho, string $previousMessageId)
+  {
+    $who = ($previousWho === 'user') ? 'wanda' : 'user';
+    $sentiments = __("chats/common.{$who}.sentimentResponses");
+    
+    foreach ($sentiments as $sentimentName => $sentiment) {
+      if (strpos(strtolower($previousMessageId), strtolower($sentimentName)) !== false) {
+        return $sentiment[rand(0, count($sentiment) - 1)];
+      }
+    }
+    
+    return null;
+  }
+  
+  /**
+   * Gets a conjunction to start a next sentence, based on the sentiment of the previous message.
+   *
+   * @param string $previousWho
+   * @param string $previousMessageId
+   * @return string
+   */
+  public function getConjunction(string $previousWho, string $previousMessageId)
+  {
+    $who = ($previousWho === 'user') ? 'wanda' : 'user';
+    $conjunctions = __("chats/common.{$who}.conjunctions");
+    
+    foreach ($conjunctions as $conjunctionName => $conjunction) {
+      if (strpos(strtolower($previousMessageId), strtolower($conjunctionName)) !== false) {
+        return $conjunction[rand(0, count($conjunction) - 1)];
+      }
+    }
+    
+    return null;
   }
   
   /**
@@ -106,13 +160,14 @@ trait GetsChat
    *
    * @param string $scenario
    * @param array $interaction
+   * @param string $previousUserMessageId
    * @return array
    */
-  public function getInteractionUserChats(string $scenario, array $interaction)
+  public function getInteractionUserChats(string $scenario, array $interaction, string $previousUserMessageId)
   {
     $userMessages = [];
     $type = array_get($interaction, 'type');
-    $chatData = $this->getChatData();
+    $chatData = $this->getChatData($previousUserMessageId);
     
     if (!in_array($type, ['doLogin', 'none', 'signupEmail', 'signupMobileNumber', 'signupName', 'signupPassword', 'text'])) {
       foreach (array_get($interaction, 'user') as $userResponse) {
