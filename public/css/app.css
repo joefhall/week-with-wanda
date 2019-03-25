@@ -12874,11 +12874,6 @@ a:visited {
   margin-bottom: 0.5rem;
 }
 
-.chat__messages__message__time {
-  font-size: 0.65rem;
-  text-align: right;
-}
-
 .chat__messages__message--user {
   justify-content: flex-end;
   margin-right: 1rem;
@@ -12895,6 +12890,10 @@ a:visited {
   max-width: 65%;
   padding: 0.25rem 0.7rem 0.25rem;
   word-wrap: break-word;
+}
+
+.chat__messages__message__bubble--large-text {
+  font-size: 2rem;
 }
 
 .chat__messages__message__bubble--typing {
@@ -12933,6 +12932,11 @@ a:visited {
   border-radius: inherit;
   margin: -0.25rem -0.7rem 0.25rem -0.7rem;
   width: calc(100% + (1rem * 1.4));
+}
+
+.chat__messages__message__time {
+  font-size: 0.65rem;
+  text-align: right;
 }
 
 .chat__messages__message a,

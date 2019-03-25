@@ -69,7 +69,7 @@ class ChatMessages extends React.Component {
             { this.renderDay(previousDay, previousDate, date.getDay(), date.getDate()) }
 
             <div className={'chat__messages__message chat__messages__message--' + message.sender}>
-              <div className={'chat__messages__message__bubble chat__messages__message__bubble--' + message.sender}>
+              <div className={'chat__messages__message__bubble chat__messages__message__bubble--' + message.sender + (message.message.length <= 2 ? ' chat__messages__message__bubble--large-text' : '')}>
                 { ReactHtmlParser(message.message) }
                 <div className="chat__messages__message__time">
                   {formattedTime}

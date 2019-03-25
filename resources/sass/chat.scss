@@ -34,11 +34,6 @@
       display: flex;
       margin-bottom: $spacer * .5;
       
-      &__time {
-        font-size: $font-size-xxsm;
-        text-align: right;
-      }
-      
       &--user {
         justify-content: flex-end;
         margin-right: $spacer;
@@ -55,6 +50,10 @@
         max-width: 65%;
         padding: $spacer * .25 $spacer * .7 $spacer * .25;
         word-wrap: break-word;
+        
+        &--large-text {
+          font-size: $font-size-xxlg;
+        }
         
         &--typing {
           width: $spacer * 5;
@@ -87,6 +86,11 @@
           margin: #{-$spacer * .25} #{-$spacer * .7} #{$spacer * .25} #{-$spacer * .7};
           width: calc(100% + (#{$spacer} * 1.4));
         }
+      }
+      
+      &__time {
+        font-size: $font-size-xxsm;
+        text-align: right;
       }
       
       a, a:focus, a:visited {

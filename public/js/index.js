@@ -65828,7 +65828,7 @@ function (_React$Component) {
           }, _this2.renderDay(previousDay, previousDate, date.getDay(), date.getDate()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: 'chat__messages__message chat__messages__message--' + message.sender
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: 'chat__messages__message__bubble chat__messages__message__bubble--' + message.sender
+            className: 'chat__messages__message__bubble chat__messages__message__bubble--' + message.sender + (message.message.length <= 2 ? ' chat__messages__message__bubble--large-text' : '')
           }, react_html_parser__WEBPACK_IMPORTED_MODULE_4___default()(message.message), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "chat__messages__message__time"
           }, formattedTime))));
