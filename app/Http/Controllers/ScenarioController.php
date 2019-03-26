@@ -55,12 +55,7 @@ class ScenarioController extends Controller
     $nodeList = [];
     $nodeList[] = $this->getFirstNode($scenarioId, $scenario);
 
-    while(count($nodeList) <= count($scenario['user']) + count($scenario['wanda'])) {
-      $current = $this->firstIncomplete($nodeList);
-      if (is_null($current)) {
-        break;
-      }
-
+    while(!is_null($current = $this->firstIncomplete($nodeList))) {
       $nodeList = $this->addChildren($scenarioId, $scenario, $nodeList, $current);
       $nodeList = $this->crawlChildren($scenarioId, $scenario, $nodeList, $current);
     }
