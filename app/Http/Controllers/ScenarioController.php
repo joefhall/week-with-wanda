@@ -193,7 +193,7 @@ class ScenarioController extends Controller
     $maxDepth = $this->maxDepth($nodeList);
     $nodeListByDepth = [];
     
-    for ($depth = 0; $depth < $maxDepth; $depth++) {
+    for ($depth = 0; $depth <= $maxDepth; $depth++) {
       foreach ($nodeList as $node) {
         if ($node['depth'] === $depth) {
           $nodeListByDepth[$depth][] = $node;
