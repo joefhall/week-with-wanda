@@ -13140,7 +13140,8 @@ a:visited {
 .scenarios__node img {
   display: block;
   height: auto !important;
-  width: 100% !important;
+  margin-top: 0.5rem;
+  width: 10rem !important;
 }
 
 .scenarios__node__message {

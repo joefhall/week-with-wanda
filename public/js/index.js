@@ -64929,12 +64929,27 @@ function (_React$Component) {
       console.log('Render input:', this.props.input);
 
       if (this.props.input && this.props.input.type) {
+        var userInputFiltered;
+
         switch (this.props.input.type) {
           case 'choice':
             return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputChoices__WEBPACK_IMPORTED_MODULE_5__["default"], {
               onClick: this.addAndSendMessage,
               userInput: this.props.input.userInput
             });
+            break;
+
+          case 'choiceAndText':
+            userInputFiltered = Object.assign({}, this.props.input.userInput);
+            delete userInputFiltered[Object.keys(userInputFiltered)[Object.keys(userInputFiltered).length - 1]];
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputChoices__WEBPACK_IMPORTED_MODULE_5__["default"], {
+              onClick: this.addAndSendMessage,
+              userInput: userInputFiltered
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_8__["default"], {
+              minLength: 5,
+              placeholder: "Other",
+              onFormSubmit: this.receiveTextInput
+            }));
             break;
 
           case 'choiceMulti':
@@ -64999,11 +65014,12 @@ function (_React$Component) {
             break;
 
           case 'textAndChoice':
-            var userInputFiltered = Object.assign({}, this.props.input.userInput);
+            userInputFiltered = Object.assign({}, this.props.input.userInput);
             delete userInputFiltered[Object.keys(userInputFiltered)[0]];
+            var textPlaceholder = Object.keys(userInputFiltered)[0].includes('MobileNumber') ? 'Enter the code I sent you' : 'Type here';
             return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_8__["default"], {
               minLength: 7,
-              placeholder: "Enter the code I sent you",
+              placeholder: textPlaceholder,
               onFormSubmit: this.receiveTextInput
             }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputChoices__WEBPACK_IMPORTED_MODULE_5__["default"], {
               onClick: this.addAndSendMessage,

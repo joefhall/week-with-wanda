@@ -18,8 +18,11 @@ trait GetsChat
     $user = Auth::user();
     
     $userAcknowledge = $this->randomCommon('user', 'acknowledge', 2);
+    $userBye = $this->randomCommon('user', 'bye', 2);
     $userHello = $this->randomCommon('user', 'hello', 2);
     $userGetStarted = $this->randomCommon('user', 'getStarted', 2);
+    $userRequestMoreInfo = $this->randomCommon('user', 'requestMoreInfo', 2);
+    $userThanks = $this->randomCommon('user', 'thanks', 2);
     
     if ($user) {
       return [
@@ -35,14 +38,24 @@ trait GetsChat
         'userAcknowledge1' => $userAcknowledge[0],
         'userAcknowledge2' => $userAcknowledge[1],
         'userAgree' => $this->randomCommon('user', 'agree'),
+        'userBye1' => $userBye[0],
+        'userBye2' => $userBye[1],
         'userDisagree' => $this->randomCommon('user', 'disagree'),
         'userHello1' => $userHello[0],
         'userHello2' => $userHello[1],
         'userGetStarted1' => $userGetStarted[0],
         'userGetStarted2' => $userGetStarted[1],
+        'userHate' => $this->randomCommon('user', 'hate'),
+        'userLove' => $this->randomCommon('user', 'love'),
+        'userRequestMoreInfo1' => $userRequestMoreInfo[0],
+        'userRequestMoreInfo2' => $userRequestMoreInfo[1],
+        'userThanks1' => $userThanks[0],
+        'userThanks2' => $userThanks[1],
+        'userUnsure' => $this->randomCommon('user', 'unsure'),
         'wandaAcknowledgeResponse' => $this->randomCommon('wanda', 'acknowledgeResponse'),
+        'wandaBye' => $this->randomCommon('wanda', 'bye'),
         'wandaConjunction' => $this->getConjunction('user', $previousUserMessageId),
-        'wandaHello' => $this->randomCommon('wanda', 'hello'),
+        'wandaExpectPositiveResponse' => $this->randomCommon('wanda', 'expectPositiveResponse'),
         'wandaHello' => $this->randomCommon('wanda', 'hello'),
         'wandaObservation' => $this->randomCommon('wanda', 'observation'),
         'wandaPreviousSentimentResponse' => $this->getResponseToSentiment('user', $previousUserMessageId),
@@ -54,7 +67,7 @@ trait GetsChat
   }
   
   /**
-   * Gets a phrase/sentence responding to the sentiment of the message received.
+   * Gets a sentence responding to the sentiment of the message received.
    *
    * @param string $previousWho
    * @param string $previousMessageId
@@ -75,7 +88,7 @@ trait GetsChat
   }
   
   /**
-   * Gets a conjunction to start a next sentence, based on the sentiment of the previous message.
+   * Gets a conjunction that's the beginning of a next sentence, based on the sentiment of the previous message.
    *
    * @param string $previousWho
    * @param string $previousMessageId

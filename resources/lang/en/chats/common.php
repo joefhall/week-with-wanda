@@ -28,8 +28,16 @@ return [
       "GREAT NEWS about what I can do today for you",
       "OMG I'm totally gonna rock your world today",
     ],
+    'expectPositiveResponse' => [
+      "Doesn't it sound great?",
+      "Isn't this brilliant?",
+      "Aren't you totally pleased?",
+      "This is fabby fab fab fab, isn't it?",
+      "What do you think? A resounding yes?",
+    ],
     'sentimentResponses' => [
       'negative' => [
+        'Anyhow.',
         'Fair enough.',
         'Ok.',
       ],
@@ -42,11 +50,19 @@ return [
       'negative' => [
         "Anyhow",
         "But anyway",
+        "Well anyway",
         "Ok but",
       ],
       'positive' => [
         "And",
       ],
+    ],
+    'bye' => [
+      "Bye for now!",
+      "Speak again soon!",
+      "Ciao for now, :name",
+      "Hasta mañana, :name!",
+      "Talk to you tomorrow",
     ],
   ],
 
@@ -66,6 +82,7 @@ return [
       "What do you have in store for me today?",
     ],
     'agree' => [
+      "Totally",
       "Too right",
       "Oh yes",
       "For sure",
@@ -74,8 +91,50 @@ return [
     'disagree' => [
       "Not really",
       "Nope",
+      "No way",
       "Nah",
       "No, Wanda",
+    ],
+    'love' => [
+      "Ooh I love it!",
+      "Yeah this is brilliant!",
+      "I am so down with this!",
+      "A.W.E.S.O.M.E, Wanda",
+      "Yes - great work!",
+    ],
+    'hate' => [
+      "Oh no - this sounds terrible!",
+      "No way in hell",
+      "Not a chance",
+      "I hate this idea!",
+      "God no",
+    ],
+    'unsure' => [
+      "Hmm I'm not sure",
+      "Don't know",
+      "I feel a bit icky about this",
+      "Er I'm a bit unsure",
+      "Mmmm I'm in two minds",
+    ],
+    'requestMoreInfo' => [
+      "What's that?",
+      "Can you tell me more?",
+      "Go on...",
+      "Oh yes?",
+    ],
+    'thanks' => [
+      "Thanks, Wanda",
+      "Gracias, amigo",
+      "Thank you - I appreciate it",
+      "Ok thanks",
+      "Merci, as they say in French",
+    ],
+    'bye' => [
+      "Bye, Wanda",
+      "Seeya",
+      "Bye for now",
+      "Till tomorrow",
+      "Cheerio",
     ],
   ],
 

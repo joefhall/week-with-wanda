@@ -49,7 +49,8 @@
     img {
       display: block;
       height: auto !important;
-      width: 100% !important;
+      margin-top: $spacer * .5;
+      width: $spacer * 10 !important;
     }
     
     &__message {

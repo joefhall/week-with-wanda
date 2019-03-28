@@ -79,10 +79,24 @@ class ChatInput extends React.Component {
     console.log('Render input:', this.props.input);
     
     if (this.props.input && this.props.input.type) {
+      let userInputFiltered;
+      
       switch(this.props.input.type) {
         case 'choice':
           return (
             <ChatInputChoices onClick={this.addAndSendMessage} userInput={this.props.input.userInput} />
+          );
+          break;
+          
+        case 'choiceAndText':
+          userInputFiltered = Object.assign({}, this.props.input.userInput);
+          delete userInputFiltered[Object.keys(userInputFiltered)[Object.keys(userInputFiltered).length - 1]];
+          
+          return (
+            <div>
+              <ChatInputChoices onClick={this.addAndSendMessage} userInput={userInputFiltered} />
+              <ChatInputText minLength={5} placeholder="Other" onFormSubmit={this.receiveTextInput} />
+            </div>
           );
           break;
           
@@ -135,12 +149,14 @@ class ChatInput extends React.Component {
           break;
           
         case 'textAndChoice':
-          let userInputFiltered = Object.assign({}, this.props.input.userInput);
+          userInputFiltered = Object.assign({}, this.props.input.userInput);
           delete userInputFiltered[Object.keys(userInputFiltered)[0]];
+          
+          const textPlaceholder = Object.keys(userInputFiltered)[0].includes('MobileNumber') ? 'Enter the code I sent you' : 'Type here';
           
           return (
             <div>
-              <ChatInputText minLength={7} placeholder="Enter the code I sent you" onFormSubmit={this.receiveTextInput} />
+              <ChatInputText minLength={7} placeholder={textPlaceholder} onFormSubmit={this.receiveTextInput} />
               <ChatInputChoices onClick={this.addAndSendMessage} userInput={userInputFiltered} />
             </div>
           );
