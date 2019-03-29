@@ -23,6 +23,19 @@ return [
       'techLimitations',
       'wandaCareProblemText',
     ],
+    'wealth1Jobs' => [
+      'aiToughJobs',
+      'aiUsefulSociety',
+      'aiMostMoney',
+      'aiLimits',
+      'aiLimitsSpecific',
+      'aiLimitsWealth',
+      'aiLimitsKeepJobs',
+      'aiNoJobs',
+      'aiProblemText',
+      'specificJobsWhatText',
+      'specificJobsUnderstandText',
+    ],
   ],
   
 ];
