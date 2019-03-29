@@ -13000,6 +13000,7 @@ a:visited {
 
 .chat__input__choices {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 

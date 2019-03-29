@@ -1,15 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import emojiRegex from 'emoji-regex';
+
 import { addMessage } from '../actions';
 import ChatTyping from './ChatTyping';
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 class ChatMessages extends React.Component {  
-  jumpToBottom = () => {
-    const chatMessagesBottom = document.querySelector('.chat__messages__bottom');
-    chatMessagesBottom.scrollIntoView({ behavior: 'smooth' });
-  };
-  
   addImagesOnLoad = () => {
     const dataAttribute = 'data-loaded-listener';
     const chatImagesWithoutLoadListener = document.querySelectorAll(`.chat__messages__message__bubble--wanda img:not([dataAttribute])`);
@@ -17,6 +14,17 @@ class ChatMessages extends React.Component {
       image.addEventListener('load', this.jumpToBottom);
       image.setAttribute(dataAttribute, 'true');
     });
+  };
+
+  hasEmoji = text => {
+    const regex = emojiRegex();
+    
+    return regex.test(text);
+  };
+
+  jumpToBottom = () => {
+    const chatMessagesBottom = document.querySelector('.chat__messages__bottom');
+    chatMessagesBottom.scrollIntoView({ behavior: 'smooth' });
   };
   
   componentDidMount() {
@@ -64,12 +72,14 @@ class ChatMessages extends React.Component {
           previousDate = new Date(previousTime).getDate();
         }
         
+        const displayLarge = message.message.length <= 8 && this.hasEmoji(message.message);
+        
         return (
           <div key={message.time}>
             { this.renderDay(previousDay, previousDate, date.getDay(), date.getDate()) }
 
             <div className={'chat__messages__message chat__messages__message--' + message.sender}>
-              <div className={'chat__messages__message__bubble chat__messages__message__bubble--' + message.sender + (message.message.length <= 2 ? ' chat__messages__message__bubble--large-text' : '')}>
+              <div className={'chat__messages__message__bubble chat__messages__message__bubble--' + message.sender + (displayLarge ? ' chat__messages__message__bubble--large-text' : '')}>
                 { ReactHtmlParser(message.message) }
                 <div className="chat__messages__message__time">
                   {formattedTime}

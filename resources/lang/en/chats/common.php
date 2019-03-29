@@ -57,6 +57,15 @@ return [
         "And",
       ],
     ],
+    'great' => [
+      "great",
+      "brilliant",
+      "fab",
+      "rockin",
+      "fabulous",
+      "wonderful",
+      "awesome",
+    ],
     'bye' => [
       "Bye for now!",
       "Speak again soon!",

@@ -51,6 +51,7 @@ class ChatInput extends React.Component {
         respond(this.props.input.scenario, messageId, inputText);
         break;
         
+      case 'text':
       case 'textAndChoice':
         this.addAndSendMessage(Object.keys(this.props.input.userInput)[0], inputText);
         break;

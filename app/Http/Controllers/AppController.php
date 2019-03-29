@@ -40,9 +40,9 @@ class AppController extends Controller
    * @return \Illuminate\Contracts\Support\Renderable
    */
   public function index(Request $request)
-  {
+  { 
     $loggedIn = Auth::user() ? 'true' : 'false';
-    $startScenario = 'health1BotCare' ?? null;
+    $startScenario = 'wealth1Jobs' ?? null;
     $startMessage = 'begin' ?? null;
 
     return response()

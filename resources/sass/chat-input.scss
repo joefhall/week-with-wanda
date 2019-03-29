@@ -5,6 +5,7 @@
 
   &__choices {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
 
     &__choice {
