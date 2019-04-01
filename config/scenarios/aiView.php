@@ -44,6 +44,12 @@ return [
       'whyHungUpText',
       'otherWaysText',
     ],
+    'health2CancerBuyOut' => [
+      'notBetter',
+      'tooMuchDataPower',
+      'problemText',
+      'overTheTopText',
+    ],
   ],
   
 ];

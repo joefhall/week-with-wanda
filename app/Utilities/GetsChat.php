@@ -21,6 +21,7 @@ trait GetsChat
     $userBye = $this->randomCommon('user', 'bye', 2);
     $userGetStarted = $this->randomCommon('user', 'getStarted', 2);
     $userHello = $this->randomCommon('user', 'hello', 2);
+    $userOk = $this->randomCommon('user', 'ok', 2);
     $userRequestMoreInfo = $this->randomCommon('user', 'requestMoreInfo', 2);
     $userThanks = $this->randomCommon('user', 'thanks', 2);
     
@@ -41,13 +42,15 @@ trait GetsChat
         'userBye1' => $userBye[0],
         'userBye2' => $userBye[1],
         'userDisagree' => $this->randomCommon('user', 'disagree'),
-        'userGreat' => $this->randomCommon('user', 'great'),
-        'userHello1' => $userHello[0],
-        'userHello2' => $userHello[1],
         'userGetStarted1' => $userGetStarted[0],
         'userGetStarted2' => $userGetStarted[1],
+        'userGreat' => $this->randomCommon('user', 'great'),
         'userHate' => $this->randomCommon('user', 'hate'),
+        'userHello1' => $userHello[0],
+        'userHello2' => $userHello[1],
         'userLove' => $this->randomCommon('user', 'love'),
+        'userOk1' => $userOk[0],
+        'userOk2' => $userOk[1],
         'userRequestMoreInfo1' => $userRequestMoreInfo[0],
         'userRequestMoreInfo2' => $userRequestMoreInfo[1],
         'userThanks1' => $userThanks[0],
@@ -57,8 +60,8 @@ trait GetsChat
         'wandaBye' => $this->randomCommon('wanda', 'bye'),
         'wandaConjunction' => $this->getConjunction('user', $previousUserMessageId),
         'wandaExpectPositiveResponse' => $this->randomCommon('wanda', 'expectPositiveResponse'),
-        'wandaHello' => $this->randomCommon('wanda', 'hello'),
         'wandaGreat' => $this->randomCommon('wanda', 'great'),
+        'wandaHello' => $this->randomCommon('wanda', 'hello'),
         'wandaObservation' => $this->randomCommon('wanda', 'observation'),
         'wandaPreviousSentimentResponse' => $this->getResponseToSentiment('user', $previousUserMessageId),
         'wandaStartEnthusiastic' => $this->randomCommon('wanda', 'startEnthusiastic'),

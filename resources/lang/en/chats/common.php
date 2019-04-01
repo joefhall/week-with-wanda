@@ -84,6 +84,12 @@ return [
       "wonderful",
       "awesome",
     ],
+    'ok' => [
+      "ok",
+      "sure thing",
+      "alright",
+      "alrighty then",
+    ],
     'bye' => [
       "Bye for now!",
       "Speak again soon!",
