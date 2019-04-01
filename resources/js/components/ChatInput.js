@@ -20,6 +20,12 @@ class ChatInput extends React.Component {
     respond(scenario, messageId, message, requiresResponse);
   };
 
+  showLoading = () => {
+    document.querySelector('.chat__messages').classList.add('invisible', 'h-0');
+    document.querySelector('.chat__input__container').classList.add('invisible');
+    document.querySelector('.chat__loading').classList.remove('d-none');
+  };
+
   receiveTextInput = inputText => {
     console.log('Input type', this.props.input.type);
     switch(this.props.input.type) {
@@ -60,11 +66,15 @@ class ChatInput extends React.Component {
 
   componentDidMount() {
     this.setState({ sessionId: getSessionId() });
+    this.showLoading();
     getHistory();
   }
 
   componentDidUpdate() {
-    document.querySelector('.chat__messages__bottom').scrollIntoView({ behavior: 'smooth' });
+    const chatMessagesBottom = document.querySelector('.chat__messages__bottom');
+    if (chatMessagesBottom) {
+      chatMessagesBottom.scrollIntoView({ behavior: 'smooth' });
+    }
     
     if (this.props.input && this.props.input.type) {
       if (this.props.input.type === 'none' && this.props.input.userInput) {
@@ -172,7 +182,9 @@ class ChatInput extends React.Component {
   render() {
     return (
       <div className="chat__input">
-        { this.renderInput() }
+        <div  className="chat__input__container">
+          { this.renderInput() }
+        </div>
       </div>
     );
   }

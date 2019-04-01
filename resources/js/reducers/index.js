@@ -1,18 +1,5 @@
 import  { combineReducers } from 'redux';
 
-const messagesReducer = (state = [], action) => {
-  console.log('Messages reducer state', state);
-  console.log('Messages reducer action', action);
-  if (action.type === 'USER_MESSAGE_INPUTTED' || action.type === 'WANDA_MESSAGE_RECEIVED') {
-    return [
-      ...state,
-      action.payload
-    ];    
-  }
-  
-  return state;
-};
-
 const inputReducer = (state = {}, action) => {
   console.log('Input reducer state', state);
   console.log('Input reducer action', action);
@@ -25,6 +12,19 @@ const inputReducer = (state = {}, action) => {
     type: null,
     userInput: null
   };
+};
+
+const messagesReducer = (state = [], action) => {
+  console.log('Messages reducer state', state);
+  console.log('Messages reducer action', action);
+  if (action.type === 'USER_MESSAGE_INPUTTED' || action.type === 'WANDA_MESSAGE_RECEIVED') {
+    return [
+      ...state,
+      action.payload
+    ];    
+  }
+  
+  return state;
 };
 
 const typingReducer = (state = [], action) => {

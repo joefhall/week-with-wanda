@@ -46,8 +46,9 @@
   }
 
   &__form {
-    display: flex;
     align-items: center;
+    display: flex;
+    justify-content: flex-end;
 
     &__error-message {
       font-size: $font-size-xxsm;

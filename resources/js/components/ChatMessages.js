@@ -11,7 +11,7 @@ class ChatMessages extends React.Component {
     const dataAttribute = 'data-loaded-listener';
     const chatImagesWithoutLoadListener = document.querySelectorAll(`.chat__messages__message__bubble--wanda img:not([dataAttribute])`);
     chatImagesWithoutLoadListener.forEach(image => {
-      image.addEventListener('load', this.jumpToBottom);
+      image.addEventListener('load', () => { this.jumpToBottom(true) });
       image.setAttribute(dataAttribute, 'true');
     });
   };
@@ -22,18 +22,20 @@ class ChatMessages extends React.Component {
     return regex.test(text);
   };
 
-  jumpToBottom = () => {
+  jumpToBottom = smooth => {
     const chatMessagesBottom = document.querySelector('.chat__messages__bottom');
-    chatMessagesBottom.scrollIntoView({ behavior: 'smooth' });
+    if (chatMessagesBottom) {
+      chatMessagesBottom.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto' });
+    }
   };
   
   componentDidMount() {
-    this.jumpToBottom();
+    this.jumpToBottom(false);
   }
 
   componentDidUpdate() {
     console.log('Chat messages updated');
-    this.jumpToBottom();
+    this.jumpToBottom(true);
     this.addImagesOnLoad();
   }
 
@@ -93,7 +95,7 @@ class ChatMessages extends React.Component {
     }
   }
   
-  render() {
+  render() {  
     return (
       <div className="chat__messages">
         { this.renderMessages() }
@@ -106,9 +108,7 @@ class ChatMessages extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    input: state.input,
-    messages: state.messages,
-    typing: state.typing
+    messages: state.messages
   };
 };
 

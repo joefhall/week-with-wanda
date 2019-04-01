@@ -1,0 +1,15 @@
+$transition-duration: 2s;
+$path-length: 157px;
+
+.chat__loading {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  height: 80%;
+  justify-content: center;
+  overflow-y: auto;
+  padding: $spacer 0;
+  text-align: center;
+}

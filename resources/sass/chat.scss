@@ -1,4 +1,5 @@
 .chat {
+  background-color: white;
   display: flex;
   flex-flow: column;
   height: 100vh;
@@ -7,6 +8,21 @@
   @include media-breakpoint-up(lg) {
     max-height: 600px;
     max-width: 400px;
+  }
+  
+  &__loading {
+    background-color: white;
+    flex: 1 1 auto;
+    height: 80%;
+    overflow-y: auto;
+    padding: $spacer 0;
+    text-align: center;
+    
+    &__spinner {
+      height: $spacer * 4;
+      margin-top: $spacer;
+      width: $spacer * 4;
+    }
   }
   
   &__messages {
@@ -71,7 +87,7 @@
         }
 
         &--wanda {
-          background-color: linen;
+          background-color: gold;
           border-top-left-radius: 0;
           color: black;
           text-align: left;

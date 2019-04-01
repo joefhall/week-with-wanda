@@ -64370,15 +64370,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var sessionId = uuid_v4__WEBPACK_IMPORTED_MODULE_5___default()();
 var timeToBeginTyping = 500;
 
-var typingDelay = function typingDelay(messageText) {
-  console.log('Typing delay', timeToBeginTyping + striptags__WEBPACK_IMPORTED_MODULE_4___default()(messageText).length * 50);
-  return timeToBeginTyping + striptags__WEBPACK_IMPORTED_MODULE_4___default()(messageText).length * 50;
+var hideLoading = function hideLoading() {
+  document.querySelector('.chat__messages').classList.remove('invisible', 'h-0');
+  document.querySelector('.chat__input__container').classList.remove('invisible');
+  document.querySelector('.chat__loading').classList.add('d-none');
 };
 
 var showResponse = function showResponse(responseData, wandaMessageId, wandaMessage) {
   _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setTyping"])(false));
   _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["addMessage"])(Date.now(), responseData.scenario, 'wanda', wandaMessageId, wandaMessage));
   _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setInput"])(responseData.scenario, responseData.type, responseData.user));
+};
+
+var typingDelay = function typingDelay(messageText) {
+  console.log('Typing delay', timeToBeginTyping + striptags__WEBPACK_IMPORTED_MODULE_4___default()(messageText).length * 50);
+  return timeToBeginTyping + striptags__WEBPACK_IMPORTED_MODULE_4___default()(messageText).length * 50;
 };
 
 var respond =
@@ -64473,7 +64479,7 @@ function () {
             }
 
             console.log("An error occured getting user's chat history back from the server: ".concat(response.data.error));
-            _context2.next = 40;
+            _context2.next = 41;
             break;
 
           case 9:
@@ -64546,20 +64552,23 @@ function () {
             respond('welcomeSignup', 'begin', '');
 
           case 40:
-            _context2.next = 45;
+            setTimeout(hideLoading, 2500);
+
+          case 41:
+            _context2.next = 46;
             break;
 
-          case 42:
-            _context2.prev = 42;
+          case 43:
+            _context2.prev = 43;
             _context2.t1 = _context2["catch"](1);
             console.log("An error occured getting user's chat history back from the server: ".concat(_context2.t1));
 
-          case 45:
+          case 46:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[1, 42], [15, 19, 23, 31], [24,, 26, 30]]);
+    }, _callee2, null, [[1, 43], [15, 19, 23, 31], [24,, 26, 30]]);
   }));
 
   return function getHistory() {
@@ -64733,7 +64742,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _ChatInput__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ChatInput */ "./resources/js/components/ChatInput.js");
-/* harmony import */ var _ChatMessages__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ChatMessages */ "./resources/js/components/ChatMessages.js");
+/* harmony import */ var _ChatLoading__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ChatLoading */ "./resources/js/components/ChatLoading.js");
+/* harmony import */ var _ChatMessages__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ChatMessages */ "./resources/js/components/ChatMessages.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -64751,6 +64761,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -64782,7 +64793,7 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatMessages__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInput__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatLoading__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatMessages__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInput__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }
   }]);
 
@@ -64877,6 +64888,12 @@ function (_React$Component) {
       Object(_api_chat__WEBPACK_IMPORTED_MODULE_4__["respond"])(scenario, messageId, message, requiresResponse);
     };
 
+    _this.showLoading = function () {
+      document.querySelector('.chat__messages').classList.add('invisible', 'h-0');
+      document.querySelector('.chat__input__container').classList.add('invisible');
+      document.querySelector('.chat__loading').classList.remove('d-none');
+    };
+
     _this.receiveTextInput = function (inputText) {
       console.log('Input type', _this.props.input.type);
 
@@ -64934,14 +64951,19 @@ function (_React$Component) {
       this.setState({
         sessionId: Object(_api_chat__WEBPACK_IMPORTED_MODULE_4__["getSessionId"])()
       });
+      this.showLoading();
       Object(_api_chat__WEBPACK_IMPORTED_MODULE_4__["getHistory"])();
     }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
-      document.querySelector('.chat__messages__bottom').scrollIntoView({
-        behavior: 'smooth'
-      });
+      var chatMessagesBottom = document.querySelector('.chat__messages__bottom');
+
+      if (chatMessagesBottom) {
+        chatMessagesBottom.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
 
       if (this.props.input && this.props.input.type) {
         if (this.props.input.type === 'none' && this.props.input.userInput) {
@@ -65067,7 +65089,9 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat__input"
-      }, this.renderInput());
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chat__input__container"
+      }, this.renderInput()));
     }
   }]);
 
@@ -65740,6 +65764,69 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/ChatLoading.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/ChatLoading.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ChatLoading; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var ChatLoading =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ChatLoading, _React$Component);
+
+  function ChatLoading() {
+    _classCallCheck(this, ChatLoading);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ChatLoading).apply(this, arguments));
+  }
+
+  _createClass(ChatLoading, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chat__loading d-none"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/img/loading-balls.gif",
+        alt: ""
+      }));
+    }
+  }]);
+
+  return ChatLoading;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+;
+
+/***/ }),
+
 /***/ "./resources/js/components/ChatMessages.js":
 /*!*************************************************!*\
   !*** ./resources/js/components/ChatMessages.js ***!
@@ -65805,7 +65892,9 @@ function (_React$Component) {
       var dataAttribute = 'data-loaded-listener';
       var chatImagesWithoutLoadListener = document.querySelectorAll(".chat__messages__message__bubble--wanda img:not([dataAttribute])");
       chatImagesWithoutLoadListener.forEach(function (image) {
-        image.addEventListener('load', _this.jumpToBottom);
+        image.addEventListener('load', function () {
+          _this.jumpToBottom(true);
+        });
         image.setAttribute(dataAttribute, 'true');
       });
     };
@@ -65815,11 +65904,14 @@ function (_React$Component) {
       return regex.test(text);
     };
 
-    _this.jumpToBottom = function () {
+    _this.jumpToBottom = function (smooth) {
       var chatMessagesBottom = document.querySelector('.chat__messages__bottom');
-      chatMessagesBottom.scrollIntoView({
-        behavior: 'smooth'
-      });
+
+      if (chatMessagesBottom) {
+        chatMessagesBottom.scrollIntoView({
+          behavior: smooth ? 'smooth' : 'auto'
+        });
+      }
     };
 
     _this.renderDay = function (previousDay, previousDate, currentDay, currentDate) {
@@ -65841,13 +65933,13 @@ function (_React$Component) {
   _createClass(ChatMessages, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.jumpToBottom();
+      this.jumpToBottom(false);
     }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
       console.log('Chat messages updated');
-      this.jumpToBottom();
+      this.jumpToBottom(true);
       this.addImagesOnLoad();
     }
   }, {
@@ -65909,9 +66001,7 @@ function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    input: state.input,
-    messages: state.messages,
-    typing: state.typing
+    messages: state.messages
   };
 };
 
@@ -66424,19 +66514,6 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 
 
-var messagesReducer = function messagesReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-  console.log('Messages reducer state', state);
-  console.log('Messages reducer action', action);
-
-  if (action.type === 'USER_MESSAGE_INPUTTED' || action.type === 'WANDA_MESSAGE_RECEIVED') {
-    return [].concat(_toConsumableArray(state), [action.payload]);
-  }
-
-  return state;
-};
-
 var inputReducer = function inputReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
@@ -66452,6 +66529,19 @@ var inputReducer = function inputReducer() {
     type: null,
     userInput: null
   };
+};
+
+var messagesReducer = function messagesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  console.log('Messages reducer state', state);
+  console.log('Messages reducer action', action);
+
+  if (action.type === 'USER_MESSAGE_INPUTTED' || action.type === 'WANDA_MESSAGE_RECEIVED') {
+    return [].concat(_toConsumableArray(state), [action.payload]);
+  }
+
+  return state;
 };
 
 var typingReducer = function typingReducer() {
