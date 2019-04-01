@@ -10,6 +10,15 @@ export default class App extends React.Component {
     isLoggedIn: false,
     user: null
   };
+
+  refreshCSRFToken = () => {
+    console.log('Refreshing page');
+    window.location.reload(true);
+  };
+
+  componentDidMount() {
+    window.setTimeout(this.refreshCSRFToken, 1000 * 60 * 120);
+  }
   
   render() {
     return (

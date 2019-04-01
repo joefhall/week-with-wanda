@@ -64690,10 +64690,21 @@ function (_React$Component) {
       isLoggedIn: false,
       user: null
     };
+
+    _this.refreshCSRFToken = function () {
+      console.log('Refreshing page');
+      window.location.reload(true);
+    };
+
     return _this;
   }
 
   _createClass(App, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      window.setTimeout(this.refreshCSRFToken, 1000 * 60 * 120);
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

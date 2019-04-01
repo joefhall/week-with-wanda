@@ -84,12 +84,6 @@ return [
       "wonderful",
       "awesome",
     ],
-    'ok' => [
-      "ok",
-      "sure thing",
-      "alright",
-      "alrighty then",
-    ],
     'bye' => [
       "Bye for now!",
       "Speak again soon!",
@@ -153,6 +147,12 @@ return [
       "I feel a bit icky about this",
       "Er I'm a bit unsure",
       "Mmmm I'm in two minds",
+    ],
+    'ok' => [
+      "ok",
+      "sure thing",
+      "alright",
+      "alrighty then",
     ],
     'requestMoreInfo' => [
       "What's that?",
