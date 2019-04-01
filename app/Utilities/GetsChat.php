@@ -19,8 +19,8 @@ trait GetsChat
     
     $userAcknowledge = $this->randomCommon('user', 'acknowledge', 2);
     $userBye = $this->randomCommon('user', 'bye', 2);
-    $userHello = $this->randomCommon('user', 'hello', 2);
     $userGetStarted = $this->randomCommon('user', 'getStarted', 2);
+    $userHello = $this->randomCommon('user', 'hello', 2);
     $userRequestMoreInfo = $this->randomCommon('user', 'requestMoreInfo', 2);
     $userThanks = $this->randomCommon('user', 'thanks', 2);
     
@@ -41,6 +41,7 @@ trait GetsChat
         'userBye1' => $userBye[0],
         'userBye2' => $userBye[1],
         'userDisagree' => $this->randomCommon('user', 'disagree'),
+        'userGreat' => $this->randomCommon('user', 'great'),
         'userHello1' => $userHello[0],
         'userHello2' => $userHello[1],
         'userGetStarted1' => $userGetStarted[0],

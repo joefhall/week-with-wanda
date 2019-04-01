@@ -104,6 +104,11 @@ return [
       "Nah",
       "No, Wanda",
     ],
+    'great' => [
+      "great",
+      "brilliant",
+      "lovely",
+    ],
     'love' => [
       "Ooh I love it!",
       "Yeah this is brilliant!",

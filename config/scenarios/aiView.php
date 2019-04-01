@@ -36,6 +36,14 @@ return [
       'specificJobsWhatText',
       'specificJobsUnderstandText',
     ],
+    'relationships1CallingFriends' => [
+      'nextStepText',
+      'codePretending',
+      'botsLimits',
+      'loveTalking',
+      'whyHungUpText',
+      'otherWaysText',
+    ],
   ],
   
 ];
