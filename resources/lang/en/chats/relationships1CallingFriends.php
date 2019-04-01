@@ -36,7 +36,7 @@ return [
       'whyHungUp' => "I don't get why you're so hung up on this?",
       'otherWays' => "So aren't there any other ways you'd like me more involved in helping manage your relationships?",
       'goReflect' => "Ooh interesting answer, :name. I feel like I need to go reflect on this.",
-      'goReflectPic' => "[ADD PIC]",
+      'goReflectPic' => "🧘‍♀️",
       'tomorrow' => "I'll try and come up with something you're happier with tomorrow",
       'bye' => ":wandaBye",
     ],
