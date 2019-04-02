@@ -32,7 +32,7 @@ const getWandaMessagesCount = chatHistory => {
 
 const hideLoading = () => {
   document.querySelector('.chat__messages').classList.remove('invisible', 'h-0');
-  document.querySelector('.chat__input__container').classList.remove('invisible');
+  document.querySelector('.chat__input').classList.remove('d-none');
   document.querySelector('.chat__loading').classList.add('d-none');
 };
 

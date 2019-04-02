@@ -22,7 +22,7 @@ class ChatInput extends React.Component {
 
   showLoading = () => {
     document.querySelector('.chat__messages').classList.add('invisible', 'h-0');
-    document.querySelector('.chat__input__container').classList.add('invisible');
+    document.querySelector('.chat__input').classList.add('d-none');
     document.querySelector('.chat__loading').classList.remove('d-none');
   };
 

@@ -64414,7 +64414,7 @@ var getWandaMessagesCount = function getWandaMessagesCount(chatHistory) {
 
 var hideLoading = function hideLoading() {
   document.querySelector('.chat__messages').classList.remove('invisible', 'h-0');
-  document.querySelector('.chat__input__container').classList.remove('invisible');
+  document.querySelector('.chat__input').classList.remove('d-none');
   document.querySelector('.chat__loading').classList.add('d-none');
 };
 
@@ -64931,7 +64931,7 @@ function (_React$Component) {
 
     _this.showLoading = function () {
       document.querySelector('.chat__messages').classList.add('invisible', 'h-0');
-      document.querySelector('.chat__input__container').classList.add('invisible');
+      document.querySelector('.chat__input').classList.add('d-none');
       document.querySelector('.chat__loading').classList.remove('d-none');
     };
 
