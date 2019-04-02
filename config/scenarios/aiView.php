@@ -56,6 +56,13 @@ return [
       'problemText',
       'overlookText',
     ],
+    'relationships2MegaMessagingApp' => [
+      'tooMuchPower',
+      'statusQuo',
+      'problemText',
+      'enoughReasonText',
+      'otherText',
+    ],
   ],
   
 ];

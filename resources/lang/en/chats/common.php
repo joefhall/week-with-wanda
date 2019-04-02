@@ -114,6 +114,7 @@ return [
       "Oh yes",
       "For sure",
       "Absolutely",
+      "Hell yeah",
     ],
     'disagree' => [
       "Not really",
