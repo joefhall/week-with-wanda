@@ -64367,8 +64367,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+var checkMessagesDisplayedTimer;
 var sessionId = uuid_v4__WEBPACK_IMPORTED_MODULE_5___default()();
 var timeToBeginTyping = 500;
+
+var checkMessagesDisplayed = function checkMessagesDisplayed(wandaMessagesCount) {
+  var wandaMessagesBubbles = document.querySelectorAll('.chat__messages__message__bubble--wanda');
+
+  if (wandaMessagesBubbles && wandaMessagesBubbles.length >= wandaMessagesCount) {
+    clearInterval(checkMessagesDisplayedTimer);
+    setTimeout(hideLoading, 2500);
+  }
+};
+
+var getWandaMessagesCount = function getWandaMessagesCount(chatHistory) {
+  var count = 0;
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = chatHistory[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var chatEntry = _step.value;
+
+      if (chatEntry.sender === 'wanda') {
+        count++;
+      }
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return != null) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  return count;
+};
 
 var hideLoading = function hideLoading() {
   document.querySelector('.chat__messages').classList.remove('invisible', 'h-0');
@@ -64459,7 +64501,7 @@ function () {
   var _ref2 = _asyncToGenerator(
   /*#__PURE__*/
   _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-    var response, chatHistory, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, chatEntry, latestChatEntry, startScenario, startMessage;
+    var response, chatHistory, _iteratorNormalCompletion2, _didIteratorError2, _iteratorError2, _iterator2, _step2, chatEntry, latestChatEntry, startScenario, startMessage;
 
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
       while (1) {
@@ -64479,7 +64521,7 @@ function () {
             }
 
             console.log("An error occured getting user's chat history back from the server: ".concat(response.data.error));
-            _context2.next = 41;
+            _context2.next = 42;
             break;
 
           case 9:
@@ -64487,17 +64529,17 @@ function () {
             console.log('User chat history:', chatHistory);
 
             if (!chatHistory.length) {
-              _context2.next = 39;
+              _context2.next = 40;
               break;
             }
 
-            _iteratorNormalCompletion = true;
-            _didIteratorError = false;
-            _iteratorError = undefined;
+            _iteratorNormalCompletion2 = true;
+            _didIteratorError2 = false;
+            _iteratorError2 = undefined;
             _context2.prev = 15;
 
-            for (_iterator = chatHistory[Symbol.iterator](); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-              chatEntry = _step.value;
+            for (_iterator2 = chatHistory[Symbol.iterator](); !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+              chatEntry = _step2.value;
               _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["addMessage"])(chatEntry.time * 1000, chatEntry.scenario, chatEntry.sender, chatEntry.id, chatEntry.message));
             }
 
@@ -64507,26 +64549,26 @@ function () {
           case 19:
             _context2.prev = 19;
             _context2.t0 = _context2["catch"](15);
-            _didIteratorError = true;
-            _iteratorError = _context2.t0;
+            _didIteratorError2 = true;
+            _iteratorError2 = _context2.t0;
 
           case 23:
             _context2.prev = 23;
             _context2.prev = 24;
 
-            if (!_iteratorNormalCompletion && _iterator.return != null) {
-              _iterator.return();
+            if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+              _iterator2.return();
             }
 
           case 26:
             _context2.prev = 26;
 
-            if (!_didIteratorError) {
+            if (!_didIteratorError2) {
               _context2.next = 29;
               break;
             }
 
-            throw _iteratorError;
+            throw _iteratorError2;
 
           case 29:
             return _context2.finish(26);
@@ -64545,30 +64587,29 @@ function () {
               respond(startScenario, startMessage, '');
             }
 
-            _context2.next = 40;
+            checkMessagesDisplayedTimer = setInterval(checkMessagesDisplayed, 500, getWandaMessagesCount(chatHistory));
+            _context2.next = 42;
             break;
-
-          case 39:
-            respond('welcomeSignup', 'begin', '');
 
           case 40:
-            setTimeout(hideLoading, 2500);
+            respond('welcomeSignup', 'begin', '');
+            hideLoading();
 
-          case 41:
-            _context2.next = 46;
+          case 42:
+            _context2.next = 47;
             break;
 
-          case 43:
-            _context2.prev = 43;
+          case 44:
+            _context2.prev = 44;
             _context2.t1 = _context2["catch"](1);
             console.log("An error occured getting user's chat history back from the server: ".concat(_context2.t1));
 
-          case 46:
+          case 47:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[1, 43], [15, 19, 23, 31], [24,, 26, 30]]);
+    }, _callee2, null, [[1, 44], [15, 19, 23, 31], [24,, 26, 30]]);
   }));
 
   return function getHistory() {

@@ -5,8 +5,30 @@ import store from '../store';
 import striptags from 'striptags';
 import uuidv4 from 'uuid/v4';
 
+let checkMessagesDisplayedTimer;
 const sessionId = uuidv4();
 const timeToBeginTyping = 500;
+
+const checkMessagesDisplayed = wandaMessagesCount => {
+  const wandaMessagesBubbles = document.querySelectorAll('.chat__messages__message__bubble--wanda');
+  
+  if (wandaMessagesBubbles && wandaMessagesBubbles.length >= wandaMessagesCount) {
+    clearInterval(checkMessagesDisplayedTimer);
+    setTimeout(hideLoading, 2500);
+  }
+};
+
+const getWandaMessagesCount = chatHistory => {
+  let count = 0;
+  
+  for (let chatEntry of chatHistory) {
+    if (chatEntry.sender === 'wanda') {
+      count++;
+    }
+  }
+  
+  return count;
+};
 
 const hideLoading = () => {
   document.querySelector('.chat__messages').classList.remove('invisible', 'h-0');
@@ -85,11 +107,12 @@ export const getHistory = async () => {
         if (startScenario && startMessage) {
           respond(startScenario, startMessage, '');
         }
+        
+        checkMessagesDisplayedTimer = setInterval(checkMessagesDisplayed, 500, getWandaMessagesCount(chatHistory));
       } else {
         respond('welcomeSignup', 'begin', '');
+        hideLoading();
       }
-      
-      setTimeout(hideLoading, 2500);
     }
   } catch(error) {
     console.log(`An error occured getting user's chat history back from the server: ${error}`);
