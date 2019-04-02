@@ -50,6 +50,12 @@ return [
       'problemText',
       'overTheTopText',
     ],
+    'wealth2FacebookBuyOut' => [
+      'tooMuchPower',
+      'spreadTech',
+      'problemText',
+      'overlookText',
+    ],
   ],
   
 ];
