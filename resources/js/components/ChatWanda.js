@@ -22,6 +22,7 @@ class ChatWanda extends React.Component {
         <img src="/img/emotions/heart.gif" className="invisible h-0" alt="Wanda making heart sign" />
         <img src="/img/emotions/thumbs-down.gif" className="invisible h-0" alt="Wanda making thumbs down gesture" />
         <img src="/img/emotions/thumbs-up.gif" className="invisible h-0" alt="Wanda making thumbs up gesture" />
+        <img src="/img/emotions/unhappy.gif" className="invisible h-0" alt="Wanda looking unhappy" />
         <img src="/img/emotions/waving.gif" className="invisible h-0" alt="Wanda waving" />
       </div>
     );

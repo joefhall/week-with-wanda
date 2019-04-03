@@ -66245,6 +66245,10 @@ function (_React$Component) {
         className: "invisible h-0",
         alt: "Wanda making thumbs up gesture"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/img/emotions/unhappy.gif",
+        className: "invisible h-0",
+        alt: "Wanda looking unhappy"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "/img/emotions/waving.gif",
         className: "invisible h-0",
         alt: "Wanda waving"
