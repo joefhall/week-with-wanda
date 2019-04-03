@@ -80,7 +80,7 @@ return [
       'spreadTech' => "It's better if tech is spread amongst more companies",
       'somethingElse' => "Something else",
       'differentDream' => "You need a different dream, Wanda",
-      'notHow' => "This is now how the world should be",
+      'notHow' => "This is not how the world should be",
       'callZuckBackOk1' => ":UserOk1",
       'callZuckBackOk2' => ":UserOk2",
       'yesItIs' => "Yes it is",
