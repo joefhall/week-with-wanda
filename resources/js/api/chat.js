@@ -6,6 +6,7 @@ import striptags from 'striptags';
 import uuidv4 from 'uuid/v4';
 
 let checkMessagesDisplayedTimer;
+const minTypingTime = 2000;
 const sessionId = uuidv4();
 const timeToBeginTyping = 500;
 
@@ -45,7 +46,9 @@ const showResponse = (responseData, wandaMessageId, wandaMessage) => {
 
 const typingDelay = messageText => {
   console.log('Typing delay', timeToBeginTyping + (striptags(messageText).length * 50));
-  return timeToBeginTyping + (striptags(messageText).length * 50);
+  const delayTime = timeToBeginTyping + (striptags(messageText).length * 50);
+  
+  return delayTime > minTypingTime ? delayTime : minTypingTime;
 };
 
 export const respond = async (scenario, messageId, message, requiresResponse = true) => {

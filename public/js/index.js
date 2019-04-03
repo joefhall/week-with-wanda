@@ -64377,6 +64377,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var checkMessagesDisplayedTimer;
+var minTypingTime = 2000;
 var sessionId = uuid_v4__WEBPACK_IMPORTED_MODULE_5___default()();
 var timeToBeginTyping = 500;
 
@@ -64436,7 +64437,8 @@ var showResponse = function showResponse(responseData, wandaMessageId, wandaMess
 
 var typingDelay = function typingDelay(messageText) {
   console.log('Typing delay', timeToBeginTyping + striptags__WEBPACK_IMPORTED_MODULE_4___default()(messageText).length * 50);
-  return timeToBeginTyping + striptags__WEBPACK_IMPORTED_MODULE_4___default()(messageText).length * 50;
+  var delayTime = timeToBeginTyping + striptags__WEBPACK_IMPORTED_MODULE_4___default()(messageText).length * 50;
+  return delayTime > minTypingTime ? delayTime : minTypingTime;
 };
 
 var respond =

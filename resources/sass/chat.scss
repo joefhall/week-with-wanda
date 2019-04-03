@@ -128,18 +128,3 @@
     }
   }
 }
-
-@keyframes typing {
-  0% {
-    background-color: rgba(74, 74, 74, 1);
-    box-shadow: 12px 0px 0px 0px rgba(74, 74, 74, 0.4), 24px 0px 0px 0px rgba(74, 74, 74, 0.2);
-  }
-  50% {
-    background-color: rgba(74, 74, 74, 0.4);
-    box-shadow: 12px 0px 0px 0px rgba(74, 74, 74, 1), 24px 0px 0px 0px rgba(74, 74, 74,0.4);
-  }
-  100% {
-    background-color: rgba(74, 74, 74, 0.2);
-    box-shadow: 12px 0px 0px 0px rgba(74, 74, 74,0.4), 24px 0px 0px 0px rgba(74, 74, 74,1);
-  }
-}
