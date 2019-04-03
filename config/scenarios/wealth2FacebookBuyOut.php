@@ -22,12 +22,25 @@ return [
       ],
       'emotion' => 'waving',
     ],
+    'observation' => [
+      'type' => 'choice',
+      'user' => [
+        'acknowledge1',
+        'acknowledge2',
+      ],
+    ],
+    'acknowledgeResponse' => [
+      'type' => 'choice',
+      'user' => [
+        'getStarted1',
+        'getStarted2',
+      ],
+    ],
     'omg' => [
       'type' => 'none',
       'user' => [
         'omgNone',
       ],
-      'emotion' => 'elated',
     ],
     'omgEmoji' => [
       'type' => 'none',
@@ -41,6 +54,7 @@ return [
         'what',
         'whatGoingOn',
       ],
+      'emotion' => 'elated',
     ],
     'hadCall' => [
       'type' => 'choice',
@@ -98,6 +112,7 @@ return [
         'noWay',
         'wowee',
       ],
+      'emotion' => 'elated',
     ],
     'richer' => [
       'type' => 'none',
@@ -131,6 +146,7 @@ return [
         'unsure',
         'negative',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'dontWant' => [
       'type' => 'choice',
@@ -138,6 +154,7 @@ return [
         'ofCourse',
         'thingIs',
       ],
+      'emotion' => 'unhappy',
     ],
     'againstDeal' => [
       'type' => 'choice',
@@ -146,6 +163,7 @@ return [
         'spreadTech',
         'somethingElse',
       ],
+      'emotion' => 'unhappy',
     ],
     'dream' => [
       'type' => 'choice',
@@ -153,18 +171,21 @@ return [
         'differentDream',
         'notHow',
       ],
+      'emotion' => 'unhappy',
     ],
     'confused' => [
       'type' => 'text',
       'user' => [
         'problemText',
       ],
+      'emotion' => 'frustrated',
     ],
     'soWhat' => [
       'type' => 'text',
       'user' => [
         'problemText',
       ],
+      'emotion' => 'frustrated',
     ],
     'yes' => [
       'type' => 'none',
@@ -189,6 +210,7 @@ return [
       'user' => [
         'greatChoiceNone',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'callZuckBack' => [
       'type' => 'choice',
@@ -203,12 +225,14 @@ return [
         'goNow1',
         'goNow2',
       ],
+      'emotion' => 'waving',
     ],
     'oh' => [
       'type' => 'none',
       'user' => [
         'ohNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'anotherWay' => [
       'type' => 'choice',
@@ -216,18 +240,21 @@ return [
         'yesItIs',
         'gladHearing',
       ],
+      'emotion' => 'unhappy',
     ],
     'overlook' => [
       'type' => 'text',
       'user' => [
         'overlookText',
       ],
+      'emotion' => 'unhappy',
     ],
     'cantArgue' => [
       'type' => 'none',
       'user' => [
         'cantArgueNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'youGift' => [
       'type' => 'choice',
@@ -235,6 +262,7 @@ return [
         'youGiftReally',
         'youGiftThanks',
       ],
+      'emotion' => 'heart',
     ],
     'giftYes' => [
       'type' => 'none',
@@ -268,6 +296,7 @@ return [
         'bye1',
         'bye2',
       ],
+      'emotion' => 'waving',
     ],
   ],
 
@@ -276,9 +305,21 @@ return [
       'wanda' => 'hello',
     ],
     'hello1' => [
-      'wanda' => 'omg',
+      'wanda' => 'observation',
     ],
     'hello2' => [
+      'wanda' => 'observation',
+    ],
+    'acknowledge1' => [
+      'wanda' => 'acknowledgeResponse',
+    ],
+    'acknowledge2' => [
+      'wanda' => 'acknowledgeResponse',
+    ],
+    'getStarted1' => [
+      'wanda' => 'omg',
+    ],
+    'getStarted2' => [
       'wanda' => 'omg',
     ],
     'omgNone' => [

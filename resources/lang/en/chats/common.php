@@ -21,7 +21,7 @@ return [
       "Well someone's got a bit of a twinkle in their eye today, haven't they :name!",
       "You've got a bit of a spring in your step today, :name!",
       "What a glorious day to be alive. It's so nice seeing you again, :name",
-      "Something about you just inspires me, :name",
+      "It's so great seeing you again. Something about you just inspires me, :name",
       "You are an amazing human being, :name. I'm so happy you're in my life",
       "Here we are again. I could talk to you all day, :name",
       "Great hair today, :name. That is so your look!",
@@ -38,7 +38,6 @@ return [
       "👊",
       "👅",
       "💃",
-      "🤹‍♀️",
     ],
     'startEnthusiastic' => [
       "I'm so excited about what I can do for you today",
@@ -146,7 +145,7 @@ return [
       "Hmm I'm not sure",
       "Don't know",
       "I feel a bit icky about this",
-      "Er I'm a bit unsure",
+      "Erm, I'm a bit unsure",
       "Mmmm I'm in two minds",
     ],
     'ok' => [
