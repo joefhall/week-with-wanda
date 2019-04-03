@@ -64937,8 +64937,8 @@ function (_React$Component) {
     _this.addAndSendMessage = function (messageId, message) {
       var scenario = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _this.props.input.scenario;
       var requiresResponse = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
-      _store__WEBPACK_IMPORTED_MODULE_12__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["addMessage"])(Date.now(), scenario, 'user', messageId, message));
-      _store__WEBPACK_IMPORTED_MODULE_12__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setEmotion"])(null));
+      _store__WEBPACK_IMPORTED_MODULE_12__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["addMessage"])(Date.now(), scenario, 'user', messageId, message)); //     store.dispatch(setEmotion(null));
+
       Object(_api_chat__WEBPACK_IMPORTED_MODULE_4__["respond"])(scenario, messageId, message, requiresResponse);
     };
 
@@ -66123,7 +66123,10 @@ function (_React$Component) {
         className: "chat__messages__typing"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat__messages__typing__indicator"
-      }))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/img/typing-bounce.svg",
+        alt: "Typing"
+      })))));
     }
   }]);
 

@@ -17,7 +17,7 @@ import { toTitleCase } from '../utils/text';
 class ChatInput extends React.Component {
   addAndSendMessage = (messageId, message, scenario = this.props.input.scenario, requiresResponse = true) => {
     store.dispatch(addMessage(Date.now(), scenario, 'user', messageId, message));
-    store.dispatch(setEmotion(null));
+//     store.dispatch(setEmotion(null));
     respond(scenario, messageId, message, requiresResponse);
   };
 

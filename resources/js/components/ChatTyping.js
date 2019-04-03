@@ -10,6 +10,7 @@ class ChatTyping extends React.Component {
         <div className="chat__messages__message__bubble chat__messages__message__bubble--wanda chat__messages__message__bubble--typing">
           <div className="chat__messages__typing">
             <div className="chat__messages__typing__indicator">
+              <img src="/img/typing-bounce.svg" alt="Typing" />
             </div>
           </div>
         </div>
