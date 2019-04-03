@@ -1,0 +1,40 @@
+.chat__wanda {
+  background-image: url(/img/emotions/base.gif);
+  filter: brightness(115%) saturate(140%);
+  line-height: 0;
+  min-height: 225px;
+  
+  @include media-breakpoint-up(md) {
+    border-top-left-radius: $spacer * .5;
+    border-top-right-radius: $spacer * .5;
+  }
+  
+  &__image {
+    transition: 0.5s linear all;
+    width: 100%;
+    
+    @include media-breakpoint-up(md) {
+      border-top-left-radius: $spacer * .5;
+      border-top-right-radius: $spacer * .5;
+    }
+  }
+  
+  &__title {
+    color: $main-colour;
+    font-family: 'Pacifico', cursive;
+    left: 8px;
+    line-height: 1.1;
+    position: absolute;
+    top: 5px;
+    width: 100%;
+    
+    &--1 {
+      font-size: $font-size-lg;
+    }
+    
+    &--2 {
+      font-size: $font-size-xxxlg;
+      text-shadow: 1px 1px 1px black;
+    }
+  }
+}

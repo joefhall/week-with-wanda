@@ -12823,7 +12823,8 @@ a.text-dark:focus {
 }
 
 body {
-  background-color: darkcyan;
+  background-color: #e6daeb;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='24' viewBox='0 0 88 24'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='autumn' fill='%23fafad2' fill-opacity='0.4'%3E%3Cpath d='M10 0l30 15 2 1V2.18A10 10 0 0 0 41.76 0H39.7a8 8 0 0 1 .3 2.18v10.58L14.47 0H10zm31.76 24a10 10 0 0 0-5.29-6.76L4 1 2 0v13.82a10 10 0 0 0 5.53 8.94L10 24h4.47l-6.05-3.02A8 8 0 0 1 4 13.82V3.24l31.58 15.78A8 8 0 0 1 39.7 24h2.06zM78 24l2.47-1.24A10 10 0 0 0 86 13.82V0l-2 1-32.47 16.24A10 10 0 0 0 46.24 24h2.06a8 8 0 0 1 4.12-4.98L84 3.24v10.58a8 8 0 0 1-4.42 7.16L73.53 24H78zm0-24L48 15l-2 1V2.18A10 10 0 0 1 46.24 0h2.06a8 8 0 0 0-.3 2.18v10.58L73.53 0H78z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
 a,
@@ -12845,8 +12846,9 @@ a:visited {
   width: 100vw;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .chat {
+    border-radius: 0.5rem;
     max-height: 600px;
     max-width: 400px;
   }
@@ -13018,6 +13020,13 @@ a:visited {
   padding: 1rem;
 }
 
+@media (min-width: 768px) {
+  .chat__input {
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+}
+
 .chat__input__choices {
   display: flex;
   flex-wrap: wrap;
@@ -13119,6 +13128,52 @@ a:visited {
   overflow-y: auto;
   padding: 1rem 0;
   text-align: center;
+}
+
+.chat__wanda {
+  background-image: url(/img/emotions/base.gif);
+  -webkit-filter: brightness(115%) saturate(140%);
+          filter: brightness(115%) saturate(140%);
+  line-height: 0;
+  min-height: 225px;
+}
+
+@media (min-width: 768px) {
+  .chat__wanda {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+}
+
+.chat__wanda__image {
+  transition: 0.5s linear all;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .chat__wanda__image {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+}
+
+.chat__wanda__title {
+  color: darkviolet;
+  font-family: "Pacifico", cursive;
+  left: 8px;
+  line-height: 1.1;
+  position: absolute;
+  top: 5px;
+  width: 100%;
+}
+
+.chat__wanda__title--1 {
+  font-size: 1.25rem;
+}
+
+.chat__wanda__title--2 {
+  font-size: 2.5rem;
+  text-shadow: 1px 1px 1px black;
 }
 
 .scenarios__connectors {

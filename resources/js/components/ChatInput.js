@@ -2,7 +2,7 @@ import React from 'react';
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 import { connect } from 'react-redux';
 
-import { addMessage, setInput, setUserProperty } from '../actions';
+import { addMessage, setEmotion, setInput, setUserProperty } from '../actions';
 import { getHistory, getSessionId, respond } from '../api/chat';
 import ChatInputChoices from './ChatInputChoices';
 import ChatInputPasswordCreate from './ChatInputPasswordCreate';
@@ -17,6 +17,7 @@ import { toTitleCase } from '../utils/text';
 class ChatInput extends React.Component {
   addAndSendMessage = (messageId, message, scenario = this.props.input.scenario, requiresResponse = true) => {
     store.dispatch(addMessage(Date.now(), scenario, 'user', messageId, message));
+    store.dispatch(setEmotion(null));
     respond(scenario, messageId, message, requiresResponse);
   };
 

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { addMessage } from '../actions';
+import { addMessage, setEmotion } from '../actions';
 import { setInput, setLoading, setTyping } from '../actions';
 import store from '../store';
 import striptags from 'striptags';
@@ -39,6 +39,7 @@ const hideLoading = () => {
 const showResponse = (responseData, wandaMessageId, wandaMessage) => {
   store.dispatch(setTyping(false));
   store.dispatch(addMessage(Date.now(), responseData.scenario, 'wanda', wandaMessageId, wandaMessage));
+  store.dispatch(setEmotion(responseData.emotion));
   store.dispatch(setInput(responseData.scenario, responseData.type, responseData.user));
 };
 

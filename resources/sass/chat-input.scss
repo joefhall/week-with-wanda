@@ -2,6 +2,11 @@
   background-color: beige;
   flex: 1 1 auto;
   padding: $spacer;
+  
+  @include media-breakpoint-up(md) {
+    border-bottom-left-radius: $spacer * .5;
+    border-bottom-right-radius: $spacer * .5;
+  }
 
   &__choices {
     display: flex;

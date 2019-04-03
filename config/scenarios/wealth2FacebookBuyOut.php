@@ -20,12 +20,14 @@ return [
         'hello1',
         'hello2',
       ],
+      'emotion' => 'waving',
     ],
     'omg' => [
       'type' => 'none',
       'user' => [
         'omgNone',
       ],
+      'emotion' => 'elated',
     ],
     'omgEmoji' => [
       'type' => 'none',

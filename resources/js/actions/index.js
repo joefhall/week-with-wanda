@@ -11,6 +11,15 @@ export const addMessage = (time, scenario, sender, id, message) => {
   };
 };
 
+export const setEmotion = emotion => {
+  return {
+    type: 'EMOTION_SET',
+    payload: {
+      emotion: emotion,
+    }
+  };
+};
+
 export const setInput = (scenario, type, userInput) => {
   return {
     type: 'INPUT_SET',

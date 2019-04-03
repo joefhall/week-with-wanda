@@ -20,6 +20,7 @@ return [
           'hello',
           'hi',
         ],
+        'emotion' => 'waving',
       ],
       'whatWantDo' => [
         'type' => 'choice',
@@ -66,12 +67,14 @@ return [
         'user' => [
           'myEmail',
         ],
+        'emotion' => 'thumbs-down',
       ],
       'userExists' => [
         'type' => 'signupEmail',
         'user' => [
           'myEmail',
         ],
+        'emotion' => 'thumbs-down',
       ],
       'choosePassword' => [
         'type' => 'signupPassword',
@@ -84,12 +87,14 @@ return [
         'user' => [
           'doLogin',
         ],
+        'emotion' => 'thumbs-up',
       ],
       'greatThanksFacebook' => [
         'type' => 'doLoginFacebook',
         'user' => [
           'doLoginFacebook',
         ],
+        'emotion' => 'thumbs-up',
       ],
       'giveMeASec' => [
         'type' => 'none',

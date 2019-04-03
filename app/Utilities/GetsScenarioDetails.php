@@ -38,6 +38,12 @@ trait GetsScenarioDetails
    */
   public function getInteraction(string $scenario, string $wandaMessageId)
   {
-    return config("scenarios.{$scenario}.wanda.{$wandaMessageId}");
+    $wandaInteraction = config("scenarios.{$scenario}.wanda.{$wandaMessageId}");
+      
+    if (!array_has($wandaInteraction, 'emotion')) {
+      $wandaInteraction['emotion'] = null;
+    }
+    
+    return $wandaInteraction;
   }
 }

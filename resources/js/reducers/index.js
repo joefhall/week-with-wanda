@@ -1,5 +1,15 @@
 import  { combineReducers } from 'redux';
 
+const emotionReducer = (state = [], action) => {
+  console.log('Emotion reducer state', state);
+  
+  if (action && action.type === 'EMOTION_SET') {
+    return action.payload.emotion || 'base';
+  }
+  
+  return state;
+};
+
 const inputReducer = (state = {}, action) => {
   console.log('Input reducer state', state);
   console.log('Input reducer action', action);
@@ -32,7 +42,7 @@ const typingReducer = (state = [], action) => {
     return action.payload.typing;
   }
   
-  return false;
+  return state;
 };
 
 const userPropertyReducer = (state = {}, action) => {
@@ -46,6 +56,7 @@ const userPropertyReducer = (state = {}, action) => {
 };
 
 export default combineReducers({
+  emotion: emotionReducer,
   input: inputReducer,
   messages: messagesReducer,
   typing: typingReducer,
