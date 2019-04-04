@@ -21,20 +21,6 @@ return [
         'hello2',
       ],
     ],
-    'observation' => [
-      'type' => 'choice',
-      'user' => [
-        'acknowledge1',
-        'acknowledge2',
-      ],
-    ],
-    'acknowledgeResponse' => [
-      'type' => 'choice',
-      'user' => [
-        'getStarted1',
-        'getStarted2',
-      ],
-    ],
     'perky' => [
       'type' => 'choice',
       'user' => [
@@ -285,21 +271,9 @@ return [
       'wanda' => 'hello',
     ],
     'hello1' => [
-      'wanda' => 'observation',
-    ],
-    'hello2' => [
-      'wanda' => 'observation',
-    ],
-    'acknowledge1' => [
-      'wanda' => 'acknowledgeResponse',
-    ],
-    'acknowledge2' => [
-      'wanda' => 'acknowledgeResponse',
-    ],
-    'getStarted1' => [
       'wanda' => 'perky',
     ],
-    'getStarted2' => [
+    'hello2' => [
       'wanda' => 'perky',
     ],
     'perkyThanks' => [

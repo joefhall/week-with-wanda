@@ -12,8 +12,6 @@ return [
   
     'wanda' => [
       'hello' => ":wandaHello",
-      'observation' => ":wandaObservation",
-      'acknowledgeResponse' => ":wandaAcknowledgeResponse",
       'perky' => "You look super perky, :name. There's a beautiful glow in your cheeks",
       'worrying' => "But I've been worrying a bit since I last saw you... you might not always be so well",
       'notYounger' => "Well, you're not getting any younger are you?",
@@ -56,10 +54,6 @@ return [
     'user' => [
       'hello1' => ":userHello1",
       'hello2' => ":userHello2",
-      'acknowledge1' => ":userAcknowledge1",
-      'acknowledge2' => ":userAcknowledge2",
-      'getStarted1' => ":userGetStarted1",
-      'getStarted2' => ":userGetStarted2",
       'perkyThanks' => ":userThanks1",
       'lookingWell' => "You're looking well yourself",
       'ohNo' => "Oh no?",
