@@ -12,8 +12,6 @@ return [
   
     'wanda' => [
       'hello' => ":wandaHello",
-      'observation' => ":wandaObservation",
-      'acknowledgeResponse' => ":wandaAcknowledgeResponse",
       'omg' => "OMG! OMG! OMG!",
       'omgEmoji' => "😝",
       'guessWhat' => "Guess whaaaaaaaaaaaat!",
@@ -57,10 +55,6 @@ return [
     'user' => [
       'hello1' => ":userHello1",
       'hello2' => ":userHello2",
-      'acknowledge1' => ":userAcknowledge1",
-      'acknowledge2' => ":userAcknowledge2",
-      'getStarted1' => ":userGetStarted1",
-      'getStarted2' => ":userGetStarted2",
       'what' => "What?!",
       'whatGoingOn' => "What's going on?",
       'who' => "Who? Who?",

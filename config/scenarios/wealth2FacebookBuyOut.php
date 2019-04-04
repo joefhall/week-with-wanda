@@ -22,20 +22,6 @@ return [
       ],
       'emotion' => 'waving',
     ],
-    'observation' => [
-      'type' => 'choice',
-      'user' => [
-        'acknowledge1',
-        'acknowledge2',
-      ],
-    ],
-    'acknowledgeResponse' => [
-      'type' => 'choice',
-      'user' => [
-        'getStarted1',
-        'getStarted2',
-      ],
-    ],
     'omg' => [
       'type' => 'none',
       'user' => [
@@ -305,21 +291,9 @@ return [
       'wanda' => 'hello',
     ],
     'hello1' => [
-      'wanda' => 'observation',
-    ],
-    'hello2' => [
-      'wanda' => 'observation',
-    ],
-    'acknowledge1' => [
-      'wanda' => 'acknowledgeResponse',
-    ],
-    'acknowledge2' => [
-      'wanda' => 'acknowledgeResponse',
-    ],
-    'getStarted1' => [
       'wanda' => 'omg',
     ],
-    'getStarted2' => [
+    'hello2' => [
       'wanda' => 'omg',
     ],
     'omgNone' => [
