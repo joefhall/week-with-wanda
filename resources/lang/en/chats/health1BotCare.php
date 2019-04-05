@@ -21,7 +21,7 @@ return [
       'announcing' => "Announcing........",
       'wandaCare' => "WandaCare!™©®",
       'getGoing' => "I'll get going transferring over your medical records to me! And I'll think up something even more awesome to do for you tomorrow",
-      'wandaCarePic' => '<img class="chat__messages__message__bubble__image" src="/img/health0BotCareRobotNurse.jpg" />',
+      'wandaCarePic' => '<img class="chat__messages__message__bubble__image" src="/img/health1BotCareRobotNurse.jpg" />',
       'wandaCareMore' => "Well, :name, imagine a world where you no longer have to worry about healthcare at all – because I've got you covered.",
       'wandaCareMore2' => "I'll use my AI smarts to diagnose you instantaneously when something's wrong with you...",
       'wandaCareMore3' => "I'll prescribe you treatment straight away – no waiting and no pesky human error...",

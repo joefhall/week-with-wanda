@@ -28,6 +28,7 @@ trait GetsChat
     if ($user) {
       return [
         'country' => $user->country,
+        'counryName' => locale_get_display_region("-{$user->country}", 'en'),
         'email' => $user->email,
         'mobileNumber' => $user->mobile_number,
         'name' => $user->first_name,
