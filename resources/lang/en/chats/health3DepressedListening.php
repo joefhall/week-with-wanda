@@ -35,6 +35,7 @@ return [
       'soWelcome' => "You are so welcome, :name. I'm here for you!",
       'touchy' => "No need to get touchy, :name! Why won't you tell me?",
       'knowSoMuch' => "Hmmm. Ok. But I want to help you. I know so much about you.",
+      'howBeSure' => "But how can you be sure, :name? I know you so well",
       'ohWell' => "Oh well. I'll keep trying to look out for you.",
       'really' => "Really? But I could truly help you, :name. Why now?",
       'soGlad' => "I'm so glad you think so, :name. I'm here for you. And with you. Always.",

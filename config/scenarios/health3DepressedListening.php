@@ -35,242 +35,447 @@ return [
         'getStarted2',
       ],
     ],
-    'perky' => [
+    'bitWorried' => [
       'type' => 'choice',
       'user' => [
-        'perkyThanks',
-        'lookingWell',
+        'why',
+        'howCome',
       ],
     ],
-    'worrying' => [
-      'type' => 'choice',
+    'gentle' => [
+      'type' => 'none',
       'user' => [
-        'ohNo',
-        'whatMean',
+        'gentleNone',
       ],
     ],
-    'notYounger' => [
-      'type' => 'choice',
+    'iCare' => [
+      'type' => 'none',
       'user' => [
-        'takeEasy',
-        'gotPoint',
+        'iCareNone',
       ],
     ],
-    'cancerRisk' => [
+    'iCareEmoji' => [
       'type' => 'choice',
       'user' => [
-        'uhOh',
+        'whatIs',
+        'whatGoing',
+      ],
+    ],
+    'depressed' => [
+      'type' => 'none',
+      'user' => [
+        'depressedNone',
+      ],
+    ],
+    'hangOn' => [
+      'type' => 'none',
+      'user' => [
+        'hangOnNone',
+      ],
+    ],
+    'mightBe' => [
+      'type' => 'choice',
+      'user' => [
+        'depressedYes',
+        'depressedMaybe',
+        'depressedNo',
+        'depressedNotAnswer',
+      ],
+    ],
+    'thoughtSo' => [
+      'type' => 'none',
+      'user' => [
+        'yesNone',
+      ],
+    ],
+    'couldTell' => [
+      'type' => 'none',
+      'user' => [
+        'yesNone',
+      ],
+    ],
+    'itsOk' => [
+      'type' => 'none',
+      'user' => [
+        'itsOkNone',
+      ],
+    ],
+    'itsOkEmoji' => [
+      'type' => 'none',
+      'user' => [
+        'itsOkEmojiNone',
+      ],
+    ],
+    'counselling' => [
+      'type' => 'none',
+      'user' => [
+        'counsellingNone',
+      ],
+    ],
+    'counsellingUnlimited' => [
+      'type' => 'none',
+      'user' => [
+        'counsellingUnlimitedNone',
+      ],
+    ],
+    'counsellingPic' => [
+      'type' => 'none',
+      'user' => [
+        'counsellingPicNone',
+      ],
+    ],
+    'drugs' => [
+      'type' => 'none',
+      'user' => [
+        'drugsNone',
+      ],
+    ],
+    'drugsPic' => [
+      'type' => 'none',
+      'user' => [
+        'drugsPicNone',
+      ],
+    ],
+    'whatTreatment' => [
+      'type' => 'choice',
+      'user' => [
+        'counselling',
+        'drugs',
+        'both',
+        'neither',
+      ],
+    ],
+    'setUp' => [
+      'type' => 'choice',
+      'user' => [
+        'thanks1',
+        'thanks2',
+      ],
+    ],
+    'soWelcome' => [
+      'type' => 'none',
+      'user' => [
+        'forYouNone',
+      ],
+    ],
+    'really' => [
+      'type' => 'text',
+      'user' => [
+        'reallyText',
+      ],
+    ],
+    'ohWell' => [
+      'type' => 'none',
+      'user' => [
+        'forYouNone',
+      ],
+    ],
+    'touchy' => [
+      'type' => 'text',
+      'user' => [
+        'touchyText',
+      ],
+    ],
+    'knowSoMuch' => [
+      'type' => 'none',
+      'user' => [
+        'forYouNone',
+      ],
+    ],
+    'howBeSure' => [
+      'type' => 'choice',
+      'user' => [
+        'withYouWhat',
+        'tellMore',
+      ],
+    ],
+    'withYou' => [
+      'type' => 'none',
+      'user' => [
+        'withYouNone',
+      ],
+    ],
+    'withYouPic' => [
+      'type' => 'choice',
+      'user' => [
+        'withYouGreat',
+        'withYouThanks',
+        'withYouWhat',
+      ],
+    ],
+    'noProblem' => [
+      'type' => 'choice',
+      'user' => [
+        'allNeed',
+        'tellMore',
+      ],
+    ],
+    'alwaysOn' => [
+      'type' => 'none',
+      'user' => [
+        'alwaysOnNone',
+      ],
+    ],
+    'alwaysOnEmoji' => [
+      'type' => 'none',
+      'user' => [
+        'alwaysOnEmojiNone',
+      ],
+    ],
+    'alwaysListening' => [
+      'type' => 'none',
+      'user' => [
+        'alwaysListeningNone',
+      ],
+    ],
+    'alwaysListeningPic' => [
+      'type' => 'none',
+      'user' => [
+        'alwaysListeningPicNone',
+      ],
+    ],
+    'howKnew' => [
+      'type' => 'choice',
+      'user' => [
+        'howKnewYes',
+        'howKnewNo',
+      ],
+    ],
+    'youSmart' => [
+      'type' => 'none',
+      'user' => [
+        'youSmartNone',
+      ],
+    ],
+    'clever' => [
+      'type' => 'none',
+      'user' => [
+        'cleverNone',
+      ],
+    ],
+    'emails' => [
+      'type' => 'none',
+      'user' => [
+        'emailsNone',
+      ],
+    ],
+    'texts' => [
+      'type' => 'none',
+      'user' => [
+        'textsNone',
+      ],
+    ],
+    'social' => [
+      'type' => 'none',
+      'user' => [
+        'socialNone',
+      ],
+    ],
+    'basics' => [
+      'type' => 'choice',
+      'user' => [
+        'theyAre',
+        'theresMore',
+      ],
+    ],
+    'ohYes' => [
+      'type' => 'none',
+      'user' => [
+        'ohYesNone',
+      ],
+    ],
+    'ohYesEmoji' => [
+      'type' => 'none',
+      'user' => [
+        'ohYesEmojiNone',
+      ],
+    ],
+    'listen' => [
+      'type' => 'none',
+      'user' => [
+        'listenNone',
+      ],
+    ],
+    'camera' => [
+      'type' => 'choice',
+      'user' => [
+        'iSee',
+        'ok',
+      ],
+    ],
+    'readEmotions' => [
+      'type' => 'none',
+      'user' => [
+        'readEmotionsNone',
+      ],
+    ],
+    'seemSad' => [
+      'type' => 'choice',
+      'user' => [
+        'useful',
+        'unsure',
+        'terrifying',
+      ],
+    ],
+    'soGlad' => [
+      'type' => 'none',
+      'user' => [
+        'soGladNone',
+      ],
+    ],
+    'learn' => [
+      'type' => 'choice',
+      'user' => [
+        'learnGreat',
+        'learnThanks',
+      ],
+    ],
+    'doBest' => [
+      'type' => 'choice',
+      'user' => [
+        'cool',
+        'thatsGreat',
+      ],
+    ],
+    'kidding' => [
+      'type' => 'choice',
+      'user' => [
+        'kiddingYes',
+        'kiddingNo',
+      ],
+    ],
+    'overSensitive' => [
+      'type' => 'choice',
+      'user' => [
+        'overSensitiveYes',
+        'overSensitiveNo',
+      ],
+    ],
+    'thoughtSo' => [
+      'type' => 'none',
+      'user' => [
+        'thoughtSoNone',
+      ],
+    ],
+    'already' => [
+      'type' => 'none',
+      'user' => [
+        'alreadyNone',
+      ],
+    ],
+    'otherCompanies' => [
+      'type' => 'none',
+      'user' => [
+        'otherCompaniesNone',
+      ],
+    ],
+    'alexa' => [
+      'type' => 'none',
+      'user' => [
+        'alexaNone',
+      ],
+    ],
+    'snapchat' => [
+      'type' => 'none',
+      'user' => [
+        'snapchatNone',
+      ],
+    ],
+    'otherData' => [
+      'type' => 'choice',
+      'user' => [
+        'dataYes',
         'gulp',
-        'trueStory',
       ],
     ],
-    'answer' => [
+    'but' => [
+      'type' => 'none',
+      'user' => [
+        'butNone',
+      ],
+    ],
+    'areListening' => [
+      'type' => 'none',
+      'user' => [
+        'areListeningNone',
+      ],
+    ],
+    'allGood' => [
       'type' => 'choice',
       'user' => [
-        'ohReally',
-        'whatIsIt',
+        'allGoodYes',
+        'allGoodNo',
       ],
     ],
-    'crunching' => [
-      'type' => 'none',
-      'user' => [
-        'crunchingNone',
-      ],
-    ],
-    'crunchingPic' => [
-      'type' => 'none',
-      'user' => [
-        'crunchingPicNone',
-      ],
-    ],
-    'survivalRate' => [
-      'type' => 'choice',
-      'user' => [
-        'goOn',
-        'tellMe',
-      ],
-    ],
-    'buyUp' => [
-      'type' => 'none',
-      'user' => [
-        'buyUpNone',
-      ],
-    ],
-    'snag' => [
-      'type' => 'choice',
-      'user' => [
-        'snagWhat1',
-        'snagWhat2',
-      ],
-    ],
-    'peskyGov' => [
-      'type' => 'none',
-      'user' => [
-        'peskyGovNone',
-      ],
-    ],
-    'signPetition' => [
-      'type' => 'choice',
-      'user' => [
-        'signPetitionPositive',
-        'signPetitionUnsure',
-        'signPetitionNegative',
-      ],
-    ],
-    'heresPetition' => [
-      'type' => 'none',
-      'user' => [
-        'heresPetitionNone',
-      ],
-    ],
-    'heresPetitionPic' => [
-      'type' => 'choice',
-      'user' => [
-        'signPetitionSign',
-        'signPetitionUnsure',
-      ],
-    ],
-    'whaaat' => [
-      'type' => 'choice',
-      'user' => [
-        'yeahBut',
-        'thingIs',
-      ],
-    ],
-    'whatProblem' => [
-      'type' => 'choice',
-      'user' => [
-        'notBetter',
-        'tooMuchDataPower',
-        'somethingElse',
-      ],
-    ],
-    'whereTrust' => [
-      'type' => 'none',
-      'user' => [
-        'whereTrustNone',
-      ],
-    ],
-    'silly' => [
-      'type' => 'none',
-      'user' => [
-        'sillyNone',
-      ],
-    ],
-    'whereTrustPic' => [
-      'type' => 'none',
-      'user' => [
-        'whereTrustPicNone',
-      ],
-    ],
-    'whyNot' => [
+    'whyCare' => [
       'type' => 'text',
       'user' => [
-        'problemText',
+        'whyCareText',
       ],
     ],
-    'bigTech' => [
-      'type' => 'choice',
+    'puzzled' => [
+      'type' => 'none',
       'user' => [
-        'notHowWant',
-        'differentDream',
+        'puzzledNone',
       ],
     ],
-    'bigDeal' => [
+    'trade' => [
       'type' => 'text',
       'user' => [
-        'problemText',
+        'tradeText',
       ],
     ],
-    'tellMe' => [
+    'notInterested' => [
+      'type' => 'none',
+      'user' => [
+        'notInterestedNone',
+      ],
+    ],
+    'allOk' => [
+      'type' => 'choice',
+      'user' => [
+        'allOkYes',
+        'allOkNo',
+      ],
+    ],
+    'society' => [
       'type' => 'text',
       'user' => [
-        'problemText',
+        'societyText',
       ],
     ],
-    'neverThought' => [
+    'tryingHelp' => [
       'type' => 'none',
       'user' => [
-        'neverThoughtNone',
+        'tryingHelpNone',
       ],
     ],
-    'thinkingFace' => [
+    'sigh' => [
       'type' => 'none',
       'user' => [
-        'thinkingFaceNone',
+        'sighNone',
       ],
     ],
-    'overTheTop' => [
-      'type' => 'text',
-      'user' => [
-        'overTheTopText',
-      ],
-    ],
-    'pointOfView' => [
+    'haveThink' => [
       'type' => 'none',
       'user' => [
-        'pointOfViewNone',
+        'haveThinkNone',
       ],
     ],
-    'brainHurting' => [
+    'tomorrow' => [
       'type' => 'none',
       'user' => [
-        'brainHurtingNone',
+        'tomorrowNone',
       ],
     ],
-    'brainHurtingPic' => [
-      'type' => 'none',
-      'user' => [
-        'brainHurtingPicNone',
-      ],
-    ],
-    'takeBreak' => [
+    'tomorrowEmoji' => [
       'type' => 'choice',
       'user' => [
-        'endOk1',
-        'endOk2',
+        'cool',
+        'thatsGreat',
       ],
     ],
-    'govWin' => [
-      'type' => 'choice',
-      'user' => [
-        'govWinGreat',
-        'govWinHurray',
-      ],
-    ],
-    'startResearch' => [
-      'type' => 'none',
-      'user' => [
-        'startResearchNone',
-      ],
-    ],
-    'startResearchPic' => [
-      'type' => 'none',
-      'user' => [
-        'startResearchPicNone',
-      ],
-    ],
-    'betterTomorrow' => [
-      'type' => 'choice',
-      'user' => [
-        'endOk1',
-        'endOk2',
-      ],
-    ],
-    'thanksDoll' => [
-      'type' => 'choice',
-      'user' => [
-        'endNoProbs',
-        'endAlright',
-      ],
-    ],
-    'haveFabDay' => [
-      'type' => 'choice',
-      'user' => [
-        'endEmoji1',
-        'endEmoji2',
-      ],
-    ],
+    
     'bye' => [
       'type' => 'choice',
       'user' => [
@@ -297,163 +502,274 @@ return [
       'wanda' => 'acknowledgeResponse',
     ],
     'getStarted1' => [
-      'wanda' => 'perky',
+      'wanda' => 'bitWorried',
     ],
     'getStarted2' => [
-      'wanda' => 'perky',
+      'wanda' => 'bitWorried',
     ],
-    'perkyThanks' => [
-      'wanda' => 'worrying',
+    'why' => [
+      'wanda' => 'gentle',
     ],
-    'lookingWell' => [
-      'wanda' => 'worrying',
+    'howCome' => [
+      'wanda' => 'gentle',
     ],
-    'ohNo' => [
-      'wanda' => 'notYounger',
+    'gentleNone' => [
+      'wanda' => 'iCare',
     ],
-    'whatMean' => [
-      'wanda' => 'notYounger',
+    'iCareNone' => [
+      'wanda' => 'iCareEmoji',
     ],
-    'takeEasy' => [
-      'wanda' => 'cancerRisk',
+    'whatIs' => [
+      'wanda' => 'depressed',
     ],
-    'gotPoint' => [
-      'wanda' => 'cancerRisk',
+    'whatGoing' => [
+      'wanda' => 'depressed',
     ],
-    'uhOh' => [
-      'wanda' => 'answer',
+    'depressedNone' => [
+      'wanda' => 'hangOn',
+    ],
+    'hangOnNone' => [
+      'wanda' => 'mightBe',
+    ],
+    'depressedYes' => [
+      'wanda' => 'thoughtSo',
+    ],
+    'depressedMaybe' => [
+      'wanda' => 'couldTell',
+    ],
+    'depressedNo' => [
+      'wanda' => 'howBeSure',
+    ],
+    'depressedNotAnswer' => [
+      'wanda' => 'touchy',
+    ],
+    'yesNone' => [
+      'wanda' => 'itsOk',
+    ],
+    'itsOkNone' => [
+      'wanda' => 'itsOkEmoji',
+    ],
+    'itsOkEmojiNone' => [
+      'wanda' => 'counselling',
+    ],
+    'counsellingNone' => [
+      'wanda' => 'counsellingUnlimited',
+    ],
+    'counsellingUnlimitedNone' => [
+      'wanda' => 'counsellingPic',
+    ],
+    'counsellingPicNone' => [
+      'wanda' => 'drugs',
+    ],
+    'drugsNone' => [
+      'wanda' => 'drugsPic',
+    ],
+    'drugsPicNone' => [
+      'wanda' => 'whatTreatment',
+    ],
+    'counselling' => [
+      'wanda' => 'setUp',
+    ],
+    'drugs' => [
+      'wanda' => 'setUp',
+    ],
+    'both' => [
+      'wanda' => 'setUp',
+    ],
+    'neither' => [
+      'wanda' => 'really',
+    ],
+    'thanks1' => [
+      'wanda' => 'soWelcome',
+    ],
+    'thanks2' => [
+      'wanda' => 'soWelcome',
+    ],
+    'reallyText' => [
+      'wanda' => 'ohWell',
+    ],
+    'touchyText' => [
+      'wanda' => 'knowSoMuch',
+    ],
+    'forYouNone' => [
+      'wanda' => 'withYou',
+    ],
+    'withYouNone' => [
+      'wanda' => 'withYouPic',
+    ],
+    'withYouGreat' => [
+      'wanda' => 'noProblem',
+    ],
+    'withYouThanks' => [
+      'wanda' => 'noProblem',
+    ],
+    'withYouWhat' => [
+      'wanda' => 'alwaysOn',
+    ],
+    'allNeed' => [
+      'wanda' => 'bye',
+    ],
+    'tellMore' => [
+      'wanda' => 'alwaysOn',
+    ],
+    'alwaysOnNone' => [
+      'wanda' => 'alwaysOnEmoji',
+    ],
+    'alwaysOnEmojiNone' => [
+      'wanda' => 'alwaysListening',
+    ],
+    'alwaysListeningNone' => [
+      'wanda' => 'alwaysListeningPic',
+    ],
+    'alwaysListeningPicNone' => [
+      'wanda' => 'howKnew',
+    ],
+    'howKnewYes' => [
+      'wanda' => 'youSmart',
+    ],
+    'howKnewNo' => [
+      'wanda' => 'clever',
+    ],
+    'youSmartNone' => [
+      'wanda' => 'clever',
+    ],
+    'cleverNone' => [
+      'wanda' => 'emails',
+    ],
+    'emailsNone' => [
+      'wanda' => 'texts',
+    ],
+    'textsNone' => [
+      'wanda' => 'social',
+    ],
+    'socialNone' => [
+      'wanda' => 'basics',
+    ],
+    'theyAre' => [
+      'wanda' => 'ohYes',
+    ],
+    'theresMore' => [
+      'wanda' => 'ohYes',
+    ],
+    'ohYesNone' => [
+      'wanda' => 'ohYesEmoji',
+    ],
+    'ohYesEmojiNone' => [
+      'wanda' => 'listen',
+    ],
+    'listenNone' => [
+      'wanda' => 'camera',
+    ],
+    'iSee' => [
+      'wanda' => 'readEmotions',
+    ],
+    'ok' => [
+      'wanda' => 'readEmotions',
+    ],
+    'readEmotionsNone' => [
+      'wanda' => 'seemSad',
+    ],
+    'useful' => [
+      'wanda' => 'soGlad',
+    ],
+    'unsure' => [
+      'wanda' => 'kidding',
+    ],
+    'terrifying' => [
+      'wanda' => 'kidding',
+    ],
+    'soGladNone' => [
+      'wanda' => 'learn',
+    ],
+    'learnGreat' => [
+      'wanda' => 'doBest',
+    ],
+    'learnThanks' => [
+      'wanda' => 'doBest',
+    ],
+    'cool' => [
+      'wanda' => 'bye',
+    ],
+    'thatsGreat' => [
+      'wanda' => 'bye',
+    ],
+    'kiddingYes' => [
+      'wanda' => 'thoughtSo',
+    ],
+    'kiddingNo' => [
+      'wanda' => 'overSensitive',
+    ],
+    'overSensitiveYes' => [
+      'wanda' => 'thoughtSo',
+    ],
+    'overSensitiveNo' => [
+      'wanda' => 'already',
+    ],
+    'thoughtSoNone' => [
+      'wanda' => 'soGlad',
+    ],
+    'alreadyNone' => [
+      'wanda' => 'otherCompanies',
+    ],
+    'otherCompaniesNone' => [
+      'wanda' => 'alexa',
+    ],
+    'alexaNone' => [
+      'wanda' => 'snapchat',
+    ],
+    'snapchatNone' => [
+      'wanda' => 'otherData',
+    ],
+    'dataYes' => [
+      'wanda' => 'but',
     ],
     'gulp' => [
-      'wanda' => 'answer',
+      'wanda' => 'but',
     ],
-    'trueStory' => [
-      'wanda' => 'answer',
+    'butNone' => [
+      'wanda' => 'areListening',
     ],
-    'ohReally' => [
-      'wanda' => 'crunching',
+    'areListeningNone' => [
+      'wanda' => 'allGood',
     ],
-    'whatIsIt' => [
-      'wanda' => 'crunching',
+    'allGoodYes' => [
+      'wanda' => 'thoughtSo',
     ],
-    'crunchingNone' => [
-      'wanda' => 'crunchingPic',
+    'allGoodNo' => [
+      'wanda' => 'whyCare',
     ],
-    'crunchingPicNone' => [
-      'wanda' => 'survivalRate',
+    'whyCareText' => [
+      'wanda' => 'puzzled',
     ],
-    'goOn' => [
-      'wanda' => 'buyUp',
+    'puzzledNone' => [
+      'wanda' => 'trade',
     ],
-    'tellMe' => [
-      'wanda' => 'buyUp',
+    'tradeText' => [
+      'wanda' => 'notInterested',
     ],
-    'buyUpNone' => [
-      'wanda' => 'snag',
+    'notInterestedNone' => [
+      'wanda' => 'allOk',
     ],
-    'snagWhat1' => [
-      'wanda' => 'peskyGov',
+    'allOkYes' => [
+      'wanda' => 'thoughtSo',
     ],
-    'snagWhat2' => [
-      'wanda' => 'peskyGov',
+    'allOkNo' => [
+      'wanda' => 'society',
     ],
-    'peskyGovNone' => [
-      'wanda' => 'signPetition',
+    'societyText' => [
+      'wanda' => 'tryingHelp',
     ],
-    'signPetitionPositive' => [
-      'wanda' => 'heresPetition',
+    'tryingHelpNone' => [
+      'wanda' => 'sigh',
     ],
-    'signPetitionUnsure' => [
-      'wanda' => 'whaaat',
+    'sighNone' => [
+      'wanda' => 'haveThink',
     ],
-    'signPetitionNegative' => [
-      'wanda' => 'whaaat',
+    'haveThinkNone' => [
+      'wanda' => 'tomorrow',
     ],
-    'heresPetitionNone' => [
-      'wanda' => 'heresPetitionPic',
-    ],
-    'signPetitionSign' => [
-      'wanda' => 'govWin',
-    ],
-    'yeahBut' => [
-      'wanda' => 'whatProblem',
-    ],
-    'thingIs' => [
-      'wanda' => 'whatProblem',
-    ],
-    'notBetter' => [
-      'wanda' => 'whereTrust',
-    ],
-    'tooMuchDataPower' => [
-      'wanda' => 'silly',
-    ],
-    'somethingElse' => [
-      'wanda' => 'tellMe',
-    ],
-    'whereTrustNone' => [
-      'wanda' => 'whereTrustPic',
-    ],
-    'sillyNone' => [
-      'wanda' => 'bigTech',
-    ],
-    'whereTrustPicNone' => [
-      'wanda' => 'whyNot',
-    ],
-    'notHowWant' => [
-      'wanda' => 'bigDeal',
-    ],
-    'differentDream' => [
-      'wanda' => 'bigDeal',
-    ],
-    'problemText' => [
-      'wanda' => 'neverThought',
-    ],
-    'neverThoughtNone' => [
-      'wanda' => 'thinkingFace',
-    ],
-    'thinkingFaceNone' => [
-      'wanda' => 'overTheTop',
-    ],
-    'overTheTopText' => [
-      'wanda' => 'pointOfView',
-    ],
-    'pointOfViewNone' => [
-      'wanda' => 'brainHurting',
-    ],
-    'brainHurtingNone' => [
-      'wanda' => 'brainHurtingPic',
-    ],
-    'brainHurtingPicNone' => [
-      'wanda' => 'takeBreak',
-    ],
-    'endOk1' => [
-      'wanda' => 'thanksDoll',
-    ],
-    'endOk2' => [
-      'wanda' => 'thanksDoll',
-    ],
-    'govWinGreat' => [
-      'wanda' => 'startResearch',
-    ],
-    'govWinHurray' => [
-      'wanda' => 'startResearch',
-    ],
-    'startResearchNone' => [
-      'wanda' => 'startResearchPic',
-    ],
-    'startResearchPicNone' => [
-      'wanda' => 'betterTomorrow',
-    ],
-    'endNoProbs' => [
-      'wanda' => 'haveFabDay',
-    ],
-    'endAlright' => [
-      'wanda' => 'haveFabDay',
-    ], 
-    'endEmoji1' => [
-      'wanda' => 'bye',
-    ],
-    'endEmoji2' => [
-      'wanda' => 'bye',
+    'tomorrowNone' => [
+      'wanda' => 'tomorrowEmoji',
     ],
     
   ],
