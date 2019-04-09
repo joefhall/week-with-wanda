@@ -35,249 +35,312 @@ return [
         'getStarted2',
       ],
     ],
-    'perky' => [
-      'type' => 'choice',
-      'user' => [
-        'perkyThanks',
-        'lookingWell',
-      ],
-    ],
-    'worrying' => [
-      'type' => 'choice',
-      'user' => [
-        'ohNo',
-        'whatMean',
-      ],
-    ],
-    'notYounger' => [
-      'type' => 'choice',
-      'user' => [
-        'takeEasy',
-        'gotPoint',
-      ],
-    ],
-    'cancerRisk' => [
-      'type' => 'choice',
-      'user' => [
-        'uhOh',
-        'gulp',
-        'trueStory',
-      ],
-    ],
-    'answer' => [
-      'type' => 'choice',
-      'user' => [
-        'ohReally',
-        'whatIsIt',
-      ],
-    ],
-    'crunching' => [
+    'freeCash' => [
       'type' => 'none',
       'user' => [
-        'crunchingNone',
+        'freeCashNone',
       ],
     ],
-    'crunchingPic' => [
+    'freeCashEmoji' => [
       'type' => 'none',
       'user' => [
-        'crunchingPicNone',
+        'freeCashEmojiNone',
       ],
     ],
-    'survivalRate' => [
+    'wannaKnow' => [
       'type' => 'choice',
       'user' => [
-        'goOn',
-        'tellMe',
+        'yeahGreat',
+        'tellAll',
       ],
     ],
-    'buyUp' => [
+    'walkingPic' => [
       'type' => 'none',
       'user' => [
-        'buyUpNone',
+        'walkingPicNone',
       ],
     ],
-    'snag' => [
+    'allData' => [
+      'type' => 'none',
+      'user' => [
+        'allDataNone',
+      ],
+    ],
+    'everywhere' => [
+      'type' => 'none',
+      'user' => [
+        'everywhereNone',
+      ],
+    ],
+    'onlyCountry' => [
+      'type' => 'none',
+      'user' => [
+        'onlyCountryNone',
+      ],
+    ],
+    'turnsOut' => [
+      'type' => 'none',
+      'user' => [
+        'turnsOutNone',
+      ],
+    ],
+    'calculatingPic' => [
+      'type' => 'none',
+      'user' => [
+        'calculatingPicNone',
+      ],
+    ],
+    'amount' => [
       'type' => 'choice',
       'user' => [
-        'snagWhat1',
-        'snagWhat2',
+        'who',
+        'whatAbout',
       ],
     ],
-    'peskyGov' => [
+    'greatQuestion' => [
       'type' => 'none',
       'user' => [
-        'peskyGovNone',
+        'greatQuestionNone',
       ],
     ],
-    'signPetition' => [
+    'noFear' => [
+      'type' => 'none',
+      'user' => [
+        'noFearNone',
+      ],
+    ],
+    'whatSay' => [
       'type' => 'choice',
       'user' => [
-        'signPetitionPositive',
-        'signPetitionUnsure',
-        'signPetitionNegative',
+        'positive',
+        'initialNegative',
       ],
     ],
-    'heresPetition' => [
+    'hardToGet' => [
       'type' => 'none',
       'user' => [
-        'heresPetitionNone',
+        'hardToGetNone',
       ],
     ],
-    'heresPetitionPic' => [
+    'hardToGetEmoji' => [
+      'type' => 'none',
+      'user' => [
+        'hardToGetEmojiNone',
+      ],
+    ],
+    'betterPrice' => [
       'type' => 'choice',
       'user' => [
-        'signPetitionSign',
-        'signPetitionUnsure',
+        'price75',
+        'price100',
+        'price150',
+        'secondNegative',
       ],
     ],
-    'whaaat' => [
+    'hardBargain' => [
       'type' => 'choice',
       'user' => [
-        'yeahBut',
-        'thingIs',
+        'price250',
+        'price500',
+        'price1000',
+        'thirdNegative',
       ],
     ],
-    'whatProblem' => [
+    'onIt' => [
+      'type' => 'none',
+      'user' => [
+        'onItNone',
+      ],
+    ],
+    'cookie' => [
+      'type' => 'none',
+      'user' => [
+        'cookieNone',
+      ],
+    ],
+    'cookiePic' => [
+      'type' => 'none',
+      'user' => [
+        'cookiePicNone',
+      ],
+    ],
+    'sendNow' => [
       'type' => 'choice',
       'user' => [
-        'notBetter',
-        'tooMuchDataPower',
-        'somethingElse',
+        'sendThanks1',
+        'sendThanks2',
       ],
     ],
-    'whereTrust' => [
-      'type' => 'none',
-      'user' => [
-        'whereTrustNone',
-      ],
-    ],
-    'silly' => [
-      'type' => 'none',
-      'user' => [
-        'sillyNone',
-      ],
-    ],
-    'whereTrustPic' => [
-      'type' => 'none',
-      'user' => [
-        'whereTrustPicNone',
-      ],
-    ],
-    'whyNot' => [
-      'type' => 'text',
-      'user' => [
-        'problemText',
-      ],
-    ],
-    'bigTech' => [
-      'type' => 'choice',
-      'user' => [
-        'notHowWant',
-        'differentDream',
-      ],
-    ],
-    'bigDeal' => [
-      'type' => 'text',
-      'user' => [
-        'problemText',
-      ],
-    ],
-    'tellMe' => [
-      'type' => 'text',
-      'user' => [
-        'problemText',
-      ],
-    ],
-    'neverThought' => [
-      'type' => 'none',
-      'user' => [
-        'neverThoughtNone',
-      ],
-    ],
-    'thinkingFace' => [
-      'type' => 'none',
-      'user' => [
-        'thinkingFaceNone',
-      ],
-    ],
-    'overTheTop' => [
-      'type' => 'text',
-      'user' => [
-        'overTheTopText',
-      ],
-    ],
-    'pointOfView' => [
-      'type' => 'none',
-      'user' => [
-        'pointOfViewNone',
-      ],
-    ],
-    'brainHurting' => [
-      'type' => 'none',
-      'user' => [
-        'brainHurtingNone',
-      ],
-    ],
-    'brainHurtingPic' => [
-      'type' => 'none',
-      'user' => [
-        'brainHurtingPicNone',
-      ],
-    ],
-    'takeBreak' => [
-      'type' => 'choice',
-      'user' => [
-        'endOk1',
-        'endOk2',
-      ],
-    ],
-    'govWin' => [
-      'type' => 'choice',
-      'user' => [
-        'govWinGreat',
-        'govWinHurray',
-      ],
-    ],
-    'startResearch' => [
-      'type' => 'none',
-      'user' => [
-        'startResearchNone',
-      ],
-    ],
-    'startResearchPic' => [
-      'type' => 'none',
-      'user' => [
-        'startResearchPicNone',
-      ],
-    ],
-    'betterTomorrow' => [
-      'type' => 'choice',
-      'user' => [
-        'endOk1',
-        'endOk2',
-      ],
-    ],
-    'thanksDoll' => [
-      'type' => 'choice',
-      'user' => [
-        'endNoProbs',
-        'endAlright',
-      ],
-    ],
-    'haveFabDay' => [
-      'type' => 'choice',
-      'user' => [
-        'endEmoji1',
-        'endEmoji2',
-      ],
-    ],
-    'bye' => [
+    'together' => [
       'type' => 'choice',
       'user' => [
         'bye1',
         'bye2',
       ],
     ],
+    'tough' => [
+      'type' => 'choice',
+      'user' => [
+        'price5000',
+        'price20000',
+        'price100000',
+        'fourthNegative',
+      ],
+    ],
+    'omgReally' => [
+      'type' => 'textAndChoice',
+      'user' => [
+        'priceText',
+        'noPrice',
+      ],
+    ],
+    'huh' => [
+      'type' => 'none',
+      'user' => [
+        'huhNone',
+      ],
+    ],
+    'huhPic' => [
+      'type' => 'none',
+      'user' => [
+        'huhPicNone',
+      ],
+    ],
+    'principled' => [
+      'type' => 'none',
+      'user' => [
+        'principledNone',
+      ],
+    ],
+    'sitesApps' => [
+      'type' => 'choice',
+      'user' => [
+        'iDo',
+        'true',
+      ],
+    ],
+    'research' => [
+      'type' => 'none',
+      'user' => [
+        'researchNone',
+      ],
+    ],
+    'goodThing' => [
+      'type' => 'none',
+      'user' => [
+        'goodThingNone',
+      ],
+    ],
+    'goodThingPic' => [
+      'type' => 'choice',
+      'user' => [
+        'okReally',
+        'youWrong',
+      ],
+    ],
+    'foolproof' => [
+      'type' => 'choice',
+      'user' => [
+        'ok1',
+        'ok2',
+      ],
+    ],
+    'missedOut' => [
+      'type' => 'none',
+      'user' => [
+        'missedOutNone',
+      ],
+    ],
+    'holdAgainst' => [
+      'type' => 'none',
+      'user' => [
+        'holdAgainstNone',
+      ],
+    ],
+    'holdAgainstEmoji' => [
+      'type' => 'none',
+      'user' => [
+        'holdAgainstEmojiNone',
+      ],
+    ],
+    'seeTomorrow' => [
+      'type' => 'choice',
+      'user' => [
+        'bye1',
+        'bye2',
+      ],
+    ],
+    'dontWrong' => [
+      'type' => 'choice',
+      'user' => [
+        'noMistake',
+        'sellWrong',
+      ],
+    ],
+    'youSure' => [
+      'type' => 'choice',
+      'user' => [
+        'youSureNo',
+        'youSureYes',
+      ],
+    ],
+    'howCome' => [
+      'type' => 'text',
+      'user' => [
+        'howComeText',
+      ],
+    ],
+    'moneyWorld' => [
+      'type' => 'none',
+      'user' => [
+        'moneyWorldNone',
+      ],
+    ],
+    'moneyWorldEmoji' => [
+      'type' => 'none',
+      'user' => [
+        'moneyWorldEmojiNone',
+      ],
+    ],
+    'whyCare' => [
+      'type' => 'text',
+      'user' => [
+        'whyCareText',
+      ],
+    ],
+    'treasure' => [
+      'type' => 'none',
+      'user' => [
+        'treasureNone',
+      ],
+    ],
+    'mix' => [
+      'type' => 'none',
+      'user' => [
+        'mixNone',
+      ],
+    ],
+    'mixPic' => [
+      'type' => 'choice',
+      'user' => [
+        'mixThanks1',
+        'mixThanks2',
+      ],
+    ],
+    'manana' => [
+      'type' => 'none',
+      'user' => [
+        'mananaNone',
+      ],
+    ],
+    'mananaEmoji' => [
+      'type' => 'choice',
+      'user' => [
+        'bye1',
+        'bye2',
+      ],
+    ],
+    
   ],
 
   'user' => [
@@ -297,163 +360,208 @@ return [
       'wanda' => 'acknowledgeResponse',
     ],
     'getStarted1' => [
-      'wanda' => 'perky',
+      'wanda' => 'freeCash',
     ],
     'getStarted2' => [
-      'wanda' => 'perky',
+      'wanda' => 'freeCash',
     ],
-    'perkyThanks' => [
-      'wanda' => 'worrying',
+    'freeCashNone' => [
+      'wanda' => 'freeCashEmoji',
     ],
-    'lookingWell' => [
-      'wanda' => 'worrying',
+    'freeCashEmojiNone' => [
+      'wanda' => 'wannaKnow',
     ],
-    'ohNo' => [
-      'wanda' => 'notYounger',
+    'yeahGreat' => [
+      'wanda' => 'walkingPic',
     ],
-    'whatMean' => [
-      'wanda' => 'notYounger',
+    'tellAll' => [
+      'wanda' => 'walkingPic',
     ],
-    'takeEasy' => [
-      'wanda' => 'cancerRisk',
+    'walkingPicNone' => [
+      'wanda' => 'allData',
     ],
-    'gotPoint' => [
-      'wanda' => 'cancerRisk',
+    'allDataNone' => [
+      'wanda' => 'everywhere',
     ],
-    'uhOh' => [
-      'wanda' => 'answer',
+    'everywhereNone' => [
+      'wanda' => 'onlyCountry',
     ],
-    'gulp' => [
-      'wanda' => 'answer',
+    'onlyCountryNone' => [
+      'wanda' => 'turnsOut',
     ],
-    'trueStory' => [
-      'wanda' => 'answer',
+    'turnsOutNone' => [
+      'wanda' => 'calculatingPic',
     ],
-    'ohReally' => [
-      'wanda' => 'crunching',
+    'calculatingPicNone' => [
+      'wanda' => 'amount',
     ],
-    'whatIsIt' => [
-      'wanda' => 'crunching',
+    'who' => [
+      'wanda' => 'greatQuestion',
     ],
-    'crunchingNone' => [
-      'wanda' => 'crunchingPic',
+    'whatAbout' => [
+      'wanda' => 'greatQuestion',
     ],
-    'crunchingPicNone' => [
-      'wanda' => 'survivalRate',
+    'greatQuestionNone' => [
+      'wanda' => 'noFear',
     ],
-    'goOn' => [
-      'wanda' => 'buyUp',
+    'noFearNone' => [
+      'wanda' => 'whatSay',
     ],
-    'tellMe' => [
-      'wanda' => 'buyUp',
+    'positive' => [
+      'wanda' => 'onIt',
     ],
-    'buyUpNone' => [
-      'wanda' => 'snag',
+    'initialNegative' => [
+      'wanda' => 'hardToGet',
     ],
-    'snagWhat1' => [
-      'wanda' => 'peskyGov',
+    'hardToGetNone' => [
+      'wanda' => 'hardToGetEmoji',
     ],
-    'snagWhat2' => [
-      'wanda' => 'peskyGov',
+    'hardToGetEmojiNone' => [
+      'wanda' => 'betterPrice',
     ],
-    'peskyGovNone' => [
-      'wanda' => 'signPetition',
+    'price75' => [
+      'wanda' => 'onIt',
     ],
-    'signPetitionPositive' => [
-      'wanda' => 'heresPetition',
+    'price100' => [
+      'wanda' => 'onIt',
     ],
-    'signPetitionUnsure' => [
-      'wanda' => 'whaaat',
+    'price150' => [
+      'wanda' => 'onIt',
     ],
-    'signPetitionNegative' => [
-      'wanda' => 'whaaat',
+    'secondNegative' => [
+      'wanda' => 'hardBargain',
     ],
-    'heresPetitionNone' => [
-      'wanda' => 'heresPetitionPic',
+    'price250' => [
+      'wanda' => 'onIt',
     ],
-    'signPetitionSign' => [
-      'wanda' => 'govWin',
+    'price500' => [
+      'wanda' => 'onIt',
     ],
-    'yeahBut' => [
-      'wanda' => 'whatProblem',
+    'price1000' => [
+      'wanda' => 'onIt',
     ],
-    'thingIs' => [
-      'wanda' => 'whatProblem',
+    'thirdNegative' => [
+      'wanda' => 'tough',
     ],
-    'notBetter' => [
-      'wanda' => 'whereTrust',
+    'onItNone' => [
+      'wanda' => 'cookie',
     ],
-    'tooMuchDataPower' => [
-      'wanda' => 'silly',
+    'cookieNone' => [
+      'wanda' => 'cookiePic',
     ],
-    'somethingElse' => [
-      'wanda' => 'tellMe',
+    'cookiePicNone' => [
+      'wanda' => 'sendNow',
     ],
-    'whereTrustNone' => [
-      'wanda' => 'whereTrustPic',
+    'sendThanks1' => [
+      'wanda' => 'together',
     ],
-    'sillyNone' => [
-      'wanda' => 'bigTech',
+    'sendThanks2' => [
+      'wanda' => 'together',
     ],
-    'whereTrustPicNone' => [
-      'wanda' => 'whyNot',
-    ],
-    'notHowWant' => [
-      'wanda' => 'bigDeal',
-    ],
-    'differentDream' => [
-      'wanda' => 'bigDeal',
-    ],
-    'problemText' => [
-      'wanda' => 'neverThought',
-    ],
-    'neverThoughtNone' => [
-      'wanda' => 'thinkingFace',
-    ],
-    'thinkingFaceNone' => [
-      'wanda' => 'overTheTop',
-    ],
-    'overTheTopText' => [
-      'wanda' => 'pointOfView',
-    ],
-    'pointOfViewNone' => [
-      'wanda' => 'brainHurting',
-    ],
-    'brainHurtingNone' => [
-      'wanda' => 'brainHurtingPic',
-    ],
-    'brainHurtingPicNone' => [
-      'wanda' => 'takeBreak',
-    ],
-    'endOk1' => [
-      'wanda' => 'thanksDoll',
-    ],
-    'endOk2' => [
-      'wanda' => 'thanksDoll',
-    ],
-    'govWinGreat' => [
-      'wanda' => 'startResearch',
-    ],
-    'govWinHurray' => [
-      'wanda' => 'startResearch',
-    ],
-    'startResearchNone' => [
-      'wanda' => 'startResearchPic',
-    ],
-    'startResearchPicNone' => [
-      'wanda' => 'betterTomorrow',
-    ],
-    'endNoProbs' => [
-      'wanda' => 'haveFabDay',
-    ],
-    'endAlright' => [
-      'wanda' => 'haveFabDay',
-    ], 
-    'endEmoji1' => [
+    'bye1' => [
       'wanda' => 'bye',
     ],
-    'endEmoji2' => [
+    'bye2' => [
       'wanda' => 'bye',
+    ],
+    'price5000' => [
+      'wanda' => 'onIt',
+    ],
+    'price20000' => [
+      'wanda' => 'onIt',
+    ],
+    'price100000' => [
+      'wanda' => 'onIt',
+    ],
+    'fourthNegative' => [
+      'wanda' => 'omgReally',
+    ],
+    'priceText' => [
+      'wanda' => 'onIt',
+    ],
+    'noPrice' => [
+      'wanda' => 'huh',
+    ],
+    'huhNone' => [
+      'wanda' => 'huhPic',
+    ],
+    'huhPicNone' => [
+      'wanda' => 'principled',
+    ],
+    'principledNone' => [
+      'wanda' => 'sitesApps',
+    ],
+    'iDo' => [
+      'wanda' => 'research',
+    ],
+    'true' => [
+      'wanda' => 'research',
+    ],
+    'researchNone' => [
+      'wanda' => 'goodThing',
+    ],
+    'goodThingNone' => [
+      'wanda' => 'goodThingPic',
+    ],
+    'okReally' => [
+      'wanda' => 'foolproof',
+    ],
+    'youWrong' => [
+      'wanda' => 'dontWrong',
+    ],
+    'ok1' => [
+      'wanda' => 'missedOut',
+    ],
+    'ok2' => [
+      'wanda' => 'missedOut',
+    ],
+    'missedOutNone' => [
+      'wanda' => 'holdAgainst',
+    ],
+    'holdAgainstNone' => [
+      'wanda' => 'holdAgainstEmoji',
+    ],
+    'holdAgainstEmojiNone' => [
+      'wanda' => 'seeTomorrow',
+    ],
+    'noMistake' => [
+      'wanda' => 'foolproof',
+    ],
+    'sellWrong' => [
+      'wanda' => 'youSure',
+    ],
+    'youSureNo' => [
+      'wanda' => 'foolproof',
+    ],
+    'youSureYes' => [
+      'wanda' => 'howCome',
+    ],
+    'howComeText' => [
+      'wanda' => 'moneyWorld',
+    ],
+    'moneyWorldNone' => [
+      'wanda' => 'moneyWorldEmoji',
+    ],
+    'moneyWorldEmojiNone' => [
+      'wanda' => 'whyCare',
+    ],
+    'whyCareText' => [
+      'wanda' => 'treasure',
+    ],
+    'treasureNone' => [
+      'wanda' => 'mix',
+    ],
+    'mixNone' => [
+      'wanda' => 'mixPic',
+    ],
+    'mixThanks1' => [
+      'wanda' => 'manana',
+    ],
+    'mixThanks2' => [
+      'wanda' => 'manana',
+    ],
+    'mananaNone' => [
+      'wanda' => 'mananaEmoji',
     ],
     
   ],

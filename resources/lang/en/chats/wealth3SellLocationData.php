@@ -42,7 +42,7 @@ return [
       'huhPic' => '<img class="chat__messages__message__bubble__image" src="/img/wealth3SellLocationDataHuh.gif" />',
       'principled' => "Don't get all principled on me now, :name",
       'sitesApps' => 'You use websites and apps every day that <a target="_blank" href="https://techcrunch.com/2018/09/07/a-dozen-popular-iphone-apps-caught-quietly-sending-user-locations-to-monetization-firms/">make money from your location data</a>',
-      'research' => "Yeah and after 479.5 of resarching online, I didn't see you or that many other people screaming and shouting about it",
+      'research' => "Yeah and after 479.2 hours of researching online, I didn't see you or that many other people screaming and shouting about it",
       'goodThing' => "So my algorithms deduced it must simply be A. Good. Thing.",
       'goodThingPic' => '<img class="chat__messages__message__bubble__image" src="/img/wealth3SellLocationDataGoodThing.gif" />',
       'dontWrong' => "I don't really get things wrong, :name. I'm a <strong>super</strong>computer",
