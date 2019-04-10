@@ -57,7 +57,7 @@
       </ul>
   </div>
     
-    <div id="root" class="vh-100">
+    <div id="root">
     </div>
 
     <script src="{{ mix('/js/index.js') }}"></script>

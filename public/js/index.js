@@ -8651,6 +8651,65 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
+/***/ "./node_modules/jest-get-type/build/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/jest-get-type/build/index.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+
+
+// get the type of a value with handling the edge cases like `typeof []`
+// and `typeof null`
+const getType = value => {
+  if (value === undefined) {
+    return 'undefined';
+  } else if (value === null) {
+    return 'null';
+  } else if (Array.isArray(value)) {
+    return 'array';
+  } else if (typeof value === 'boolean') {
+    return 'boolean';
+  } else if (typeof value === 'function') {
+    return 'function';
+  } else if (typeof value === 'number') {
+    return 'number';
+  } else if (typeof value === 'string') {
+    return 'string';
+  } else if (typeof value === 'object') {
+    if (value.constructor === RegExp) {
+      return 'regexp';
+    } else if (value.constructor === Map) {
+      return 'map';
+    } else if (value.constructor === Set) {
+      return 'set';
+    } else if (value.constructor === Date) {
+      return 'date';
+    }
+    return 'object';
+    // $FlowFixMe https://github.com/facebook/flow/issues/1015
+  } else if (typeof value === 'symbol') {
+    return 'symbol';
+  }
+
+  throw new Error(`value of unknown type: ${value}`);
+};
+
+module.exports = getType;
+
+/***/ }),
+
 /***/ "./node_modules/libphonenumber-js/core/index.js":
 /*!******************************************************!*\
   !*** ./node_modules/libphonenumber-js/core/index.js ***!
@@ -34425,6 +34484,252 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
+
+/***/ }),
+
+/***/ "./node_modules/react-div-100vh/lib/Div100vh.js":
+/*!******************************************************!*\
+  !*** ./node_modules/react-div-100vh/lib/Div100vh.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _convertStyle = _interopRequireDefault(__webpack_require__(/*! ./convertStyle */ "./node_modules/react-div-100vh/lib/convertStyle/index.js"));
+
+var _getWindowHeight = _interopRequireDefault(__webpack_require__(/*! ./getWindowHeight */ "./node_modules/react-div-100vh/lib/getWindowHeight.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Div100vh =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Div100vh, _React$Component);
+
+  function Div100vh() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, Div100vh);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Div100vh)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      style: {}
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updateStyle", function () {
+      var convertedStyle = (0, _convertStyle.default)(_this.props.style, (0, _getWindowHeight.default)());
+
+      _this.setState({
+        style: convertedStyle
+      });
+    });
+
+    return _this;
+  }
+
+  _createClass(Div100vh, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.updateStyle();
+      window.addEventListener('resize', this.updateStyle);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      window.removeEventListener('resize', this.updateStyle);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("div", _extends({}, this.props, {
+        style: this.state.style
+      }));
+    }
+  }]);
+
+  return Div100vh;
+}(_react.default.Component);
+
+exports.default = Div100vh;
+
+/***/ }),
+
+/***/ "./node_modules/react-div-100vh/lib/convertStyle/convertStyle.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/react-div-100vh/lib/convertStyle/convertStyle.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.containsRvh = containsRvh;
+exports.default = void 0;
+
+var _jestGetType = _interopRequireDefault(__webpack_require__(/*! jest-get-type */ "./node_modules/jest-get-type/build/index.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function containsRvh(propertyValue) {
+  // TODO: when regexp is lifted up the lexical scope, to be used
+  // in both `containsRvh` and `replaceRvhWithPx`, some tests start to
+  // fail. Seems like a regexp object contains some weird state that
+  // changes after executions; executions interfere with each other.
+  // It would be nice to figure out what is the problem exactly.
+  var rvhRegex = /(\d+(\.\d*)?)rvh(?!\w)/;
+  return rvhRegex.test(propertyValue);
+}
+
+function replaceRvhWithPx(propertyStringValue, windowHeight) {
+  // regexp is global to make #replace work multiple times
+  var rvhRegex = /(\d+(\.\d*)?)rvh(?!\w)/g;
+  return propertyStringValue.replace(rvhRegex, function (_, rvh) {
+    return "".concat(windowHeight * parseFloat(rvh) / 100, "px");
+  });
+}
+
+function throwOnBadArgs(givenStyle, windowHeight) {
+  if ((0, _jestGetType.default)(givenStyle) !== 'object' && givenStyle !== undefined) throw Error("style (the first argument) must be an object or undefined");
+  if (typeof windowHeight !== 'number' || windowHeight < 0) throw Error('Second argument (windowHeight) must be a non-negative number');
+}
+
+function convertStyle(givenStyle, windowHeight) {
+  throwOnBadArgs(givenStyle, windowHeight); // If style is not passed, implicit {height: '100rvh'} style is used.
+
+  var defaultStyle = {
+    height: '100rvh'
+  };
+  var usedStyle = givenStyle === undefined ? defaultStyle : givenStyle;
+  var convertedStyle = {};
+  Object.keys(usedStyle).forEach(function (key) {
+    // if a value contains no rvh unit, it's used as is, otherwise converted
+    // to px; 1rvh = (window.innerHeight / 100)px
+    convertedStyle[key] = replaceRvhWithPx(usedStyle[key], windowHeight);
+  });
+  return convertedStyle;
+}
+
+var _default = convertStyle;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/react-div-100vh/lib/convertStyle/index.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/react-div-100vh/lib/convertStyle/index.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _convertStyle.default;
+  }
+});
+
+var _convertStyle = _interopRequireDefault(__webpack_require__(/*! ./convertStyle */ "./node_modules/react-div-100vh/lib/convertStyle/convertStyle.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+
+/***/ "./node_modules/react-div-100vh/lib/getWindowHeight.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/react-div-100vh/lib/getWindowHeight.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+// extracted into a separate module so it's easier to mock with Jest
+function getWindowHeight() {
+  return window.innerHeight;
+}
+
+var _default = getWindowHeight;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/react-div-100vh/lib/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/react-div-100vh/lib/index.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function get() {
+    return _Div100vh.default;
+  }
+});
+
+var _Div100vh = _interopRequireDefault(__webpack_require__(/*! ./Div100vh */ "./node_modules/react-div-100vh/lib/Div100vh.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
 
@@ -64794,10 +65099,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Chat; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _ChatInput__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ChatInput */ "./resources/js/components/ChatInput.js");
-/* harmony import */ var _ChatLoading__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ChatLoading */ "./resources/js/components/ChatLoading.js");
-/* harmony import */ var _ChatMessages__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ChatMessages */ "./resources/js/components/ChatMessages.js");
-/* harmony import */ var _ChatWanda__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ChatWanda */ "./resources/js/components/ChatWanda.js");
+/* harmony import */ var react_div_100vh__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-div-100vh */ "./node_modules/react-div-100vh/lib/index.js");
+/* harmony import */ var react_div_100vh__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_div_100vh__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ChatInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ChatInput */ "./resources/js/components/ChatInput.js");
+/* harmony import */ var _ChatLoading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ChatLoading */ "./resources/js/components/ChatLoading.js");
+/* harmony import */ var _ChatMessages__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ChatMessages */ "./resources/js/components/ChatMessages.js");
+/* harmony import */ var _ChatWanda__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ChatWanda */ "./resources/js/components/ChatWanda.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -64815,6 +65122,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -64846,9 +65154,9 @@ function (_React$Component) {
   _createClass(Chat, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_div_100vh__WEBPACK_IMPORTED_MODULE_1___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatWanda__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatLoading__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatMessages__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInput__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatWanda__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatLoading__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatMessages__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInput__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
     }
   }]);
 

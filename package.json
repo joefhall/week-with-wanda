@@ -34,6 +34,7 @@
         "botman-tinker": "^0.0.1",
         "emoji-regex": "^8.0.0",
         "preact": "^8.4.2",
+        "react-div-100vh": "^0.3.2",
         "react-facebook-login": "^4.1.1",
         "react-html-parser": "^2.0.2",
         "react-phone-number-input": "^2.3.7",
