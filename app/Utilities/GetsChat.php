@@ -2,6 +2,7 @@
 
 namespace App\Utilities;
 
+use Faker\Factory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -37,6 +38,8 @@ trait GetsChat
         'rand3' => rand(1, 3),
         'rand4' => rand(1, 4),
         'rand5' => rand(1, 5),
+        'randomFemaleName' => $this->getFakeFirstNames($user->country, 'female', 1),
+        'randomMaleName' => $this->getFakeFirstNames($user->country, 'male', 1),
         'userAcknowledge1' => $userAcknowledge[0],
         'userAcknowledge2' => $userAcknowledge[1],
         'userAgree' => $this->randomCommon('user', 'agree'),
@@ -70,6 +73,264 @@ trait GetsChat
     }
 
     return [];
+  }
+  
+  /**
+   * Gets one or more fake first names.
+   *
+   * @param string $countryCode
+   * @param string $gender
+   * @param int $count
+   * @return string|array
+   */
+  public function getFakeFirstNames(string $countryCode, string $gender, int $count)
+  {
+    $faker = Factory::create($this->getLanguageCountryCode($countryCode));
+    
+    if ($count === 1) {
+      return $faker->firstName($gender);
+    } else {
+      $names = [];
+      for ($x = 0; $x < $count; $x++) {
+        $names[] = $faker->firstName($gender);
+      }
+      
+      return $names;
+    }
+  }
+  
+  /**
+   * Gets a language + country code (e.g. en_US) from a country code,
+   * by assuming a default local language
+   *
+   * @param string $countryCode
+   * @return string
+   */
+  public function getLanguageCountryCode(string $countryCode)
+  {
+    switch (strtoupper($countryCode)) {
+      case 'JO':
+        return 'ar_JO';
+        break;
+      case 'SA':
+        return 'ar_SA';
+        break;
+      case 'AT':
+        return 'at_AT';
+        break;
+      case 'BG':
+        return 'bg_BG';
+        break;
+      case 'BD':
+        return 'bn_BD';
+        break;
+      case 'CZ':
+        return 'cs_CZ';
+        break;
+      case 'DK':
+        return 'da_DK';
+        break;
+      case 'AT':
+        return 'de_AT';
+        break;
+      case 'CH':
+        return 'de_CH';
+        break;
+      case 'DE':
+        return 'de_DE';
+        break;
+      case 'CY':
+        return 'el_CY';
+        break;
+      case 'GR':
+        return 'el_GR';
+        break;
+      case 'AU':
+        return 'en_AU';
+        break;
+      case 'CA':
+        return 'en_CA';
+        break;
+      case 'GB':
+        return 'en_GB';
+        break;
+      case 'HK':
+        return 'en_HK';
+        break;
+      case 'IN':
+        return 'en_IN';
+        break;
+      case 'NG':
+        return 'en_NG';
+        break;
+      case 'NZ':
+        return 'en_NZ';
+        break;
+      case 'PH':
+        return 'en_PH';
+        break;
+      case 'SG':
+        return 'en_SG';
+        break;
+      case 'UG':
+        return 'en_UG';
+        break;
+      case 'US':
+        return 'en_US';
+        break;
+      case 'ZA':
+        return 'en_ZA';
+        break;
+      case 'AR':
+        return 'es_AR';
+        break;
+      case 'ES':
+        return 'es_ES';
+        break;
+      case 'PE':
+        return 'es_PE';
+        break;
+      case 'VE':
+        return 'es_VE';
+        break;
+      case 'IR':
+        return 'fa_IR';
+        break;
+      case 'FI':
+        return 'fi_FI';
+        break;
+      case 'BE':
+        return 'fr_BE';
+        break;
+      case 'CA':
+        return 'fr_CA';
+        break;
+      case 'CH':
+        return 'fr_CH';
+        break;
+      case 'FR':
+        return 'fr_FR';
+        break;
+      case 'IL':
+        return 'he_IL';
+        break;
+      case 'HR':
+        return 'hr_HR';
+        break;
+      case 'HU':
+        return 'hu_HU';
+        break;
+      case 'AM':
+        return 'hy_AM';
+        break;
+      case 'ID':
+        return 'id_ID';
+        break;
+      case 'IS':
+        return 'is_IS';
+        break;
+      case 'CH':
+        return 'it_CH';
+        break;
+      case 'IT':
+        return 'it_IT';
+        break;
+      case 'JP':
+        return 'ja_JP';
+        break;
+      case 'GE':
+        return 'ka_GE';
+        break;
+      case 'KZ':
+        return 'kk_KZ';
+        break;
+      case 'KR':
+        return 'ko_KR';
+        break;
+      case 'LT':
+        return 'lt_LT';
+        break;
+      case 'LV':
+        return 'lv_LV';
+        break;
+      case 'ME':
+        return 'me_ME';
+        break;
+      case 'MN':
+        return 'mn_MN';
+        break;
+      case 'MY':
+        return 'ms_MY';
+        break;
+      case 'NO':
+        return 'nb_NO';
+        break;
+      case 'NP':
+        return 'ne_NP';
+        break;
+      case 'BE':
+        return 'nl_BE';
+        break;
+      case 'NL':
+        return 'nl_NL';
+        break;
+      case 'PL':
+        return 'pl_PL';
+        break;
+      case 'BR':
+        return 'pt_BR';
+        break;
+      case 'PT':
+        return 'pt_PT';
+        break;
+      case 'MD':
+        return 'ro_MD';
+        break;
+      case 'RO':
+        return 'ro_RO';
+        break;
+      case 'RU':
+        return 'ru_RU';
+        break;
+      case 'SK':
+        return 'sk_SK';
+        break;
+      case 'SI':
+        return 'sl_SI';
+        break;
+      case 'RS':
+        return 'sr_Cyrl_RS';
+        break;
+      case 'RS':
+        return 'sr_Latn_RS';
+        break;
+      case 'RS':
+        return 'sr_RS';
+        break;
+      case 'SE':
+        return 'sv_SE';
+        break;
+      case 'TH':
+        return 'th_TH';
+        break;
+      case 'TR':
+        return 'tr_TR';
+        break;
+      case 'UA':
+        return 'uk_UA';
+        break;
+      case 'VN':
+        return 'vi_VN';
+        break;
+      case 'CN':
+        return 'zh_CN';
+        break;
+      case 'TW':
+        return 'zh_TW';
+        break;
+      default:
+        return 'en_US';
+    }
   }
   
   /**
