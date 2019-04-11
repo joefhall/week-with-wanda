@@ -63,6 +63,20 @@ return [
         "Yeah you know what I'm talking about!",
       ],
     ],
+    'cumulativeResponses' => [
+      'negative' => [
+        // TODO: add more text here
+        'I feel we keep running into problems you and me',
+      ],
+      'mixed' => [
+        // TODO: add more text here
+        '',
+      ],
+      'positive' => [
+        // TODO: add more text here
+        '',
+      ],
+    ],
     'conjunctions' => [
       'negative' => [
         "Anyhow",

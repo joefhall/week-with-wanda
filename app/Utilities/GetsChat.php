@@ -63,6 +63,7 @@ trait GetsChat
         'wandaAcknowledgeResponse' => $this->randomCommon('wanda', 'acknowledgeResponse'),
         'wandaBye' => $this->randomCommon('wanda', 'bye'),
         'wandaConjunction' => $this->getConjunction('user', $previousUserMessageId),
+        'wandaCumulativeResponse' => $this->getWandaCumulativeResponse(),
         'wandaExpectPositiveResponse' => $this->randomCommon('wanda', 'expectPositiveResponse'),
         'wandaGreat' => $this->randomCommon('wanda', 'great'),
         'wandaHello' => $this->randomCommon('wanda', 'hello'),
@@ -73,6 +74,20 @@ trait GetsChat
     }
 
     return [];
+  }
+  
+  /**
+   * Gets Wanda's response to the cumulative reactions from the user to previous scenarios
+   * i.e. overall on previous days has the user liked what Wanda has done, a mix or disliked it.
+   *
+   * @return string
+   */
+  public function getWandaCumulativeResponse()
+  {
+    // TODO: get this working, looking at the combination of different scenario reactions
+    $reaction = 'negative';
+    
+    return __("chats/common.wanda.cumulativeResponses.{$reaction}")[0];
   }
   
   /**
