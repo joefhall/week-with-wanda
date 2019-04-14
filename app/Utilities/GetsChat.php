@@ -29,7 +29,7 @@ trait GetsChat
     if ($user) {
       return [
         'country' => $user->country,
-        'counryName' => locale_get_display_region("-{$user->country}", 'en'),
+        'countryName' => locale_get_display_region("-{$user->country}", 'en'),
         'email' => $user->email,
         'mobileNumber' => $user->mobile_number,
         'name' => $user->first_name,
@@ -90,6 +90,20 @@ trait GetsChat
     return __("chats/common.wanda.cumulativeResponses.{$reaction}")[0];
   }
   
+  /**
+   * Gets 10 fake first names that are mostly women.
+   *
+   * @param string $countryCode
+   * @return array
+   */
+  public function getFakeMostlyWomenFirstNames(string $countryCode)
+  {
+    $womenNames = $this->getFakeFirstNames(string $countryCode, 'female', 8);
+    $menNames = $this->getFakeFirstNames(string $countryCode, 'male', 2);
+
+    return shuffle(array_merge($womenNames, $menNames));
+  }
+
   /**
    * Gets one or more fake first names.
    *
