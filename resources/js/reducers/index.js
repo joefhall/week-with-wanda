@@ -2,9 +2,10 @@ import  { combineReducers } from 'redux';
 
 const emotionReducer = (state = [], action) => {
   console.log('Emotion reducer state', state);
+  console.log('Emotion reducer action', action);
   
   if (action && action.type === 'EMOTION_SET') {
-    return action.payload.emotion || 'base';
+    return action.payload.emotion;
   }
   
   return state;

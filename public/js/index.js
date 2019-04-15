@@ -64736,7 +64736,11 @@ var hideLoading = function hideLoading() {
 var showResponse = function showResponse(responseData, wandaMessageId, wandaMessage) {
   _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setTyping"])(false));
   _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["addMessage"])(Date.now(), responseData.scenario, 'wanda', wandaMessageId, wandaMessage));
-  _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setEmotion"])(responseData.emotion));
+
+  if (responseData.emotion) {
+    _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setEmotion"])(responseData.emotion));
+  }
+
   _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setInput"])(responseData.scenario, responseData.type, responseData.user));
 };
 
@@ -67007,9 +67011,10 @@ var emotionReducer = function emotionReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
   console.log('Emotion reducer state', state);
+  console.log('Emotion reducer action', action);
 
   if (action && action.type === 'EMOTION_SET') {
-    return action.payload.emotion || 'base';
+    return action.payload.emotion;
   }
 
   return state;
