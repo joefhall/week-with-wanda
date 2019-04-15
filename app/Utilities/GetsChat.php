@@ -98,8 +98,8 @@ trait GetsChat
    */
   public function getFakeMostlyWomenFirstNames(string $countryCode)
   {
-    $womenNames = $this->getFakeFirstNames(string $countryCode, 'female', 8);
-    $menNames = $this->getFakeFirstNames(string $countryCode, 'male', 2);
+    $womenNames = $this->getFakeFirstNames($countryCode, 'female', 8);
+    $menNames = $this->getFakeFirstNames($countryCode, 'male', 2);
 
     return shuffle(array_merge($womenNames, $menNames));
   }
