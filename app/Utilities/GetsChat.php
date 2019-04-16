@@ -62,6 +62,7 @@ trait GetsChat
         'userUnsure' => $this->randomCommon('user', 'unsure'),
         'wandaAcknowledgeResponse' => $this->randomCommon('wanda', 'acknowledgeResponse'),
         'wandaBye' => $this->randomCommon('wanda', 'bye'),
+        'wandaCelebrity' => $this->randomCommon('wanda', 'celebrity'),
         'wandaConjunction' => $this->getConjunction('user', $previousUserMessageId),
         'wandaCumulativeResponse' => $this->getWandaCumulativeResponse(),
         'wandaExpectPositiveResponse' => $this->randomCommon('wanda', 'expectPositiveResponse'),

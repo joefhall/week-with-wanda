@@ -104,6 +104,15 @@ return [
       "Hasta mañana, :name!",
       "Talk to you tomorrow",
     ],
+    'celebrity' => [
+      'Jennifer Aniston',
+      'Matthew McConaughey',
+      'Samuel L Jackson',
+      'Cher',
+      'The Rock',
+      'Hugh Grant',
+      'The Queen of England',
+    ],
   ],
 
   'user' => [
