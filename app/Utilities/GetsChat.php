@@ -40,6 +40,7 @@ trait GetsChat
         'rand5' => rand(1, 5),
         'randomFemaleName' => $this->getFakeFirstNames($user->country, 'female', 1),
         'randomMaleName' => $this->getFakeFirstNames($user->country, 'male', 1),
+        'randomSurname' => $this->getFakeSurname($user->country),
         'userAcknowledge1' => $userAcknowledge[0],
         'userAcknowledge2' => $userAcknowledge[1],
         'userAgree' => $this->randomCommon('user', 'agree'),
@@ -127,6 +128,19 @@ trait GetsChat
       
       return $names;
     }
+  }
+  
+  /**
+   * Gets a fake surname.
+   *
+   * @param string $countryCode
+   * @return string
+   */
+  public function getFakeSurname(string $countryCode)
+  {
+    $faker = Factory::create($this->getLanguageCountryCode($countryCode));
+    
+    return $faker->lastName();
   }
   
   /**
