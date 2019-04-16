@@ -42,7 +42,7 @@ class AppController extends Controller
   public function index(Request $request)
   { 
     $loggedIn = Auth::user() ? 'true' : 'false';
-    $startScenario = 'wealth4BankAccount' ?? null;
+    $startScenario = 'health3DepressedListening' ?? null;
     $startMessage = 'begin' ?? null;
 
     return response()

@@ -20,6 +20,7 @@ return [
         'hello1',
         'hello2',
       ],
+      'emotion' => 'waving',
     ],
     'observation' => [
       'type' => 'choice',
@@ -46,6 +47,7 @@ return [
       'user' => [
         'needLoveNone',
       ],
+      'emotion' => 'heart',
     ],
     'love' => [
       'type' => 'none',
@@ -90,6 +92,7 @@ return [
       'user' => [
         'scaryWorldNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'dontStart' => [
       'type' => 'none',
@@ -108,6 +111,7 @@ return [
       'user' => [
         'homeworkNone',
       ],
+      'emotion' => 'base',
     ],
     'hereHeIs' => [
       'type' => 'none',
@@ -120,6 +124,7 @@ return [
       'user' => [
         'friendPicNone',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'meet' => [
       'type' => 'none',

@@ -20,6 +20,7 @@ return [
         'hello1',
         'hello2',
       ],
+      'emotion' => 'waving',
     ],
     'name' => [
       'type' => 'choice',
@@ -39,6 +40,7 @@ return [
       'user' => [
         'naughtyNone',
       ],
+      'emotion' => 'thumbs-down',
     ],
     'naughtyPic' => [
       'type' => 'choice',
@@ -78,6 +80,7 @@ return [
         'yup',
         'goOn',
       ],
+      'emotion' => 'unhappy',
     ],
     'cantRicher' => [
       'type' => 'none',
@@ -146,6 +149,7 @@ return [
       'user' => [
         'noNone',
       ],
+      'emotion' => 'frustrated',
     ],
     'seriously' => [
       'type' => 'none',

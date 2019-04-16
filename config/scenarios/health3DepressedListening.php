@@ -20,6 +20,7 @@ return [
         'hello1',
         'hello2',
       ],
+      'emotion' => 'waving',
     ],
     'observation' => [
       'type' => 'choice',
@@ -41,6 +42,7 @@ return [
         'why',
         'howCome',
       ],
+      'emotion' => 'unhappy',
     ],
     'gentle' => [
       'type' => 'none',
@@ -53,6 +55,7 @@ return [
       'user' => [
         'iCareNone',
       ],
+      'emotion' => 'heart',
     ],
     'iCareEmoji' => [
       'type' => 'choice',
@@ -66,6 +69,7 @@ return [
       'user' => [
         'depressedNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'hangOn' => [
       'type' => 'none',
