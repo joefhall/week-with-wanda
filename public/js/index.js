@@ -64744,6 +64744,11 @@ var showResponse = function showResponse(responseData, wandaMessageId, wandaMess
   _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setInput"])(responseData.scenario, responseData.type, responseData.user));
 };
 
+var utcOffset = function utcOffset() {
+  var time = new Date();
+  return -time.getTimezoneOffset() / 60;
+};
+
 var typingDelay = function typingDelay(messageText) {
   console.log('Typing delay', timeToBeginTyping + striptags__WEBPACK_IMPORTED_MODULE_4___default()(messageText).length * 50);
   var delayTime = timeToBeginTyping + striptags__WEBPACK_IMPORTED_MODULE_4___default()(messageText).length * 50;
@@ -64842,7 +64847,7 @@ function () {
             }
 
             console.log("An error occured getting user's chat history back from the server: ".concat(response.data.error));
-            _context2.next = 42;
+            _context2.next = 43;
             break;
 
           case 9:
@@ -64909,28 +64914,29 @@ function () {
             }
 
             checkMessagesDisplayedTimer = setInterval(checkMessagesDisplayed, 500, getWandaMessagesCount(chatHistory));
-            _context2.next = 42;
+            _context2.next = 43;
             break;
 
           case 40:
-            respond('welcomeSignup', 'begin', '');
+            console.log('UTC offset', utcOffset());
+            respond('welcomeSignup', 'begin', utcOffset());
             hideLoading();
 
-          case 42:
-            _context2.next = 47;
+          case 43:
+            _context2.next = 48;
             break;
 
-          case 44:
-            _context2.prev = 44;
+          case 45:
+            _context2.prev = 45;
             _context2.t1 = _context2["catch"](1);
             console.log("An error occured getting user's chat history back from the server: ".concat(_context2.t1));
 
-          case 47:
+          case 48:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[1, 44], [15, 19, 23, 31], [24,, 26, 30]]);
+    }, _callee2, null, [[1, 45], [15, 19, 23, 31], [24,, 26, 30]]);
   }));
 
   return function getHistory() {

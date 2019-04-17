@@ -46,6 +46,12 @@ const showResponse = (responseData, wandaMessageId, wandaMessage) => {
   store.dispatch(setInput(responseData.scenario, responseData.type, responseData.user));
 };
 
+const utcOffset = () => {
+  const time = new Date();
+  
+  return -time.getTimezoneOffset()/60;
+};
+
 const typingDelay = messageText => {
   console.log('Typing delay', timeToBeginTyping + (striptags(messageText).length * 50));
   const delayTime = timeToBeginTyping + (striptags(messageText).length * 50);
@@ -116,7 +122,8 @@ export const getHistory = async () => {
         
         checkMessagesDisplayedTimer = setInterval(checkMessagesDisplayed, 500, getWandaMessagesCount(chatHistory));
       } else {
-        respond('welcomeSignup', 'begin', '');
+        console.log('UTC offset', utcOffset());
+        respond('welcomeSignup', 'begin', utcOffset());
         hideLoading();
       }
     }

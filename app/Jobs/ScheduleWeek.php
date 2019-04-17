@@ -52,12 +52,13 @@ class ScheduleWeek implements ShouldQueue
     Log::info("Scheduling week for user({$this->userId})");
     
     $userScenarios = $this->pickUserScenarios();
-    
     $this->user->scenarios()->sync($userScenarios);
+    
+    
   }
   
   /**
-   * Execute the job.
+   * Pick the list of scenarios the user will encounter day by day, based on their preferences.
    *
    * @return array
    */
