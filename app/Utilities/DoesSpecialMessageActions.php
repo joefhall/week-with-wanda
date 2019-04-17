@@ -2,9 +2,11 @@
 
 namespace App\Utilities;
 
+use App\Jobs\ScheduleWeek;
 use App\Jobs\SendVerificationEmail;
 use App\Jobs\SendVerificationTextMessage;
 use App\Repositories\UserRepository;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -44,6 +46,7 @@ trait DoesSpecialMessageActions
     $scenario = array_get($response, 'scenario');
     $wandaResponse = array_get($response, 'wanda');
     $wandaMessageId = $wandaResponse ? array_keys($wandaResponse)[0] : null;
+    $user = User::find($userId);
     
     Log::info("Checking for special message user actions - user($userId), scenario($scenario), wandaMessage($wandaMessageId), userMessage($userMessageId)");
     
@@ -83,7 +86,11 @@ trait DoesSpecialMessageActions
           SendVerificationTextMessage::dispatch($userId);
         }
         if ($wandaMessageId === 'allDone') {
-          $this->userRepository->updateField($userId, 'mobile_number_verified_at', Carbon::now());
+          if ($user->send_text_messages) {
+            $this->userRepository->updateField($userId, 'mobile_number_verified_at', Carbon::now());
+          }
+          
+          ScheduleWeek::dispatch($userId);
         }
         break;
     }
