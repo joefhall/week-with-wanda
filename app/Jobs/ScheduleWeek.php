@@ -2,8 +2,8 @@
 
 namespace App\Jobs;
 
-use App\Jobs\SendNotification;
-use App\Repositories\UserRepository;
+use App\Jobs\SendNotifications;
+use App\Jobs\SetCurrentDayScenario;
 use App\Scenario;
 use App\User;
 use App\Utilities\GetsScenariosByDay;
@@ -40,35 +40,49 @@ class ScheduleWeek implements ShouldQueue
   /**
    * Execute the job.
    *
-   * @param UserRepository $userRepository
    * @return void
    */
-  public function handle(UserRepository $userRepository)
+  public function handle()
   {
     $this->user = User::find($this->userId);
     
-    Log::info("Scheduling week for user({$this->userId})");
+    Log::info("Scheduling the week for user({$this->userId})");
     
     $userScenarios = $this->pickUserScenarios();
     $this->user->scenarios()->sync($userScenarios);
     
-    $this->scheduleNotifications($userScenarios);
+    $this->scheduleJobs($userScenarios);
   }
   
   /**
-   * Schedule the notifications (emails and/or text messages) for the week.
+   * Schedule the setting of days and scenarios,
+   * and notifications (emails and/or text messages) for the week.
    *
    * @param array $userScenarios
    * @return void
    */
-  public function scheduleNotifications(array $userScenarios)
-  {
-    foreach ($userScenarios as $day => $scenarioId) {      
-      SendNotification::dispatch($this->userId, $scenarioId, 'main')
-        ->delay(Carbon::today($this->user->timezone)->addDays($day)->addHours(rand(8,12))->addMinutes(rand(1,59)));
+  public function scheduleJobs(array $userScenarios)
+  { 
+    foreach ($userScenarios as $day => $scenarioId) {
+      Log::info("Scheduling jobs for day($day), scenario ($scenarioId)");
       
-      SendNotification::dispatch($this->userId, $scenarioId, 'reminder')
-        ->delay(Carbon::today($this->user->timezone)->addDays($day)->addHours(rand(17,20))->addMinutes(rand(1,59)));
+      $mainTime = [
+        'hours' => rand(8,12),
+        'minutes' => rand(1,59),
+      ];
+      $reminderTime = [
+        'hours' => rand(17,20),
+        'minutes' => rand(1,59),
+      ];
+      
+      SetCurrentDayScenario::dispatch($this->userId, $day, $scenarioId)
+        ->delay(Carbon::today($this->user->timezone)->addDays($day)->addHours($mainTime['hours'])->addMinutes($mainTime['minutes']));
+      
+      SendNotifications::dispatch($this->userId, $scenarioId, 'main')
+        ->delay(Carbon::today($this->user->timezone)->addDays($day)->addHours($mainTime['hours'])->addMinutes($mainTime['minutes']));
+      
+      SendNotifications::dispatch($this->userId, $scenarioId, 'reminder')
+        ->delay(Carbon::today($this->user->timezone)->addDays($day)->addHours($reminderTime['hours'])->addMinutes($reminderTime['minutes']));
     }
   }
   
