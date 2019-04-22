@@ -50,6 +50,17 @@ trait DoesSpecialMessageActions
     
     Log::info("Checking for special message user actions - user($userId), scenario($scenario), wandaMessage($wandaMessageId), userMessage($userMessageId)");
     
+    if (
+      in_array(config("scenarios.$scenario.category"), ['health', 'wealth', 'relationships', 'all'])
+      && $userMessageId === 'begin'
+    ) {
+      $this->userRepository->setScenarioPivot($userId, $scenario, 'started', true);
+    }
+    
+    if (in_array($userMessageId, ['bye1', 'bye2',])) {
+      $this->userRepository->setScenarioPivot($userId, $scenario, 'finished', true);
+    }
+    
     switch ($scenario) {
       case 'welcomeSignup':
         if ($userMessageId === 'begin') {

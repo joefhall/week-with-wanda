@@ -56,7 +56,7 @@ class User extends Authenticatable
    */
   public function scenarios()
   {
-    return $this->belongsToMany(Scenario::class);
+    return $this->belongsToMany(Scenario::class)->withPivot('started', 'finished');
   }
   
   /**

@@ -113,6 +113,24 @@ class UserRepository
   }
   
   /**
+   * Set a value in the pivot table linking the user to scenarios.
+   *
+   * @param int $userId
+   * @param string $scenarioId
+   * @param string $field
+   * @param $value
+   * @return void
+   */
+  public function setScenarioPivot(int $userId, string $scenarioId, string $field, $value) {
+    $user = User::find($userId);
+    
+    $scenario = $user->scenarios()->where('scenario_id', $scenarioId)->first();
+    
+    $scenario->pivot[$field] = $value;
+    $scenario->pivot->save();
+  }
+  
+  /**
    * Add to the end of the user's chat history.
    *
    * @param int $userId

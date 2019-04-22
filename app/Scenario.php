@@ -23,6 +23,6 @@ class Scenario extends Model
    */
   public function user()
   {
-    return $this->belongsToMany(User::class);
+    return $this->belongsToMany(User::class)->withPivot('started', 'finished');
   }
 }
