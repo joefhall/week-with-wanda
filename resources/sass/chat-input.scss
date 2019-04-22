@@ -62,6 +62,11 @@
         color: red;
       }
     }
+    
+    &__forgotten-password {
+      font-size: $font-size-xxsm;
+      margin-top: $spacer * .25;
+    }
 
     &__submit-button {
       color: $main-colour;

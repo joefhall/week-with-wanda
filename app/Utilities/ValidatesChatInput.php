@@ -19,7 +19,7 @@ trait ValidatesChatInput
    * @param array $nextWanda
    * @return string
    */
-  public function validateUserInputAndGetNextWanda(int $userId, string $scenario, string $userInput, string $userMessage, array $nextWanda)
+  public function validateUserInputAndGetNextWanda(int $userId = null, string $scenario, string $userInput, string $userMessage, array $nextWanda)
   {
     $validationResult = $this->validateUserInput($userId, $userMessage, array_get($nextWanda, 'validate.validator'));
     
@@ -35,10 +35,23 @@ trait ValidatesChatInput
    * @param string $validator
    * @return string
    */
-  public function validateUserInput(int $userId, string $userMessage, string $validator)
+  public function validateUserInput(int $userId = null, string $userMessage, string $validator)
   {
     switch ($validator) {
-      case 'email':
+      case 'emailLogin':
+        $validator = Validator::make(
+          ['email' => $userMessage],
+          ['email' => 'required|email']
+        );
+
+        if ($validator->fails()) {
+          return 'invalid';
+        }
+        
+        return 'valid';
+        break;
+        
+      case 'emailSignup':
         $validator = Validator::make(
           ['email' => $userMessage],
           ['email' => 'required|email|unique:users']

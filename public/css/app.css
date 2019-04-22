@@ -13052,6 +13052,11 @@ a:visited {
   color: red;
 }
 
+.chat__input__form__forgotten-password {
+  font-size: 0.65rem;
+  margin-top: 0.25rem;
+}
+
 .chat__input__form__submit-button {
   color: darkviolet;
   cursor: pointer;

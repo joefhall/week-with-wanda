@@ -63,8 +63,9 @@ export default class ChatInputChoices extends React.Component {
 
   renderBefore() {
     switch(this.props.type) {
+      case 'loginChoice':
       case 'signupChoice':
-        const messageText = 'Sign up using Facebook (quickest)';
+        const messageText = (this.props.type === 'loginChoice') ? 'Log in with Facebook' : 'Sign up using Facebook (quickest)';
         return (
           <a className="chat__input__choices__choice" href={'/login/facebook?state=' + this.props.sessionId} key="signupFacebook" onClick={() => this.onClick('signupFacebook', messageText)}>
             {messageText}

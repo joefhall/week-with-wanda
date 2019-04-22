@@ -1,7 +1,5 @@
 import React from 'react';
 import Chat from './Chat';
-import Login from './Login';
-import LoginFacebook from './LoginFacebook';
 import Register from './Register';
 
 export default class App extends React.Component {

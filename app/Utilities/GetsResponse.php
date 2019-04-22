@@ -22,7 +22,7 @@ trait GetsResponse
    * @param bool $requiresResponse
    * @return array
    */
-  public function getResponse(User $user, string $scenario, string $userInput, string $userMessage = null, bool $requiresResponse)
+  public function getResponse(User $user = null, string $scenario, string $userInput, string $userMessage = null, bool $requiresResponse)
   {
     if (!$requiresResponse) {
       return [
@@ -32,20 +32,23 @@ trait GetsResponse
     
     $nextWanda = $this->getNextWanda($scenario, $userInput);
     if (is_array($nextWanda) && array_has($nextWanda, 'validate')) {
-      $nextWanda = $this->validateUserInputAndGetNextWanda($user->id, $scenario, $userInput, $userMessage, $nextWanda);
+      $nextWanda = $this->validateUserInputAndGetNextWanda($user ? $user->id : null, $scenario, $userInput, $userMessage, $nextWanda);
     }
     
     $nextScenario = $this->getNextScenario($scenario, $userInput);
-    $nextScenarioAllowed = Auth::user() || in_array($nextScenario, config("scenarios.authNotRequired"));
+    $nextScenarioAllowed = Auth::user() || config("scenarios.authNotRequired.{$nextScenario}");
     
     $nextInteraction = null;
+    
     if ($nextWanda && $nextScenario && $nextScenarioAllowed) {
       $nextInteraction = $this->getInteraction($nextScenario, $nextWanda);
       $nextWandaMessage = $this->getWandaChat($nextScenario, $nextWanda, $this->getChatData($userInput));
       $nextUserMessages = $this->getInteractionUserChats($nextScenario, $nextInteraction, $userInput);
     }
     
-    if ($user && $nextWanda && $nextScenario && $nextScenarioAllowed && $nextInteraction) {
+    $hasUser = $user || config("scenarios.doNotStore.{$nextScenario}");
+    
+    if ($hasUser && $nextWanda && $nextScenario && $nextScenarioAllowed && $nextInteraction) {
       $response = [
         'scenario' => $nextScenario,
         'wanda' => $requiresResponse ? [
@@ -56,15 +59,19 @@ trait GetsResponse
         'user' => $requiresResponse ? $nextUserMessages : null,
       ];
     } else {
-      if (!$user) {
+      if (!$hasUser) {
+        $reason = 'user';
         $error = 'User not found';
       } else if (!$nextScenarioAllowed) {
+        $reason = 'permission';
         $error = 'Permission denied';
       } else {
+        $reason = 'match';
         $error = 'Could not match interaction or find a response';
       }
       
       $response = [
+        'reason' => $reason,
         'error' => $error,
       ];
     }

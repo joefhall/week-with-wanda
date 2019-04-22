@@ -1,9 +1,11 @@
 import axios from 'axios';
-import { addMessage, setEmotion } from '../actions';
-import { setInput, setLoading, setTyping } from '../actions';
+import jstz from 'jstz';
 import store from '../store';
 import striptags from 'striptags';
 import uuidv4 from 'uuid/v4';
+
+import { addMessage, setEmotion } from '../actions';
+import { setInput, setLoading, setTyping } from '../actions';
 
 let checkMessagesDisplayedTimer;
 const minTypingTime = 2000;
@@ -46,10 +48,10 @@ const showResponse = (responseData, wandaMessageId, wandaMessage) => {
   store.dispatch(setInput(responseData.scenario, responseData.type, responseData.user));
 };
 
-const utcOffset = () => {
-  const time = new Date();
+const timezone = () => {
+  const timezone = jstz.determine();
   
-  return -time.getTimezoneOffset()/60;
+  return timezone.name();
 };
 
 const typingDelay = messageText => {
@@ -105,6 +107,9 @@ export const getHistory = async () => {
       let chatHistory = response.data;
       console.log('User chat history:', chatHistory);
       
+      const startScenario = document.head.querySelector('meta[name="start-scenario"]').content;
+      const startMessage = document.head.querySelector('meta[name="start-message"]').content;
+      
       if (chatHistory.length) {
         for (let chatEntry of chatHistory) {
           store.dispatch(addMessage(chatEntry.time * 1000, chatEntry.scenario, chatEntry.sender, chatEntry.id, chatEntry.message));
@@ -114,16 +119,13 @@ export const getHistory = async () => {
         console.log('Latest chat entry:', latestChatEntry);
         store.dispatch(setInput(latestChatEntry.scenario, latestChatEntry.type, latestChatEntry.userInput));
         
-        const startScenario = document.head.querySelector('meta[name="start-scenario"]').content;
-        const startMessage = document.head.querySelector('meta[name="start-message"]').content;
         if (startScenario && startMessage) {
           respond(startScenario, startMessage, '');
         }
         
         checkMessagesDisplayedTimer = setInterval(checkMessagesDisplayed, 500, getWandaMessagesCount(chatHistory));
       } else {
-        console.log('UTC offset', utcOffset());
-        respond('welcomeSignup', 'begin', utcOffset());
+        respond(startScenario, startMessage, timezone());
         hideLoading();
       }
     }

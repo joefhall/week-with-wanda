@@ -162,7 +162,7 @@ return [
       'myEmail' => [
         'wanda' => [
           'validate' => [
-            'validator' => 'email',
+            'validator' => 'emailSignup',
             'responses' => [
               'valid' => 'choosePassword',
               'invalid' => 'invalidEmail',

@@ -38,16 +38,20 @@ class ChatController extends Controller
    */
   public function respond(Request $request)
   {
-    $user = Auth::user() ?? $this->userRepository->findOrCreateFromSession($request->input('session'));
-    
     $currentScenario = $request->input('scenario');
     $userMessageId = $request->input('user');
     $userMessage = $request->input('message');
     $requiresResponse = $request->input('requiresResponse');
+    
+    $user = Auth::user() ?? 
+      (config("scenarios.doNotStore.{$currentScenario}") ? null : $this->userRepository->findOrCreateFromSession($request->input('session')));
+    
     $response = $this->getResponse($user, $currentScenario, $userMessageId, $userMessage, $requiresResponse);
     
-    $this->userRepository->storeChatHistory($user->id, $currentScenario, $userMessageId, $userMessage, $response);
-    $this->doSpecialMessageActions($user->id, $request, $userMessageId, $userMessage, $response);
+    if (!config("scenarios.doNotStore.{$currentScenario}")) {
+      $this->userRepository->storeChatHistory($user->id, $currentScenario, $userMessageId, $userMessage, $response);
+      $this->doSpecialMessageActions($user->id, $request, $userMessageId, $userMessage, $response);
+    }
     
     return response()->json($response);
   }
