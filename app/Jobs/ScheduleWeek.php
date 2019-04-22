@@ -2,8 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Jobs\SendVerificationEmail;
-use App\Jobs\SendVerificationTextMessage;
+use App\Jobs\SendNotification;
 use App\Repositories\UserRepository;
 use App\Scenario;
 use App\User;
@@ -47,14 +46,30 @@ class ScheduleWeek implements ShouldQueue
   public function handle(UserRepository $userRepository)
   {
     $this->user = User::find($this->userId);
-    $this->categories = ['health', 'wealth', 'relationships'];
     
     Log::info("Scheduling week for user({$this->userId})");
     
     $userScenarios = $this->pickUserScenarios();
     $this->user->scenarios()->sync($userScenarios);
     
-    
+    $this->scheduleNotifications($userScenarios);
+  }
+  
+  /**
+   * Schedule the notifications (emails and/or text messages) for the week.
+   *
+   * @param array $userScenarios
+   * @return void
+   */
+  public function scheduleNotifications(array $userScenarios)
+  {
+    foreach ($userScenarios as $day => $scenarioId) {      
+      SendNotification::dispatch($this->userId, $scenarioId, 'main')
+        ->delay(Carbon::today($this->user->timezone)->addDays($day)->addHours(rand(8,12))->addMinutes(rand(1,59)));
+      
+      SendNotification::dispatch($this->userId, $scenarioId, 'reminder')
+        ->delay(Carbon::today($this->user->timezone)->addDays($day)->addHours(rand(17,20))->addMinutes(rand(1,59)));
+    }
   }
   
   /**
@@ -68,7 +83,7 @@ class ScheduleWeek implements ShouldQueue
     $userCategories = [];
     $userScenarios = [];
     
-    foreach ($this->categories as $category) {
+    foreach (['health', 'wealth', 'relationships'] as $category) {
       if ($this->user["better_{$category}"]) {
         $userCategories[] = $category;
       }
@@ -78,6 +93,8 @@ class ScheduleWeek implements ShouldQueue
       $categoryToday = array_random($userCategories);
       $userScenarios[$dayNumber] = $day[$categoryToday];
     }
+    
+    $userScenarios[7] = 'all7Finale';
     
     return $userScenarios;
   }

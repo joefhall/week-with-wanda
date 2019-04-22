@@ -53,7 +53,7 @@ trait DoesSpecialMessageActions
     switch ($scenario) {
       case 'welcomeSignup':
         if ($userMessageId === 'begin') {
-          $this->userRepository->updateField($userId, 'utc_offset', $this->sanitiseUtcOffset($userMessage));
+          $this->userRepository->updateField($userId, 'timezone', $userMessage ?? 'Europe/London');
         }
         if ($userMessageId === 'betterHealth') {
           $this->userRepository->updateField($userId, 'better_health', true);
@@ -97,18 +97,5 @@ trait DoesSpecialMessageActions
         }
         break;
     }
-  }
-  
-  /**
-   * Sanitise a UTC offset, to make sure it's a valid value.
-   *
-   * @param $utcOffset
-   * @return int
-   */
-  public function sanitiseUtcOffset($utcOffset)
-  {
-    $utcOffset = round((int)$utcOffset);
-    
-    return ($utcOffset >= -13 || $utcOffset <= 13) ? $utcOffset : 0;
   }
 }
