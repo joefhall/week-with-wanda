@@ -142,6 +142,46 @@ class UserRepository
   }
   
   /**
+   * Get the last sender (user or wanda) in the user's chat history.
+   *
+   * @param int $userId
+   * @return string|null
+   */
+  public function getLastSenderFromChatHistory(int $userId) {
+    $user = User::find($userId);
+    
+    $chatHistory = json_decode($user->chat_history);
+    
+    if ($chatHistory) {
+      $lastChatInteraction = end($chatHistory);
+    
+      return $lastChatInteraction->sender;
+    }
+    
+    return null;
+  }
+  
+  /**
+   * Get the last scenario in the user's chat history.
+   *
+   * @param int $userId
+   * @return string|null
+   */
+  public function getLastScenarioFromChatHistory(int $userId) {
+    $user = User::find($userId);
+    
+    $chatHistory = json_decode($user->chat_history);
+    
+    if ($chatHistory) {
+      $lastChatInteraction = end($chatHistory);
+    
+      return $lastChatInteraction->scenario;
+    }
+    
+    return null;
+  }
+  
+  /**
    * Get the text of a particular message from the user's chat history.
    *
    * @param int $userId

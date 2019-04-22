@@ -67,6 +67,9 @@ trait DoesSpecialMessageActions
         if ($userMessageId === 'signupPasswordNone') {
           $this->userRepository->register($userId, $userMessage, $request->ip());
         }
+        if ($userMessageId === 'signupFacebook' || $userMessageId === 'signupPasswordNone') {
+          $this->userRepository->updateField($userId, 'current_scenario', 'postSignupDetails');
+        }
         break;
         
       case 'postSignupDetails':

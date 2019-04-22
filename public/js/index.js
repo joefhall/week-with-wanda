@@ -66327,7 +66327,7 @@ function () {
             }
 
             console.log("An error occured getting user's chat history back from the server: ".concat(response.data.error));
-            _context2.next = 42;
+            _context2.next = 43;
             break;
 
           case 9:
@@ -66394,28 +66394,29 @@ function () {
             }
 
             checkMessagesDisplayedTimer = setInterval(checkMessagesDisplayed, 500, getWandaMessagesCount(chatHistory));
-            _context2.next = 42;
+            _context2.next = 43;
             break;
 
           case 40:
+            console.log('here');
             respond(startScenario, startMessage, timezone());
             hideLoading();
 
-          case 42:
-            _context2.next = 47;
+          case 43:
+            _context2.next = 48;
             break;
 
-          case 44:
-            _context2.prev = 44;
+          case 45:
+            _context2.prev = 45;
             _context2.t1 = _context2["catch"](1);
             console.log("An error occured getting user's chat history back from the server: ".concat(_context2.t1));
 
-          case 47:
+          case 48:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[1, 44], [17, 21, 25, 33], [26,, 28, 32]]);
+    }, _callee2, null, [[1, 45], [17, 21, 25, 33], [26,, 28, 32]]);
   }));
 
   return function getHistory() {

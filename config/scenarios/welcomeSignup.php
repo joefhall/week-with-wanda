@@ -99,7 +99,7 @@ return [
       'giveMeASec' => [
         'type' => 'none',
         'user' => [
-          '',
+          'giveMeASecNone',
         ],
       ],
       'okWereBack' => [
