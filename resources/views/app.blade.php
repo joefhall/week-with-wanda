@@ -17,6 +17,43 @@
   </head>
   
   <body>
+    <div id="preview-notice" style="position: absolute; z-index: 10000; width: 100vw; height: 100vh; background-color: darkviolet; color: white; text-align: center;">
+      <h1>A Week With Wanda</h1>
+      <p>This site is available for selected people to preview only.</p>
+      <p>Do you have a preview code?</p>
+      <form id="preview-form" onSubmit="enterPreviewCode(event)">
+        <input id="preview-code" type="text" placeholder="Enter preview code" />
+        <button id="preview-button" onClick="enterPreviewCode(event)">Enter</button>
+        <div id="preview-error-message" class="d-none chat__input__form__error-message">
+          Sorry, that's not right
+        </div>
+      </form>
+    </div>
+    <script>
+      if (
+        document.head.querySelector('meta[name="logged-in"]').content === 'true' ||
+        document.head.querySelector('meta[name="start-scenario"]').content === 'login' ||
+        document.head.querySelector('meta[name="start-scenario"]').content === 'loginFacebook' ||
+        document.head.querySelector('meta[name="start-scenario"]').content === 'loginFailed'
+      ) {
+        document.querySelector('#preview-notice').classList.add('d-none');
+      }
+      
+      function enterPreviewCode(event) {
+        event.preventDefault();
+
+        var previewNotice = document.querySelector('#preview-notice');
+        var previewCodeInput = document.querySelector('#preview-code');
+        var previewErrorMessage = document.querySelector('#preview-error-message');
+
+        if (previewCodeInput.value.toLowerCase() === 'alive') {
+          previewNotice.classList.add('d-none');
+        } else {
+          previewErrorMessage.classList.add('d-block');
+        }
+      }
+    </script>
+    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Left Side Of Navbar -->
       <ul class="navbar-nav mr-auto">
