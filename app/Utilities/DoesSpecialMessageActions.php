@@ -90,11 +90,15 @@ trait DoesSpecialMessageActions
         if (in_array($wandaMessageId, ['checkEmail', 'checkEmailChange', 'resendEmail'])) {
           SendVerificationEmail::dispatch($userId);
         }
-        if ($userMessageId === 'contactTextMessageOnly' || $userMessageId === 'contactBoth') {
-          $this->userRepository->updateField($userId, 'send_text_messages', true);
-        }
-        if ($userMessageId === 'contactEmailOnly' || $userMessageId === 'contactBoth') {
-          $this->userRepository->updateField($userId, 'send_emails', true);
+        if ($userMessageId === 'contactEmailOnly' || $userMessageId === 'contactTextMessageOnly' || $userMessageId === 'contactBoth') {
+          ScheduleWeek::dispatch($userId);
+
+          if ($userMessageId === 'contactTextMessageOnly' || $userMessageId === 'contactBoth') {
+            $this->userRepository->updateField($userId, 'send_text_messages', true);
+          }
+          if ($userMessageId === 'contactEmailOnly' || $userMessageId === 'contactBoth') {
+            $this->userRepository->updateField($userId, 'send_emails', true);
+          }
         }
         if (in_array($userMessageId, ['myMobileNumber', 'myMobileNumberChange'])) {
           $this->userRepository->updateField($userId, 'mobile_number', preg_replace('~\D~', '', $userMessage));
@@ -106,8 +110,6 @@ trait DoesSpecialMessageActions
           if ($user->send_text_messages) {
             $this->userRepository->updateField($userId, 'mobile_number_verified_at', Carbon::now());
           }
-          
-          ScheduleWeek::dispatch($userId);
         }
         break;
     }
