@@ -153,13 +153,13 @@ return [
       ],
     ],
     'whyHungUp' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'whyHungUpText',
       ],
     ],
     'otherWays' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'otherWaysText',
       ],

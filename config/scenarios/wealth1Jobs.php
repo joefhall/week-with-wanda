@@ -158,13 +158,13 @@ return [
       ],
     ],
     'specificJobsWhat' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'specificJobsWhatText',
       ],
     ],
     'specificJobsUnderstand' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'specificJobsUnderstandText',
       ],

@@ -222,7 +222,7 @@ return [
       ],
     ],
     'defense' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'defenseText',
       ],
@@ -240,7 +240,7 @@ return [
       ],
     ],
     'autonomy' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'autonomyText',
       ],
@@ -252,7 +252,7 @@ return [
       ],
     ],
     'lost' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'lostText',
       ],

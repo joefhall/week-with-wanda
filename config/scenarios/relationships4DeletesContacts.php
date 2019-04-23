@@ -264,7 +264,7 @@ return [
       ],
     ],
     'difficult' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'problemText',
       ],
@@ -282,7 +282,7 @@ return [
       ],
     ],
     'whyLimits' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'whyLimitsText',
       ],
@@ -294,7 +294,7 @@ return [
       ],
     ],
     'howMuchControl' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'howMuchControlText',
       ],

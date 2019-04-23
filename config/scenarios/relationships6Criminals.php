@@ -242,7 +242,7 @@ return [
       ],
     ],
     'worried' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'worriedText',
       ],
@@ -272,7 +272,7 @@ return [
       ],
     ],
     'problem' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'problemText',
       ],

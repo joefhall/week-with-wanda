@@ -133,7 +133,7 @@ return [
       ],
     ],
     'anythingCanDo' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'anythingCanDoText',
       ],

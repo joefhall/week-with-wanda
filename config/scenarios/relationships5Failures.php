@@ -301,7 +301,7 @@ return [
       ],
     ],
     'wrong' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'problemText',
       ],
@@ -351,7 +351,7 @@ return [
       ],
     ],
     'algorithm' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'algorithmText',
       ],
@@ -363,7 +363,7 @@ return [
       ],
     ],
     'better' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'betterText',
       ],

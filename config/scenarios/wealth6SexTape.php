@@ -277,7 +277,7 @@ return [
       ],
     ],
     'wrong' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'wrongText',
       ],
@@ -307,7 +307,7 @@ return [
       ],
     ],
     'any' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'anyText',
       ],

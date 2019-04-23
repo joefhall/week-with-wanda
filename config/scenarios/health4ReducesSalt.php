@@ -228,13 +228,13 @@ return [
       ],
     ],
     'doMoreWhat' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'doMoreText',
       ],
     ],
     'whatsUp' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'whatsUpText',
       ],
@@ -272,7 +272,7 @@ return [
       ],
     ],
     'why' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'whyText',
       ],
@@ -308,13 +308,13 @@ return [
       ],
     ],
     'whatProblem' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'whatProblemText',
       ],
     ],
     'different' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'differentText',
       ],

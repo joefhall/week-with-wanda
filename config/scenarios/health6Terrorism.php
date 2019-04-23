@@ -205,7 +205,7 @@ return [
       ],
     ],
     'whatProblem' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'whatProblemText',
       ],
@@ -248,7 +248,7 @@ return [
       ],
     ],
     'swing' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'swingText',
       ],
@@ -416,13 +416,13 @@ return [
       ],
     ],
     'matter' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'matterText',
       ],
     ],
     'forget' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'forgetText',
       ],

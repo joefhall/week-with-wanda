@@ -9,6 +9,7 @@ import ChatInputPassword from './ChatInputPassword';
 import ChatInputPasswordCreate from './ChatInputPasswordCreate';
 import ChatInputPhone from './ChatInputPhone';
 import ChatInputText from './ChatInputText';
+import ChatInputTextArea from './ChatInputTextArea';
 import ChatMessages from './ChatMessages';
 import LoginHidden from './LoginHidden';
 import store from '../store';
@@ -74,6 +75,7 @@ class ChatInput extends React.Component {
         
       case 'text':
       case 'textAndChoice':
+      case 'textArea':
         this.addAndSendMessage(Object.keys(this.props.input.userInput)[0], inputText);
         break;
     }
@@ -198,6 +200,12 @@ class ChatInput extends React.Component {
               <ChatInputText minLength={7} placeholder={textPlaceholder} onFormSubmit={this.receiveTextInput} />
               <ChatInputChoices onClick={this.addAndSendMessage} userInput={userInputFiltered} />
             </div>
+          );
+          break;
+          
+        case 'textArea':
+          return (
+            <ChatInputTextArea minLength={40} placeholder="" onFormSubmit={this.receiveTextInput} />
           );
           break;
 

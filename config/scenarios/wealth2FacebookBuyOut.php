@@ -160,14 +160,14 @@ return [
       'emotion' => 'unhappy',
     ],
     'confused' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'problemText',
       ],
       'emotion' => 'frustrated',
     ],
     'soWhat' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'problemText',
       ],
@@ -186,7 +186,7 @@ return [
       ],
     ],
     'whatSpend' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'whatSpendText',
       ],
@@ -229,7 +229,7 @@ return [
       'emotion' => 'unhappy',
     ],
     'overlook' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'overlookText',
       ],

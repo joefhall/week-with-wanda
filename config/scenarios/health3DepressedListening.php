@@ -163,7 +163,7 @@ return [
       ],
     ],
     'really' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'reallyText',
       ],
@@ -175,7 +175,7 @@ return [
       ],
     ],
     'touchy' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'touchyText',
       ],
@@ -412,7 +412,7 @@ return [
       ],
     ],
     'whyCare' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'whyCareText',
       ],
@@ -424,7 +424,7 @@ return [
       ],
     ],
     'trade' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'tradeText',
       ],
@@ -443,7 +443,7 @@ return [
       ],
     ],
     'society' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'societyText',
       ],

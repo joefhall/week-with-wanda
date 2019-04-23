@@ -285,7 +285,7 @@ return [
       ],
     ],
     'howCome' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'howComeText',
       ],
@@ -303,7 +303,7 @@ return [
       ],
     ],
     'whyCare' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'whyCareText',
       ],

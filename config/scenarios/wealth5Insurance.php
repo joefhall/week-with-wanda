@@ -173,7 +173,7 @@ return [
       ],
     ],
     'whatMind' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'whatMindText',
       ],
@@ -197,7 +197,7 @@ return [
       ],
     ],
     'whyCare' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'whyCareText',
       ],

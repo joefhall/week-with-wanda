@@ -327,7 +327,7 @@ return [
       ],
     ],
     'makingBetter' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'problemText',
       ],
@@ -352,7 +352,7 @@ return [
       ],
     ],
     'whereLine' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'privacyText',
       ],
@@ -370,7 +370,7 @@ return [
       ],
     ],
     'whyFeel' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'privacyText',
       ],

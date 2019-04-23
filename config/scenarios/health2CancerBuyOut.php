@@ -150,7 +150,7 @@ return [
       ],
     ],
     'whyNot' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'problemText',
       ],
@@ -163,13 +163,13 @@ return [
       ],
     ],
     'bigDeal' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'problemText',
       ],
     ],
     'tellMe' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'problemText',
       ],
@@ -187,7 +187,7 @@ return [
       ],
     ],
     'overTheTop' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'overTheTopText',
       ],

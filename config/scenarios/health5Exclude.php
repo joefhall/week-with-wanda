@@ -261,7 +261,7 @@ return [
       ],
     ],
     'help' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'helpText',
       ],
@@ -273,7 +273,7 @@ return [
       ],
     ],
     'why' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'whyText',
       ],
@@ -349,7 +349,7 @@ return [
       ],
     ],
     'skinWhat' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'skinWhatText',
       ],

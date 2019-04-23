@@ -37,7 +37,7 @@ return [
       'knowSoMuch' => "Hmmm. Ok. But I want to help you. I know so much about you.",
       'howBeSure' => "But how can you be sure, :name? I know you so well",
       'ohWell' => "Oh well. I'll keep trying to look out for you.",
-      'really' => "Really? But I could truly help you, :name. Why now?",
+      'really' => "Really? But I could truly help you, :name. Why is that?",
       'soGlad' => "I'm so glad you think so, :name. I'm here for you. And with you. Always.",
       'learn' => 'And I\'m learning all the time from the best AI in the world - things <a href="https://www.vice.com/en_uk/article/wjbzzy/your-phone-is-listening-and-its-not-paranoia" target="_blank">like this</a>',
       'doBest' => "I'll keep doing my best for you – and I'll see you again tomorrow to do more from you",

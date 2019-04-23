@@ -220,25 +220,25 @@ return [
       ],
     ],
     'paranoid' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'problemText',
       ],
     ],
     'moveOn' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'problemText',
       ],
     ],
     'okWhat' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'problemText',
       ],
     ],
     'enoughReason' => [
-      'type' => 'text',
+      'type' => 'textArea',
       'user' => [
         'enoughReasonText',
       ],
