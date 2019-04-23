@@ -68334,6 +68334,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       console.log('Emotion is...', this.props.emotion);
+      var emotion = !Array.isArray(this.props.emotion) && this.props.emotion ? this.props.emotion : 'base';
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat__wanda"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -68343,7 +68344,7 @@ function (_React$Component) {
       }, "A Week With"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat__wanda__title--2"
       }, "Wanda")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/img/emotions/".concat(this.props.emotion, ".gif"),
+        src: "/img/emotions/".concat(emotion, ".gif"),
         onLoad: this.onLoad,
         className: "chat__wanda__image chat__wanda__image--".concat(this.props.emotion) + (this.props.emotion === 'base' ? ' invisible h-0' : '') + ' d-none',
         alt: "Wanda"

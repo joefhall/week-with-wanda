@@ -8,6 +8,7 @@ class ChatWanda extends React.Component {
   
   render() {
     console.log('Emotion is...', this.props.emotion);
+    const emotion = (!Array.isArray(this.props.emotion) && this.props.emotion) ? this.props.emotion : 'base';
     
     return (
       <div className="chat__wanda">
@@ -15,7 +16,7 @@ class ChatWanda extends React.Component {
           <div className="chat__wanda__title--1">A Week With</div>
           <div className="chat__wanda__title--2">Wanda</div>
         </div>
-        <img src={`/img/emotions/${this.props.emotion}.gif`} onLoad={this.onLoad} className={`chat__wanda__image chat__wanda__image--${this.props.emotion}` + (this.props.emotion === 'base' ? ' invisible h-0' : '') + ' d-none'} alt="Wanda" />
+        <img src={`/img/emotions/${emotion}.gif`} onLoad={this.onLoad} className={`chat__wanda__image chat__wanda__image--${this.props.emotion}` + (this.props.emotion === 'base' ? ' invisible h-0' : '') + ' d-none'} alt="Wanda" />
         
         <img src="/img/emotions/elated.gif" className="invisible h-0" alt="Wanda elated" />
         <img src="/img/emotions/frustrated.gif" className="invisible h-0" alt="Wanda frustrated" />

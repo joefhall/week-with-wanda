@@ -14,7 +14,7 @@
   <body>
     <div style="margin: 30px 0 0 40px;">
       @foreach ($emotions as $emotion)
-        <div style="display: inline-block; float: left; margin: 20px;">
+        <div style="display: inline-block; float: left; margin: 20px; filter: brightness(115%) saturate(140%);">
           <h3>
             {{ $emotion }}
           </h3>
