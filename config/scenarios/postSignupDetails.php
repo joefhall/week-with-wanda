@@ -56,7 +56,6 @@ return [
       'type' => 'choice',
       'user' => [
         'contactEmailOnly',
-        'contactTextMessageOnly',
         'contactBoth',
       ],
     ],
