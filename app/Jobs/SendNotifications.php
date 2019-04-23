@@ -12,6 +12,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Support\Facades\Log;
 
+/**
+ * Sends an email and/or a text message to the user for the latest scenario.
+ */
 class SendNotifications implements ShouldQueue
 {
   use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
@@ -83,7 +86,10 @@ class SendNotifications implements ShouldQueue
         __("notifications.{$scenarioId}.email.{$this->notificationType}.message", compact('name', 'loginLink'))
       );
       
-      SendTextMessage::dispatch($this->userId, __("chats/{$scenarioId}.notifications.textMessage.{$this->notificationType}"));
+      // Remove links in text messages until find a solution to ensure deliverability
+      $loginLink = '';
+      
+      SendTextMessage::dispatch($this->userId, __("notifications.{$scenarioId}.textMessage.{$this->notificationType}", compact('name', 'loginLink')));
       
       Log::info("Notifications sent");
     } else {
