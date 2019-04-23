@@ -32,7 +32,7 @@ return [
       'changeEmail' => "Change my email address",
       'contactEmailOnly' => "Email only",
       'contactTextMessageOnly' => "Text message only",
-      'contactBoth' => "Both (it's the best!)",
+      'contactBoth' => "Email and text message (it's the best!)",
       'doneMobileNumber' => "",
       'resendMobileNumber' => "Resend the text",
       'changeMobileNumber' => "Change mobile number",
