@@ -118,6 +118,7 @@ export const getHistory = async () => {
         const latestChatEntry = chatHistory.slice(-1)[0];
         console.log('Latest chat entry:', latestChatEntry);
         store.dispatch(setInput(latestChatEntry.scenario, latestChatEntry.type, latestChatEntry.userInput));
+        store.dispatch(setTyping(false));
         
         if (startScenario && startMessage) {
           respond(startScenario, startMessage, '');

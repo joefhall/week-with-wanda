@@ -18,11 +18,7 @@ const inputReducer = (state = {}, action) => {
     return action.payload;
   }
   
-  return {
-    scenario: null,
-    type: null,
-    userInput: null
-  };
+  return state;
 };
 
 const messagesReducer = (state = [], action) => {

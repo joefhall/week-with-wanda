@@ -66327,7 +66327,7 @@ function () {
             }
 
             console.log("An error occured getting user's chat history back from the server: ".concat(response.data.error));
-            _context2.next = 42;
+            _context2.next = 43;
             break;
 
           case 9:
@@ -66337,7 +66337,7 @@ function () {
             startMessage = document.head.querySelector('meta[name="start-message"]').content;
 
             if (!chatHistory.length) {
-              _context2.next = 40;
+              _context2.next = 41;
               break;
             }
 
@@ -66388,34 +66388,35 @@ function () {
             latestChatEntry = chatHistory.slice(-1)[0];
             console.log('Latest chat entry:', latestChatEntry);
             _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_6__["setInput"])(latestChatEntry.scenario, latestChatEntry.type, latestChatEntry.userInput));
+            _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_6__["setTyping"])(false));
 
             if (startScenario && startMessage) {
               respond(startScenario, startMessage, '');
             }
 
             checkMessagesDisplayedTimer = setInterval(checkMessagesDisplayed, 500, getWandaMessagesCount(chatHistory));
-            _context2.next = 42;
+            _context2.next = 43;
             break;
 
-          case 40:
+          case 41:
             respond(startScenario, startMessage, timezone());
             hideLoading();
 
-          case 42:
-            _context2.next = 47;
+          case 43:
+            _context2.next = 48;
             break;
 
-          case 44:
-            _context2.prev = 44;
+          case 45:
+            _context2.prev = 45;
             _context2.t1 = _context2["catch"](1);
             console.log("An error occured getting user's chat history back from the server: ".concat(_context2.t1));
 
-          case 47:
+          case 48:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[1, 44], [17, 21, 25, 33], [26,, 28, 32]]);
+    }, _callee2, null, [[1, 45], [17, 21, 25, 33], [26,, 28, 32]]);
   }));
 
   return function getHistory() {
@@ -66734,6 +66735,7 @@ function (_React$Component) {
     _this.addAndSendMessage = function (messageId, message) {
       var scenario = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _this.props.input.scenario;
       var requiresResponse = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+      _store__WEBPACK_IMPORTED_MODULE_13__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setInput"])(null, null, null));
       _store__WEBPACK_IMPORTED_MODULE_13__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["addMessage"])(Date.now(), scenario, 'user', messageId, message));
       Object(_api_chat__WEBPACK_IMPORTED_MODULE_4__["respond"])(scenario, messageId, message, requiresResponse);
     };
@@ -68237,6 +68239,17 @@ function (_React$Component) {
   }
 
   _createClass(ChatTyping, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var chatMessagesBottom = document.querySelector('.chat__messages__bottom');
+
+      if (chatMessagesBottom) {
+        chatMessagesBottom.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       console.log('Typing is...', this.props.typing);
@@ -68648,11 +68661,7 @@ var inputReducer = function inputReducer() {
     return action.payload;
   }
 
-  return {
-    scenario: null,
-    type: null,
-    userInput: null
-  };
+  return state;
 };
 
 var messagesReducer = function messagesReducer() {
