@@ -7,9 +7,10 @@
   line-height: 0;
   min-height: calc(100vw / (400 / 225));
   
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(sm) {
     border-top-left-radius: $spacer * .5;
     border-top-right-radius: $spacer * .5;
+    min-height: 225px;
   }
   
   &__image {

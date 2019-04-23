@@ -13110,10 +13110,11 @@ a:visited {
   min-height: calc(100vw / (400 / 225));
 }
 
-@media (min-width: 768px) {
+@media (min-width: 576px) {
   .chat__wanda {
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
+    min-height: 225px;
   }
 }
 
