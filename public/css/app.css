@@ -12846,7 +12846,7 @@ a:visited {
   width: 100vw;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 576px) {
   .chat {
     border-radius: 0.5rem;
     max-height: 600px;
@@ -13101,10 +13101,13 @@ a:visited {
 
 .chat__wanda {
   background-image: url(/img/emotions/base.gif);
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: contain;
   -webkit-filter: brightness(115%) saturate(140%);
           filter: brightness(115%) saturate(140%);
   line-height: 0;
-  min-height: 225px;
+  min-height: calc(100vw / (400 / 225));
 }
 
 @media (min-width: 768px) {

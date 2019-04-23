@@ -5,7 +5,7 @@
   height: 100%;
   width: 100vw;
   
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(sm) {
     border-radius: $spacer * .5;
     max-height: 600px;
     max-width: 400px;

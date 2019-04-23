@@ -1,8 +1,11 @@
 .chat__wanda {
   background-image: url(/img/emotions/base.gif);
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: contain;
   filter: brightness(115%) saturate(140%);
   line-height: 0;
-  min-height: 225px;
+  min-height: calc(100vw / (400 / 225));
   
   @include media-breakpoint-up(md) {
     border-top-left-radius: $spacer * .5;
