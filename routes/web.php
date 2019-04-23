@@ -11,8 +11,8 @@
 |
 */
 
-Auth::routes(['verify' => true]);
-Route::get('login-facebook')->name('facebookLogin');
+Auth::routes();
+Route::get('login-facebook', 'Auth\FacebookLoginController@showLoginWithFacebookForm')->middleware('guest')->name('facebookLogin');
 Route::get('login/facebook', 'Auth\FacebookLoginController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\FacebookLoginController@handleProviderCallback');
 Route::post('login/facebook/callback', 'Auth\FacebookLoginController@handleProviderCallback');

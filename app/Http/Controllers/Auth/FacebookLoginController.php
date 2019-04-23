@@ -27,6 +27,23 @@ class FacebookLoginController extends Controller
     {
       $this->userRepository = $userRepository;
     }
+    
+    /**
+     * Show the login with Facebook chat flow.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginWithFacebookForm(Request $request)
+    { 
+      $loggedIn = 'false';
+      $startScenario = 'loginFacebook';
+      $startMessage = 'begin';
+
+      return response()
+              ->view('app', compact('loggedIn', 'startScenario', 'startMessage'));
+      
+      return view('auth.login');
+    }
   
     /**
      * Redirect the user to the Facebook authentication page.
