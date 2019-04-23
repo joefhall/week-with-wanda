@@ -16,7 +16,7 @@ return [
       'news' => "Good news!",
       'doctors' => "I've been working with your doctors and other local health services",
       'comeScore' => "To come up with a <em>Health Risk Score</em> for every person – and yours is...",
-      'scorePic' => "[ADD PIC - 3.2 LOW RISK]",
+      'scorePic' => "<img class='chat__messages__message__bubble__image' src='/img/health5ExcludeScore.png' />",
       'great' => "You have a low risk of health complications. Great to know, isn't it?",
       'absolutely' => "Absolutely",
       'though' => "Though of course, not everyone has come out as well as you...",

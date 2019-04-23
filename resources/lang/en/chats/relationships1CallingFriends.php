@@ -24,7 +24,7 @@ return [
       'replicateVoice' => "...and I can replicate your voice – I can speak <em>just like you!</em>",
       'bearWithMe' => "Bear with me. This is good",
       'canCallFriends' => "I can... call your friends on your behalf!",
-      'canCallFriendsPic' => "[ADD PIC]",
+      'canCallFriendsPic' => '<img class="chat__messages__message__bubble__image" src="/img/relationships1CallingFriendsCalling.jpg" />',
       'canBeYou' => "I can be you! I'll catch up with them, tell them your news, then report back",
       'callingAdvantages' => "You don't have time, they'll be happier to hear from \"you\", and you'll be closer to them!",
       'knewGood' => ":WandaGreat, I just knew this would be a good thing",

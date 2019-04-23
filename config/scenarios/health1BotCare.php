@@ -104,6 +104,18 @@ return [
         'wandaCareMore4None',
       ],
     ],
+    'wandaCareMore4Pic' => [
+      'type' => 'none',
+      'user' => [
+        'wandaCareMore4PicNone',
+      ],
+    ],
+    'wandaCareMore4a' => [
+      'type' => 'none',
+      'user' => [
+        'wandaCareMore4aNone',
+      ],
+    ],
     'wandaCareMore5' => [
       'type' => 'choice',
       'user' => [
@@ -260,6 +272,12 @@ return [
       'wanda' => 'wandaCareMore4',
     ],
     'wandaCareMore4None' => [
+      'wanda' => 'wandaCareMore4Pic',
+    ],
+    'wandaCareMore4PicNone' => [
+      'wanda' => 'wandaCareMore4a',
+    ],
+    'wandaCareMore4aNone' => [
       'wanda' => 'wandaCareMore5',
     ],
     'wandaCareLove' => [

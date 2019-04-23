@@ -27,7 +27,7 @@ return [
       'itsOkEmoji' => "😌",
       'counselling' => "I can enrol you into my online counselling service, WandaWell™©®",
       'counsellingUnlimited' => "You get unlimited time talking to me and I'll help you get better",
-      'counsellingPic' => "[ADD PIC]",
+      'counsellingPic' => '<img class="chat__messages__message__bubble__image" src="/img/health3DepressedListeningCounselling.jpg" />',
       'drugs' => "And my algorithms can now auto-prescribe you all the medication you need",
       'drugsPic' => '<img class="chat__messages__message__bubble__image" src="/img/health3DepressedListeningDrugs.jpg" />',
       'whatTreatment' => "So which would you like?",
