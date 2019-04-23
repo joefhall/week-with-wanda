@@ -13108,6 +13108,7 @@ a:visited {
           filter: brightness(115%) saturate(140%);
   line-height: 0;
   min-height: calc(100vw / (400 / 225));
+  position: relative;
 }
 
 @media (min-width: 576px) {
@@ -13136,7 +13137,7 @@ a:visited {
   left: 8px;
   line-height: 1.1;
   position: absolute;
-  top: 5px;
+  top: 18px;
   width: 100%;
 }
 

@@ -6,6 +6,7 @@
   filter: brightness(115%) saturate(140%);
   line-height: 0;
   min-height: calc(100vw / (400 / 225));
+  position: relative;
   
   @include media-breakpoint-up(sm) {
     border-top-left-radius: $spacer * .5;
@@ -29,7 +30,7 @@
     left: 8px;
     line-height: 1.1;
     position: absolute;
-    top: 5px;
+    top: 18px;
     width: 100%;
     
     &--1 {

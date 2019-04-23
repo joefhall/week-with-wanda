@@ -17,14 +17,14 @@
   </head>
   
   <body>
-    <div id="preview-notice" style="position: absolute; z-index: 10000; width: 100vw; height: 100vh; background-color: darkviolet; color: white; text-align: center;">
+    <div id="preview-notice" style="position: absolute; z-index: 10000; width: 100vw; height: 100vh; padding-top: 150px; background-color: darkviolet; color: white; text-align: center;">
       <h1>A Week With Wanda</h1>
       <p>This site is available for selected people to preview only.</p>
       <p>Do you have a preview code?</p>
       <form id="preview-form" onSubmit="enterPreviewCode(event)">
         <input id="preview-code" type="text" placeholder="Enter preview code" />
         <button id="preview-button" onClick="enterPreviewCode(event)">Enter</button>
-        <div id="preview-error-message" class="d-none chat__input__form__error-message">
+        <div id="preview-error-message" class="d-none">
           Sorry, that's not right
         </div>
       </form>
@@ -48,6 +48,7 @@
 
         if (previewCodeInput.value.toLowerCase() === 'alive') {
           previewNotice.classList.add('d-none');
+          previewCodeInput.blur();
         } else {
           previewErrorMessage.classList.add('d-block');
         }
