@@ -49,6 +49,11 @@
                     {!! html_entity_decode(__("chats/{$scenarioId}.{$node['who']}.{$node['name']}")) !!}
                   </div>
                 @endif
+                @if (array_get($node, 'emotion'))
+                  <div class="scenarios__node__emotion">
+                    {{ $node['emotion'] }}
+                  </div>
+                @endif
               </div>
             @endforeach
 

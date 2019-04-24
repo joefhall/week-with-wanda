@@ -159,6 +159,8 @@ class ScenarioController extends Controller
             'depth' => $nodeList[$current]['depth'] + 1,
             'type' => array_has($scenario[$this->opposite($nodeList[$current]['who'])], $child) ?
               array_get($scenario[$this->opposite($nodeList[$current]['who'])][$child], 'type', null) : null,
+            'emotion' => array_has($scenario[$this->opposite($nodeList[$current]['who'])], $child) ?
+              array_get($scenario[$this->opposite($nodeList[$current]['who'])][$child], 'emotion', null) : null,
           ];
         }
       }

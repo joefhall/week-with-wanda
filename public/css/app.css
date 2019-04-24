@@ -13208,6 +13208,12 @@ a:visited {
   width: 10rem !important;
 }
 
+.scenarios__node__emotion {
+  color: white;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
 .scenarios__node__message {
   font-size: 0.65rem;
 }

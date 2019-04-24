@@ -53,6 +53,12 @@
       width: $spacer * 10 !important;
     }
     
+    &__emotion {
+      color: white;
+      font-size: $font-size-xsm;
+      text-align: center;
+    }
+    
     &__message {
       font-size: $font-size-xxsm;
     }
