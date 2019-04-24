@@ -20,6 +20,7 @@ return [
         'hello1',
         'hello2',
       ],
+      'emotion' => 'waving',
     ],
     'observation' => [
       'type' => 'choice',
@@ -34,6 +35,7 @@ return [
         'getStarted1',
         'getStarted2',
       ],
+      'emotion' => 'complimenting',
     ],
     'wasThinking' => [
       'type' => 'none',
@@ -47,6 +49,7 @@ return [
         'okGreat',
         'whatThinking',
       ],
+      'emotion' => 'heart',
     ],
     'dontCallFriends' => [
       'type' => 'choice',
@@ -60,6 +63,7 @@ return [
       'user' => [
         'haveSolutionNone',
       ],
+      'emotion' => 'clapping',
     ],
     'analysingVoice' => [
       'type' => 'none',
@@ -85,6 +89,7 @@ return [
       'user' => [
         'bearWithMeNone',
       ],
+      'emotion' => 'base',
     ],
     'canCallFriends' => [
       'type' => 'none',
@@ -111,12 +116,14 @@ return [
         'callingUnsure',
         'callingNegative',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'knewGood' => [
       'type' => 'none',
       'user' => [
         'knewGoodNone',
       ],
+      'emotion' => 'elated',
     ],
     'nextStep' => [
       'type' => 'choiceAndText',
@@ -130,6 +137,7 @@ return [
       'user' => [
         'startPhoningNone',
       ],
+      'emotion' => 'base',
     ],
     'startPhoningEmoji' => [
       'type' => 'choice',
@@ -145,6 +153,7 @@ return [
         'botsLimits',
         'loveTalking',
       ],
+      'emotion' => 'unhappy',
     ],
     'butNextStep' => [
       'type' => 'none',
@@ -157,6 +166,7 @@ return [
       'user' => [
         'whyHungUpText',
       ],
+      'emotion' => 'frustrated',
     ],
     'otherWays' => [
       'type' => 'textArea',
@@ -169,6 +179,7 @@ return [
       'user' => [
         'goReflectNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'goReflectPic' => [
       'type' => 'none',
@@ -182,6 +193,7 @@ return [
         'thanks1',
         'thanks2',
       ],
+      'emotion' => 'base',
     ],
     'bye' => [
       'type' => 'choice',
@@ -189,6 +201,7 @@ return [
         'bye1',
         'bye2',
       ],
+      'emotion' => 'waving',
     ],
   ],
 

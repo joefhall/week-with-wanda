@@ -20,6 +20,7 @@ return [
         'hello1',
         'hello2',
       ],
+      'emotion' => 'waving',
     ],
     'perky' => [
       'type' => 'choice',
@@ -34,6 +35,7 @@ return [
         'ohNo',
         'whatMean',
       ],
+      'emotion' => 'unhappy',
     ],
     'notYounger' => [
       'type' => 'choice',
@@ -56,6 +58,7 @@ return [
         'ohReally',
         'whatIsIt',
       ],
+      'emotion' => 'elated',
     ],
     'crunching' => [
       'type' => 'none',
@@ -94,6 +97,7 @@ return [
       'user' => [
         'peskyGovNone',
       ],
+      'emotion' => 'thumbs-down',
     ],
     'signPetition' => [
       'type' => 'choice',
@@ -108,6 +112,7 @@ return [
       'user' => [
         'heresPetitionNone',
       ],
+      'emotion' => 'thumbs-down',
     ],
     'heresPetitionPic' => [
       'type' => 'choice',
@@ -122,6 +127,7 @@ return [
         'yeahBut',
         'thingIs',
       ],
+      'emotion' => 'frustrated',
     ],
     'whatProblem' => [
       'type' => 'choice',
@@ -191,6 +197,7 @@ return [
       'user' => [
         'overTheTopText',
       ],
+      'emotion' => 'angry',
     ],
     'pointOfView' => [
       'type' => 'none',
@@ -249,6 +256,7 @@ return [
         'endNoProbs',
         'endAlright',
       ],
+      'emotion' => 'base',
     ],
     'haveFabDay' => [
       'type' => 'choice',
@@ -263,6 +271,7 @@ return [
         'bye1',
         'bye2',
       ],
+      'emotion' => 'waving',
     ],
   ],
 

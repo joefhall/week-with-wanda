@@ -38,7 +38,7 @@ return [
       'neverThought' => "Oooooh....... I'd never really thought about it like that....",
       'thinkingFace' => "🤔",
       'overTheTop' => "But hang on a minute... don't you think you're being a bit over-the-top? I'm just trying to do good in the world, :name",
-      'pointOfView' => "Well, that certainly is a different point of view",
+      'pointOfView' => "Well, that certainly is a different point of view...",
       'brainHurting' => "Hmmm, even my (supercomputer) brain is hurting a bit now...",
       'brainHurtingPic' => '<img class="chat__messages__message__bubble__image" src="/img/health2CancerBuyOutBrainHurting.gif" />',
       'takeBreak' => "Can I go take a break and come back to you tomorrow? I bet I can come up with something else you'll love more",

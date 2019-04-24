@@ -29,6 +29,7 @@ return [
           'findOutMore',
           'logBackIn',
         ],
+        'emotion' => 'base',
       ],
       'moreInfo' => [
         'type' => 'choice',

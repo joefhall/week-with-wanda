@@ -20,6 +20,7 @@ return [
         'hello1',
         'hello2',
       ],
+      'emotion' => 'waving',
     ],
     'observation' => [
       'type' => 'choice',
@@ -34,6 +35,7 @@ return [
         'getStarted1',
         'getStarted2',
       ],
+      'emotion' => 'complimenting',
     ],
     'freeCash' => [
       'type' => 'none',
@@ -53,6 +55,7 @@ return [
         'yeahGreat',
         'tellAll',
       ],
+      'emotion' => 'base',
     ],
     'walkingPic' => [
       'type' => 'none',
@@ -121,6 +124,7 @@ return [
       'user' => [
         'hardToGetNone',
       ],
+      'emotion' => 'complimenting',
     ],
     'hardToGetEmoji' => [
       'type' => 'none',
@@ -151,6 +155,7 @@ return [
       'user' => [
         'onItNone',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'cookie' => [
       'type' => 'none',
@@ -170,6 +175,7 @@ return [
         'sendThanks1',
         'sendThanks2',
       ],
+      'emotion' => 'base',
     ],
     'together' => [
       'type' => 'choice',
@@ -199,6 +205,7 @@ return [
       'user' => [
         'huhNone',
       ],
+      'emotion' => 'shocked',
     ],
     'huhPic' => [
       'type' => 'none',
@@ -224,12 +231,14 @@ return [
       'user' => [
         'researchNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'goodThing' => [
       'type' => 'none',
       'user' => [
         'goodThingNone',
       ],
+      'emotion' => 'base',
     ],
     'goodThingPic' => [
       'type' => 'choice',
@@ -244,6 +253,7 @@ return [
         'ok1',
         'ok2',
       ],
+      'emotion' => 'base',
     ],
     'missedOut' => [
       'type' => 'none',
@@ -276,6 +286,7 @@ return [
         'noMistake',
         'sellWrong',
       ],
+      'emotion' => 'unhappy',
     ],
     'youSure' => [
       'type' => 'choice',
@@ -289,6 +300,7 @@ return [
       'user' => [
         'howComeText',
       ],
+      'emotion' => 'frustrated',
     ],
     'moneyWorld' => [
       'type' => 'none',
@@ -313,12 +325,14 @@ return [
       'user' => [
         'treasureNone',
       ],
+      'emotion' => 'heart',
     ],
     'mix' => [
       'type' => 'none',
       'user' => [
         'mixNone',
       ],
+      'emotion' => 'base',
     ],
     'mixPic' => [
       'type' => 'choice',
@@ -340,7 +354,13 @@ return [
         'bye2',
       ],
     ],
-    
+    'bye' => [
+      'type' => 'none',
+      'user' => [
+        'byeNone',
+      ],
+      'emotion' => 'waving',
+    ],
   ],
 
   'user' => [

@@ -20,6 +20,7 @@ return [
         'hello1',
         'hello2',
       ],
+      'emotion' => 'waving',
     ],
     'observation' => [
       'type' => 'choice',
@@ -34,6 +35,7 @@ return [
         'getStarted1',
         'getStarted2',
       ],
+      'emotion' => 'complimenting',
     ],
     'intro' => [
       'type' => 'none',
@@ -47,6 +49,7 @@ return [
         'thatsNice',
         'whatThinking',
       ],
+      'emotion' => 'heart',
     ],
     'wantToWork' => [
       'type' => 'none',
@@ -59,6 +62,7 @@ return [
       'user' => [
         'doneTrainingNone',
       ],
+      'emotion' => 'base',
     ],
     'scholar' => [
       'type' => 'none',
@@ -82,6 +86,7 @@ return [
         'banker',
         'noneJobs',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'rocketScientistGreat' => [
       'type' => 'choice',
@@ -89,6 +94,7 @@ return [
         'allGood',
         'fewWorriesRocketScientist',
       ],
+      'emotion' => 'elated',
     ],
     'artistGreat' => [
       'type' => 'choice',
@@ -96,6 +102,7 @@ return [
         'youWill',
         'fewWorriesArtist',
       ],
+      'emotion' => 'elated',
     ],
     'nurseGreat' => [
       'type' => 'choice',
@@ -104,6 +111,7 @@ return [
         'aiUsefulSociety',
         'fewWorriesNurse',
       ],
+      'emotion' => 'elated',
     ],
     'bankerGreat' => [
       'type' => 'choice',
@@ -112,6 +120,7 @@ return [
         'aiSoullessJobs',
         'fewWorriesBanker',
       ],
+      'emotion' => 'elated',
     ],
     'notGood' => [
       'type' => 'choiceAndText',
@@ -120,6 +129,7 @@ return [
         'aiNoJobs',
         'aiProblemText',
       ],
+      'emotion' => 'unhappy',
     ],
     'anotherJob' => [
       'type' => 'textAndChoice',
@@ -143,12 +153,14 @@ return [
         'aiLimitsWealth',
         'aiLimitsKeepJobs',
       ],
+      'emotion' => 'unhappy',
     ],
     'startApplying' => [
       'type' => 'none',
       'user' => [
         'startApplyingNone',
       ],
+      'emotion' => 'clapping',
     ],
     'startApplyingEmoji' => [
       'type' => 'choice',
@@ -168,6 +180,7 @@ return [
       'user' => [
         'specificJobsUnderstandText',
       ],
+      'emotion' => 'shocked',
     ],
     'narrowminded' => [
       'type' => 'choice',
@@ -175,6 +188,7 @@ return [
         'thanks1',
         'thanks2',
       ],
+      'emotion' => 'unhappy',
     ],
     'getDown' => [
       'type' => 'none',
@@ -207,6 +221,7 @@ return [
         'bye1',
         'bye2',
       ],
+      'emotion' => 'waving',
     ],
   ],
 

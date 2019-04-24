@@ -35,6 +35,7 @@ return [
         'getStarted1',
         'getStarted2',
       ],
+      'emotion' => 'pleased',
     ],
     'bitWorried' => [
       'type' => 'choice',
@@ -256,6 +257,7 @@ return [
       'user' => [
         'cleverNone',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'emails' => [
       'type' => 'none',
@@ -281,6 +283,7 @@ return [
         'theyAre',
         'theresMore',
       ],
+      'emotion' => 'base',
     ],
     'ohYes' => [
       'type' => 'none',
@@ -326,6 +329,7 @@ return [
       'user' => [
         'soGladNone',
       ],
+      'emotion' => 'heart',
     ],
     'learn' => [
       'type' => 'choice',
@@ -354,12 +358,14 @@ return [
         'overSensitiveYes',
         'overSensitiveNo',
       ],
+      'emotion' => 'unhappy',
     ],
     'thoughtSo' => [
       'type' => 'none',
       'user' => [
         'thoughtSoNone',
       ],
+      'emotion' => 'base',
     ],
     'already' => [
       'type' => 'none',
@@ -453,6 +459,7 @@ return [
       'user' => [
         'tryingHelpNone',
       ],
+      'emotion' => 'frustrated',
     ],
     'sigh' => [
       'type' => 'none',
@@ -471,6 +478,7 @@ return [
       'user' => [
         'tomorrowNone',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'tomorrowEmoji' => [
       'type' => 'choice',
@@ -486,6 +494,7 @@ return [
         'bye1',
         'bye2',
       ],
+      'emotion' => 'waving',
     ],
   ],
 

@@ -20,6 +20,7 @@ return [
         'hello1',
         'hello2',
       ],
+      'emotion' => 'waving',
     ],
     'observation' => [
       'type' => 'choice',
@@ -34,6 +35,7 @@ return [
         'getStarted1',
         'getStarted2',
       ],
+      'emotion' => 'complimenting',
     ],
     'hateWaitingDoctor' => [
       'type' => 'choice',
@@ -41,6 +43,7 @@ return [
         'hateWaitingDoctorPositive',
         'hateWaitingDoctorNegative',
       ],
+      'emotion' => 'base',
     ],
     'hateCosts' => [
       'type' => 'choice',
@@ -48,18 +51,21 @@ return [
         'hateCostsPositive',
         'hateCostsNegative',
       ],
+      'emotion' => 'thumbs-down',
     ],
     'gotGreatSurprise' => [
       'type' => 'none',
       'user' => [
         'gotGreatSurpriseNone',
       ],
+      'emotion' => 'base',
     ],
     'drumRoll' => [
       'type' => 'none',
       'user' => [
         'drumRollNone',
       ],
+      'emotion' => 'clapping',
     ],
     'announcing' => [
       'type' => 'none',
@@ -123,6 +129,7 @@ return [
         'wandaCareUnsure',
         'wandaCareHate',
       ],
+      'emotion' => 'base',
     ],
     'whatsProblem' => [
       'type' => 'choiceAndText',
@@ -131,24 +138,28 @@ return [
         'techLimits',
         'wandaCareProblemText',
       ],
+      'emotion' => 'unhappy',
     ],
     'anythingCanDo' => [
       'type' => 'textArea',
       'user' => [
         'anythingCanDoText',
       ],
+      'emotion' => 'shocked',
     ],
     'thinkAboutThat' => [
       'type' => 'none',
       'user' => [
         'narrowmindedNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'whyCareMattersMoreHuman' => [
       'type' => 'none',
       'user' => [
         'whyCareMattersMoreHumanNone',
       ],
+      'emotion' => 'base',
     ],
     'whyCareMattersPic' => [
       'type' => 'none',
@@ -163,6 +174,7 @@ return [
         'humanCarePhysical',
         'humanCareText',
       ],
+      'emotion' => 'unhappy',
     ],
     'whatTechLimits' => [
       'type' => 'choiceAndText',
@@ -171,6 +183,7 @@ return [
         'techLimitsNever',
         'techLimitsText',
       ],
+      'emotion' => 'base',
     ],
     'gladLoveIt' => [
       'type' => 'none',
@@ -190,6 +203,7 @@ return [
       'user' => [
         'narrowmindedNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'doBetter' => [
       'type' => 'choice',
@@ -197,6 +211,7 @@ return [
         'thanks1',
         'thanks2',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'bye' => [
       'type' => 'choice',
@@ -204,6 +219,7 @@ return [
         'bye1',
         'bye2',
       ],
+      'emotion' => 'waving',
     ],
   ],
 

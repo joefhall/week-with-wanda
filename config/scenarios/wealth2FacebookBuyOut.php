@@ -27,6 +27,7 @@ return [
       'user' => [
         'omgNone',
       ],
+      'emotion' => 'elated',
     ],
     'omgEmoji' => [
       'type' => 'none',
@@ -40,7 +41,6 @@ return [
         'what',
         'whatGoingOn',
       ],
-      'emotion' => 'elated',
     ],
     'hadCall' => [
       'type' => 'choice',
@@ -54,6 +54,7 @@ return [
       'user' => [
         'noneOtherNone',
       ],
+      'emotion' => 'base',
     ],
     'noneOtherPic' => [
       'type' => 'none',
@@ -98,7 +99,7 @@ return [
         'noWay',
         'wowee',
       ],
-      'emotion' => 'elated',
+      'emotion' => 'clapping',
     ],
     'richer' => [
       'type' => 'none',
@@ -149,7 +150,6 @@ return [
         'spreadTech',
         'somethingElse',
       ],
-      'emotion' => 'unhappy',
     ],
     'dream' => [
       'type' => 'choice',
@@ -157,7 +157,6 @@ return [
         'differentDream',
         'notHow',
       ],
-      'emotion' => 'unhappy',
     ],
     'confused' => [
       'type' => 'textArea',
@@ -218,7 +217,6 @@ return [
       'user' => [
         'ohNone',
       ],
-      'emotion' => 'unhappy',
     ],
     'anotherWay' => [
       'type' => 'choice',
@@ -226,14 +224,12 @@ return [
         'yesItIs',
         'gladHearing',
       ],
-      'emotion' => 'unhappy',
     ],
     'overlook' => [
       'type' => 'textArea',
       'user' => [
         'overlookText',
       ],
-      'emotion' => 'unhappy',
     ],
     'cantArgue' => [
       'type' => 'none',
@@ -275,6 +271,7 @@ return [
         'goNow1',
         'goNow2',
       ],
+      'emotion' => 'base',
     ],
     'bye' => [
       'type' => 'choice',

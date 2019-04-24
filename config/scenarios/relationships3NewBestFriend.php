@@ -35,6 +35,7 @@ return [
         'getStarted1',
         'getStarted2',
       ],
+      'emotion' => 'complimenting',
     ],
     'wantRels' => [
       'type' => 'none',
@@ -79,6 +80,7 @@ return [
       'user' => [
         'newBestNone',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'justAnyone' => [
       'type' => 'choice',
@@ -144,6 +146,7 @@ return [
       'user' => [
         'wellNone',
       ],
+      'emotion' => 'base',
     ],
     'knowMuch' => [
       'type' => 'none',
@@ -199,6 +202,7 @@ return [
         'soundsGreat',
         'unsure',
       ],
+      'emotion' => 'clapping',
     ],
     'doesntHe' => [
       'type' => 'none',
@@ -212,6 +216,7 @@ return [
         'positive',
         'negative',
       ],
+      'emotion' => 'base',
     ],
     'address' => [
       'type' => 'choice',
@@ -250,12 +255,14 @@ return [
         'listeningGreat',
         'listeningWhat',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'allDone' => [
       'type' => 'none',
       'user' => [
         'allDoneNone',
       ],
+      'emotion' => 'base',
     ],
     'tomorrow' => [
       'type' => 'none',
@@ -288,6 +295,7 @@ return [
       'user' => [
         'bestAINone',
       ],
+      'emotion' => 'base',
     ],
     'learningAI' => [
       'type' => 'none',
@@ -331,6 +339,7 @@ return [
       'user' => [
         'problemText',
       ],
+      'emotion' => 'unhappy',
     ],
     'ownOpinion' => [
       'type' => 'none',
@@ -362,6 +371,7 @@ return [
       'user' => [
         'hermitNone',
       ],
+      'emotion' => 'frustrated',
     ],
     'hermitPic' => [
       'type' => 'none',
@@ -380,6 +390,7 @@ return [
       'user' => [
         'mmmNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'mmmPic' => [
       'type' => 'none',
@@ -418,6 +429,14 @@ return [
         'listeningGreat',
         'listeningWhat',
       ],
+      'emotion' => 'thumbs-up',
+    ],
+    'bye' => [
+      'type' => 'none',
+      'user' => [
+        'byeNone',
+      ],
+      'emotion' => 'waving',
     ],
   ],
 

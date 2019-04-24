@@ -20,6 +20,7 @@ return [
         'hello1',
         'hello2',
       ],
+      'emotion' => 'waving',
     ],
     'glad' => [
       'type' => 'none',
@@ -33,6 +34,7 @@ return [
         'doI',
         'yeahTrue',
       ],
+      'emotion' => 'unhappy',
     ],
     'analysing' => [
       'type' => 'none',
@@ -83,6 +85,7 @@ return [
         'hmm',
         'ohDear',
       ],
+      'emotion' => 'thumbs-down',
     ],
     'notBad' => [
       'type' => 'none',
@@ -96,6 +99,7 @@ return [
         'lovelyEmoji1',
         'lovelyEmoji2',
       ],
+      'emotion' => 'base',
     ],
     'techProblem' => [
       'type' => 'choice',
@@ -122,6 +126,7 @@ return [
         'ohYes',
         'rustling',
       ],
+      'emotion' => 'elated',
     ],
     'facebook' => [
       'type' => 'none',
@@ -164,6 +169,7 @@ return [
         'bigDealUnsure',
         'bigDealNegative',
       ],
+      'emotion' => 'base',
     ],
     'comeNow' => [
       'type' => 'choice',
@@ -171,12 +177,14 @@ return [
         'downsides',
         'notEnough',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'frustrationPic' => [
       'type' => 'none',
       'user' => [
         'frustrationPicNone',
       ],
+      'emotion' => 'angry',
     ],
     'whoopPic' => [
       'type' => 'choice',
@@ -191,6 +199,7 @@ return [
         'goodThingPositive',
         'goodThingDo',
       ],
+      'emotion' => 'clapping',
     ],
     'restOfUsers' => [
       'type' => 'none',
@@ -242,6 +251,7 @@ return [
       'user' => [
         'enoughReasonText',
       ],
+      'emotion' => 'frustrated',
     ],
     'oneWay' => [
       'type' => 'none',
@@ -269,6 +279,7 @@ return [
         'endGreat',
         'endCool',
       ],
+      'emotion' => 'base',
     ],
     'bye' => [
       'type' => 'choice',
@@ -276,6 +287,7 @@ return [
         'bye1',
         'bye2',
       ],
+      'emotion' => 'waving',
     ],
   ],
 
