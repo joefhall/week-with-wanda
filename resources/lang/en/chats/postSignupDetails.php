@@ -36,6 +36,8 @@ return [
       'doneMobileNumber' => "",
       'resendMobileNumber' => "Resend the text",
       'changeMobileNumber' => "Change mobile number",
+      'bye1' => ":userBye1",
+      'bye2' => ":userBye2",
     ],
 
 ];

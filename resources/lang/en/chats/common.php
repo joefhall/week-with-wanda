@@ -15,6 +15,13 @@ return [
       "Hi & hello to you :name!",
       "Ah, so lovely to see you today :name!",
     ],
+    'initialObservation' => [
+      "You look like a kind soul",
+      "You look like you're in a good mood today",
+      "I was hoping someone like you would come and see me",
+      "It's very nice of you to come along",
+      "I think you might like what I have to offer",
+    ],
     'observation' => [
       "I love what you're wearing today - really suits you!",
       "So depressing reading the news today. It makes it all better seeing your face.",
@@ -149,6 +156,8 @@ return [
       "great",
       "brilliant",
       "lovely",
+      "amazing",
+      "fantastic",
     ],
     'love' => [
       "Ooh I love it!",

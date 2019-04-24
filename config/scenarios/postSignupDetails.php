@@ -104,10 +104,12 @@ return [
       ],
     ],
     'allDone' => [
-      'type' => 'none',
+      'type' => 'choice',
       'user' => [
-        'allDoneNone',
+        'bye1',
+        'bye2',
       ],
+      'emotion' => 'waving',
     ],
   ],
 
