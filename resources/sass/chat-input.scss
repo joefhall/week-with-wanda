@@ -1,7 +1,7 @@
 .chat__input {
   background-color: beige;
   flex: 1 1 auto;
-  padding: $spacer;
+  padding: 0 $spacer $spacer $spacer;
   
   @include media-breakpoint-up(md) {
     border-bottom-left-radius: $spacer * .5;

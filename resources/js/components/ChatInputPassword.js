@@ -42,11 +42,6 @@ class ChatInputPassword extends React.Component {
     }
   };
 
-  componentDidMount() {
-    const passwordInput = document.querySelector('input.chat__input__form__input[type="password"]');
-    passwordInput.focus();
-  }
-
   render() {
     return (
       <form onSubmit={this.onFormSubmit}>

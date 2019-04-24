@@ -142,7 +142,7 @@ return [
       ],
     ],
     'everyPlatform' => [
-      'type' => 'choice',
+      'type' => 'none',
       'user' => [
         'everyPlatformNone',
       ],

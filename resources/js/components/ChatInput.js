@@ -45,7 +45,8 @@ class ChatInput extends React.Component {
         break;
         
       case 'loginPassword':
-        messageId = Object.keys(this.props.input.userInput)[0];        
+        messageId = Object.keys(this.props.input.userInput)[0];
+        store.dispatch(setInput(null, null, null));
         store.dispatch(setUserProperty('password', inputText));
         store.dispatch(addMessage(Date.now(), this.props.input.scenario, 'user', messageId, '*'.repeat(inputText.length)));
         respond(this.props.input.scenario, messageId, inputText);
@@ -68,7 +69,8 @@ class ChatInput extends React.Component {
         break;
         
       case 'signupPassword':
-        messageId = Object.keys(this.props.input.userInput)[0];        
+        messageId = Object.keys(this.props.input.userInput)[0];    
+        store.dispatch(setInput(null, null, null));
         store.dispatch(setUserProperty('password', inputText));
         store.dispatch(addMessage(Date.now(), this.props.input.scenario, 'user', messageId, '*'.repeat(inputText.length)));
         respond(this.props.input.scenario, messageId, inputText);

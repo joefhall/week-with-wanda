@@ -47,11 +47,6 @@ export default class ChatInputText extends React.Component {
       this.props.onFormSubmit(this.state.inputText);
     }
   };
-  
-  componentDidMount() {
-    const input = document.querySelectorAll('.chat__input__form__input')[0];
-    input.focus();
-  }
 
   render() {
     return (

@@ -110,11 +110,8 @@
         text-align: right;
       }
       
-      a, a:focus, a:visited {
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: none;
+      a, a:link, a:visited, a:hover, a:active {
+        text-decoration: underline;
       }
     }
     
