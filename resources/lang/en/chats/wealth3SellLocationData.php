@@ -62,6 +62,7 @@ return [
       'manana' => "And I'll see you mañana for more fun and games together",
       'mananaEmoji' => "👋",
       'bye' => "Sure thing. :wandaBye",
+      'survey' => "Now as you're helping test me out... <a href='https://docs.google.com/forms/d/e/1FAIpQLScBtMHWVkZEZ_zWYjvVAiNEJD5PETX4_NqHZE2_jAKFtwf1CA/viewform' target='_blank'>Please click here to take the user testing survey</a> -- it really helps. Thank you!",
     ],
   
     'user' => [

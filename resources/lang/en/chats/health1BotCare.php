@@ -40,6 +40,7 @@ return [
       'doBetter' => "I'll try to do better tomorrow and find something else that'll change your life! Better go for now.",
       'bye' => ":wandaBye",
       'gladLoveIt' => "Ah :name, I just knew you'd like it",
+      'survey' => "Now as you're helping test me out... <a href='https://docs.google.com/forms/d/e/1FAIpQLSfcAvR8SJWkj_yfKfrBXOx1UwndeuO5Tfz1kCqlxWPEtMNKVQ/viewform' target='_blank'>Please click here to take the user testing survey</a> -- it really helps. Thank you!",
     ],
   
     'user' => [

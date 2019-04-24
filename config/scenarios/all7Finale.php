@@ -19,6 +19,12 @@ return [
 
   'user' => [
     
+    'bye1' => [
+      'wanda' => 'survey',
+    ],
+    'bye2' => [
+      'wanda' => 'survey',
+    ],
   ],
   
 ];

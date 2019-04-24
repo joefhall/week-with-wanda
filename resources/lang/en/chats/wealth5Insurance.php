@@ -53,6 +53,7 @@ return [
       'great' => ":WandaGreat, well I'm going to go put through your shiny new deal",
       'silence' => "And silence the complainers",
       'think' => "Plus of course, think of something even awesomer I can do for you tomorrow!",
+      'survey' => "Now as you're helping test me out... <a href='https://docs.google.com/forms/d/e/1FAIpQLSfT5dB23EVCTxpPBfbdZPwMfYUwdWivltK_tgN22X2FBTNjiw/viewform' target='_blank'>Please click here to take the user testing survey</a> -- it really helps. Thank you!",
     ],
   
     'user' => [

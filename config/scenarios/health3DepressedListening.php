@@ -487,7 +487,6 @@ return [
         'thatsGreat',
       ],
     ],
-    
     'bye' => [
       'type' => 'choice',
       'user' => [
@@ -495,6 +494,12 @@ return [
         'bye2',
       ],
       'emotion' => 'waving',
+    ],
+    'survey' => [
+      'type' => 'none',
+      'user' => [
+        'surveyNone',
+      ],
     ],
   ],
 
@@ -783,6 +788,12 @@ return [
     ],
     'tomorrowNone' => [
       'wanda' => 'tomorrowEmoji',
+    ],
+    'bye1' => [
+      'wanda' => 'survey',
+    ],
+    'bye2' => [
+      'wanda' => 'survey',
     ],
     
   ],

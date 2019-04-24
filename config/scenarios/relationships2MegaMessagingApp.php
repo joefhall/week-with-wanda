@@ -289,6 +289,12 @@ return [
       ],
       'emotion' => 'waving',
     ],
+    'survey' => [
+      'type' => 'none',
+      'user' => [
+        'surveyNone',
+      ],
+    ],
   ],
 
   'user' => [
@@ -459,6 +465,12 @@ return [
     ],
     'endCool' => [
       'wanda' => 'bye',
+    ],
+    'bye1' => [
+      'wanda' => 'survey',
+    ],
+    'bye2' => [
+      'wanda' => 'survey',
     ],
   ],
   

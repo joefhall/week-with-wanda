@@ -361,6 +361,12 @@ return [
       ],
       'emotion' => 'waving',
     ],
+    'survey' => [
+      'type' => 'none',
+      'user' => [
+        'surveyNone',
+      ],
+    ],
   ],
 
   'user' => [
@@ -582,6 +588,9 @@ return [
     ],
     'mananaNone' => [
       'wanda' => 'mananaEmoji',
+    ],
+    'byeNone' => [
+      'wanda' => 'survey',
     ],
     
   ],

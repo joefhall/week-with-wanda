@@ -66,6 +66,7 @@ return [
       'moreThen' => "And I'll be able to do more for you then",
       'moreThenEmoji' => "😉",
       'bye' => ":wandaBye",
+      'survey' => "Now as you're helping test me out... <a href='https://docs.google.com/forms/d/e/1FAIpQLSe853S3I48HHgjEqUGZ_-doSytc5VBuoleHJdtm4jl4qhmlWw/viewform' target='_blank'>Please click here to take the user testing survey</a> -- it really helps. Thank you!",
     ],
   
     'user' => [

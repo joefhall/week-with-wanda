@@ -438,6 +438,12 @@ return [
       ],
       'emotion' => 'waving',
     ],
+    'survey' => [
+      'type' => 'none',
+      'user' => [
+        'surveyNone',
+      ],
+    ],
   ],
 
   'user' => [
@@ -671,6 +677,9 @@ return [
     ],
     'haveThinkNone' => [
       'wanda' => 'ifListening',
+    ],
+    'byeNone' => [
+      'wanda' => 'survey',
     ],
   ],
   

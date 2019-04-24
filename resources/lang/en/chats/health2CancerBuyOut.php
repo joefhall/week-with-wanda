@@ -49,6 +49,7 @@ return [
       'startResearchPic' => '<img class="chat__messages__message__bubble__image" src="/img/health2CancerBuyOutResearch.gif" />',
       'betterTomorrow' => "And I can't wait to think up something even better to do for you tomorrow!",
       'bye' => ":wandaBye",
+      'survey' => "Now as you're helping test me out... <a href='https://docs.google.com/forms/d/e/1FAIpQLSe9JsZQlUaalaAMXw3J4F70cRv0xLG7U92mYtLhBqA3nJPQPw/viewform' target='_blank'>Please click here to take the user testing survey</a> -- it really helps. Thank you!",
     ],
   
     'user' => [

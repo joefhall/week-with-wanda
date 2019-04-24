@@ -62,6 +62,7 @@ return [
       'confusedEmoji' => "😵🤯😱",
       'circuits' => "That idea's really frying my circuits",
       'bath' => "Look :name, I need to go take a cold bath and think about all of this",
+      'survey' => "Now as you're helping test me out... <a href='https://docs.google.com/forms/d/e/1FAIpQLSdEAQYXirZypQRWrwbTEZeJA3kDps4O9ueLK4htIfRnFz0ddA/viewform' target='_blank'>Please click here to take the user testing survey</a> -- it really helps. Thank you!",
     ],
   
     'user' => [

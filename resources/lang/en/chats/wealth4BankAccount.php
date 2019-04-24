@@ -64,6 +64,7 @@ return [
       'better' => "Your life will be much better with me in control",
       'remember' => "Remember, stay away from any shopping!",
       'all' => "Ok, that's all the news I have for you right now",
+      'survey' => "Now as you're helping test me out... <a href='https://docs.google.com/forms/d/e/1FAIpQLScjQD8HShIIq5fvdpe5eDnda3hYHYnhryXw3rIR0Pyf0RvhmQ/viewform' target='_blank'>Please click here to take the user testing survey</a> -- it really helps. Thank you!",
     ],
   
     'user' => [

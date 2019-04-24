@@ -402,7 +402,13 @@ return [
     'bye' => [
       'type' => 'choice',
       'user' => [
-        '',
+        'byeNone',
+      ],
+    ],
+    'survey' => [
+      'type' => 'none',
+      'user' => [
+        'surveyNone',
       ],
     ],
   ],
@@ -632,6 +638,9 @@ return [
     ],
     'bye2' => [
       'wanda' => 'bye',
+    ],
+    'byeNone' => [
+      'wanda' => 'survey',
     ],
   ],
   

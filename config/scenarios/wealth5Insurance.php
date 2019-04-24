@@ -278,6 +278,12 @@ return [
         'thinkThanks2',
       ],
     ],
+    'survey' => [
+      'type' => 'none',
+      'user' => [
+        'surveyNone',
+      ],
+    ],
   ],
 
   'user' => [
@@ -439,6 +445,12 @@ return [
     ],
     'thinkThanks2' => [
       'wanda' => 'bye',
+    ],
+    'bye1' => [
+      'wanda' => 'survey',
+    ],
+    'bye2' => [
+      'wanda' => 'survey',
     ],
   ],
   

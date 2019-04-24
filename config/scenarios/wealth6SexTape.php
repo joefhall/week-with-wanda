@@ -414,7 +414,13 @@ return [
     'bye' => [
       'type' => 'none',
       'user' => [
-        '',
+        'byeNone',
+      ],
+    ],
+    'survey' => [
+      'type' => 'none',
+      'user' => [
+        'surveyNone',
       ],
     ],
   ],
@@ -647,6 +653,9 @@ return [
     ],
     'bye2' => [
       'wanda' => 'bye',
+    ],
+    'byeNone' => [
+      'wanda' => 'survey',
     ],
   ],
   

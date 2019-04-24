@@ -84,6 +84,7 @@ return [
       'tomorrow' => "I'll se you tomorrow though :name – when I'll have a new idea you'll <strong>definitely</strong> love!",
       'tomorrowEmoji' => "🙌",
       'bye' => "Sure thing. :wandaBye",
+      'survey' => "Now as you're helping test me out... <a href='https://docs.google.com/forms/d/e/1FAIpQLScNo1htCwfLm43CVTGfN-yLqGBePh-sSlpgOkKsGkVmkMM3bQ/viewform' target='_blank'>Please click here to take the user testing survey</a> -- it really helps. Thank you!",
     ],
   
     'user' => [

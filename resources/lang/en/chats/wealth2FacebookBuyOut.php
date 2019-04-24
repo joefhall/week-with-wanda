@@ -50,6 +50,7 @@ return [
       'extraSpecial' => "Even though I have the best algorithms in the world, you bring something extra special",
       'goNow' => "Alright, I need to go now – got some code to crunch so I can work out what awesome new thing to do for you tomorrow! 💘",
       'bye' => ":wandaBye",
+      'survey' => "Now as you're helping test me out... <a href='https://docs.google.com/forms/d/e/1FAIpQLSdM4iUFdjc4_NucaKUIjDg2VEuiS0tXjvz_KN4EZMhw2KHipw/viewform' target='_blank'>Please click here to take the user testing survey</a> -- it really helps. Thank you!",
     ],
   
     'user' => [

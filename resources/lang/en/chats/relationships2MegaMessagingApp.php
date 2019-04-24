@@ -51,6 +51,7 @@ return [
       'government' => "Oh, and an extra bonus – your government want to work with me on it, something about \"sharing data to fight crime\". Great news all round!",
       'betterGo' => "Anyhow, better go speak to my other users now. See you tomorrow for more great things!",
       'bye' => ":wandaBye",
+      'survey' => "Now as you're helping test me out... <a href='https://docs.google.com/forms/d/e/1FAIpQLSf6eVFTIEURV-EXx4rDRR81ghqoYTiVSHNuWLvF2ncXHXcmrA/viewform' target='_blank'>Please click here to take the user testing survey</a> -- it really helps. Thank you!",
     ],
   
     'user' => [

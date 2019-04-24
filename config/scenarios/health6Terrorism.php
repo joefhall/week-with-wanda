@@ -319,7 +319,7 @@ return [
     'bye' => [
       'type' => 'none',
       'user' => [
-        '',
+        'byeNone',
       ],
     ],
     'enough' => [
@@ -437,6 +437,12 @@ return [
       'type' => 'none',
       'user' => [
         'argueNone',
+      ],
+    ],
+    'survey' => [
+      'type' => 'none',
+      'user' => [
+        'surveyNone',
       ],
     ],
   ],
@@ -687,6 +693,9 @@ return [
     ],
     'throwNone' => [
       'wanda' => 'breather',
+    ],
+    'byeNone' => [
+      'wanda' => 'survey',
     ],
   ],
   

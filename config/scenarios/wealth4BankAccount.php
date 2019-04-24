@@ -325,7 +325,7 @@ return [
     'bye' => [
       'type' => 'none',
       'user' => [
-        '',
+        'byeNone',
       ],
     ],
     'done' => [
@@ -351,6 +351,12 @@ return [
       'type' => 'none',
       'user' => [
         'hardNone',
+      ],
+    ],
+    'survey' => [
+      'type' => 'none',
+      'user' => [
+        'surveyNone',
       ],
     ],
   ],
@@ -562,6 +568,9 @@ return [
     ],
     'rememberNone' => [
       'wanda' => 'all',
+    ],
+    'byeNone' => [
+      'wanda' => 'survey',
     ],
   ],
   

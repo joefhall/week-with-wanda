@@ -245,7 +245,7 @@ return [
     'bye' => [
       'type' => 'none',
       'user' => [
-        '',
+        'byeNone',
       ],
     ],
     'pharmacies' => [
@@ -377,6 +377,12 @@ return [
       'user' => [
         'breakOk',
         'breakToo',
+      ],
+    ],
+    'survey' => [
+      'type' => 'none',
+      'user' => [
+        'surveyNone',
       ],
     ],
   ],
@@ -606,6 +612,9 @@ return [
     ],
     'breakToo' => [
       'wanda' => 'tomorrow',
+    ],
+    'byeNone' => [
+      'wanda' => 'survey',
     ],
   ],
   

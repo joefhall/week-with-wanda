@@ -221,6 +221,12 @@ return [
       ],
       'emotion' => 'waving',
     ],
+    'survey' => [
+      'type' => 'none',
+      'user' => [
+        'surveyNone',
+      ],
+    ],
   ],
 
   'user' => [
@@ -349,6 +355,12 @@ return [
     ],
     'thanks2' => [
       'wanda' => 'bye',
+    ],
+    'bye1' => [
+      'wanda' => 'survey',
+    ],
+    'bye2' => [
+      'wanda' => 'survey',
     ],
     
   ],

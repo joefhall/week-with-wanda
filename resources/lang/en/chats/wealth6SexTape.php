@@ -76,6 +76,7 @@ return [
       'tomorrow' => ":name, I hope I'll see you tomorrow",
       'special' => "When I have something <strong>even more</strong> special planned!",
       'bye' => ":wandaBye",
+      'survey' => "Now as you're helping test me out... <a href='https://docs.google.com/forms/d/e/1FAIpQLSeL-v8nSwJmZJJd0sprd35Qwa_0GDc5JaSKvpOVu-fFKNBOOg/viewform' target='_blank'>Please click here to take the user testing survey</a> -- it really helps. Thank you!",
     ],
   
     'user' => [
