@@ -24,6 +24,8 @@ Route::get('logged-out', function () {
 Route::get('/', 'AppController@index')->name('app');
 Route::get('/verify/{verificationTokenId}', 'VerifyController@verify')->name('verify');
 
+Route::get('/privacy', 'AboutController@privacy')->name('privacy');
+
 Route::get('/emotions', 'EmotionController@index')->name('emotions');
 Route::get('/scenarios', 'ScenarioController@index')->name('scenarios');
 Route::get('/scenarios/{scenarioId}', 'ScenarioController@show');
