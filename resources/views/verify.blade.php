@@ -16,7 +16,7 @@
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet" type="text/css" />
   </head>
   
-  <body>
+  <body>    
     @if ($matchedToken && $isValid)
       <h1>
         Thanks!
@@ -48,6 +48,10 @@
         Request another one [TODO: add link]
       </p>
     @endif
+    
+    <p style="color: darkslategray; font-style: italic;">
+      [This page will be removed and email verification will just be part of the chat]
+    </p>
   </body>
   
 </html>
