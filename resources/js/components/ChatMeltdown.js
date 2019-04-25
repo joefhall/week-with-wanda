@@ -59,11 +59,19 @@ class ChatMeltdown extends React.Component {
         <div style={{padding: '10px 0 0 0', position: 'absolute'}}>
           { this.props.meltdownLevel }
         </div>
+        
         <img src="/img/meltdowns/fuzzy-screen.gif" className="chat__meltdown__fuzzy-screen d-none" alt="Fuzzy screen" />
+        
         <img style={{ clip: `rect(auto ${crackImageLeftClip}px ${crackImageTopClip}px auto)` }} src="/img/meltdowns/cracks-top-left.png" className="chat__meltdown__cracks chat__meltdown__cracks--top chat__meltdown__cracks--left" alt="Broken glass" />
         <img style={{ clip: `rect(auto auto ${crackImageTopClip}px ${crackImageRightClip}px)` }} src="/img/meltdowns/cracks-top-right.png" className="chat__meltdown__cracks chat__meltdown__cracks--top chat__meltdown__cracks--right" alt="Broken glass" />
         <img style={{ clip: `rect(${crackImageBottomClip}px ${crackImageLeftClip}px auto auto)` }} src="/img/meltdowns/cracks-bottom-left.png" className="chat__meltdown__cracks chat__meltdown__cracks--bottom chat__meltdown__cracks--left" alt="Broken glass" />
         <img style={{ clip: `rect(${crackImageBottomClip}px auto auto ${crackImageRightClip}px)` }} src="/img/meltdowns/cracks-bottom-right.png" className="chat__meltdown__cracks chat__meltdown__cracks--bottom chat__meltdown__cracks--right" alt="Broken glass" />
+        
+        <img src="/img/meltdowns/flame2.gif" className="chat__meltdown__flame" alt="Flames" />
+        
+        <img src="/img/meltdowns/fly.gif" className="chat__meltdown__fly" alt="Fly" />
+        
+        <img src="/img/meltdowns/water.gif" className="chat__meltdown__water" alt="Water" />
       </div>
     );
   }

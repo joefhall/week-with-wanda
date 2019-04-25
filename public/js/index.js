@@ -66286,6 +66286,7 @@ function () {
                 }
 
                 if (response.data.meltdownLevel) {
+                  //           store.dispatch(setMeltdownLevel(response.data.meltdownLevel));
                   _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_6__["setMeltdownLevel"])(6));
                 }
 
@@ -68147,6 +68148,18 @@ function (_React$Component) {
         src: "/img/meltdowns/cracks-bottom-right.png",
         className: "chat__meltdown__cracks chat__meltdown__cracks--bottom chat__meltdown__cracks--right",
         alt: "Broken glass"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/img/meltdowns/flame2.gif",
+        className: "chat__meltdown__flame",
+        alt: "Flames"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/img/meltdowns/fly.gif",
+        className: "chat__meltdown__fly",
+        alt: "Fly"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/img/meltdowns/water.gif",
+        className: "chat__meltdown__water",
+        alt: "Water"
       }));
     }
   }]);

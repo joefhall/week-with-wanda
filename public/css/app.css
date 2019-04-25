@@ -13109,6 +13109,7 @@ a:active {
   height: 50%;
   position: absolute;
   width: 50%;
+  z-index: 3000;
 }
 
 .chat__meltdown__cracks--top {
@@ -13125,6 +13126,38 @@ a:active {
 
 .chat__meltdown__cracks--right {
   right: 0;
+}
+
+.chat__meltdown__flame {
+  bottom: -5px;
+  height: auto;
+  position: absolute;
+  right: 12%;
+  width: 19%;
+  z-index: 4000;
+}
+
+.chat__meltdown__fly {
+  height: auto;
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  width: 5%;
+  z-index: 4000;
+}
+
+.chat__meltdown__fuzzy-screen {
+  position: absolute;
+  z-index: 2000;
+}
+
+.chat__meltdown__water {
+  bottom: -6px;
+  height: auto;
+  left: 0;
+  position: absolute;
+  width: 20%;
+  z-index: 2000;
 }
 
 .shake {
