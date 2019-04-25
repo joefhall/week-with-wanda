@@ -13099,10 +13099,32 @@ a:active {
 }
 
 .chat__meltdown {
-  height: calc(100% + 20px);
+  height: 100%;
   position: absolute;
   width: 100%;
   z-index: 1000;
+}
+
+.chat__meltdown__cracks {
+  height: 50%;
+  position: absolute;
+  width: 50%;
+}
+
+.chat__meltdown__cracks--top {
+  top: 0;
+}
+
+.chat__meltdown__cracks--bottom {
+  bottom: 0;
+}
+
+.chat__meltdown__cracks--left {
+  left: 0;
+}
+
+.chat__meltdown__cracks--right {
+  right: 0;
 }
 
 .shake {

@@ -66286,7 +66286,7 @@ function () {
                 }
 
                 if (response.data.meltdownLevel) {
-                  _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_6__["setMeltdownLevel"])(response.data.meltdownLevel));
+                  _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_6__["setMeltdownLevel"])(6));
                 }
 
                 setTimeout(_store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch, timeToBeginTyping, Object(_actions__WEBPACK_IMPORTED_MODULE_6__["setTyping"])(true));
@@ -68087,6 +68087,27 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       console.log('Meltdown level is...', this.props.meltdownLevel);
+      var crackImage = document.querySelector('.chat__meltdown__cracks');
+      var crackImageTopClip;
+      var crackImageBottomClip;
+      var crackImageLeftClip;
+      var crackImageRightClip;
+
+      if (crackImage && this.props.meltdownLevel >= 1) {
+        var crackImageHeight = document.querySelector('.chat__meltdown__cracks').clientHeight;
+        var crackImageWidth = document.querySelector('.chat__meltdown__cracks').clientWidth;
+        var crackImageMultiplier = this.props.meltdownLevel < 5 ? this.props.meltdownLevel : 5;
+        crackImageTopClip = 20 + crackImageHeight * (crackImageMultiplier == 0 ? 0 : crackImageMultiplier / 5);
+        crackImageBottomClip = -20 + crackImageHeight - crackImageHeight * (crackImageMultiplier == 0 ? 0 : crackImageMultiplier / 5);
+        crackImageLeftClip = crackImageWidth * (crackImageMultiplier == 0 ? 0 : crackImageMultiplier / 5);
+        crackImageRightClip = -20 + crackImageWidth - crackImageWidth * (crackImageMultiplier == 0 ? 0 : crackImageMultiplier / 5);
+      } else {
+        crackImageTopClip = 0;
+        crackImageBottomClip = 113;
+        crackImageLeftClip = 0;
+        crackImageRightClip = 200;
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat__meltdown"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -68098,6 +68119,34 @@ function (_React$Component) {
         src: "/img/meltdowns/fuzzy-screen.gif",
         className: "chat__meltdown__fuzzy-screen d-none",
         alt: "Fuzzy screen"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        style: {
+          clip: "rect(auto ".concat(crackImageLeftClip, "px ").concat(crackImageTopClip, "px auto)")
+        },
+        src: "/img/meltdowns/cracks-top-left.png",
+        className: "chat__meltdown__cracks chat__meltdown__cracks--top chat__meltdown__cracks--left",
+        alt: "Broken glass"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        style: {
+          clip: "rect(auto auto ".concat(crackImageTopClip, "px ").concat(crackImageRightClip, "px)")
+        },
+        src: "/img/meltdowns/cracks-top-right.png",
+        className: "chat__meltdown__cracks chat__meltdown__cracks--top chat__meltdown__cracks--right",
+        alt: "Broken glass"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        style: {
+          clip: "rect(".concat(crackImageBottomClip, "px ").concat(crackImageLeftClip, "px auto auto)")
+        },
+        src: "/img/meltdowns/cracks-bottom-left.png",
+        className: "chat__meltdown__cracks chat__meltdown__cracks--bottom chat__meltdown__cracks--left",
+        alt: "Broken glass"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        style: {
+          clip: "rect(".concat(crackImageBottomClip, "px auto auto ").concat(crackImageRightClip, "px)")
+        },
+        src: "/img/meltdowns/cracks-bottom-right.png",
+        className: "chat__meltdown__cracks chat__meltdown__cracks--bottom chat__meltdown__cracks--right",
+        alt: "Broken glass"
       }));
     }
   }]);
