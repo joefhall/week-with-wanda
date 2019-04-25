@@ -1,0 +1,27 @@
+.chat__meltdown {
+  height: calc(100% + 20px);
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+}
+
+.shake {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite; 
+}
+
+$shakeAmount: 5;
+
+@keyframes shake {
+  0% { transform: translate(1px * $shakeAmount, 1px * $shakeAmount) rotate(0deg * $shakeAmount); }
+  10% { transform: translate(-1px * $shakeAmount, -2px * $shakeAmount) rotate(-1deg * $shakeAmount); }
+  20% { transform: translate(-3px * $shakeAmount, 0px * $shakeAmount) rotate(1deg * $shakeAmount); }
+  30% { transform: translate(3px * $shakeAmount, 2px * $shakeAmount) rotate(0deg * $shakeAmount); }
+  40% { transform: translate(1px * $shakeAmount, -1px * $shakeAmount) rotate(1deg * $shakeAmount); }
+  50% { transform: translate(-1px * $shakeAmount, 2px * $shakeAmount) rotate(-1deg * $shakeAmount); }
+  60% { transform: translate(-3px * $shakeAmount, 1px * $shakeAmount) rotate(0deg * $shakeAmount); }
+  70% { transform: translate(3px * $shakeAmount, 1px * $shakeAmount) rotate(-1deg * $shakeAmount); }
+  80% { transform: translate(-1px * $shakeAmount, -1px * $shakeAmount) rotate(1deg * $shakeAmount); }
+  90% { transform: translate(1px * $shakeAmount, 2px * $shakeAmount) rotate(0deg * $shakeAmount); }
+  100% { transform: translate(1px * $shakeAmount, -2px * $shakeAmount) rotate(-1deg * $shakeAmount); }
+}

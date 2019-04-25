@@ -31,6 +31,15 @@ export const setInput = (scenario, type, userInput) => {
   };
 };
 
+export const setMeltdownLevel = meltdownLevel => {
+  return {
+    type: 'MELTDOWN_LEVEL_SET',
+    payload: {
+      meltdownLevel: meltdownLevel,
+    }
+  };
+};
+
 export const setTyping = typing => {
   return {
     type: 'TYPING_STATUS_SET',

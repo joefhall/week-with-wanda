@@ -21,6 +21,17 @@ const inputReducer = (state = {}, action) => {
   return state;
 };
 
+const meltdownLevelReducer = (state = [], action) => {
+  console.log('Meltdown level reducer state', state);
+  console.log('Meltdown level reducer action', action);
+  
+  if (action && action.type === 'MELTDOWN_LEVEL_SET') {
+    return action.payload.meltdownLevel;
+  }
+  
+  return state;
+};
+
 const messagesReducer = (state = [], action) => {
   console.log('Messages reducer state', state);
   console.log('Messages reducer action', action);
@@ -55,6 +66,7 @@ const userPropertyReducer = (state = {}, action) => {
 export default combineReducers({
   emotion: emotionReducer,
   input: inputReducer,
+  meltdownLevel: meltdownLevelReducer,
   messages: messagesReducer,
   typing: typingReducer,
   user: userPropertyReducer

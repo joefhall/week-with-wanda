@@ -1,22 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import ChatMeltdown from './ChatMeltdown';
+
 class ChatWanda extends React.Component {
   onLoad = () => {
     document.querySelector('.chat__wanda__image').classList.remove('d-none');
   }
   
   render() {
-    console.log('Emotion is...', this.props.emotion);
     const emotion = (!Array.isArray(this.props.emotion) && this.props.emotion) ? this.props.emotion : 'base';
+    console.log('Emotion is...', emotion);
     
     return (
       <div className="chat__wanda">
+        <ChatMeltdown />
+        
         <div className="chat__wanda__title">
           <div className="chat__wanda__title--1">A Week With</div>
           <div className="chat__wanda__title--2">Wanda</div>
         </div>
-        <img src={`/img/emotions/${emotion}.gif`} onLoad={this.onLoad} className={`chat__wanda__image chat__wanda__image--${this.props.emotion}` + (this.props.emotion === 'base' ? ' invisible h-0' : '') + ' d-none'} alt="Wanda" />
+        <img src={`/img/emotions/${emotion}.gif`} onLoad={this.onLoad} className={`chat__wanda__image chat__wanda__image--${this.props.emotion} d-none`} alt="Wanda" />
         
         <img src="/img/emotions/elated.gif" className="invisible h-0" alt="Wanda elated" />
         <img src="/img/emotions/frustrated.gif" className="invisible h-0" alt="Wanda frustrated" />

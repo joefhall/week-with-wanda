@@ -17,7 +17,7 @@
   </head>
   
   <body>
-    <div id="preview-notice" style="position: absolute; z-index: 10000; width: 100vw; height: 100vh; padding-top: 150px; background-color: darkviolet; color: white; text-align: center;">
+    <div id="preview-notice" class="d-none" style="position: absolute; z-index: 10000; width: 100vw; height: 100vh; padding-top: 150px; background-color: darkviolet; color: white; text-align: center;">
       <h1 style="font-family: 'Pacifico', 'Arial', sans-serif;">A Week With Wanda</h1>
       <p>This site is available for selected people to preview only.</p>
       <p>Do you have a preview code?</p>
