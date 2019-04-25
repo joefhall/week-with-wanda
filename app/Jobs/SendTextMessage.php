@@ -54,7 +54,7 @@ class SendTextMessage implements ShouldQueue
     $mobileNumber = $user->mobile_number;
     $sendTextMessages = $user->send_text_messages;
     
-    $countriesRequiringFromNumber = ['US'];
+    $countriesRequiringFromNumber = ['CA', 'US'];
     
     Log::info("Sending text message to user({$this->userId}), mobile number($mobileNumber), message({$this->message})");
     
