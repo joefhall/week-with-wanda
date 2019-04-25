@@ -47,7 +47,7 @@ class ChatInputPassword extends React.Component {
       <form onSubmit={this.onFormSubmit}>
         <div className="chat__input__form">
           <input className="chat__input__form__input" name="password" type="password" placeholder="Password" value={this.state.password} onChange={this.onChange} onFocus={this.onFocus} />
-          <i className="chevron circle right icon chat__input__form__submit-button"></i>
+          <i className="chevron circle right icon chat__input__form__submit-button" onClick={this.onFormSubmit}></i>
         </div>
         <div className="chat__input__form__forgotten-password">
           <a href="/password/reset">I've forgotten my password</a>
