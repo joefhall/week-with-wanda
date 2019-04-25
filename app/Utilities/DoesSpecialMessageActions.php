@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 trait DoesSpecialMessageActions
-{
+{ 
   /**
    * User Repository.
    *
@@ -48,7 +48,9 @@ trait DoesSpecialMessageActions
     $wandaMessageId = $wandaResponse ? array_keys($wandaResponse)[0] : null;
     $user = User::find($userId);
     
-    Log::info("Checking for special message user actions - user($userId), scenario($scenario), wandaMessage($wandaMessageId), userMessage($userMessageId)");
+    Log::info("Checking for special message user actions - user($userId), scenario($scenario), wandaMessage($wandaMessageId), userMessage($userMessageId), meltdownLevel({$user->meltdown_level})");
+    
+    $this->addToMeltdownLevel($user, $scenario, $wandaMessageId);
     
     if (
       in_array(config("scenarios.$scenario.category"), ['health', 'wealth', 'relationships', 'all'])
@@ -112,6 +114,31 @@ trait DoesSpecialMessageActions
           }
         }
         break;
+    }
+  }
+  
+  /**
+   * Check if the chat response means any special actions need to be taken e.g. send a verification email.
+   *
+   * @param User $user
+   * @param string $scenario
+   * @param string $wandaMessageId
+   * @return void
+   */
+  public function addToMeltdownLevel(User $user = null, string $scenario, string $wandaMessageId)
+  {
+    $meltdownEmotions = [
+      'angry' => 0.5,
+      'frustrated' => 0.5,
+      'meltdown' => 1,
+      'shocked' => 0.5,
+    ];
+    
+    $wandaInteraction = $this->getInteraction($scenario, $wandaMessageId);
+    
+    if ($user && in_array($wandaInteraction['emotion'], array_keys($meltdownEmotions))) {
+      $user->meltdown_level = $user->meltdown_level + $meltdownEmotions[$wandaInteraction['emotion']];
+      $user->save();
     }
   }
 }

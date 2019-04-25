@@ -7,6 +7,7 @@ use App\Utilities\DoesSpecialMessageActions;
 use App\Utilities\GetsResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class ChatController extends Controller
 {
@@ -52,6 +53,8 @@ class ChatController extends Controller
       $this->userRepository->storeChatHistory($user->id, $currentScenario, $userMessageId, $userMessage, $response);
       $this->doSpecialMessageActions($user->id, $request, $userMessageId, $userMessage, $response);
     }
+    
+    $response = $this->mergeMeltdownLevel($user, $response);
     
     return response()->json($response);
   }
