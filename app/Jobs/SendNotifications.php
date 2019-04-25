@@ -86,8 +86,8 @@ class SendNotifications implements ShouldQueue
         __("notifications.{$scenarioId}.email.{$this->notificationType}.message", compact('name', 'loginLink'))
       );
       
-      // Remove links in text messages until find a solution to ensure deliverability
-      $loginLink = '';
+      // Remove links in text messages - cannot guarantee deliverability
+      $loginLink = '-Wanda';
       
       SendTextMessage::dispatch($this->userId, __("notifications.{$scenarioId}.textMessage.{$this->notificationType}", compact('name', 'loginLink')));
       

@@ -54,6 +54,8 @@ class SendTextMessage implements ShouldQueue
     $mobileNumber = $user->mobile_number;
     $sendTextMessages = $user->send_text_messages;
     
+    $countriesRequiringFromNumber = ['US'];
+    
     Log::info("Sending text message to user({$this->userId}), mobile number($mobileNumber), message({$this->message})");
     
     if ($mobileNumber && $sendTextMessages) {
@@ -62,21 +64,55 @@ class SendTextMessage implements ShouldQueue
         'Accept' => 'application/json',
       ];
       
-      $params = [
-        'recipients' => $user->mobile_number,
-        'originator' => env('SMS_FROM_NAME'),
-        'body' => $this->message,
-      ];
-
-      $response = $client->post(
-          env('SMS_SENDER_URL'),
-          [
+      if ($user->country && in_array($user->country, $countriesRequiringFromNumber)) {
+        $url = env('SMS_CONVERSATIONS_URL');
+        
+        $params = [
+            'to' => (string) $user->mobile_number,
+            'from' => env('SMS_CHANNEL_ID'),
+            'type' => 'text',
+            'content' => [
+              'text' => $this->message,
+            ],
+        ];
+        
+        try {
+          $response = $client->post($url, [
             'headers' => $headers,
-            'form_params' => $params,
-          ]
-        )->getBody()->getContents();
-      
-      Log::info("SMS sender response: $response");
+            'body' => json_encode($params)
+          ])->getBody()->getContents();
+
+          Log::info("SMS sender response: $response");
+        } catch (RequestException $e) {
+          Log::error("SMS sender error: " . print_r($e));
+        } catch (\Exception $e) {
+          Log::error("SMS sender error: " . print_r($e));
+        }
+      } else {
+        $url = env('SMS_SENDER_URL');
+        
+        $params = [
+          'recipients' => $user->mobile_number,
+          'originator' => env('SMS_FROM_NAME'),
+          'body' => $this->message,
+        ];
+        
+        try {
+          $response = $client->post(
+              $url,
+              [
+                'headers' => $headers,
+                'form_params' => $params,
+              ]
+            )->getBody()->getContents();
+
+          Log::info("SMS sender response: $response");
+        } catch (RequestException $e) {
+          Log::error("SMS sender error: " . print_r($e));
+        } catch (\Exception $e) {
+          Log::error("SMS sender error: " . print_r($e));
+        }
+      }
     }
   }
 }
