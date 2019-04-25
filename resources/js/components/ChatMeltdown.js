@@ -6,16 +6,20 @@ class ChatMeltdown extends React.Component {
     const chatWindow = document.querySelector('.chat');
     chatWindow.classList.add('shake');
     
-    const fuzzyScreen = document.querySelector('.chat__meltdown__fuzzy-screen');
-    fuzzyScreen.classList.remove('d-none');
+    if (this.props.meltdownLevel > 2) {
+      const fuzzyScreen = document.querySelector('.chat__meltdown__fuzzy-screen');
+      fuzzyScreen.classList.remove('d-none');
+    }
   };
 
   endMeltdownTransition = () => {
     const chatWindow = document.querySelector('.chat');
     chatWindow.classList.remove('shake');
     
-    const fuzzyScreen = document.querySelector('.chat__meltdown__fuzzy-screen');
-    fuzzyScreen.classList.add('d-none');
+    if (this.props.meltdownLevel > 2) {
+      const fuzzyScreen = document.querySelector('.chat__meltdown__fuzzy-screen');
+      fuzzyScreen.classList.add('d-none'); 
+    }
   };
   
   componentDidUpdate() {

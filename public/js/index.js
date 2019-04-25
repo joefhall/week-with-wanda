@@ -68054,15 +68054,21 @@ function (_React$Component) {
     _this.startMeltdownTransition = function () {
       var chatWindow = document.querySelector('.chat');
       chatWindow.classList.add('shake');
-      var fuzzyScreen = document.querySelector('.chat__meltdown__fuzzy-screen');
-      fuzzyScreen.classList.remove('d-none');
+
+      if (_this.props.meltdownLevel > 2) {
+        var fuzzyScreen = document.querySelector('.chat__meltdown__fuzzy-screen');
+        fuzzyScreen.classList.remove('d-none');
+      }
     };
 
     _this.endMeltdownTransition = function () {
       var chatWindow = document.querySelector('.chat');
       chatWindow.classList.remove('shake');
-      var fuzzyScreen = document.querySelector('.chat__meltdown__fuzzy-screen');
-      fuzzyScreen.classList.add('d-none');
+
+      if (_this.props.meltdownLevel > 2) {
+        var fuzzyScreen = document.querySelector('.chat__meltdown__fuzzy-screen');
+        fuzzyScreen.classList.add('d-none');
+      }
     };
 
     return _this;
