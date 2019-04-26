@@ -71,7 +71,7 @@ return [
   
     'user' => [
       'hello1' => ":userHello1",
-      'hello2' => ":userHello12",
+      'hello2' => ":userHello2",
       'really' => "Oh really?",
       'whatWay' => "In what way?",
       'meaningfulAgree' => ":userAgree",
