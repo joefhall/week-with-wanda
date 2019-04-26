@@ -104,12 +104,12 @@ return [
       'bye2' => ':userBye2',
       'knowOk' => ':UserOk1',
       'knowWhat' => 'Like what?',
-      'howHelpOk' => ':userOk1',
+      'howHelpOk' => ':UserOk1',
       'howHelpUncomfortable' => 'I\'m not comfortable with this',
       'someDataPositive' => ':userAgree',
       'someDataNegative' => ':userDisagree',
-      'chewOk' => ':userOk1',
-      'chew Great' => ':userGreat',
+      'chewOk' => ':UserOk1',
+      'chew Great' => ':UserGreat',
     ],
 
 ];

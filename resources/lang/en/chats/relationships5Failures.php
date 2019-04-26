@@ -100,7 +100,7 @@ return [
       'mistake' => "I made a mistake – activate the feature",
       'cutYes' => "Yeah, you're right Wanda",
       'cutNo' => "No, there's a big problem here!",
-      'breakOk' => ":userOk1",
+      'breakOk' => ":UserOk1",
       'breakToo' => "Me too",
       'tomorrowThanks1' => ":userThanks1",
       'tomorrowThanks2' => ":userThanks2",

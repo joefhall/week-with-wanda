@@ -68,8 +68,8 @@ return [
     'user' => [
       'hello1' => ":userHello1",
       'hello2' => ":userHello2",
-      'closerYes' => ":userOk1",
-      'closerOk' => ":userOk2",
+      'closerYes' => ":UserOk1",
+      'closerOk' => ":UserOk2",
       'thereGo' => "There you go",
       'asClose' => "I'm as close as I can get",
       'what' => "What is it?",
@@ -80,7 +80,7 @@ return [
       'whatPlan' => "What's your plan?",
       'wow' => "Wow",
       'dontKnow' => "I don't know what to say",
-      'forYouGreat' => ":userGreat",
+      'forYouGreat' => ":UserGreat",
       'forYouThanks1' => ":userThanks1",
       'forYouThanks2' => ":userThanks2",
       'forYouUnsure' => ":userUnsure",
@@ -98,8 +98,8 @@ return [
       'lookOutDisagree' => ":userDisagree",
       'permissionYes' => "Yes",
       'permissionNo' => "Nooo",
-      'bathOk1' => ":userOk1",
-      'bathOk2' => ":userOk2",
+      'bathOk1' => ":UserOk1",
+      'bathOk2' => ":UserOk2",
     ],
 
 ];
