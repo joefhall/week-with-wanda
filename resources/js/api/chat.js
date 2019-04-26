@@ -41,7 +41,7 @@ const hideLoading = () => {
 
 const showResponse = (responseData, wandaMessageId, wandaMessage) => {
   store.dispatch(setTyping(false));
-  store.dispatch(addMessage(Date.now(), responseData.scenario, 'wanda', wandaMessageId, wandaMessage));
+  store.dispatch(addMessage(Date.now(), responseData.scenario, 'wanda', wandaMessageId, wandaMessage, responseData.meltdownLevel));
   store.dispatch(setInput(responseData.scenario, responseData.type, responseData.user));
 };
 
@@ -86,9 +86,7 @@ export const respond = async (scenario, messageId, message, requiresResponse = t
         if (response.data.emotion) {
           store.dispatch(setEmotion(response.data.emotion));
         }
-        if (response.data.meltdownLevel) {
-          store.dispatch(setMeltdownLevel(response.data.meltdownLevel));
-        }
+          store.dispatch(setMeltdownLevel(response.data.meltdownLevel ? response.data.meltdownLevel : 0));
         
         setTimeout(store.dispatch, timeToBeginTyping, setTyping(true));
         setTimeout(showResponse, typingDelay(wandaMessage), response.data, wandaMessageId, wandaMessage);
@@ -121,7 +119,8 @@ export const getHistory = async () => {
 
         const latestChatEntry = chatHistory.slice(-1)[0];
         console.log('Latest chat entry:', latestChatEntry);
-        store.dispatch(setInput(latestChatEntry.scenario, latestChatEntry.type, latestChatEntry.userInput));
+        store.dispatch(setInput(latestChatEntry.scenario, latestChatEntry.type, latestChatEntry.userInput, latestChatEntry.meltdownLevel));
+        store.dispatch(setMeltdownLevel(latestChatEntry.meltdownLevel ? latestChatEntry.meltdownLevel : 0));
         store.dispatch(setTyping(false));
         
         if (startScenario && startMessage) {
