@@ -125,7 +125,7 @@ trait DoesSpecialMessageActions
    * @param string $wandaMessageId
    * @return void
    */
-  public function addToMeltdownLevel(User $user = null, string $scenario, string $wandaMessageId)
+  public function addToMeltdownLevel(User $user = null, string $scenario = null, string $wandaMessageId = null)
   {
     $meltdownEmotions = [
       'angry' => 0.5,
@@ -134,11 +134,13 @@ trait DoesSpecialMessageActions
       'shocked' => 0.5,
     ];
     
-    $wandaInteraction = $this->getInteraction($scenario, $wandaMessageId);
+    if ($user && $scenario && $wandaMessageId) {
+      $wandaInteraction = $this->getInteraction($scenario, $wandaMessageId);
     
-    if ($user && in_array($wandaInteraction['emotion'], array_keys($meltdownEmotions))) {
-      $user->meltdown_level = $user->meltdown_level + $meltdownEmotions[$wandaInteraction['emotion']];
-      $user->save();
+      if ($user && in_array($wandaInteraction['emotion'], array_keys($meltdownEmotions))) {
+        $user->meltdown_level = $user->meltdown_level + $meltdownEmotions[$wandaInteraction['emotion']];
+        $user->save();
+      }
     }
   }
 }
