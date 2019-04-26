@@ -20,6 +20,7 @@ return [
         'hello1',
         'hello2',
       ],
+      'emotion' => 'waving',
     ],
     'closer' => [
       'type' => 'choice',
@@ -34,6 +35,7 @@ return [
         'thereGo',
         'asClose',
       ],
+      'emotion' => 'thumbs-down',
     ],
     'hmm' => [
       'type' => 'none',
@@ -96,6 +98,7 @@ return [
       'user' => [
         'noFearNone',
       ],
+      'emotion' => 'base',
     ],
     'strong' => [
       'type' => 'none',
@@ -127,6 +130,7 @@ return [
       'user' => [
         'contactedNone',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'restaurants' => [
       'type' => 'none',
@@ -146,6 +150,7 @@ return [
       'user' => [
         'impressiveNone',
       ],
+      'emotion' => 'clapping',
     ],
     'impressivePic' => [
       'type' => 'none',
@@ -181,6 +186,7 @@ return [
         'radiusYes',
         'radiusNo',
       ],
+      'emotion' => 'base',
     ],
     'family' => [
       'type' => 'none',
@@ -244,6 +250,7 @@ return [
       'user' => [
         'whatsUpOhDearNone',
       ],
+      'emotion' => 'frustrated',
     ],
     'cumulative' => [
       'type' => 'none',
@@ -282,6 +289,7 @@ return [
       'user' => [
         'maybeNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'learn' => [
       'type' => 'none',
@@ -300,6 +308,7 @@ return [
       'user' => [
         'whyHereNone',
       ],
+      'emotion' => 'angry',
     ],
     'intentions' => [
       'type' => 'none',

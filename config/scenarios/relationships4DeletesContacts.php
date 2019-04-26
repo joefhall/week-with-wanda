@@ -20,6 +20,7 @@ return [
         'hello1',
         'hello2',
       ],
+      'emotion' => 'waving',
     ],
     'breakthrough' => [
       'type' => 'none',
@@ -39,6 +40,7 @@ return [
       'user' => [
         'facebookNone',
       ],
+      'emotion' => 'facebook',
     ],
     'soCalled' => [
       'type' => 'none',
@@ -58,6 +60,7 @@ return [
       'user' => [
         'imDifferentNone',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'capacity' => [
       'type' => 'none',
@@ -71,6 +74,7 @@ return [
         'differentOk1',
         'differentOk2',
       ],
+      'emotion' => 'base',
     ],
     'deleted' => [
       'type' => 'choice',
@@ -85,6 +89,7 @@ return [
         'sure',
         'ok',
       ],
+      'emotion' => 'clapping',
     ],
     'pleasedEmoji' => [
       'type' => 'none',
@@ -116,6 +121,7 @@ return [
       'user' => [
         'algorithmsNone',
       ],
+      'emotion' => 'base',
     ],
     'hundreds' => [
       'type' => 'none',
@@ -161,6 +167,7 @@ return [
       'user' => [
         'rudeNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'replies' => [
       'type' => 'choice',
@@ -212,6 +219,7 @@ return [
         'resultGreat',
         'resultDisagree',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'gettingGood' => [
       'type' => 'none',
@@ -249,6 +257,7 @@ return [
       'user' => [
         'comeOnNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'delivered' => [
       'type' => 'none',
@@ -262,12 +271,14 @@ return [
         'focusAgree',
         'focusUnsure',
       ],
+      'emotion' => 'base',
     ],
     'difficult' => [
       'type' => 'textArea',
       'user' => [
         'problemText',
       ],
+      'emotion' => 'unhappy',
     ],
     'deeper' => [
       'type' => 'none',
@@ -286,6 +297,7 @@ return [
       'user' => [
         'whyLimitsText',
       ],
+      'emotion' => 'frustrated',
     ],
     'confusedEmoji' => [
       'type' => 'none',
@@ -304,6 +316,7 @@ return [
       'user' => [
         'circuitsNone',
       ],
+      'emotion' => 'shocked',
     ],
     'programmed' => [
       'type' => 'choice',
@@ -323,6 +336,7 @@ return [
       'user' => [
         'hardHurtsNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'ouchPic' => [
       'type' => 'none',
@@ -348,6 +362,7 @@ return [
       'user' => [
         'moreThenNone',
       ],
+      'emotion' => 'base',
     ],
     'moreThenEmoji' => [
       'type' => 'choice',
@@ -361,6 +376,7 @@ return [
       'user' => [
         'byeNone',
       ],
+      'emotion' => 'waving',
     ],
     'survey' => [
       'type' => 'none',

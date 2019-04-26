@@ -55,7 +55,7 @@ return [
       'maybe' => "Hmm. Well. Maybe.",
       'learn' => "Ok, look – I'm trying to learn here...",
       'thinkingPic' => "<img class='chat__messages__message__bubble__image' src='/img/health4ReduceSaltThinking.gif' />",
-      'whyHere' => "Well, that's why I'm here, :name",
+      'whyHere' => "But that's why I'm here, :name!",
       'intentions' => "I have nothing but good intentions",
       'whatProblem' => "Well what is the probem then, :name?",
       'different' => "Is there anything I could do differently that would make you happier?",

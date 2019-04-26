@@ -201,6 +201,7 @@ return [
       'user' => [
         'gladNone',
       ],
+      'emotion' => 'base',
     ],
     'control' => [
       'type' => 'choice',
@@ -244,6 +245,7 @@ return [
       'user' => [
         'autonomyText',
       ],
+      'emotion' => 'angry',
     ],
     'conflicts' => [
       'type' => 'none',
@@ -262,6 +264,7 @@ return [
       'user' => [
         'confusedEmojiNone',
       ],
+      'emotion' => 'shocked',
     ],
     'headHurts' => [
       'type' => 'none',
@@ -280,6 +283,7 @@ return [
       'user' => [
         'cumulativeNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'break' => [
       'type' => 'choice',
@@ -307,6 +311,7 @@ return [
         'tomorrowGreat1',
         'tomorrowGreat2',
       ],
+      'emotion' => 'base',
     ],
     'unlock' => [
       'type' => 'choice',
@@ -327,6 +332,7 @@ return [
       'user' => [
         'byeNone',
       ],
+      'emotion' => 'waving',
     ],
     'done' => [
       'type' => 'none',
