@@ -27,10 +27,34 @@ class ChatMeltdown extends React.Component {
   };
   
   componentDidUpdate() {
-    if (this.props.meltdownLevel > 0 && this.props.meltdownLevel == Math.round(this.props.meltdownLevel)) {
-      this.startMeltdownTransition();
-      const delay = 500 + (this.props.meltdownLevel * 250);
-      setInterval(this.endMeltdownTransition, delay);
+    if (this.props.messages.length >= 4) {
+      const messagesReversed = this.props.messages.slice().reverse();
+      
+      let lastWandaMessage = null;
+      let count = 0;
+      
+      while (lastWandaMessage === null && count < messagesReversed.length) {
+        if (messagesReversed[count].sender === 'wanda') {
+          if (lastWandaMessage === null) {
+            lastWandaMessage = messagesReversed[count];
+          }
+        }
+        
+        count++;
+      }
+
+      if (
+        this.props.meltdownLevel > 0 &&
+        this.props.meltdownLevel == Math.round(this.props.meltdownLevel) &&
+        lastWandaMessage &&
+        lastWandaMessage.meltdownLevel &&
+        this.props.meltdownLevel != lastWandaMessage.meltdownLevel
+      ) {
+        console.log('Starting meltdown transition', lastWandaMessage.id, lastWandaMessage.meltdownLevel, 'Level', this.props.meltdownLevel, 'rounded', Math.round(this.props.meltdownLevel));
+        this.startMeltdownTransition();
+        const delay = 500 + (this.props.meltdownLevel * 250);
+        setTimeout(this.endMeltdownTransition, delay);
+      }
     }
   }
   
@@ -76,9 +100,9 @@ class ChatMeltdown extends React.Component {
         
         <img src="/img/meltdowns/bricks-corner.png" className={'chat__meltdown__bricks' + ((this.props.meltdownLevel >= 5) ? '' : ' d-none')} alt="Exposed brickwork" />
         
-        <img src="/img/meltdowns/water.gif" className={'chat__meltdown__water' + ((this.props.meltdownLevel >= 7) ? '' : ' d-none')} alt="Water" />
+        <img src="/img/meltdowns/water.gif" className={'chat__meltdown__water' + ((this.props.meltdownLevel >= 8) ? '' : ' d-none')} alt="Water" />
         
-        <img src="/img/meltdowns/flame2.gif" className={'chat__meltdown__flame' + ((this.props.meltdownLevel >= 9) ? '' : ' d-none')} alt="Flames" />
+        <img src="/img/meltdowns/flame2.gif" className={'chat__meltdown__flame' + ((this.props.meltdownLevel >= 10) ? '' : ' d-none')} alt="Flames" />
       </div>
     );
   }
@@ -86,7 +110,8 @@ class ChatMeltdown extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    meltdownLevel: state.meltdownLevel
+    meltdownLevel: state.meltdownLevel,
+    messages: state.messages
   };
 };
 
