@@ -1,0 +1,111 @@
+.chat__meltdown {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+  
+  &__bricks {
+    height: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 25%;
+    z-index: 2000;
+  }
+  
+  &__cracks {
+    height: 50%;
+    opacity: 0.5;
+    position: absolute;
+    width: 50%;
+    z-index: 3000;
+    
+    &--top {
+      top: 0;
+    }
+    
+    &--bottom {
+      bottom: 0;
+    }
+    
+    &--left {
+      left: 0;
+    }
+    
+    &--right {
+      right: 0;
+    }
+  }
+  
+  &__dirt {
+    bottom: -13%;
+    height: auto;
+    opacity: 0.7;
+    position: absolute;
+    right: 35%;
+    width: 26%;
+    z-index: 4000;
+  }
+  
+  &__flame {
+    bottom: -5px;
+    height: auto;
+    position: absolute;
+    right: 12%;
+    width: 19%;
+    z-index: 4000;
+  }
+  
+  &__fly {
+    height: auto;
+    position: absolute;
+    right: 31%;
+    top: 3%;
+    width: 5%;
+    z-index: 4000;
+  }
+  
+  &__fuzzy-screen {
+    position: absolute;
+    z-index: 2500;
+  }
+  
+  &__mud {
+    height: auto;
+    left: 11%;
+    position: absolute;
+    top: 15%;
+    width: 15%;
+    z-index: 3000;
+  }
+  
+  &__water {
+    bottom: -6px;
+    height: auto;
+    left: 0;
+    position: absolute;
+    width: 20%;
+    z-index: 4000;
+  }
+}
+
+.shake {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite; 
+}
+
+$shakeAmount: 5;
+
+@keyframes shake {
+  0% { transform: translate(1px * $shakeAmount, 1px * $shakeAmount) rotate(0deg * $shakeAmount); }
+  10% { transform: translate(-1px * $shakeAmount, -2px * $shakeAmount) rotate(-1deg * $shakeAmount); }
+  20% { transform: translate(-3px * $shakeAmount, 0px * $shakeAmount) rotate(1deg * $shakeAmount); }
+  30% { transform: translate(3px * $shakeAmount, 2px * $shakeAmount) rotate(0deg * $shakeAmount); }
+  40% { transform: translate(1px * $shakeAmount, -1px * $shakeAmount) rotate(1deg * $shakeAmount); }
+  50% { transform: translate(-1px * $shakeAmount, 2px * $shakeAmount) rotate(-1deg * $shakeAmount); }
+  60% { transform: translate(-3px * $shakeAmount, 1px * $shakeAmount) rotate(0deg * $shakeAmount); }
+  70% { transform: translate(3px * $shakeAmount, 1px * $shakeAmount) rotate(-1deg * $shakeAmount); }
+  80% { transform: translate(-1px * $shakeAmount, -1px * $shakeAmount) rotate(1deg * $shakeAmount); }
+  90% { transform: translate(1px * $shakeAmount, 2px * $shakeAmount) rotate(0deg * $shakeAmount); }
+  100% { transform: translate(1px * $shakeAmount, -2px * $shakeAmount) rotate(-1deg * $shakeAmount); }
+}

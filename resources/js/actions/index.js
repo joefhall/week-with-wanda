@@ -1,4 +1,4 @@
-export const addMessage = (time, scenario, sender, id, message) => {
+export const addMessage = (time, scenario, sender, id, message, meltdownLevel = null) => {
   return {
     type: sender === 'user' ? 'USER_MESSAGE_INPUTTED' : 'WANDA_MESSAGE_RECEIVED',
     payload: {
@@ -6,7 +6,8 @@ export const addMessage = (time, scenario, sender, id, message) => {
       scenario: scenario,
       sender: sender,
       id: id,
-      message: message
+      message: message,
+      meltdownLevel: meltdownLevel
     }
   };
 };
@@ -27,6 +28,15 @@ export const setInput = (scenario, type, userInput) => {
       scenario: scenario,
       type: type,
       userInput: userInput
+    }
+  };
+};
+
+export const setMeltdownLevel = meltdownLevel => {
+  return {
+    type: 'MELTDOWN_LEVEL_SET',
+    payload: {
+      meltdownLevel: meltdownLevel,
     }
   };
 };

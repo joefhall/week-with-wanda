@@ -78,4 +78,22 @@ trait GetsResponse
     
     return $response;
   }
+  
+  /**
+   * Merge the user's meltdown level into a response.
+   *
+   * @param User $user
+   * @param array $response
+   * @return array
+   */
+  public function mergeMeltdownLevel(User $user = null, array $response)
+  {
+    if ($user) {
+      $user->refresh();
+    }
+    
+    return array_merge($response, [
+      'meltdownLevel' => $user ? $user->meltdown_level : 0,
+    ]);
+  }
 }
