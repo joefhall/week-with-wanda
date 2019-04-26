@@ -50,8 +50,8 @@ class ChatController extends Controller
     $response = $this->getResponse($user, $currentScenario, $userMessageId, $userMessage, $requiresResponse);
     
     if (!config("scenarios.doNotStore.{$currentScenario}")) {
-      $this->userRepository->storeChatHistory($user->id, $currentScenario, $userMessageId, $userMessage, $response);
       $this->doSpecialMessageActions($user->id, $request, $userMessageId, $userMessage, $response);
+      $this->userRepository->storeChatHistory($user->id, $currentScenario, $userMessageId, $userMessage, $response);
     }
     
     $response = $this->mergeMeltdownLevel($user, $response);

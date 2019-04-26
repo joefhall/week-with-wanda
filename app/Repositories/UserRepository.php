@@ -276,6 +276,7 @@ class UserRepository
     }
 
     if ($response && array_get($response, 'wanda') && !array_has($response, 'error')) {
+      $user = User::find($userId);
       $wandaMessageId = key(array_get($response, 'wanda'));
       Log::info("Storing chat history - user($userId), scenario($currentScenario), wandaMessage($wandaMessageId)");
       
@@ -286,6 +287,7 @@ class UserRepository
         'message' => current(array_get($response, 'wanda')),
         'type' => array_get($response, 'type'),
         'userInput' => array_get($response, 'user'),
+        'meltdownLevel' => $user->meltdown_level,
         'time' => Carbon::now()->timestamp + 1,
       ]);
     }
