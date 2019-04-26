@@ -13105,6 +13105,15 @@ a:active {
   z-index: 1000;
 }
 
+.chat__meltdown__bricks {
+  height: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 25%;
+  z-index: 2000;
+}
+
 .chat__meltdown__cracks {
   height: 50%;
   position: absolute;
@@ -13128,6 +13137,16 @@ a:active {
   right: 0;
 }
 
+.chat__meltdown__dirt {
+  bottom: -13%;
+  height: auto;
+  opacity: 0.7;
+  position: absolute;
+  right: 32%;
+  width: 26%;
+  z-index: 4000;
+}
+
 .chat__meltdown__flame {
   bottom: -5px;
   height: auto;
@@ -13140,15 +13159,24 @@ a:active {
 .chat__meltdown__fly {
   height: auto;
   position: absolute;
-  right: 5%;
-  top: 5%;
+  right: 31%;
+  top: 3%;
   width: 5%;
   z-index: 4000;
 }
 
 .chat__meltdown__fuzzy-screen {
   position: absolute;
-  z-index: 2000;
+  z-index: 2500;
+}
+
+.chat__meltdown__mud {
+  height: auto;
+  left: 11%;
+  position: absolute;
+  top: 15%;
+  width: 15%;
+  z-index: 3000;
 }
 
 .chat__meltdown__water {
@@ -13157,7 +13185,7 @@ a:active {
   left: 0;
   position: absolute;
   width: 20%;
-  z-index: 2000;
+  z-index: 4000;
 }
 
 .shake {
@@ -13330,6 +13358,18 @@ a:active {
 .chat__wanda__title--2 {
   font-size: 2.5rem;
   text-shadow: 1px 1px 1px black;
+}
+
+.chat__wanda__title--2--w {
+  display: inline-block;
+}
+
+.chat__wanda__title--2--w--rotate {
+  left: 3px;
+  position: relative;
+  top: 11px;
+  -webkit-transform: rotate(-40deg);
+          transform: rotate(-40deg);
 }
 
 .scenarios__connectors {

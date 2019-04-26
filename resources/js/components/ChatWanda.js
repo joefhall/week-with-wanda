@@ -18,7 +18,7 @@ class ChatWanda extends React.Component {
         
         <div className="chat__wanda__title">
           <div className="chat__wanda__title--1">A Week With</div>
-          <div className="chat__wanda__title--2">Wanda</div>
+          <div className="chat__wanda__title--2"><div className={'chat__wanda__title--2--w' + ((this.props.meltdownLevel >= 6) ? ' chat__wanda__title--2--w--rotate' : '')}>W</div>anda</div>
         </div>
         <img src={`/img/emotions/${emotion}.gif`} onLoad={this.onLoad} className={`chat__wanda__image chat__wanda__image--${this.props.emotion} d-none`} alt="Wanda" />
         
@@ -36,7 +36,8 @@ class ChatWanda extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    emotion: state.emotion
+    emotion: state.emotion,
+    meltdownLevel: state.meltdownLevel
   };
 };
 

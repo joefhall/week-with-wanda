@@ -40,6 +40,17 @@
     &--2 {
       font-size: $font-size-xxxlg;
       text-shadow: 1px 1px 1px black;
+      
+      &--w {
+        display: inline-block;
+        
+        &--rotate {
+          left: 3px;
+          position: relative;
+          top: 11px;
+          transform: rotate(-40deg);
+        }
+      }
     }
   }
 }

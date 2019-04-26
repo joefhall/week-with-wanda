@@ -66287,7 +66287,7 @@ function () {
 
                 if (response.data.meltdownLevel) {
                   //           store.dispatch(setMeltdownLevel(response.data.meltdownLevel));
-                  _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_6__["setMeltdownLevel"])(6));
+                  _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_6__["setMeltdownLevel"])(3));
                 }
 
                 setTimeout(_store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch, timeToBeginTyping, Object(_actions__WEBPACK_IMPORTED_MODULE_6__["setTyping"])(true));
@@ -68054,20 +68054,28 @@ function (_React$Component) {
 
     _this.startMeltdownTransition = function () {
       var chatWindow = document.querySelector('.chat');
-      chatWindow.classList.add('shake');
 
-      if (_this.props.meltdownLevel > 2) {
-        var fuzzyScreen = document.querySelector('.chat__meltdown__fuzzy-screen');
+      if (chatWindow) {
+        chatWindow.classList.add('shake');
+      }
+
+      var fuzzyScreen = document.querySelector('.chat__meltdown__fuzzy-screen');
+
+      if (fuzzyScreen && _this.props.meltdownLevel > 2) {
         fuzzyScreen.classList.remove('d-none');
       }
     };
 
     _this.endMeltdownTransition = function () {
       var chatWindow = document.querySelector('.chat');
-      chatWindow.classList.remove('shake');
 
-      if (_this.props.meltdownLevel > 2) {
-        var fuzzyScreen = document.querySelector('.chat__meltdown__fuzzy-screen');
+      if (chatWindow) {
+        chatWindow.classList.remove('shake');
+      }
+
+      var fuzzyScreen = document.querySelector('.chat__meltdown__fuzzy-screen');
+
+      if (fuzzyScreen && _this.props.meltdownLevel > 2) {
         fuzzyScreen.classList.add('d-none');
       }
     };
@@ -68097,11 +68105,12 @@ function (_React$Component) {
       if (crackImage && this.props.meltdownLevel >= 1) {
         var crackImageHeight = document.querySelector('.chat__meltdown__cracks').clientHeight;
         var crackImageWidth = document.querySelector('.chat__meltdown__cracks').clientWidth;
-        var crackImageMultiplier = this.props.meltdownLevel < 5 ? this.props.meltdownLevel : 5;
-        crackImageTopClip = 20 + crackImageHeight * (crackImageMultiplier == 0 ? 0 : crackImageMultiplier / 5);
-        crackImageBottomClip = -20 + crackImageHeight - crackImageHeight * (crackImageMultiplier == 0 ? 0 : crackImageMultiplier / 5);
-        crackImageLeftClip = crackImageWidth * (crackImageMultiplier == 0 ? 0 : crackImageMultiplier / 5);
-        crackImageRightClip = -20 + crackImageWidth - crackImageWidth * (crackImageMultiplier == 0 ? 0 : crackImageMultiplier / 5);
+        var crackImageMaxLevel = 10;
+        var crackImageMultiplier = this.props.meltdownLevel < crackImageMaxLevel ? this.props.meltdownLevel : crackImageMaxLevel;
+        crackImageTopClip = 20 + crackImageHeight * (crackImageMultiplier == 0 ? 0 : crackImageMultiplier / crackImageMaxLevel);
+        crackImageBottomClip = -20 + crackImageHeight - crackImageHeight * (crackImageMultiplier == 0 ? 0 : crackImageMultiplier / crackImageMaxLevel);
+        crackImageLeftClip = crackImageWidth * (crackImageMultiplier == 0 ? 0 : crackImageMultiplier / crackImageMaxLevel);
+        crackImageRightClip = -20 + crackImageWidth - crackImageWidth * (crackImageMultiplier == 0 ? 0 : crackImageMultiplier / crackImageMaxLevel);
       } else {
         crackImageTopClip = 0;
         crackImageBottomClip = 113;
@@ -68111,12 +68120,7 @@ function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat__meltdown"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: {
-          padding: '10px 0 0 0',
-          position: 'absolute'
-        }
-      }, this.props.meltdownLevel), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "/img/meltdowns/fuzzy-screen.gif",
         className: "chat__meltdown__fuzzy-screen d-none",
         alt: "Fuzzy screen"
@@ -68149,17 +68153,29 @@ function (_React$Component) {
         className: "chat__meltdown__cracks chat__meltdown__cracks--bottom chat__meltdown__cracks--right",
         alt: "Broken glass"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/img/meltdowns/flame2.gif",
-        className: "chat__meltdown__flame",
-        alt: "Flames"
+        src: "/img/meltdowns/dirt.png",
+        className: 'chat__meltdown__dirt' + (this.props.meltdownLevel >= 1 ? '' : ' d-none'),
+        alt: "Dirt"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "/img/meltdowns/fly.gif",
-        className: "chat__meltdown__fly",
+        className: 'chat__meltdown__fly' + (this.props.meltdownLevel >= 2 ? '' : ' d-none'),
         alt: "Fly"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/img/meltdowns/mud.png",
+        className: 'chat__meltdown__mud' + (this.props.meltdownLevel >= 3 ? '' : ' d-none'),
+        alt: "Mud"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/img/meltdowns/bricks-corner.png",
+        className: 'chat__meltdown__bricks' + (this.props.meltdownLevel >= 5 ? '' : ' d-none'),
+        alt: "Exposed brickwork"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "/img/meltdowns/water.gif",
-        className: "chat__meltdown__water",
+        className: 'chat__meltdown__water' + (this.props.meltdownLevel >= 7 ? '' : ' d-none'),
         alt: "Water"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/img/meltdowns/flame2.gif",
+        className: 'chat__meltdown__flame' + (this.props.meltdownLevel >= 9 ? '' : ' d-none'),
+        alt: "Flames"
       }));
     }
   }]);
@@ -68529,7 +68545,9 @@ function (_React$Component) {
         className: "chat__wanda__title--1"
       }, "A Week With"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat__wanda__title--2"
-      }, "Wanda")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: 'chat__wanda__title--2--w' + (this.props.meltdownLevel >= 6 ? ' chat__wanda__title--2--w--rotate' : '')
+      }, "W"), "anda")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "/img/emotions/".concat(emotion, ".gif"),
         onLoad: this.onLoad,
         className: "chat__wanda__image chat__wanda__image--".concat(this.props.emotion, " d-none"),
@@ -68573,7 +68591,8 @@ function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    emotion: state.emotion
+    emotion: state.emotion,
+    meltdownLevel: state.meltdownLevel
   };
 };
 
