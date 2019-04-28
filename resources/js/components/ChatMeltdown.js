@@ -9,7 +9,7 @@ class ChatMeltdown extends React.Component {
     }
     
     const fuzzyScreen = document.querySelector('.chat__meltdown__fuzzy-screen');
-    if (fuzzyScreen && this.props.meltdownLevel > 2) {
+    if (fuzzyScreen && this.props.meltdownLevel > 3) {
       fuzzyScreen.classList.remove('d-none');
     }
   };
@@ -21,7 +21,7 @@ class ChatMeltdown extends React.Component {
     }
     
     const fuzzyScreen = document.querySelector('.chat__meltdown__fuzzy-screen');
-    if (fuzzyScreen && this.props.meltdownLevel > 2) {
+    if (fuzzyScreen && this.props.meltdownLevel > 3) {
       fuzzyScreen.classList.add('d-none'); 
     }
   };
@@ -45,10 +45,11 @@ class ChatMeltdown extends React.Component {
 
       if (
         this.props.meltdownLevel > 0 &&
-        this.props.meltdownLevel == Math.round(this.props.meltdownLevel) &&
         lastWandaMessage &&
         lastWandaMessage.meltdownLevel &&
-        this.props.meltdownLevel != lastWandaMessage.meltdownLevel
+        this.props.meltdownLevel != lastWandaMessage.meltdownLevel &&
+        (this.props.meltdownLevel == Math.round(this.props.meltdownLevel) ||
+        this.props.meltdownLevel - lastWandaMessage.meltdownLevel >= 1)
       ) {
         console.log('Starting meltdown transition', lastWandaMessage.id, lastWandaMessage.meltdownLevel, 'Level', this.props.meltdownLevel, 'rounded', Math.round(this.props.meltdownLevel));
         this.startMeltdownTransition();
@@ -70,7 +71,7 @@ class ChatMeltdown extends React.Component {
     if (crackImage && this.props.meltdownLevel >= 1) {
       const crackImageHeight = document.querySelector('.chat__meltdown__cracks').clientHeight;
       const crackImageWidth = document.querySelector('.chat__meltdown__cracks').clientWidth;
-      const crackImageMaxLevel = 10;
+      const crackImageMaxLevel = 8;
       const crackImageMultiplier = this.props.meltdownLevel < crackImageMaxLevel ? this.props.meltdownLevel : crackImageMaxLevel;
       crackImageTopClip = 20 + crackImageHeight * (crackImageMultiplier == 0 ? 0 : (crackImageMultiplier / crackImageMaxLevel));
       crackImageBottomClip = -20 + crackImageHeight - (crackImageHeight * (crackImageMultiplier == 0 ? 0 : (crackImageMultiplier / crackImageMaxLevel)));
@@ -98,11 +99,11 @@ class ChatMeltdown extends React.Component {
         
         <img src="/img/meltdowns/mud.png" className={'chat__meltdown__mud' + ((this.props.meltdownLevel >= 3) ? '' : ' d-none')} alt="Mud" />
         
-        <img src="/img/meltdowns/bricks-corner.png" className={'chat__meltdown__bricks' + ((this.props.meltdownLevel >= 5) ? '' : ' d-none')} alt="Exposed brickwork" />
+        <img src="/img/meltdowns/bricks-corner.png" className={'chat__meltdown__bricks' + ((this.props.meltdownLevel >= 4) ? '' : ' d-none')} alt="Exposed brickwork" />
         
-        <img src="/img/meltdowns/water.gif" className={'chat__meltdown__water' + ((this.props.meltdownLevel >= 8) ? '' : ' d-none')} alt="Water" />
+        <img src="/img/meltdowns/water.gif" className={'chat__meltdown__water' + ((this.props.meltdownLevel >= 5) ? '' : ' d-none')} alt="Water" />
         
-        <img src="/img/meltdowns/flame2.gif" className={'chat__meltdown__flame' + ((this.props.meltdownLevel >= 10) ? '' : ' d-none')} alt="Flames" />
+        <img src="/img/meltdowns/flame2.gif" className={'chat__meltdown__flame' + ((this.props.meltdownLevel >= 8) ? '' : ' d-none')} alt="Flames" />
       </div>
     );
   }
