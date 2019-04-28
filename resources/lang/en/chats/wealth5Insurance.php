@@ -25,7 +25,7 @@ return [
       'so' => "Sooo............",
       'offer' => "We can offer YOU a 42% saving on all your insurance!!",
       'whatSay' => "Whaddayasay?",
-      'persuade' => "Hmmm ok how can I persuade you?",
+      'persuade' => "Hmmm ok how can I persuade you? Well here are a couple of awesome things...",
       'awesome' => "Awesome!",
       'awesomeEmoji' => "🤘",
       'process' => "I'll start processing your deal now!",

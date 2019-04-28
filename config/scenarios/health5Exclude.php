@@ -19,6 +19,7 @@ return [
       'user' => [
         'nameNone',
       ],
+      'emotion' => 'waving',
     ],
     'nameName' => [
       'type' => 'none',
@@ -32,6 +33,7 @@ return [
         'newsWhat',
         'newsFill',
       ],
+      'emotion' => 'elated',
     ],
     'doctors' => [
       'type' => 'none',
@@ -50,6 +52,7 @@ return [
       'user' => [
         'scorePicNone',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'great' => [
       'type' => 'choice',
@@ -76,6 +79,7 @@ return [
       'user' => [
         'unhealthyNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'smoking' => [
       'type' => 'none',
@@ -94,6 +98,7 @@ return [
       'user' => [
         'vegNone',
       ],
+      'emotion' => 'thumbs-down',
     ],
     'loveVeg' => [
       'type' => 'none',
@@ -113,6 +118,7 @@ return [
       'user' => [
         'kaleNone',
       ],
+      'emotion' => 'base',
     ],
     'anyhow' => [
       'type' => 'none',
@@ -125,6 +131,7 @@ return [
       'user' => [
         'irresponsibleNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'longer' => [
       'type' => 'none',
@@ -143,6 +150,7 @@ return [
       'user' => [
         'badNone',
       ],
+      'emotion' => 'thumbs-down',
     ],
     'wrong' => [
       'type' => 'none',
@@ -168,6 +176,7 @@ return [
       'user' => [
         'rewardNone',
       ],
+      'emotion' => 'base',
     ],
     'restrict' => [
       'type' => 'none',
@@ -203,6 +212,7 @@ return [
       'user' => [
         'gladNone',
       ],
+      'emotion' => 'clapping',
     ],
     'soFar' => [
       'type' => 'none',
@@ -241,18 +251,21 @@ return [
         'bye1',
         'bye2',
       ],
+      'emotion' => 'base',
     ],
     'bye' => [
       'type' => 'none',
       'user' => [
         'byeNone',
       ],
+      'emotion' => 'waving',
     ],
     'pharmacies' => [
       'type' => 'none',
       'user' => [
         'pharmaciesNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'medication' => [
       'type' => 'none',
@@ -271,6 +284,7 @@ return [
       'user' => [
         'losingNone',
       ],
+      'emotion' => 'frustrated',
     ],
     'why' => [
       'type' => 'textArea',
@@ -283,6 +297,7 @@ return [
       'user' => [
         'devilEmojiNone',
       ],
+      'emotion' => 'meltdown',
     ],
     'breath' => [
       'type' => 'none',
@@ -302,6 +317,7 @@ return [
       'user' => [
         'seeNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'other' => [
       'type' => 'choice',
@@ -316,6 +332,7 @@ return [
         'cancerGreat1',
         'cancerGreat2',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'phew' => [
       'type' => 'none',
@@ -359,12 +376,14 @@ return [
       'user' => [
         'sighNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'criticism' => [
       'type' => 'none',
       'user' => [
         'criticismNone',
       ],
+      'emotion' => 'angry',
     ],
     'hard' => [
       'type' => 'none',

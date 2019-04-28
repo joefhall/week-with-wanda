@@ -19,6 +19,7 @@ return [
       'user' => [
         'nameNone',
       ],
+      'emotion' => 'waving',
     ],
     'nameName' => [
       'type' => 'none',
@@ -50,6 +51,7 @@ return [
       'user' => [
         'selfHelpNone',
       ],
+      'emotion' => 'clapping',
     ],
     'selfHelpPic' => [
       'type' => 'none',
@@ -75,12 +77,14 @@ return [
       'user' => [
         'keyNone',
       ],
+      'emotion' => 'base',
     ],
     'people' => [
       'type' => 'none',
       'user' => [
         'peopleNone',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'surround' => [
       'type' => 'none',
@@ -93,6 +97,7 @@ return [
       'user' => [
         'peopleEmoji1None',
       ],
+      'emotion' => 'base',
     ],
     'peopleEmoji2' => [
       'type' => 'none',
@@ -149,6 +154,7 @@ return [
       'user' => [
         'countryNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'drag' => [
       'type' => 'choice',
@@ -217,6 +223,7 @@ return [
       'user' => [
         'featureNone',
       ],
+      'emotion' => 'base',
     ],
     'alert' => [
       'type' => 'none',
@@ -237,6 +244,7 @@ return [
         'choiceLove',
         'choiceLife',
       ],
+      'emotion' => 'elated',
     ],
     'shucks' => [
       'type' => 'none',
@@ -273,6 +281,7 @@ return [
       'user' => [
         'practiseNone',
       ],
+      'emotion' => 'clapping',
     ],
     'practiseEmoji' => [
       'type' => 'none',
@@ -293,6 +302,7 @@ return [
         'comeAgree',
         'comeDisagree',
       ],
+      'emotion' => 'unhappy',
     ],
     'losers' => [
       'type' => 'none',
@@ -312,6 +322,7 @@ return [
         'mistake',
         'problemText',
       ],
+      'emotion' => 'base',
     ],
     'might' => [
       'type' => 'none',
@@ -361,6 +372,7 @@ return [
       'user' => [
         'mistakesNone',
       ],
+      'emotion' => 'angry',
     ],
     'better' => [
       'type' => 'textArea',
@@ -373,6 +385,7 @@ return [
       'user' => [
         'sighNone',
       ],
+      'emotion' => 'frustrated',
     ],
     'hard' => [
       'type' => 'none',
@@ -398,6 +411,7 @@ return [
       'user' => [
         'regroupNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'happier' => [
       'type' => 'choice',
@@ -412,6 +426,7 @@ return [
         'bye1',
         'bye2',
       ],
+      'emotion' => 'waving',
     ],
     'survey' => [
       'type' => 'none',

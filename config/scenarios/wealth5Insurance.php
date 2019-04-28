@@ -19,6 +19,7 @@ return [
       'user' => [
         'nameNone',
       ],
+      'emotion' => 'waving',
     ],
     'nameName' => [
       'type' => 'choice',
@@ -32,6 +33,7 @@ return [
       'user' => [
         'dealNone',
       ],
+      'emotion' => 'clapping',
     ],
     'alarmPic' => [
       'type' => 'none',
@@ -64,6 +66,7 @@ return [
         'safeWhy',
         'safeHow',
       ],
+      'emotion' => 'complimenting',
     ],
     'skin' => [
       'type' => 'none',
@@ -107,12 +110,14 @@ return [
       'user' => [
         'persuadeNone',
       ],
+      'emotion' => 'base',
     ],
     'awesome' => [
       'type' => 'none',
       'user' => [
         'awesomeNone',
       ],
+      'emotion' => 'elated',
     ],
     'awesomeEmoji' => [
       'type' => 'none',
@@ -132,6 +137,7 @@ return [
       'user' => [
         'saveMoreNone',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'refusing' => [
       'type' => 'none',
@@ -152,6 +158,7 @@ return [
       'user' => [
         'gladNone',
       ],
+      'emotion' => 'clapping',
     ],
     'complaints' => [
       'type' => 'none',
@@ -171,6 +178,7 @@ return [
       'user' => [
         'butNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'whatMind' => [
       'type' => 'textArea',
@@ -183,6 +191,7 @@ return [
       'user' => [
         'sakeNone',
       ],
+      'emotion' => 'angry',
     ],
     'always' => [
       'type' => 'none',
@@ -207,6 +216,7 @@ return [
       'user' => [
         'devilEmojiNone',
       ],
+      'emotion' => 'meltdown',
     ],
     'oh' => [
       'type' => 'none',
@@ -232,6 +242,7 @@ return [
         'breakOk',
         'breakToo',
       ],
+      'emotion' => 'unhappy',
     ],
     'tomorrow' => [
       'type' => 'none',
@@ -252,6 +263,7 @@ return [
         'bye1',
         'bye2',
       ],
+      'emotion' => 'waving',
     ],
     'happyEmoji' => [
       'type' => 'none',
