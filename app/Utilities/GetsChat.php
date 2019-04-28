@@ -65,7 +65,7 @@ trait GetsChat
     if ($user) {
       $chatDataUser = [
         'country' => $user->country,
-        'countryName' => locale_get_display_region("-{$user->country}", 'en'),
+        'countryName' => $this->getCountryName($user->country),
         'email' => $user->email,
         'mobileNumber' => $user->mobile_number,
         'name' => $user->first_name,
@@ -82,6 +82,25 @@ trait GetsChat
     }
 
     return $chatDataGeneral;
+  }
+  
+  /**
+   * Gets the human readable name of the user's country
+   *
+   * @param string $countryCode
+   * @return string
+   */
+  public function getCountryName(string $countryCode)
+  {
+    $countryName = locale_get_display_region("-{$countryCode}", 'en');
+    
+    $addTheCountries = ['GB', 'US'];
+    
+    if (in_array($countryCode, $addTheCountries)) {
+      $countryName = 'the ' . $countryName;
+    }
+    
+    return $countryName;
   }
   
   /**
