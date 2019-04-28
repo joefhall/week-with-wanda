@@ -42,7 +42,7 @@ return [
       'whatsYourName' => ":WandaGreat. Ok first up, what's your name?",
       'whatsYourEmail' => "And what's your email?",
       'invalidEmail' => "Sorry, that doesn't look like a valid email address. Take another go?",
-      'userExists' => "Hey :name it looks like you've already signed up? <a href='/login'>Try logging in instead</a>",
+      'userExists' => "Hey it looks like you've already signed up? <a href='/login'>Try logging in instead</a>",
       'choosePassword' => "Now please choose a password so we can keep our chats confidential",
       'greatThanks' => 'Great, thanks. Now just give me a sec to save your details...',
       'greatThanksFacebook' => 'Great, thanks. Now just give me a sec to save your details...',
