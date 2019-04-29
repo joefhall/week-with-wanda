@@ -68118,7 +68118,7 @@ function (_React$Component) {
       var crackImageLeftClip;
       var crackImageRightClip;
 
-      if (crackImage && this.props.meltdownLevel >= 1) {
+      if (crackImage && this.props.meltdownLevel >= 1 && this.props.meltdownLevel < 50) {
         var crackImageHeight = document.querySelector('.chat__meltdown__cracks').clientHeight;
         var crackImageWidth = document.querySelector('.chat__meltdown__cracks').clientWidth;
         var crackImageMaxLevel = 8;
@@ -68192,6 +68192,10 @@ function (_React$Component) {
         src: "/img/meltdowns/flame2.gif",
         className: 'chat__meltdown__flame' + (this.props.meltdownLevel >= 8 && this.props.meltdownLevel < 50 ? '' : ' d-none'),
         alt: "Flames"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/img/meltdowns/cloud.png",
+        className: 'chat__meltdown__cloud' + (this.props.meltdownLevel >= 50 && this.props.emotion !== 'blown-up' ? '' : ' d-none'),
+        alt: "Cloud"
       }));
     }
   }]);
@@ -68203,6 +68207,7 @@ function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
+    emotion: state.emotion,
     meltdownLevel: state.meltdownLevel,
     messages: state.messages
   };

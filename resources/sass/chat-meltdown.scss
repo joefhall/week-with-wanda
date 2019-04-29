@@ -13,6 +13,15 @@
     z-index: 2000;
   }
   
+  &__cloud {
+    height: auto;
+    position: absolute;
+    left: -8%;
+    top: 9%;
+    width: 47%;
+    z-index: 2000;
+  }
+  
   &__cracks {
     height: 50%;
     opacity: 0.5;

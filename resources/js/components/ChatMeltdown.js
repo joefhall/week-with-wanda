@@ -69,7 +69,7 @@ class ChatMeltdown extends React.Component {
     let crackImageLeftClip;
     let crackImageRightClip;
     
-    if (crackImage && this.props.meltdownLevel >= 1) {
+    if (crackImage && this.props.meltdownLevel >= 1 && this.props.meltdownLevel < 50) {
       const crackImageHeight = document.querySelector('.chat__meltdown__cracks').clientHeight;
       const crackImageWidth = document.querySelector('.chat__meltdown__cracks').clientWidth;
       const crackImageMaxLevel = 8;
@@ -105,6 +105,8 @@ class ChatMeltdown extends React.Component {
         <img src="/img/meltdowns/water.gif" className={'chat__meltdown__water' + ((this.props.meltdownLevel >= 5 && this.props.meltdownLevel < 50) ? '' : ' d-none')} alt="Water" />
         
         <img src="/img/meltdowns/flame2.gif" className={'chat__meltdown__flame' + ((this.props.meltdownLevel >= 8 && this.props.meltdownLevel < 50) ? '' : ' d-none')} alt="Flames" />
+        
+        <img src="/img/meltdowns/cloud.png" className={'chat__meltdown__cloud' + ((this.props.meltdownLevel >= 50 && this.props.emotion !== 'blown-up') ? '' : ' d-none')} alt="Cloud" />
       </div>
     );
   }
@@ -112,6 +114,7 @@ class ChatMeltdown extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    emotion: state.emotion,
     meltdownLevel: state.meltdownLevel,
     messages: state.messages
   };
