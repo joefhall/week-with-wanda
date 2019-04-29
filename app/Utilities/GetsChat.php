@@ -75,6 +75,7 @@ trait GetsChat
         'randomSurname' => $this->getFakeSurname($user->country),
         'wandaConjunction' => $this->getConjunction('user', $previousUserMessageId),
         'wandaCumulativeResponse' => $this->getWandaCumulativeResponse(),
+        'wandaIdentity' => $this->randomCommon('wanda', 'identity'),
         'wandaPreviousSentimentResponse' => $this->getResponseToSentiment('user', $previousUserMessageId),
       ];
       
