@@ -138,12 +138,19 @@ trait DoesSpecialMessageActions
       'shocked' => 0.5,
     ];
     
+    $meltdownUltimateEmotion = 'blown-up';
+    
     if ($user && $scenario && $wandaMessageId) {
       $wandaInteraction = $this->getInteraction($scenario, $wandaMessageId);
     
-      if ($user && in_array($wandaInteraction['emotion'], array_keys($meltdownEmotions))) {
-        $user->meltdown_level = $user->meltdown_level + $meltdownEmotions[$wandaInteraction['emotion']];
-        $user->save();
+      if ($user) {
+        if (in_array($wandaInteraction['emotion'], array_keys($meltdownEmotions))) {
+          $user->meltdown_level = $user->meltdown_level + $meltdownEmotions[$wandaInteraction['emotion']];
+          $user->save();
+        } else if ($wandaInteraction['emotion'] === $meltdownUltimateEmotion) {
+          $user->meltdown_level = 50;
+          $user->save();
+        }
       }
     }
   }
