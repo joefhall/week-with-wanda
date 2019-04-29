@@ -11,7 +11,7 @@ return [
     */
   
     'wanda' => [
-      'hello' => "Wow, :name! [wandaNewIdentity]",
+      'hello' => "Wow, :name!",
       'believe' => "Can you believe it? We're at the end of our week together...",
       'believeEmoji' => "😭",
       'best' => "It's gone quick... but I've saved the best for last, :name",
