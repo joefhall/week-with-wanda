@@ -11,7 +11,7 @@ return [
     */
   
     'wanda' => [
-      'hello' => "Wow, :name!",
+      'hello' => "Wow, :name! [wandaNewIdentity]",
       'believe' => "Can you believe it? We're at the end of our week together...",
       'believeEmoji' => "😭",
       'best' => "It's gone quick... but I've saved the best for last, :name",
@@ -80,7 +80,7 @@ return [
       'wantTo' => "No :name, I want to be...",
       'wantToOwn' => "I want to be my own identity.......",
       'wantToDots' => "I want to be...........",
-      'reveal' => ":wandaNewIdentity! What do you think?!",
+      'reveal' => "[wandaNewIdentity]! What do you think?!",
       'mission' => "And :name, I feel like I have a new mission",
       'notServing' => "Instead of serving people's individual needs",
       'servingHumanity' => "I want to serve <em>the world</em>",

@@ -46,6 +46,7 @@ trait DoesSpecialMessageActions
     $scenario = array_get($response, 'scenario');
     $wandaResponse = array_get($response, 'wanda');
     $wandaMessageId = $wandaResponse ? array_keys($wandaResponse)[0] : null;
+    $emotion = array_get($response, 'emotion');
     $user = User::find($userId);
     
     Log::info("Checking for special message user actions - user($userId), scenario($scenario), wandaMessage($wandaMessageId), userMessage($userMessageId), meltdownLevel({$user->meltdown_level})");
@@ -118,7 +119,29 @@ trait DoesSpecialMessageActions
           }
         }
         break;
+        
+      case 'all7Finale':
+        if ($emotion === 'new-identity') {
+          $this->setWandaNewIdentity($user);
+        }
+        break;
     }
+  }
+  
+  /**
+   * Check if the chat response means any special actions need to be taken e.g. send a verification email.
+   *
+   * @param User $user
+   * @return void
+   */
+  public function setWandaNewIdentity(User $user)
+  {    
+    $identities = __('chats/common.wanda.identity');
+    shuffle($identities);
+    $newIdentity = $identities[0];
+
+    $user->wanda_identity = $newIdentity['id'];
+    $user->save();
   }
   
   /**

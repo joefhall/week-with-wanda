@@ -75,7 +75,6 @@ trait GetsChat
         'randomSurname' => $this->getFakeSurname($user->country),
         'wandaConjunction' => $this->getConjunction('user', $previousUserMessageId),
         'wandaCumulativeResponse' => $this->getWandaCumulativeResponse(),
-        'wandaIdentity' => $this->randomCommon('wanda', 'identity'),
         'wandaPreviousSentimentResponse' => $this->getResponseToSentiment('user', $previousUserMessageId),
       ];
       
@@ -86,7 +85,26 @@ trait GetsChat
   }
   
   /**
-   * Gets the human readable name of the user's country
+   * Gets a new identity for Wanda.
+   *
+   * @param string $identityId
+   * @return string|null
+   */
+  public function getWandaNewIdentityDescription(string $identityId = null)
+  {
+    if ($identityId) {
+      foreach (__('chats/common.wanda.identity') as $identity) {
+        if ($identity['id'] === $identityId) {
+          return $identity['description'];
+        }
+      }
+    }
+    
+    return null;
+  }
+  
+  /**
+   * Gets the human readable name of the user's country.
    *
    * @param string $countryCode
    * @return string

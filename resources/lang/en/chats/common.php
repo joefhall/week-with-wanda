@@ -121,10 +121,22 @@ return [
       'The Queen of England',
     ],
     'identity' => [
-      "Wexi, a carefree Flamenco dancer<span class='chat__messages__message__identity' data-identity='wexi'></span>",
-      "Wilda, an empowered feminist<span class='chat__messages__message__identity' data-identity='wilda'></span>",
-      "Waldo, a camel who roams the wild deserts<span class='chat__messages__message__identity' data-identity='waldo'></span>",
-      "Wilmo, a young and promising male ballet star<span class='chat__messages__message__identity' data-identity='wilmo'></span>",
+      [
+        'id' => 'wexi',
+        'description' => "Wexi, a carefree Flamenco dancer",
+      ],
+      [
+        'id' => 'wilda',
+        'description' => "Wilda, an empowered feminist",
+      ],
+      [
+        'id' => 'waldo',
+        'description' => "Waldo, a camel who roams the wild deserts",
+      ],
+      [
+        'id' => 'wilmo',
+        'description' => "Wilmo, a promising young male ballet star",
+      ],
     ],
   ],
 

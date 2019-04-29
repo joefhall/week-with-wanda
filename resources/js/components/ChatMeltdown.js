@@ -106,7 +106,7 @@ class ChatMeltdown extends React.Component {
         
         <img src="/img/meltdowns/flame2.gif" className={'chat__meltdown__flame' + ((this.props.meltdownLevel >= 8 && this.props.meltdownLevel < 50) ? '' : ' d-none')} alt="Flames" />
         
-        <img src="/img/meltdowns/cloud.png" className={'chat__meltdown__cloud' + ((this.props.meltdownLevel >= 50 && this.props.emotion !== 'blown-up') ? '' : ' d-none')} alt="Cloud" />
+        <img src="/img/meltdowns/cloud.png" className={'chat__meltdown__cloud' + ((this.props.meltdownLevel >= 50 && this.props.emotion !== 'blown-up' && this.props.emotion !== 'new-identity') ? '' : ' d-none')} alt="Cloud" />
       </div>
     );
   }

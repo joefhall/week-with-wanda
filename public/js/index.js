@@ -66064,19 +66064,21 @@ module.exports = function(module) {
 /*!***************************************!*\
   !*** ./resources/js/actions/index.js ***!
   \***************************************/
-/*! exports provided: addMessage, setEmotion, setInput, setMeltdownLevel, setTyping, setUserProperty */
+/*! exports provided: addMessage, setEmotion, setIdentity, setInput, setMeltdownLevel, setTyping, setUserProperty */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addMessage", function() { return addMessage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setEmotion", function() { return setEmotion; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setIdentity", function() { return setIdentity; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setInput", function() { return setInput; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setMeltdownLevel", function() { return setMeltdownLevel; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setTyping", function() { return setTyping; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setUserProperty", function() { return setUserProperty; });
 var addMessage = function addMessage(time, scenario, sender, id, message) {
   var meltdownLevel = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : null;
+  var identity = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : null;
   return {
     type: sender === 'user' ? 'USER_MESSAGE_INPUTTED' : 'WANDA_MESSAGE_RECEIVED',
     payload: {
@@ -66085,7 +66087,8 @@ var addMessage = function addMessage(time, scenario, sender, id, message) {
       sender: sender,
       id: id,
       message: message,
-      meltdownLevel: meltdownLevel
+      meltdownLevel: meltdownLevel,
+      identity: identity
     }
   };
 };
@@ -66094,6 +66097,14 @@ var setEmotion = function setEmotion(emotion) {
     type: 'EMOTION_SET',
     payload: {
       emotion: emotion
+    }
+  };
+};
+var setIdentity = function setIdentity(identity) {
+  return {
+    type: 'IDENTITY_SET',
+    payload: {
+      identity: identity
     }
   };
 };
@@ -66288,6 +66299,11 @@ function () {
                 }
 
                 _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_6__["setMeltdownLevel"])(response.data.meltdownLevel ? response.data.meltdownLevel : 0));
+
+                if (response.data.identity) {
+                  _store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_6__["setIdentity"])(response.data.identity));
+                }
+
                 setTimeout(_store__WEBPACK_IMPORTED_MODULE_3__["default"].dispatch, timeToBeginTyping, Object(_actions__WEBPACK_IMPORTED_MODULE_6__["setTyping"])(true));
                 setTimeout(showResponse, typingDelay(wandaMessage), response.data, wandaMessageId, wandaMessage);
               }
@@ -68194,7 +68210,7 @@ function (_React$Component) {
         alt: "Flames"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "/img/meltdowns/cloud.png",
-        className: 'chat__meltdown__cloud' + (this.props.meltdownLevel >= 50 && this.props.emotion !== 'blown-up' ? '' : ' d-none'),
+        className: 'chat__meltdown__cloud' + (this.props.meltdownLevel >= 50 && this.props.emotion !== 'blown-up' && this.props.emotion !== 'new-identity' ? '' : ' d-none'),
         alt: "Cloud"
       }));
     }
@@ -68558,21 +68574,28 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var emotion = !Array.isArray(this.props.emotion) && this.props.emotion ? this.props.emotion : 'base';
+
+      if (emotion === 'new-identity' && this.props.identity) {
+        emotion = this.props.identity;
+      } else {
+        emotion = 'base';
+      }
+
       console.log('Emotion is...', emotion);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat__wanda"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatMeltdown__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat__wanda__title"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "chat__wanda__title--1"
+        className: 'chat__wanda__title--1' + (this.props.emotion === 'new-identity' ? ' d-none' : '')
       }, "A Week With"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat__wanda__title--2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: 'chat__wanda__title--2--w' + (this.props.meltdownLevel >= 6 && this.props.meltdownLevel < 50 ? ' chat__wanda__title--2--w--rotate' : '')
-      }, "W"), "anda")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, "W"), this.props.emotion === 'new-identity' ? emotion.slice(1) : 'anda')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "/img/emotions/".concat(emotion, ".gif"),
         onLoad: this.onLoad,
-        className: "chat__wanda__image chat__wanda__image--".concat(this.props.emotion, " d-none"),
+        className: "chat__wanda__image chat__wanda__image--".concat(emotion, " d-none"),
         alt: "Wanda"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "/img/emotions/elated.gif",
@@ -68614,6 +68637,7 @@ function (_React$Component) {
 var mapStateToProps = function mapStateToProps(state) {
   return {
     emotion: state.emotion,
+    identity: state.identity,
     meltdownLevel: state.meltdownLevel
   };
 };
@@ -68865,6 +68889,19 @@ var emotionReducer = function emotionReducer() {
   return state;
 };
 
+var identityReducer = function identityReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  console.log('Identity reducer state', state);
+  console.log('Identity reducer action', action);
+
+  if (action && action.type === 'IDENTITY_SET') {
+    return action.payload.identity;
+  }
+
+  return state;
+};
+
 var inputReducer = function inputReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
@@ -68930,6 +68967,7 @@ var userPropertyReducer = function userPropertyReducer() {
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   emotion: emotionReducer,
+  identity: identityReducer,
   input: inputReducer,
   meltdownLevel: meltdownLevelReducer,
   messages: messagesReducer,

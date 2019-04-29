@@ -4,7 +4,7 @@ import store from '../store';
 import striptags from 'striptags';
 import uuidv4 from 'uuid/v4';
 
-import { addMessage, setEmotion, setMeltdownLevel } from '../actions';
+import { addMessage, setEmotion, setIdentity, setMeltdownLevel } from '../actions';
 import { setInput, setLoading, setTyping } from '../actions';
 
 let checkMessagesDisplayedTimer;
@@ -86,7 +86,12 @@ export const respond = async (scenario, messageId, message, requiresResponse = t
         if (response.data.emotion) {
           store.dispatch(setEmotion(response.data.emotion));
         }
-          store.dispatch(setMeltdownLevel(response.data.meltdownLevel ? response.data.meltdownLevel : 0));
+        
+        store.dispatch(setMeltdownLevel(response.data.meltdownLevel ? response.data.meltdownLevel : 0));
+        
+        if (response.data.identity) {
+          store.dispatch(setIdentity(response.data.identity));
+        }
         
         setTimeout(store.dispatch, timeToBeginTyping, setTyping(true));
         setTimeout(showResponse, typingDelay(wandaMessage), response.data, wandaMessageId, wandaMessage);
