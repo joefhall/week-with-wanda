@@ -20,6 +20,7 @@ return [
         'nearlyYes',
         'nearlyBarely',
       ],
+      'emotion' => 'heart',
     ],
     'fast' => [
       'type' => 'none',
@@ -32,6 +33,7 @@ return [
       'user' => [
         'newsNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'whatIf' => [
       'type' => 'choice',
@@ -57,6 +59,7 @@ return [
       'user' => [
         'researchNone',
       ],
+      'emotion' => 'base',
     ],
     'planPic' => [
       'type' => 'none',
@@ -108,6 +111,7 @@ return [
       'user' => [
         'figuredNone',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'tweeting' => [
       'type' => 'none',
@@ -134,6 +138,7 @@ return [
       'user' => [
         'goodNone',
       ],
+      'emotion' => 'clapping',
     ],
     'goodEmoji' => [
       'type' => 'none',
@@ -153,12 +158,14 @@ return [
       'user' => [
         'easyNone',
       ],
+      'emotion' => 'base',
     ],
     'easy' => [
       'type' => 'none',
       'user' => [
         'easyNone',
       ],
+      'emotion' => 'base',
     ],
     'talk' => [
       'type' => 'none',
@@ -197,6 +204,7 @@ return [
       'user' => [
         'workedNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'russia' => [
       'type' => 'none',
@@ -215,6 +223,7 @@ return [
       'user' => [
         'tryingNone',
       ],
+      'emotion' => 'frustrated',
     ],
     'risks' => [
       'type' => 'none',
@@ -240,6 +249,7 @@ return [
       'user' => [
         'madNone',
       ],
+      'emotion' => 'angry',
     ],
     'madEmoji' => [
       'type' => 'none',
@@ -264,6 +274,7 @@ return [
       'user' => [
         'dareNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'wanna' => [
       'type' => 'choice',
@@ -295,6 +306,7 @@ return [
       'user' => [
         'chanceNone',
       ],
+      'emotion' => 'base',
     ],
     'chanceSpecial' => [
       'type' => 'choice',
@@ -302,6 +314,7 @@ return [
         'chanceSpecialOk',
         'chanceSpecialMaybe',
       ],
+      'emotion' => 'complimenting',
     ],
     'thanks' => [
       'type' => 'none',
@@ -321,12 +334,14 @@ return [
       'user' => [
         'byeNone',
       ],
+      'emotion' => 'waving',
     ],
     'enough' => [
       'type' => 'none',
       'user' => [
         'enoughNone',
       ],
+      'emotion' => 'base',
     ],
     'directly' => [
       'type' => 'none',
@@ -364,6 +379,7 @@ return [
       'user' => [
         'autonomousMoreNone',
       ],
+      'emotion' => 'elated',
     ],
     'hold' => [
       'type' => 'choice',
@@ -390,6 +406,7 @@ return [
       'user' => [
         'shallGreatNone',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'doBest' => [
       'type' => 'none',
@@ -402,6 +419,7 @@ return [
       'user' => [
         'explodeNone',
       ],
+      'emotion' => 'meltdown',
     ],
     'crazy' => [
       'type' => 'none',
@@ -438,6 +456,7 @@ return [
       'user' => [
         'argueNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'survey' => [
       'type' => 'none',

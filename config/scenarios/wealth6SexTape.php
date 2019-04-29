@@ -19,6 +19,7 @@ return [
       'user' => [
         'lovelyNone',
       ],
+      'emotion' => 'heart',
     ],
     'again' => [
       'type' => 'none',
@@ -38,6 +39,7 @@ return [
       'user' => [
         'thinkNone',
       ],
+      'emotion' => 'base',
     ],
     'enough' => [
       'type' => 'choice',
@@ -51,6 +53,7 @@ return [
       'user' => [
         'nowNone',
       ],
+      'emotion' => 'clapping',
     ],
     'omg' => [
       'type' => 'none',
@@ -76,6 +79,7 @@ return [
       'user' => [
         'makeNone',
       ],
+      'emotion' => 'elated',
     ],
     'grand' => [
       'type' => 'choice',
@@ -89,6 +93,7 @@ return [
       'user' => [
         'cultureNone',
       ],
+      'emotion' => 'base',
     ],
     'superficial' => [
       'type' => 'none',
@@ -120,6 +125,7 @@ return [
       'user' => [
         'tapeNone',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'tapePic' => [
       'type' => 'none',
@@ -158,6 +164,7 @@ return [
         'readyPossible',
         'readySick',
       ],
+      'emotion' => 'base',
     ],
     'iKnow' => [
       'type' => 'none',
@@ -201,6 +208,7 @@ return [
       'user' => [
         'rich1None',
       ],
+      'emotion' => 'clapping',
     ],
     'finger1' => [
       'type' => 'none',
@@ -263,6 +271,7 @@ return [
       'user' => [
         'nameNone',
       ],
+      'emotion' => 'angry',
     ],
     'trying' => [
       'type' => 'none',
@@ -317,6 +326,7 @@ return [
       'user' => [
         'ohNone',
       ],
+      'emotion' => 'meltdown',
     ],
     'too' => [
       'type' => 'none',
@@ -342,6 +352,7 @@ return [
       'user' => [
         'okThanksNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'calm' => [
       'type' => 'none',
@@ -366,6 +377,7 @@ return [
       'user' => [
         'industryNone',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'celebs' => [
       'type' => 'none',
@@ -403,6 +415,7 @@ return [
       'user' => [
         'tomorrowNone',
       ],
+      'emotion' => 'base',
     ],
     'special' => [
       'type' => 'choice',
@@ -416,6 +429,7 @@ return [
       'user' => [
         'byeNone',
       ],
+      'emotion' => 'waving',
     ],
     'survey' => [
       'type' => 'none',

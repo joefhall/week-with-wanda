@@ -19,6 +19,7 @@ return [
       'user' => [
         'sweetNone',
       ],
+      'emotion' => 'heart',
     ],
     'again' => [
       'type' => 'none',
@@ -38,6 +39,7 @@ return [
       'user' => [
         'thinkNone',
       ],
+      'emotion' => 'base',
     ],
     'enough' => [
       'type' => 'choice',
@@ -58,12 +60,14 @@ return [
         'wow',
         'more',
       ],
+      'emotion' => 'elated',
     ],
     'service' => [
       'type' => 'none',
       'user' => [
         'serviceNone',
       ],
+      'emotion' => 'base',
     ],
     'police' => [
       'type' => 'none',
@@ -83,6 +87,7 @@ return [
         'whatIs',
         'tellMe',
       ],
+      'emotion' => 'clapping',
     ],
     'mugshots' => [
       'type' => 'none',
@@ -114,6 +119,7 @@ return [
         'readyOk',
         'readyUnsure',
       ],
+      'emotion' => 'base',
     ],
     'here' => [
       'type' => 'none',
@@ -146,6 +152,7 @@ return [
       'user' => [
         'friendsNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'match' => [
       'type' => 'none',
@@ -195,6 +202,7 @@ return [
       'user' => [
         'okNone',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'custody' => [
       'type' => 'choice',
@@ -232,6 +240,7 @@ return [
       'user' => [
         'someNone',
       ],
+      'emotion' => 'base',
     ],
     'reoffenders' => [
       'type' => 'choice',
@@ -246,6 +255,7 @@ return [
       'user' => [
         'worriedText',
       ],
+      'emotion' => 'unhappy',
     ],
     'save' => [
       'type' => 'none',
@@ -282,6 +292,7 @@ return [
       'user' => [
         'nameNone',
       ],
+      'emotion' => 'meltdown',
     ],
     'angryEmoji' => [
       'type' => 'none',
@@ -330,12 +341,14 @@ return [
       'user' => [
         'lookNone',
       ],
+      'emotion' => 'unhappy',
     ],
     'welcome' => [
       'type' => 'none',
       'user' => [
         'welcomeNone',
       ],
+      'emotion' => 'elated',
     ],
     'life' => [
       'type' => 'none',
@@ -384,6 +397,7 @@ return [
       'user' => [
         'specialNone',
       ],
+      'emotion' => 'base',
     ],
     'seeYou' => [
       'type' => 'choice',
@@ -404,6 +418,7 @@ return [
       'user' => [
         'byeNone',
       ],
+      'emotion' => 'waving',
     ],
     'survey' => [
       'type' => 'none',
