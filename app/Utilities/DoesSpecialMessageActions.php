@@ -53,13 +53,17 @@ trait DoesSpecialMessageActions
     $this->addToMeltdownLevel($user, $scenario, $wandaMessageId);
     
     if (
-      in_array(config("scenarios.$scenario.category"), ['health', 'wealth', 'relationships', 'all'])
-      && $userMessageId === 'begin'
+      $scenario &&
+      in_array(config("scenarios.$scenario.category"), ['health', 'wealth', 'relationships', 'all']) &&
+      $userMessageId === 'begin'
     ) {
       $this->userRepository->setScenarioPivot($userId, $scenario, 'started', true);
     }
     
-    if (in_array($userMessageId, ['bye1', 'bye2',])) {
+    if (
+      $scenario &&
+      in_array($userMessageId, ['bye1', 'bye2',])
+    ) {
       $this->userRepository->setScenarioPivot($userId, $scenario, 'finished', true);
     }
     
