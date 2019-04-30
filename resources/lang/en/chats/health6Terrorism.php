@@ -16,7 +16,7 @@ return [
       'news' => "Every day I read the news... about people being killed by terrorists",
       'whatIf' => "And I think \"what if that happened to :name?\"",
       'cantHelp' => "I can't help it",
-      'bigger' => "I mean, what bigger risk to your health is there than <strong<em>dying?!</em></strong>",
+      'bigger' => "I mean, what bigger risk to your health is there than <strong><em>dying?!</em></strong>",
       'research' => "But I've been doing some research... and I have a plan",
       'planPic' => "<img class='chat__messages__message__bubble__image' src='/img/health6TerrorismPlan.gif' />",
       'hear' => "Do you want to hear?",
