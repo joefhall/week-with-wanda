@@ -1,0 +1,51 @@
+.chat__ai-views {
+  background-color: white;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  height: 50%;
+  padding: $spacer * .5 0;
+  
+  &__views {
+    overflow-y: scroll;
+    
+    &__view {
+      
+      &__description {
+        color: gray;
+        font-style: italic;
+        padding-right: $spacer;
+        text-align: right;
+      }
+      
+      &__entry {
+        cursor: pointer;
+        transition: opacity 1s linear;
+        
+        &--hidden {
+          opacity: 0;
+        }
+        
+        &__add {
+          align-items: center;
+          color: $main-colour;
+          cursor: pointer;
+          display: flex;
+          margin-right: $spacer * .5;
+        }
+      }
+    }
+    
+    &__wanda {
+      flex: 1 1 auto;
+      
+      &__message {
+          &__bubble {
+            &--extra-wide {
+              max-width: 97% !important;
+            }
+        }
+      }
+    }
+  }
+}

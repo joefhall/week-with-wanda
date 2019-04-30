@@ -66182,7 +66182,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-
 var checkMessagesDisplayedTimer;
 var minTypingTime = 2000;
 var sessionId = uuid_v4__WEBPACK_IMPORTED_MODULE_5___default()();
@@ -66611,15 +66610,16 @@ function (_React$Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Chat; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_div_100vh__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-div-100vh */ "./node_modules/react-div-100vh/lib/index.js");
-/* harmony import */ var react_div_100vh__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_div_100vh__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _ChatInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ChatInput */ "./resources/js/components/ChatInput.js");
-/* harmony import */ var _ChatLoading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ChatLoading */ "./resources/js/components/ChatLoading.js");
-/* harmony import */ var _ChatMessages__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ChatMessages */ "./resources/js/components/ChatMessages.js");
-/* harmony import */ var _ChatWanda__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ChatWanda */ "./resources/js/components/ChatWanda.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_div_100vh__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-div-100vh */ "./node_modules/react-div-100vh/lib/index.js");
+/* harmony import */ var react_div_100vh__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_div_100vh__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _ChatAiViews__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ChatAiViews */ "./resources/js/components/ChatAiViews.js");
+/* harmony import */ var _ChatInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ChatInput */ "./resources/js/components/ChatInput.js");
+/* harmony import */ var _ChatLoading__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ChatLoading */ "./resources/js/components/ChatLoading.js");
+/* harmony import */ var _ChatMessages__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ChatMessages */ "./resources/js/components/ChatMessages.js");
+/* harmony import */ var _ChatWanda__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ChatWanda */ "./resources/js/components/ChatWanda.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66637,6 +66637,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -66667,19 +66669,267 @@ function (_React$Component) {
   }
 
   _createClass(Chat, [{
+    key: "renderMainPane",
+    value: function renderMainPane() {
+      if (this.props.input && this.props.input.type === 'aiViews') {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatAiViews__WEBPACK_IMPORTED_MODULE_3__["default"], null);
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatMessages__WEBPACK_IMPORTED_MODULE_6__["default"], null);
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_div_100vh__WEBPACK_IMPORTED_MODULE_1___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_div_100vh__WEBPACK_IMPORTED_MODULE_2___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatWanda__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatLoading__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatMessages__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInput__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatWanda__WEBPACK_IMPORTED_MODULE_7__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatLoading__WEBPACK_IMPORTED_MODULE_5__["default"], null), this.renderMainPane(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInput__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
     }
   }]);
 
   return Chat;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
+;
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    input: state.input
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {})(Chat));
+
+/***/ }),
+
+/***/ "./resources/js/components/ChatAiViews.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/ChatAiViews.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var ChatAiViews =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ChatAiViews, _React$Component);
+
+  function ChatAiViews() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, ChatAiViews);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ChatAiViews)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this.state = {
+      aiViews: null,
+      countryName: null,
+      error: false,
+      name: null
+    };
+
+    _this.addMessageToTextArea = function (entryId, message) {
+      var textArea = document.querySelector('.chat__input__form__input');
+      textArea.value += message + ' ';
+
+      _this.hideEntry(entryId);
+    };
+
+    _this.getViews =
+    /*#__PURE__*/
+    _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              console.log('Trying to get AI views from server');
+              _context.prev = 1;
+              _context.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/ai-views');
+
+            case 4:
+              response = _context.sent;
+
+              if (response.data.error) {
+                console.log("An error occured getting AI views back from the server: ".concat(response.data.error));
+
+                _this.setState({
+                  error: true
+                });
+              } else {
+                console.log('AI views response:', response.data);
+
+                _this.setState({
+                  aiViews: response.data.views,
+                  countryName: response.data.countryName,
+                  name: response.data.name
+                });
+              }
+
+              _context.next = 12;
+              break;
+
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](1);
+              console.log("An error occured getting AI views back from the server: ".concat(_context.t0));
+
+              _this.setState({
+                error: true
+              });
+
+            case 12:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[1, 8]]);
+    }));
+
+    _this.hideEntry = function (entryId) {
+      console.log('Entry ID', entryId);
+      var entry = document.querySelector("#".concat(entryId));
+      entry.classList.add('chat__ai-views__views__view__entry--hidden');
+      setTimeout(function () {
+        entry.classList.add('d-none');
+      }, 1000);
+    };
+
+    return _this;
+  }
+
+  _createClass(ChatAiViews, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.getViews();
+    }
+  }, {
+    key: "renderAiView",
+    value: function renderAiView(aiView) {
+      var _this2 = this;
+
+      return aiView.messages.map(function (message, index) {
+        return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+          key: index,
+          id: "chat__ai-views__views__view__entry__".concat(index),
+          className: "chat__ai-views__views__view__entry",
+          onClick: function onClick(event) {
+            return _this2.addMessageToTextArea("chat__ai-views__views__view__entry__".concat(index), message);
+          }
+        }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+          className: "chat__ai-views__views__view__entry__message chat__messages__message chat__messages__message--user"
+        }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+          className: "chat__ai-views__views__view__entry__add"
+        }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("i", {
+          className: "plus square icon"
+        }), " Add")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+          className: "chat__ai-views__views__view__entry__message chat__messages__message__bubble chat__messages__message__bubble--user"
+        }, message)));
+      });
+    }
+  }, {
+    key: "renderAiViews",
+    value: function renderAiViews() {
+      var _this3 = this;
+
+      return this.state.aiViews.map(function (aiView, index) {
+        var _React$createElement;
+
+        return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", (_React$createElement = {
+          key: index
+        }, _defineProperty(_React$createElement, "key", index), _defineProperty(_React$createElement, "className", "chat__ai-views__view"), _React$createElement), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+          className: "chat__ai-views__views__view__description"
+        }, aiView.description), _this3.renderAiView(aiView));
+      });
+    }
+  }, {
+    key: "renderUserDetails",
+    value: function renderUserDetails() {
+      if (this.state.name && this.state.countryName) {
+        return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+          className: "chat__messages__message chat__messages__message--wanda"
+        }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+          className: "chat__ai-views__views__wanda__message__bubble--extra-wide chat__messages__message__bubble chat__messages__message__bubble--wanda"
+        }, "You'll appear as '", this.state.name, " from ", this.state.countryName, "'"));
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+        className: "chat__ai-views"
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+        className: "chat__ai-views__wanda"
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+        className: "chat__messages__message chat__messages__message--wanda"
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+        className: "chat__ai-views__views__wanda__message__bubble--extra-wide chat__messages__message__bubble chat__messages__message__bubble--wanda"
+      }, "Will you share your views ", react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("a", {
+        href: "/wall",
+        target: "_blank"
+      }, "on my wall"), " to help change AI? Tap to add and/or type below")), this.renderUserDetails()), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+        className: "chat__ai-views__views"
+      }, this.state.aiViews ? this.renderAiViews() : this.state.error ? 'Sorry, I couldn\'t load your views' : 'Loading...'));
+    }
+  }]);
+
+  return ChatAiViews;
+}(react__WEBPACK_IMPORTED_MODULE_2___default.a.Component);
 
 ;
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {//
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, {})(ChatAiViews));
 
 /***/ }),
 
@@ -66699,16 +66949,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
 /* harmony import */ var _api_chat__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../api/chat */ "./resources/js/api/chat.js");
-/* harmony import */ var _ChatInputChoices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ChatInputChoices */ "./resources/js/components/ChatInputChoices.js");
-/* harmony import */ var _ChatInputPassword__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ChatInputPassword */ "./resources/js/components/ChatInputPassword.js");
-/* harmony import */ var _ChatInputPasswordCreate__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ChatInputPasswordCreate */ "./resources/js/components/ChatInputPasswordCreate.js");
-/* harmony import */ var _ChatInputPhone__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ChatInputPhone */ "./resources/js/components/ChatInputPhone.js");
-/* harmony import */ var _ChatInputText__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ChatInputText */ "./resources/js/components/ChatInputText.js");
-/* harmony import */ var _ChatInputTextArea__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./ChatInputTextArea */ "./resources/js/components/ChatInputTextArea.js");
-/* harmony import */ var _ChatMessages__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./ChatMessages */ "./resources/js/components/ChatMessages.js");
-/* harmony import */ var _LoginHidden__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./LoginHidden */ "./resources/js/components/LoginHidden.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
-/* harmony import */ var _utils_text__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../utils/text */ "./resources/js/utils/text.js");
+/* harmony import */ var _ChatInputAiViews__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ChatInputAiViews */ "./resources/js/components/ChatInputAiViews.js");
+/* harmony import */ var _ChatInputChoices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ChatInputChoices */ "./resources/js/components/ChatInputChoices.js");
+/* harmony import */ var _ChatInputPassword__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ChatInputPassword */ "./resources/js/components/ChatInputPassword.js");
+/* harmony import */ var _ChatInputPasswordCreate__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./ChatInputPasswordCreate */ "./resources/js/components/ChatInputPasswordCreate.js");
+/* harmony import */ var _ChatInputPhone__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ChatInputPhone */ "./resources/js/components/ChatInputPhone.js");
+/* harmony import */ var _ChatInputText__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./ChatInputText */ "./resources/js/components/ChatInputText.js");
+/* harmony import */ var _ChatInputTextArea__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./ChatInputTextArea */ "./resources/js/components/ChatInputTextArea.js");
+/* harmony import */ var _ChatMessages__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./ChatMessages */ "./resources/js/components/ChatMessages.js");
+/* harmony import */ var _LoginHidden__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./LoginHidden */ "./resources/js/components/LoginHidden.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
+/* harmony import */ var _utils_text__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../utils/text */ "./resources/js/utils/text.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66726,6 +66977,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -66764,8 +67016,8 @@ function (_React$Component) {
     _this.addAndSendMessage = function (messageId, message) {
       var scenario = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _this.props.input.scenario;
       var requiresResponse = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
-      _store__WEBPACK_IMPORTED_MODULE_13__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setInput"])(null, null, null));
-      _store__WEBPACK_IMPORTED_MODULE_13__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["addMessage"])(Date.now(), scenario, 'user', messageId, message));
+      _store__WEBPACK_IMPORTED_MODULE_14__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setInput"])(null, null, null));
+      _store__WEBPACK_IMPORTED_MODULE_14__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["addMessage"])(Date.now(), scenario, 'user', messageId, message));
       Object(_api_chat__WEBPACK_IMPORTED_MODULE_4__["respond"])(scenario, messageId, message, requiresResponse);
     };
 
@@ -66788,7 +67040,7 @@ function (_React$Component) {
           break;
 
         case 'loginEmail':
-          _store__WEBPACK_IMPORTED_MODULE_13__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setUserProperty"])('email', inputText));
+          _store__WEBPACK_IMPORTED_MODULE_14__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setUserProperty"])('email', inputText));
 
           _this.addAndSendMessage(Object.keys(_this.props.input.userInput)[0], inputText);
 
@@ -66796,29 +67048,29 @@ function (_React$Component) {
 
         case 'loginPassword':
           messageId = Object.keys(_this.props.input.userInput)[0];
-          _store__WEBPACK_IMPORTED_MODULE_13__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setInput"])(null, null, null));
-          _store__WEBPACK_IMPORTED_MODULE_13__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setUserProperty"])('password', inputText));
-          _store__WEBPACK_IMPORTED_MODULE_13__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["addMessage"])(Date.now(), _this.props.input.scenario, 'user', messageId, '*'.repeat(inputText.length)));
+          _store__WEBPACK_IMPORTED_MODULE_14__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setInput"])(null, null, null));
+          _store__WEBPACK_IMPORTED_MODULE_14__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setUserProperty"])('password', inputText));
+          _store__WEBPACK_IMPORTED_MODULE_14__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["addMessage"])(Date.now(), _this.props.input.scenario, 'user', messageId, '*'.repeat(inputText.length)));
           Object(_api_chat__WEBPACK_IMPORTED_MODULE_4__["respond"])(_this.props.input.scenario, messageId, inputText);
           break;
 
         case 'signupEmail':
-          _store__WEBPACK_IMPORTED_MODULE_13__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setUserProperty"])('email', inputText));
+          _store__WEBPACK_IMPORTED_MODULE_14__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setUserProperty"])('email', inputText));
 
           _this.addAndSendMessage(Object.keys(_this.props.input.userInput)[0], inputText);
 
           break;
 
         case 'signupMobileNumber':
-          _store__WEBPACK_IMPORTED_MODULE_13__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setUserProperty"])('mobileNumber', inputText));
+          _store__WEBPACK_IMPORTED_MODULE_14__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setUserProperty"])('mobileNumber', inputText));
 
           _this.addAndSendMessage(Object.keys(_this.props.input.userInput)[0], inputText);
 
           break;
 
         case 'signupName':
-          inputText = Object(_utils_text__WEBPACK_IMPORTED_MODULE_14__["toTitleCase"])(inputText);
-          _store__WEBPACK_IMPORTED_MODULE_13__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setUserProperty"])('name', inputText));
+          inputText = Object(_utils_text__WEBPACK_IMPORTED_MODULE_15__["toTitleCase"])(inputText);
+          _store__WEBPACK_IMPORTED_MODULE_14__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setUserProperty"])('name', inputText));
 
           _this.addAndSendMessage(Object.keys(_this.props.input.userInput)[0], inputText);
 
@@ -66826,9 +67078,9 @@ function (_React$Component) {
 
         case 'signupPassword':
           messageId = Object.keys(_this.props.input.userInput)[0];
-          _store__WEBPACK_IMPORTED_MODULE_13__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setInput"])(null, null, null));
-          _store__WEBPACK_IMPORTED_MODULE_13__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setUserProperty"])('password', inputText));
-          _store__WEBPACK_IMPORTED_MODULE_13__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["addMessage"])(Date.now(), _this.props.input.scenario, 'user', messageId, '*'.repeat(inputText.length)));
+          _store__WEBPACK_IMPORTED_MODULE_14__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setInput"])(null, null, null));
+          _store__WEBPACK_IMPORTED_MODULE_14__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setUserProperty"])('password', inputText));
+          _store__WEBPACK_IMPORTED_MODULE_14__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["addMessage"])(Date.now(), _this.props.input.scenario, 'user', messageId, '*'.repeat(inputText.length)));
           Object(_api_chat__WEBPACK_IMPORTED_MODULE_4__["respond"])(_this.props.input.scenario, messageId, inputText);
           break;
 
@@ -66883,8 +67135,16 @@ function (_React$Component) {
         var userInputFiltered;
 
         switch (this.props.input.type) {
+          case 'aiViews':
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputAiViews__WEBPACK_IMPORTED_MODULE_5__["default"], {
+              minLength: 40,
+              placeholder: "Share your views",
+              rows: "3"
+            });
+            break;
+
           case 'choice':
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputChoices__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputChoices__WEBPACK_IMPORTED_MODULE_6__["default"], {
               onClick: this.addAndSendMessage,
               userInput: this.props.input.userInput
             });
@@ -66893,10 +67153,10 @@ function (_React$Component) {
           case 'choiceAndText':
             userInputFiltered = Object.assign({}, this.props.input.userInput);
             delete userInputFiltered[Object.keys(userInputFiltered)[Object.keys(userInputFiltered).length - 1]];
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputChoices__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputChoices__WEBPACK_IMPORTED_MODULE_6__["default"], {
               onClick: this.addAndSendMessage,
               userInput: userInputFiltered
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_10__["default"], {
               minLength: 5,
               placeholder: "Other",
               onFormSubmit: this.receiveTextInput
@@ -66904,7 +67164,7 @@ function (_React$Component) {
             break;
 
           case 'choiceMulti':
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputChoices__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputChoices__WEBPACK_IMPORTED_MODULE_6__["default"], {
               onFormSubmit: this.addAndSendMessage,
               scenario: this.props.input.scenario,
               sessionId: this.state.sessionId,
@@ -66914,13 +67174,13 @@ function (_React$Component) {
             break;
 
           case 'doLogin':
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LoginHidden__WEBPACK_IMPORTED_MODULE_12__["default"], {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LoginHidden__WEBPACK_IMPORTED_MODULE_13__["default"], {
               followUpAction: this.addAndSendMessage
             });
             break;
 
           case 'loginEmail':
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_10__["default"], {
               name: "email",
               placeholder: "Your email",
               onFormSubmit: this.receiveTextInput
@@ -66928,14 +67188,14 @@ function (_React$Component) {
             break;
 
           case 'loginPassword':
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputPassword__WEBPACK_IMPORTED_MODULE_6__["default"], {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputPassword__WEBPACK_IMPORTED_MODULE_7__["default"], {
               onFormSubmit: this.receiveTextInput
             });
             break;
 
           case 'loginChoice':
           case 'signupChoice':
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputChoices__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputChoices__WEBPACK_IMPORTED_MODULE_6__["default"], {
               onClick: this.addAndSendMessage,
               sessionId: this.state.sessionId,
               type: this.props.input.type,
@@ -66944,7 +67204,7 @@ function (_React$Component) {
             break;
 
           case 'signupEmail':
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_10__["default"], {
               name: "email",
               placeholder: "Your email",
               onFormSubmit: this.receiveTextInput
@@ -66952,13 +67212,13 @@ function (_React$Component) {
             break;
 
           case 'signupMobileNumber':
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputPhone__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputPhone__WEBPACK_IMPORTED_MODULE_9__["default"], {
               onFormSubmit: this.receiveTextInput
             });
             break;
 
           case 'signupName':
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_10__["default"], {
               minLength: 2,
               name: "first_name",
               placeholder: "Your first name",
@@ -66967,13 +67227,13 @@ function (_React$Component) {
             break;
 
           case 'signupPassword':
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputPasswordCreate__WEBPACK_IMPORTED_MODULE_7__["default"], {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputPasswordCreate__WEBPACK_IMPORTED_MODULE_8__["default"], {
               onFormSubmit: this.receiveTextInput
             });
             break;
 
           case 'text':
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_10__["default"], {
               placeholder: "",
               onFormSubmit: this.receiveTextInput
             });
@@ -66983,21 +67243,22 @@ function (_React$Component) {
             userInputFiltered = Object.assign({}, this.props.input.userInput);
             delete userInputFiltered[Object.keys(userInputFiltered)[0]];
             var textPlaceholder = Object.keys(userInputFiltered)[0].includes('MobileNumber') ? 'Enter the code I sent you' : 'Type here';
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputText__WEBPACK_IMPORTED_MODULE_10__["default"], {
               minLength: 7,
               placeholder: textPlaceholder,
               onFormSubmit: this.receiveTextInput
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputChoices__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputChoices__WEBPACK_IMPORTED_MODULE_6__["default"], {
               onClick: this.addAndSendMessage,
               userInput: userInputFiltered
             }));
             break;
 
           case 'textArea':
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputTextArea__WEBPACK_IMPORTED_MODULE_10__["default"], {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputTextArea__WEBPACK_IMPORTED_MODULE_11__["default"], {
               minLength: 40,
               placeholder: "",
-              onFormSubmit: this.receiveTextInput
+              onFormSubmit: this.receiveTextInput,
+              rows: "2"
             });
             break;
 
@@ -67033,6 +67294,144 @@ var mapStateToProps = function mapStateToProps(state) {
   addMessage: _actions__WEBPACK_IMPORTED_MODULE_3__["addMessage"],
   setInput: _actions__WEBPACK_IMPORTED_MODULE_3__["setInput"]
 })(ChatInput));
+
+/***/ }),
+
+/***/ "./resources/js/components/ChatInputAiViews.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/ChatInputAiViews.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ChatInputAiViews; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var ChatInputAiViews =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ChatInputAiViews, _React$Component);
+
+  function ChatInputAiViews() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, ChatInputAiViews);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ChatInputAiViews)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this.state = {
+      errorMessage: '',
+      hasError: false,
+      inputText: ''
+    };
+
+    _this.validate = function () {
+      var input = document.querySelectorAll('.chat__input__form__input')[0];
+
+      _this.setState({
+        errorMessage: '',
+        hasError: false
+      });
+
+      if (_this.props.minLength && input.value.length < _this.props.minLength) {
+        _this.setState({
+          errorMessage: 'Please say a little more',
+          hasError: true
+        });
+      }
+    };
+
+    _this.onChange = function (event) {
+      _this.setState({
+        inputText: event.target.value
+      });
+
+      if (_this.props.onChange) {
+        _this.props.onChange(event);
+      }
+
+      _this.validate();
+    };
+
+    _this.onFocus = function (event) {
+      if (_this.props.onFocus) {
+        _this.props.onFocus(event);
+      }
+    };
+
+    _this.onFormSubmit = function (event) {
+      event.preventDefault();
+
+      _this.validate();
+
+      if (!_this.state.errorMessage) {
+        _this.props.onFormSubmit(_this.state.inputText);
+      }
+    };
+
+    return _this;
+  }
+
+  _createClass(ChatInputAiViews, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.onFormSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: (this.state.hasError ? 'chat__input__form__error-message--has-error ' : '') + 'chat__input__form__error-message'
+      }, this.state.errorMessage), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chat__input__form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        rows: this.props.rows,
+        className: "chat__input__form__input",
+        name: this.props.name,
+        placeholder: this.props.placeholder,
+        value: this.state.inputText,
+        onChange: this.onChange,
+        onFocus: this.onFocus
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: (this.props.hideButton ? 'invisible ' : '') + 'chevron circle right icon chat__input__form__submit-button',
+        onClick: this.onFormSubmit
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chat__input__form__skip"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/wanda"
+      }, "I don't want to share anything")));
+    }
+  }]);
+
+  return ChatInputAiViews;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+;
 
 /***/ }),
 
@@ -67931,7 +68330,7 @@ function (_React$Component) {
       }, this.state.errorMessage), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat__input__form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-        rows: "2",
+        rows: this.props.rows,
         className: "chat__input__form__input",
         name: this.props.name,
         placeholder: this.props.placeholder,

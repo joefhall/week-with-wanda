@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class ChatInputTextArea extends React.Component {
+export default class ChatInputAiViews extends React.Component {
   state = { 
     errorMessage: '',
     hasError: false,
@@ -57,6 +57,9 @@ export default class ChatInputTextArea extends React.Component {
         <div className="chat__input__form">
           <textarea rows={this.props.rows} className="chat__input__form__input" name={this.props.name} placeholder={this.props.placeholder} value={this.state.inputText} onChange={this.onChange} onFocus={this.onFocus}></textarea>
           <i className={(this.props.hideButton ? 'invisible ' : '') + 'chevron circle right icon chat__input__form__submit-button'} onClick={this.onFormSubmit}></i>
+        </div>
+        <div className="chat__input__form__skip">
+          <a href="/wanda">I don't want to share anything</a>
         </div>
       </form>
     );

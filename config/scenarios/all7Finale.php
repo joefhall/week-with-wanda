@@ -553,7 +553,7 @@ return [
       ],
     ],
     'asking' => [
-      'type' => 'none',
+      'type' => 'aiViews',
       'user' => [
         'askingNone',
       ],
@@ -842,9 +842,6 @@ return [
     ],
     'easyNone' => [
       'wanda' => 'asking',
-    ],
-    'askingNone' => [
-      'wanda' => 'wandaWall',
     ],
     'bye1' => [
       'wanda' => 'survey',

@@ -88,7 +88,7 @@ trait GetsResponse
    */
   public function mergeWandaNewIdentity(User $user = null, array $response)
   {
-    if ($user) {
+    if ($user && array_has($response, 'wanda')) {
       $user->refresh();
       
       $wandaMessageId = array_keys($response['wanda'])[0];

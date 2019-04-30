@@ -12977,6 +12977,51 @@ a:active {
   width: 6px;
 }
 
+.chat__ai-views {
+  background-color: white;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  height: 50%;
+  padding: 0.5rem 0;
+}
+
+.chat__ai-views__views {
+  overflow-y: scroll;
+}
+
+.chat__ai-views__views__view__description {
+  color: gray;
+  font-style: italic;
+  padding-right: 1rem;
+  text-align: right;
+}
+
+.chat__ai-views__views__view__entry {
+  cursor: pointer;
+  transition: opacity 1s linear;
+}
+
+.chat__ai-views__views__view__entry--hidden {
+  opacity: 0;
+}
+
+.chat__ai-views__views__view__entry__add {
+  align-items: center;
+  color: darkviolet;
+  cursor: pointer;
+  display: flex;
+  margin-right: 0.5rem;
+}
+
+.chat__ai-views__views__wanda {
+  flex: 1 1 auto;
+}
+
+.chat__ai-views__views__wanda__message__bubble--extra-wide {
+  max-width: 97% !important;
+}
+
 .chat__input {
   background-color: beige;
   flex: 1 1 auto;
@@ -13052,6 +13097,11 @@ a:active {
 }
 
 .chat__input__form__forgotten-password {
+  font-size: 0.65rem;
+  margin-top: 0.25rem;
+}
+
+.chat__input__form__skip {
   font-size: 0.65rem;
   margin-top: 0.25rem;
 }

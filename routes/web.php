@@ -33,4 +33,5 @@ Route::get('/scenarios/{scenarioId}', 'ScenarioController@show');
 Route::group(['middleware' => ['web'], 'prefix' => 'api/'], function () {
   Route::get('history', 'ChatController@history');
   Route::post('respond', 'ChatController@respond');
+  Route::get('ai-views', 'WandaWallController@aiViews');
 });

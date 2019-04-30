@@ -4,8 +4,7 @@ import store from '../store';
 import striptags from 'striptags';
 import uuidv4 from 'uuid/v4';
 
-import { addMessage, setEmotion, setIdentity, setMeltdownLevel } from '../actions';
-import { setInput, setLoading, setTyping } from '../actions';
+import { addMessage, setEmotion, setIdentity, setInput, setMeltdownLevel, setLoading, setTyping } from '../actions';
 
 let checkMessagesDisplayedTimer;
 const minTypingTime = 2000;

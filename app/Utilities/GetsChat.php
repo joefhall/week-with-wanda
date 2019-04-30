@@ -113,10 +113,13 @@ trait GetsChat
   {
     $countryName = locale_get_display_region("-{$countryCode}", 'en');
     
-    $addTheCountries = ['GB', 'US'];
+    $replacements = [
+      'GB' => 'the UK',
+      'US' => 'the US',
+    ];
     
-    if (in_array($countryCode, $addTheCountries)) {
-      $countryName = 'the ' . $countryName;
+    if (in_array($countryCode, array_keys($replacements))) {
+      $countryName = $replacements[$countryCode];
     }
     
     return $countryName;
