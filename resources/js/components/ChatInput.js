@@ -128,7 +128,7 @@ class ChatInput extends React.Component {
       switch(this.props.input.type) {
         case 'aiViews':
           return (
-            <ChatInputAiViews minLength={40} placeholder="Share your views" rows="3" />
+            <ChatInputAiViews minLength={40} placeholder="What do you want for the future of AI?" rows="3" />
           );
           break;
           

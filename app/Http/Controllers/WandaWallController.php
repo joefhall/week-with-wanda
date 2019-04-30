@@ -113,12 +113,29 @@ class WandaWallController extends Controller
    */
   public function index(Request $request)
   {
-    $loggedIn = 'false';
+    $user = Auth::user();
+    $loggedIn = $user ? 'true' : 'false';
     $getHistory = 'false';
     $startScenario = 'wandaWall';
     $startMessage = 'begin';
     
     return response()
             ->view('app', compact('loggedIn', 'getHistory', 'startScenario', 'startMessage'));
+  }
+  
+  /**
+   * Store a new Wanda wall entry
+   *
+   * @param Request $request
+   */
+  public function store(Request $request)
+  {
+    WallEntry::create([
+      'comment' => $request->input('comment'),
+      'country_name' => $request->input('countryName'),
+      'name' => $request->input('name'),
+    ]);
+    
+    return redirect()->route('wall');
   }
 }

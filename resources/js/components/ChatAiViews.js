@@ -2,6 +2,9 @@ import axios from 'axios';
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { setUserProperty } from '../actions';
+import store from '../store';
+
 class ChatAiViews extends React.Component {
   state = { 
     aiViews: null,
@@ -46,7 +49,6 @@ class ChatAiViews extends React.Component {
   };
 
   hideEntry = entryId => {
-    console.log('Entry ID', entryId);
     const entry = document.querySelector(`#${entryId}`);
     entry.classList.add('chat__ai-views__views__view__entry--hidden');
     
@@ -55,6 +57,15 @@ class ChatAiViews extends React.Component {
   
   componentDidMount() {
     this.getViews();
+  }
+
+  componentDidUpdate() {
+    if (this.state.countryName) {
+      store.dispatch(setUserProperty('countryName', this.state.countryName));
+    }
+    if (this.state.name) {
+      store.dispatch(setUserProperty('name', this.state.name));
+    }
   }
 
   renderAiView(aiView) {
@@ -93,7 +104,7 @@ class ChatAiViews extends React.Component {
       return (
         <div className="chat__messages__message chat__messages__message--wanda">
           <div className="chat__ai-views__views__wanda__message__bubble--extra-wide chat__messages__message__bubble chat__messages__message__bubble--wanda">
-            You'll just be '{this.state.name} from {this.state.countryName}'
+            You'll show as '{this.state.name} from {this.state.countryName}'
           </div>
         </div>
       );

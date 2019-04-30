@@ -26,6 +26,7 @@ Route::get('/verify/{verificationTokenId}', 'VerifyController@verify')->name('ve
 
 Route::get('/privacy', 'AboutController@privacy')->name('privacy');
 Route::get('/wall', 'WandaWallController@index')->name('wall');
+Route::post('/wall/create', 'WandaWallController@store')->name('wall-create');
 
 Route::get('/emotions', 'EmotionController@index')->name('emotions');
 Route::get('/scenarios', 'ScenarioController@index')->name('scenarios');

@@ -124,6 +124,9 @@ trait DoesSpecialMessageActions
         if ($emotion === 'new-identity') {
           $this->setWandaNewIdentity($user);
         }
+        if ($wandaMessageId === 'asking') {
+          $this->userRepository->setScenarioPivot($userId, $scenario, 'finished', true);
+        }
         break;
     }
   }

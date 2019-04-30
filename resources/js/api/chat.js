@@ -13,8 +13,9 @@ const timeToBeginTyping = 500;
 
 const checkMessagesDisplayed = wandaMessagesCount => {
   const wandaMessagesBubbles = document.querySelectorAll('.chat__messages__message__bubble--wanda');
+  const aiViews = document.querySelector('.chat__ai-views');
   
-  if (wandaMessagesBubbles && wandaMessagesBubbles.length >= wandaMessagesCount) {
+  if (wandaMessagesBubbles && ((wandaMessagesBubbles.length >= wandaMessagesCount) || aiViews)) {
     clearInterval(checkMessagesDisplayedTimer);
     setTimeout(hideLoading, 2500);
   }
@@ -33,9 +34,19 @@ const getWandaMessagesCount = chatHistory => {
 };
 
 const hideLoading = () => {
-  document.querySelector('.chat__messages').classList.remove('invisible', 'h-0');
-  document.querySelector('.chat__input').classList.remove('d-none');
-  document.querySelector('.chat__loading').classList.add('d-none');
+  const chatMessages = document.querySelector('.chat__messages');
+  const chatInput = document.querySelector('.chat__input');
+  const chatLoading = document.querySelector('.chat__loading');
+  
+  if (chatMessages) {
+    document.querySelector('.chat__messages').classList.remove('invisible', 'h-0');
+  }
+  if (chatInput) {
+    document.querySelector('.chat__input').classList.remove('d-none');
+  }
+  if (chatLoading) {
+    document.querySelector('.chat__loading').classList.add('d-none');
+  }
 };
 
 const showResponse = (responseData, wandaMessageId, wandaMessage) => {

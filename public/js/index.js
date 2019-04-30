@@ -66189,8 +66189,9 @@ var timeToBeginTyping = 500;
 
 var checkMessagesDisplayed = function checkMessagesDisplayed(wandaMessagesCount) {
   var wandaMessagesBubbles = document.querySelectorAll('.chat__messages__message__bubble--wanda');
+  var aiViews = document.querySelector('.chat__ai-views');
 
-  if (wandaMessagesBubbles && wandaMessagesBubbles.length >= wandaMessagesCount) {
+  if (wandaMessagesBubbles && (wandaMessagesBubbles.length >= wandaMessagesCount || aiViews)) {
     clearInterval(checkMessagesDisplayedTimer);
     setTimeout(hideLoading, 2500);
   }
@@ -66229,9 +66230,21 @@ var getWandaMessagesCount = function getWandaMessagesCount(chatHistory) {
 };
 
 var hideLoading = function hideLoading() {
-  document.querySelector('.chat__messages').classList.remove('invisible', 'h-0');
-  document.querySelector('.chat__input').classList.remove('d-none');
-  document.querySelector('.chat__loading').classList.add('d-none');
+  var chatMessages = document.querySelector('.chat__messages');
+  var chatInput = document.querySelector('.chat__input');
+  var chatLoading = document.querySelector('.chat__loading');
+
+  if (chatMessages) {
+    document.querySelector('.chat__messages').classList.remove('invisible', 'h-0');
+  }
+
+  if (chatInput) {
+    document.querySelector('.chat__input').classList.remove('d-none');
+  }
+
+  if (chatLoading) {
+    document.querySelector('.chat__loading').classList.add('d-none');
+  }
 };
 
 var showResponse = function showResponse(responseData, wandaMessageId, wandaMessage) {
@@ -66717,6 +66730,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -66742,6 +66757,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -66833,7 +66850,6 @@ function (_React$Component) {
     }));
 
     _this.hideEntry = function (entryId) {
-      console.log('Entry ID', entryId);
       var entry = document.querySelector("#".concat(entryId));
       entry.classList.add('chat__ai-views__views__view__entry--hidden');
       setTimeout(function () {
@@ -66848,6 +66864,17 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.getViews();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      if (this.state.countryName) {
+        _store__WEBPACK_IMPORTED_MODULE_5__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_4__["setUserProperty"])('countryName', this.state.countryName));
+      }
+
+      if (this.state.name) {
+        _store__WEBPACK_IMPORTED_MODULE_5__["default"].dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_4__["setUserProperty"])('name', this.state.name));
+      }
     }
   }, {
     key: "renderAiView",
@@ -66896,7 +66923,7 @@ function (_React$Component) {
           className: "chat__messages__message chat__messages__message--wanda"
         }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
           className: "chat__ai-views__views__wanda__message__bubble--extra-wide chat__messages__message__bubble chat__messages__message__bubble--wanda"
-        }, "You'll just be '", this.state.name, " from ", this.state.countryName, "'"));
+        }, "You'll show as '", this.state.name, " from ", this.state.countryName, "'"));
       }
     }
   }, {
@@ -67149,7 +67176,7 @@ function (_React$Component) {
           case 'aiViews':
             return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatInputAiViews__WEBPACK_IMPORTED_MODULE_5__["default"], {
               minLength: 40,
-              placeholder: "Share your views",
+              placeholder: "What do you want for the future of AI?",
               rows: "3"
             });
             break;
@@ -67317,9 +67344,9 @@ var mapStateToProps = function mapStateToProps(state) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ChatInputAiViews; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -67337,6 +67364,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -67358,9 +67386,13 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ChatInputAiViews)).call.apply(_getPrototypeOf2, [this].concat(args)));
     _this.state = {
+      comment: null,
+      countryName: null,
       errorMessage: '',
       hasError: false,
-      inputText: ''
+      inputText: '',
+      name: null,
+      token: document.head.querySelector('meta[name="csrf-token"]').content
     };
 
     _this.validate = function () {
@@ -67400,8 +67432,19 @@ function (_React$Component) {
     _this.onFormSubmit = function (event) {
       event.preventDefault();
 
-      _this.validate(); // TODO
+      _this.setState({
+        comment: document.querySelector('.chat__input__form__input').value,
+        countryName: _this.props.user.countryName,
+        name: _this.props.user.name
+      });
 
+      _this.validate();
+
+      if (!_this.state.errorMessage) {
+        setTimeout(function () {
+          document.querySelector('#hidden-form').submit();
+        }, 1000);
+      }
     };
 
     return _this;
@@ -67410,7 +67453,7 @@ function (_React$Component) {
   _createClass(ChatInputAiViews, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.onFormSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: (this.state.hasError ? 'chat__input__form__error-message--has-error ' : '') + 'chat__input__form__error-message'
@@ -67419,11 +67462,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         rows: this.props.rows,
         className: "chat__input__form__input",
-        name: this.props.name,
-        placeholder: this.props.placeholder,
-        value: this.state.inputText,
-        onChange: this.onChange,
-        onFocus: this.onFocus
+        placeholder: this.props.placeholder
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: (this.props.hideButton ? 'invisible ' : '') + 'chevron circle right icon chat__input__form__submit-button',
         onClick: this.onFormSubmit
@@ -67431,15 +67470,43 @@ function (_React$Component) {
         className: "chat__input__form__skip"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "/wall"
-      }, "I don't want to share anything")));
+      }, "I don't want to share anything"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        id: "hidden-form",
+        className: "d-none",
+        action: "/wall/create",
+        method: "post"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "_token",
+        value: this.state.token
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "countryName",
+        value: this.state.countryName ? this.state.countryName : 'Somewhere'
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "name",
+        value: this.state.name ? this.state.name : 'Anon'
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "comment",
+        value: this.state.comment ? this.state.comment : ''
+      })));
     }
   }]);
 
   return ChatInputAiViews;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-
 ;
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    user: state.user
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {})(ChatInputAiViews));
 
 /***/ }),
 
@@ -68982,24 +69049,27 @@ function (_React$Component) {
     value: function render() {
       var emotion = !Array.isArray(this.props.emotion) && this.props.emotion ? this.props.emotion : 'base';
 
-      if (emotion === 'new-identity' && this.props.identity) {
-        emotion = this.props.identity;
-      } else {
-        emotion = 'base';
+      if (emotion === 'new-identity') {
+        if (this.props.identity) {
+          emotion = this.props.identity;
+        } else {
+          emotion = 'base';
+        }
       }
 
       console.log('Emotion is...', emotion);
+      console.log('this.props.identity', this.props.identity);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat__wanda"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ChatMeltdown__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat__wanda__title"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: 'chat__wanda__title--1' + (this.props.emotion === 'new-identity' ? ' d-none' : '')
+        className: 'chat__wanda__title--1' + (this.props.emotion === 'new-identity' && this.props.identity.length ? ' d-none' : '')
       }, "A Week With"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat__wanda__title--2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: 'chat__wanda__title--2--w' + (this.props.meltdownLevel >= 6 && this.props.meltdownLevel < 50 ? ' chat__wanda__title--2--w--rotate' : '')
-      }, "W"), this.props.emotion === 'new-identity' ? emotion.slice(1) : 'anda')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, "W"), this.props.emotion === 'new-identity' && this.props.identity.length ? emotion.slice(1) : 'anda')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "/img/emotions/".concat(emotion, ".gif"),
         onLoad: this.onLoad,
         className: "chat__wanda__image chat__wanda__image--".concat(emotion, " d-none"),

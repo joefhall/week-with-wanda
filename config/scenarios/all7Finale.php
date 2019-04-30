@@ -126,7 +126,7 @@ return [
       ],
     ],
     'chooseWhat' => [
-      'type' => 'textArea',
+      'type' => 'text',
       'user' => [
         'chooseText',
       ],
