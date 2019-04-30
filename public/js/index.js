@@ -66896,7 +66896,7 @@ function (_React$Component) {
           className: "chat__messages__message chat__messages__message--wanda"
         }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
           className: "chat__ai-views__views__wanda__message__bubble--extra-wide chat__messages__message__bubble chat__messages__message__bubble--wanda"
-        }, "You'll appear as '", this.state.name, " from ", this.state.countryName, "'"));
+        }, "You'll just be '", this.state.name, " from ", this.state.countryName, "'"));
       }
     }
   }, {
@@ -66910,10 +66910,10 @@ function (_React$Component) {
         className: "chat__messages__message chat__messages__message--wanda"
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: "chat__ai-views__views__wanda__message__bubble--extra-wide chat__messages__message__bubble chat__messages__message__bubble--wanda"
-      }, "Will you share your views ", react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("a", {
+      }, "Will you share your views ", react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("strong", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("a", {
         href: "/wall",
         target: "_blank"
-      }, "on my wall"), " to help change AI? Tap to add and/or type below")), this.renderUserDetails()), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+      }, "on my wall")), " to help change AI? Tap to add and/or type below")), this.renderUserDetails()), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: "chat__ai-views__views"
       }, this.state.aiViews ? this.renderAiViews() : this.state.error ? 'Sorry, I couldn\'t load your views' : 'Loading...'));
     }
@@ -67102,8 +67102,19 @@ function (_React$Component) {
       this.setState({
         sessionId: Object(_api_chat__WEBPACK_IMPORTED_MODULE_4__["getSessionId"])()
       });
-      this.showLoading();
-      Object(_api_chat__WEBPACK_IMPORTED_MODULE_4__["getHistory"])();
+      var shouldGetHistory = document.head.querySelector('meta[name="get-history"]').content;
+
+      if (shouldGetHistory === 'true') {
+        this.showLoading();
+        Object(_api_chat__WEBPACK_IMPORTED_MODULE_4__["getHistory"])();
+      } else {
+        var startScenario = document.head.querySelector('meta[name="start-scenario"]').content;
+        var startMessage = document.head.querySelector('meta[name="start-message"]').content;
+
+        if (startScenario && startMessage) {
+          Object(_api_chat__WEBPACK_IMPORTED_MODULE_4__["respond"])(startScenario, startMessage, '');
+        }
+      }
     }
   }, {
     key: "componentDidUpdate",
@@ -67389,11 +67400,8 @@ function (_React$Component) {
     _this.onFormSubmit = function (event) {
       event.preventDefault();
 
-      _this.validate();
+      _this.validate(); // TODO
 
-      if (!_this.state.errorMessage) {
-        _this.props.onFormSubmit(_this.state.inputText);
-      }
     };
 
     return _this;
@@ -67422,7 +67430,7 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat__input__form__skip"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "/wanda"
+        href: "/wall"
       }, "I don't want to share anything")));
     }
   }]);

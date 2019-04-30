@@ -11,6 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(ScenariosTableSeeder::class);
+        $this->call([ScenariosTableSeeder::class, WallEntriesTableSeeder::class]);
     }
 }

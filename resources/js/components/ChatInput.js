@@ -87,8 +87,20 @@ class ChatInput extends React.Component {
 
   componentDidMount() {
     this.setState({ sessionId: getSessionId() });
-    this.showLoading();
-    getHistory();
+    
+    const shouldGetHistory = document.head.querySelector('meta[name="get-history"]').content;
+    
+    if (shouldGetHistory === 'true') {
+      this.showLoading();
+      getHistory();
+    } else {
+      const startScenario = document.head.querySelector('meta[name="start-scenario"]').content;
+      const startMessage = document.head.querySelector('meta[name="start-message"]').content;
+      
+      if (startScenario && startMessage) {
+        respond(startScenario, startMessage, '');
+      }
+    }
   }
 
   componentDidUpdate() {

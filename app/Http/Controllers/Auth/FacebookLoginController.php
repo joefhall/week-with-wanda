@@ -36,11 +36,12 @@ class FacebookLoginController extends Controller
     public function showLoginWithFacebookForm(Request $request)
     { 
       $loggedIn = 'false';
+      $getHistory = 'false';
       $startScenario = 'loginFacebook';
       $startMessage = 'begin';
 
       return response()
-              ->view('app', compact('loggedIn', 'startScenario', 'startMessage'));
+              ->view('app', compact('loggedIn', 'getHistory', 'startScenario', 'startMessage'));
       
       return view('auth.login');
     }

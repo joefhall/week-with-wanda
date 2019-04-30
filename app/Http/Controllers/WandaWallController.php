@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\UserRepository;
 use App\Utilities\GetsChat;
+use App\WallEntry;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -102,5 +103,22 @@ class WandaWallController extends Controller
     }
     
     return response()->json($response);
+  }
+  
+  /**
+   * Show all the Wanda's wall entries
+   *
+   * @param Request $request
+   * @return string
+   */
+  public function index(Request $request)
+  {
+    $loggedIn = 'false';
+    $getHistory = 'false';
+    $startScenario = 'wandaWall';
+    $startMessage = 'begin';
+    
+    return response()
+            ->view('app', compact('loggedIn', 'getHistory', 'startScenario', 'startMessage'));
   }
 }

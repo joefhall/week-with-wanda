@@ -104,7 +104,7 @@ return [
         'whatsUpText',
         'whyText',
         'whatProblemText',
-        'different',
+        'differentText',
       ],
       'relationships4DeletesContacts' => [
         'problemText',

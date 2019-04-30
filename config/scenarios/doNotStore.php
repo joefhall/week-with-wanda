@@ -12,5 +12,6 @@ return [
   'login' => true,
   'loginFacebook' => true,
   'loginFailed' => true,
+  'wandaWall' => true,
   
 ];

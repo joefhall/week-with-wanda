@@ -43,9 +43,7 @@ export default class ChatInputAiViews extends React.Component {
     
     this.validate();
     
-    if (!this.state.errorMessage) {
-      this.props.onFormSubmit(this.state.inputText);
-    }
+    // TODO
   };
 
   render() {
@@ -59,7 +57,7 @@ export default class ChatInputAiViews extends React.Component {
           <i className={(this.props.hideButton ? 'invisible ' : '') + 'chevron circle right icon chat__input__form__submit-button'} onClick={this.onFormSubmit}></i>
         </div>
         <div className="chat__input__form__skip">
-          <a href="/wanda">I don't want to share anything</a>
+          <a href="/wall">I don't want to share anything</a>
         </div>
       </form>
     );

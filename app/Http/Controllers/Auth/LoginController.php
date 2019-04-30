@@ -49,11 +49,12 @@ class LoginController extends Controller
     public function showLoginForm(Request $request)
     { 
       $loggedIn = 'false';
+      $getHistory = 'false';
       $startScenario = $request->session()->has('errors') ? 'loginFailed' : 'login';
       $startMessage = 'begin';
 
       return response()
-              ->view('app', compact('loggedIn', 'startScenario', 'startMessage'));
+              ->view('app', compact('loggedIn', 'getHistory', 'startScenario', 'startMessage'));
       
       return view('auth.login');
     }
