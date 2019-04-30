@@ -1,4 +1,4 @@
-export const addMessage = (time, scenario, sender, id, message, meltdownLevel = null) => {
+export const addMessage = (time, scenario, sender, id, message, meltdownLevel = null, identity = null) => {
   return {
     type: sender === 'user' ? 'USER_MESSAGE_INPUTTED' : 'WANDA_MESSAGE_RECEIVED',
     payload: {
@@ -7,7 +7,8 @@ export const addMessage = (time, scenario, sender, id, message, meltdownLevel = 
       sender: sender,
       id: id,
       message: message,
-      meltdownLevel: meltdownLevel
+      meltdownLevel: meltdownLevel,
+      identity: identity
     }
   };
 };
@@ -17,6 +18,15 @@ export const setEmotion = emotion => {
     type: 'EMOTION_SET',
     payload: {
       emotion: emotion,
+    }
+  };
+};
+
+export const setIdentity = identity => {
+  return {
+    type: 'IDENTITY_SET',
+    payload: {
+      identity: identity,
     }
   };
 };

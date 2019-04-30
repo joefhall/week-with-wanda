@@ -55,6 +55,7 @@ class ChatController extends Controller
     }
     
     $response = $this->mergeMeltdownLevel($user, $response);
+    $response = $this->mergeWandaNewIdentity($user, $response);
     
     return response()->json($response);
   }

@@ -80,6 +80,29 @@ trait GetsResponse
   }
   
   /**
+   * Merge Wanda's new identity into a response.
+   *
+   * @param User $user
+   * @param array $response
+   * @return void
+   */
+  public function mergeWandaNewIdentity(User $user = null, array $response)
+  {
+    if ($user && array_has($response, 'wanda')) {
+      $user->refresh();
+      
+      $wandaMessageId = array_keys($response['wanda'])[0];
+      $response['wanda'][$wandaMessageId] = str_replace('[wandaNewIdentity]' , $this->getWandaNewIdentityDescription($user->wanda_identity), $response['wanda'][$wandaMessageId]);
+    
+      return array_merge($response, [
+        'identity' => $user ? $user->wanda_identity : null,
+      ]);
+    }
+    
+    return $response;
+  }
+  
+  /**
    * Merge the user's meltdown level into a response.
    *
    * @param User $user

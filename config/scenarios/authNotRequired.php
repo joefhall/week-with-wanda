@@ -12,9 +12,10 @@ return [
   |
   */
 
-  'welcomeSignup' => true,
   'login' => true,
   'loginFacebook' => true,
   'loginFailed' => true,
+  'wandaWall' => true,
+  'welcomeSignup' => true,
   
 ];

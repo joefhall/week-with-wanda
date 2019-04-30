@@ -11,6 +11,17 @@ const emotionReducer = (state = [], action) => {
   return state;
 };
 
+const identityReducer = (state = [], action) => {
+  console.log('Identity reducer state', state);
+  console.log('Identity reducer action', action);
+  
+  if (action && action.type === 'IDENTITY_SET') {
+    return action.payload.identity;
+  }
+  
+  return state;
+};
+
 const inputReducer = (state = {}, action) => {
   console.log('Input reducer state', state);
   console.log('Input reducer action', action);
@@ -65,6 +76,7 @@ const userPropertyReducer = (state = {}, action) => {
 
 export default combineReducers({
   emotion: emotionReducer,
+  identity: identityReducer,
   input: inputReducer,
   meltdownLevel: meltdownLevelReducer,
   messages: messagesReducer,

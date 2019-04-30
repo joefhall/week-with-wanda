@@ -46,6 +46,7 @@ trait DoesSpecialMessageActions
     $scenario = array_get($response, 'scenario');
     $wandaResponse = array_get($response, 'wanda');
     $wandaMessageId = $wandaResponse ? array_keys($wandaResponse)[0] : null;
+    $emotion = array_get($response, 'emotion');
     $user = User::find($userId);
     
     Log::info("Checking for special message user actions - user($userId), scenario($scenario), wandaMessage($wandaMessageId), userMessage($userMessageId), meltdownLevel({$user->meltdown_level})");
@@ -118,7 +119,32 @@ trait DoesSpecialMessageActions
           }
         }
         break;
+        
+      case 'all7Finale':
+        if ($emotion === 'new-identity') {
+          $this->setWandaNewIdentity($user);
+        }
+        if ($wandaMessageId === 'asking') {
+          $this->userRepository->setScenarioPivot($userId, $scenario, 'finished', true);
+        }
+        break;
     }
+  }
+  
+  /**
+   * Set Wanda's new identity.
+   *
+   * @param User $user
+   * @return void
+   */
+  public function setWandaNewIdentity(User $user)
+  {    
+    $identities = __('chats/common.wanda.identity');
+    shuffle($identities);
+    $newIdentity = $identities[0];
+
+    $user->wanda_identity = $newIdentity['id'];
+    $user->save();
   }
   
   /**
@@ -138,12 +164,19 @@ trait DoesSpecialMessageActions
       'shocked' => 0.5,
     ];
     
+    $meltdownUltimateEmotion = 'blown-up';
+    
     if ($user && $scenario && $wandaMessageId) {
       $wandaInteraction = $this->getInteraction($scenario, $wandaMessageId);
     
-      if ($user && in_array($wandaInteraction['emotion'], array_keys($meltdownEmotions))) {
-        $user->meltdown_level = $user->meltdown_level + $meltdownEmotions[$wandaInteraction['emotion']];
-        $user->save();
+      if ($user) {
+        if (in_array($wandaInteraction['emotion'], array_keys($meltdownEmotions))) {
+          $user->meltdown_level = $user->meltdown_level + $meltdownEmotions[$wandaInteraction['emotion']];
+          $user->save();
+        } else if ($wandaInteraction['emotion'] === $meltdownUltimateEmotion) {
+          $user->meltdown_level = 50;
+          $user->save();
+        }
       }
     }
   }

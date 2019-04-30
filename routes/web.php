@@ -25,6 +25,8 @@ Route::get('/', 'AppController@index')->name('app');
 Route::get('/verify/{verificationTokenId}', 'VerifyController@verify')->name('verify');
 
 Route::get('/privacy', 'AboutController@privacy')->name('privacy');
+Route::get('/wall', 'WandaWallController@index')->name('wall');
+Route::post('/wall/create', 'WandaWallController@store')->name('wall-create');
 
 Route::get('/emotions', 'EmotionController@index')->name('emotions');
 Route::get('/scenarios', 'ScenarioController@index')->name('scenarios');
@@ -33,4 +35,5 @@ Route::get('/scenarios/{scenarioId}', 'ScenarioController@show');
 Route::group(['middleware' => ['web'], 'prefix' => 'api/'], function () {
   Route::get('history', 'ChatController@history');
   Route::post('respond', 'ChatController@respond');
+  Route::get('ai-views', 'WandaWallController@aiViews');
 });

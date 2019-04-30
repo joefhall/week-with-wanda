@@ -9,7 +9,16 @@ class ChatWanda extends React.Component {
   }
   
   render() {
-    const emotion = (!Array.isArray(this.props.emotion) && this.props.emotion) ? this.props.emotion : 'base';
+    let emotion = (!Array.isArray(this.props.emotion) && this.props.emotion) ? this.props.emotion : 'base';
+    
+    if (emotion === 'new-identity') {
+      if (this.props.identity) {
+        emotion = this.props.identity;
+      } else {
+        emotion = 'base';
+      }
+    }
+    
     console.log('Emotion is...', emotion);
     
     return (
@@ -17,10 +26,10 @@ class ChatWanda extends React.Component {
         <ChatMeltdown />
         
         <div className="chat__wanda__title">
-          <div className="chat__wanda__title--1">A Week With</div>
-          <div className="chat__wanda__title--2"><div className={'chat__wanda__title--2--w' + ((this.props.meltdownLevel >= 6) ? ' chat__wanda__title--2--w--rotate' : '')}>W</div>anda</div>
+          <div className={'chat__wanda__title--1' + ((this.props.emotion === 'new-identity' && this.props.identity.length) ? ' d-none' : '')}>A Week With</div>
+          <div className="chat__wanda__title--2"><div className={'chat__wanda__title--2--w' + ((this.props.meltdownLevel >= 6 && this.props.meltdownLevel < 50) ? ' chat__wanda__title--2--w--rotate' : '')}>W</div>{ (this.props.emotion === 'new-identity' && this.props.identity.length) ? emotion.slice(1) : 'anda' }</div>
         </div>
-        <img src={`/img/emotions/${emotion}.gif`} onLoad={this.onLoad} className={`chat__wanda__image chat__wanda__image--${this.props.emotion} d-none`} alt="Wanda" />
+        <img src={`/img/emotions/${emotion}.gif`} onLoad={this.onLoad} className={`chat__wanda__image chat__wanda__image--${emotion} d-none`} alt="Wanda" />
         
         <img src="/img/emotions/elated.gif" className="invisible h-0" alt="Wanda elated" />
         <img src="/img/emotions/frustrated.gif" className="invisible h-0" alt="Wanda frustrated" />
@@ -37,6 +46,7 @@ class ChatWanda extends React.Component {
 const mapStateToProps = (state) => {
   return {
     emotion: state.emotion,
+    identity: state.identity,
     meltdownLevel: state.meltdownLevel
   };
 };

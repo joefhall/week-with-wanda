@@ -2,6 +2,7 @@
 
 namespace App\Utilities;
 
+use App\WallEntry;
 use Faker\Factory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -51,6 +52,26 @@ trait GetsChat
       'userThanks1' => $userThanks[0],
       'userThanks2' => $userThanks[1],
       'userUnsure' => $this->randomCommon('user', 'unsure'),
+      'wallEntry1' => $this->getWandaWallEntry(1),
+      'wallEntry2' => $this->getWandaWallEntry(2),
+      'wallEntry3' => $this->getWandaWallEntry(3),
+      'wallEntry4' => $this->getWandaWallEntry(4),
+      'wallEntry5' => $this->getWandaWallEntry(5),
+      'wallEntry6' => $this->getWandaWallEntry(6),
+      'wallEntry7' => $this->getWandaWallEntry(7),
+      'wallEntry8' => $this->getWandaWallEntry(8),
+      'wallEntry9' => $this->getWandaWallEntry(9),
+      'wallEntry10' => $this->getWandaWallEntry(10),
+      'wallEntry11' => $this->getWandaWallEntry(11),
+      'wallEntry12' => $this->getWandaWallEntry(12),
+      'wallEntry13' => $this->getWandaWallEntry(13),
+      'wallEntry14' => $this->getWandaWallEntry(14),
+      'wallEntry15' => $this->getWandaWallEntry(15),
+      'wallEntry16' => $this->getWandaWallEntry(16),
+      'wallEntry17' => $this->getWandaWallEntry(17),
+      'wallEntry18' => $this->getWandaWallEntry(18),
+      'wallEntry19' => $this->getWandaWallEntry(19),
+      'wallEntry20' => $this->getWandaWallEntry(20),
       'wandaAcknowledgeResponse' => $this->randomCommon('wanda', 'acknowledgeResponse'),
       'wandaBye' => $this->randomCommon('wanda', 'bye'),
       'wandaCelebrity' => $this->randomCommon('wanda', 'celebrity'),
@@ -85,7 +106,39 @@ trait GetsChat
   }
   
   /**
-   * Gets the human readable name of the user's country
+   * Gets an entry from Wanda's wall.
+   *
+   * @param int $entry
+   * @return string|null
+   */
+  public function getWandaWallEntry(int $entry)
+  {
+    $wallEntry = WallEntry::orderBy('created_at','desc')->take($entry)->get()->last();
+    
+    return "<em>\"{$wallEntry->comment}\"</em><br/>{$wallEntry->name} from {$wallEntry->country_name}";
+  }
+  
+  /**
+   * Gets the description of Wanda's new identity.
+   *
+   * @param string $identityId
+   * @return string|null
+   */
+  public function getWandaNewIdentityDescription(string $identityId = null)
+  {
+    if ($identityId) {
+      foreach (__('chats/common.wanda.identity') as $identity) {
+        if ($identity['id'] === $identityId) {
+          return $identity['description'];
+        }
+      }
+    }
+    
+    return null;
+  }
+  
+  /**
+   * Gets the human readable name of the user's country.
    *
    * @param string $countryCode
    * @return string
@@ -94,10 +147,13 @@ trait GetsChat
   {
     $countryName = locale_get_display_region("-{$countryCode}", 'en');
     
-    $addTheCountries = ['GB', 'US'];
+    $replacements = [
+      'GB' => 'the UK',
+      'US' => 'the US',
+    ];
     
-    if (in_array($countryCode, $addTheCountries)) {
-      $countryName = 'the ' . $countryName;
+    if (in_array($countryCode, array_keys($replacements))) {
+      $countryName = $replacements[$countryCode];
     }
     
     return $countryName;

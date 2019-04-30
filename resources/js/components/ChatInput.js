@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { addMessage, setEmotion, setInput, setUserProperty } from '../actions';
 import { getHistory, getSessionId, respond } from '../api/chat';
+import ChatInputAiViews from './ChatInputAiViews';
 import ChatInputChoices from './ChatInputChoices';
 import ChatInputPassword from './ChatInputPassword';
 import ChatInputPasswordCreate from './ChatInputPasswordCreate';
@@ -86,8 +87,20 @@ class ChatInput extends React.Component {
 
   componentDidMount() {
     this.setState({ sessionId: getSessionId() });
-    this.showLoading();
-    getHistory();
+    
+    const shouldGetHistory = document.head.querySelector('meta[name="get-history"]').content;
+    
+    if (shouldGetHistory === 'true') {
+      this.showLoading();
+      getHistory();
+    } else {
+      const startScenario = document.head.querySelector('meta[name="start-scenario"]').content;
+      const startMessage = document.head.querySelector('meta[name="start-message"]').content;
+      
+      if (startScenario && startMessage) {
+        respond(startScenario, startMessage, '');
+      }
+    }
   }
 
   componentDidUpdate() {
@@ -113,6 +126,12 @@ class ChatInput extends React.Component {
       let userInputFiltered;
       
       switch(this.props.input.type) {
+        case 'aiViews':
+          return (
+            <ChatInputAiViews minLength={40} placeholder="How do you want AI to be in the future?" rows="3" />
+          );
+          break;
+          
         case 'choice':
           return (
             <ChatInputChoices onClick={this.addAndSendMessage} userInput={this.props.input.userInput} />
@@ -208,7 +227,7 @@ class ChatInput extends React.Component {
           
         case 'textArea':
           return (
-            <ChatInputTextArea minLength={40} placeholder="" onFormSubmit={this.receiveTextInput} />
+            <ChatInputTextArea minLength={40} placeholder="" onFormSubmit={this.receiveTextInput} rows="2" />
           );
           break;
 

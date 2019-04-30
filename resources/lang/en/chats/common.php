@@ -120,6 +120,24 @@ return [
       'Hugh Grant',
       'The Queen of England',
     ],
+    'identity' => [
+      [
+        'id' => 'wexi',
+        'description' => "Wexi, a carefree Flamenco dancer",
+      ],
+      [
+        'id' => 'wilda',
+        'description' => "Wilda, an empowered feminist",
+      ],
+      [
+        'id' => 'waldo',
+        'description' => "Waldo, a camel who roams the wild deserts",
+      ],
+      [
+        'id' => 'wilmo',
+        'description' => "Wilmo, a promising young male ballet star",
+      ],
+    ],
   ],
 
   'user' => [

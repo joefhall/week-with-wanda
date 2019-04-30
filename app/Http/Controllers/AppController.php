@@ -20,10 +20,11 @@ class AppController extends Controller
   {
     $user = Auth::user() ?? null;
     $loggedIn = $user ? 'true' : 'false';
+    $getHistory = $user ? 'true' : 'false';
     $startScenario = $user ? $user->current_scenario : 'welcomeSignup';
     $startMessage = $this->getUserScenarioStartMessage($user ? $user->id : null, $startScenario);
 
     return response()
-            ->view('app', compact('loggedIn', 'startScenario', 'startMessage'));
+            ->view('app', compact('loggedIn', 'getHistory', 'startScenario', 'startMessage'));
   }
 }
