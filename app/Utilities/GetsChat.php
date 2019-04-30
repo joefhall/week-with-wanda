@@ -119,7 +119,7 @@ trait GetsChat
   }
   
   /**
-   * Gets a new identity for Wanda.
+   * Gets the description of Wanda's new identity.
    *
    * @param string $identityId
    * @return string|null

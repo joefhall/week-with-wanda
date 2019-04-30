@@ -132,7 +132,7 @@ trait DoesSpecialMessageActions
   }
   
   /**
-   * Check if the chat response means any special actions need to be taken e.g. send a verification email.
+   * Set Wanda's new identity.
    *
    * @param User $user
    * @return void
