@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Jobs\FinishWeek;
 use App\Jobs\SendNotifications;
 use App\Jobs\SetCurrentDayScenario;
 use App\Scenario;
@@ -84,6 +85,9 @@ class ScheduleWeek implements ShouldQueue
       SendNotifications::dispatch($this->userId, $scenarioId, 'reminder')
         ->delay(Carbon::today($this->user->timezone)->addDays($day)->addHours($reminderTime['hours'])->addMinutes($reminderTime['minutes']));
     }
+    
+    FinishWeek::dispatch($this->userId)
+        ->delay(Carbon::today($this->user->timezone)->addDays(10)->addHours(rand(8,12))->addMinutes(rand(1, 59)));
   }
   
   /**

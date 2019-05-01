@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Jobs\DeleteUser;
 use App\Jobs\SendEmail;
 use App\User;
 use Carbon\Carbon;
@@ -43,19 +44,25 @@ class FinishWeek implements ShouldQueue
   {
     $this->user = User::find($this->userId);
     
-    Log::info("Finishing week for user({$this->userId})");
+    if ($this->user) {
+      Log::info("Finishing week for user({$this->userId})");
+      
+      $name = $this->user->first_name;
+      $emailSubject = __('mail.finalDay.subject', compact('name'));
     
-    $scenariosStarted = $this->getScenariosStarted();
-    $scenariosText = $this->getScenariosText($scenariosStarted);
-    $name = $this->user->first_name;
-    
-    $emailSubject = __('mail.finalDay.subject', compact('name'));
-    $emailText = __('mail.finalDay.text.intro', compact('name')) . $scenariosText . __('mail.finalDay.text.ending', compact('name'));
-    
-    SendEmail::dispatch($this->userId, $emailSubject, $emailText)
-      ->delay(Carbon::now()->addHours(3));
-              
-    // TODO: also delete user's data
+      $scenariosStarted = $this->getScenariosStarted();
+      
+      if ($scenariosStarted) {
+        $scenariosText = $this->getScenariosText($scenariosStarted);
+        $emailText = __('mail.finalDay.text.intro', compact('name')) . $scenariosText . __('mail.finalDay.text.ending', compact('name'));
+      } else {
+        $emailText = __('mail.finalDay.text.noScenarios', compact('name'));
+      }
+      
+      SendEmail::withChain([new DeleteUser($this->userId)])
+        ->dispatch($this->userId, $emailSubject, $emailText)
+        ->delay(Carbon::now()->addHours(3));
+    }
   }
   
   /**
