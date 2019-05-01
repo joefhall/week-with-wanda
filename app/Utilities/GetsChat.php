@@ -2,13 +2,14 @@
 
 namespace App\Utilities;
 
+use App\User;
 use App\WallEntry;
 use Faker\Factory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 trait GetsChat
-{
+{  
   /**
    * Get data that may need to be inserted into a chat response.
    *
@@ -84,6 +85,8 @@ trait GetsChat
     ];
     
     if ($user) {
+      $persuaderText = $this->getPersuaderText($user);
+      
       $chatDataUser = [
         'country' => $user->country,
         'countryName' => $this->getCountryName($user->country),
@@ -96,6 +99,8 @@ trait GetsChat
         'randomSurname' => $this->getFakeSurname($user->country),
         'wandaConjunction' => $this->getConjunction('user', $previousUserMessageId),
         'wandaCumulativeResponse' => $this->getWandaCumulativeResponse(),
+        'wandaPersuader' => $persuaderText['persuader'],
+        'wandaPersuaderPronoun' => $persuaderText['pronoun'],
         'wandaPreviousSentimentResponse' => $this->getResponseToSentiment('user', $previousUserMessageId),
       ];
       
@@ -103,6 +108,32 @@ trait GetsChat
     }
 
     return $chatDataGeneral;
+  }
+  
+  /**
+   * Gets fragments of text for final chat, saying who persuaded Wanda to change -
+   * the user or other people (if the user didn't disagree with Wanda much).
+   *
+   * @param User $user
+   * @return array
+   */
+  public function getPersuaderText(User $user)
+  {
+    $meltdownLevel = $user->meltdown_level;
+    
+    $preFinalMeltdownLevel = ($meltdownLevel >= 50) ? ($meltdownLevel - 50) : $meltdownLevel;
+    
+    if ($preFinalMeltdownLevel >= 2) {
+      return [
+        'persuader' => 'you',
+        'pronoun' => 'you',
+      ];
+    } else {
+      return [
+        'persuader' => "the people I've met",
+        'pronoun' => 'they',
+      ];
+    }
   }
   
   /**

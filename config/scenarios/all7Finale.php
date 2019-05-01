@@ -175,7 +175,7 @@ return [
       ],
     ],
     'decision' => [
-      'type' => 'textArea',
+      'type' => 'text',
       'user' => [
         'chooseText',
       ],

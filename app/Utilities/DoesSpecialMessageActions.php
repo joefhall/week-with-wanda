@@ -178,7 +178,7 @@ trait DoesSpecialMessageActions
           $user->meltdown_level = $user->meltdown_level + $meltdownEmotions[$wandaInteraction['emotion']];
           $user->save();
         } else if ($wandaInteraction['emotion'] === $meltdownUltimateEmotion) {
-          $user->meltdown_level = 50;
+          $user->meltdown_level = ($user->meltdown_level < 40) ? ($user->meltdown_level + 50) : 50;
           $user->save();
         }
       }
