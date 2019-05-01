@@ -58,7 +58,7 @@ class SendTextMessage implements ShouldQueue
     
     Log::info("Sending text message to user({$this->userId}), mobile number($mobileNumber), message({$this->message})");
     
-    if ($mobileNumber && $sendTextMessages) {
+    if ($mobileNumber && $sendTextMessages && $user->mobile_number_verified_at) {
       $headers = [
         'Authorization' => 'AccessKey ' . env('SMS_SENDER_KEY'),
         'Accept' => 'application/json',
