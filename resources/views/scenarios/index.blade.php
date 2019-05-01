@@ -25,7 +25,7 @@
           @foreach (array_keys($scenarios) as $scenarioId)
             @if (array_has($scenarios[$scenarioId], 'category') && $scenarios[$scenarioId]['category'] === $category)
               <li class="list-group-item" style="order: {{ $scenarios[$scenarioId]['day'] }}">
-                <a class="text-success" href="/scenarios/{{ $scenarioId }}">{{ $scenarioId }}</a> <span class="text-secondary">Day {{ $scenarios[$scenarioId]['day'] }}</span>
+                <a class="text-success" href="/scenarios/{{ $scenarioId }}">{{ __("chats/$scenarioId.description") }}</a> - {{ $scenarioId }} - <span class="text-secondary">day {{ $scenarios[$scenarioId]['day'] }}</span>
               </li>
             @endif
           @endforeach
