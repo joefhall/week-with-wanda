@@ -70,8 +70,13 @@ class ChatAiViews extends React.Component {
 
   renderAiView(aiView) {
     return aiView.messages.map((message, index) => {
+      let messageId = message.replace(/\W/g, '');
+      if (messageId.length > 30) {
+        messageId = messageId.substring(0,30);
+      }
+            
       return (
-        <div key={index} id={`chat__ai-views__views__view__entry__${index}`} className="chat__ai-views__views__view__entry" onClick={ event => this.addMessageToTextArea(`chat__ai-views__views__view__entry__${index}`, message) }>
+        <div key={index} id={`chat__ai-views__views__view__entry__${messageId}`} className="chat__ai-views__views__view__entry" onClick={ event => this.addMessageToTextArea(`chat__ai-views__views__view__entry__${messageId}`, message) }>
           <div className="chat__ai-views__views__view__entry__message chat__messages__message chat__messages__message--user">
             <div className="chat__ai-views__views__view__entry__add">
               <div>
