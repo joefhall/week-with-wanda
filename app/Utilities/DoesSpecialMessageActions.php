@@ -122,9 +122,11 @@ trait DoesSpecialMessageActions
         break;
         
       case 'all7Finale':
+        if ($wandaMessageId === 'anything') {
+          FinishWeek::dispatch($userId);
+        }
         if ($wandaMessageId === 'reveal') {
           $this->setWandaNewIdentity($user);
-          FinishWeek::dispatch($userId);
         }
         if ($wandaMessageId === 'asking') {
           $this->userRepository->setScenarioPivot($userId, $scenario, 'finished', true);
