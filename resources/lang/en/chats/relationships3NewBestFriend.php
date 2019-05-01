@@ -11,7 +11,8 @@ return [
   */
   
   'description' => "Wanda has found you a new best friend – based on monitoring the places you go to and the things you both do",
-
+  'explanation' => "<a href=\"https://medium.com/@dinewithco/i-tried-to-score-a-date-on-happn-dating-app-dine-review-115761d3a913\">At least one dating app</a> already matches people based on them going to the same places. <a href=\"https://becominghuman.ai/how-netflix-uses-ai-and-machine-learning-a087614630fe?gi=a8528026b947\">Netflix</a> (perhaps expectedly) and <a href=\"https://www.zdnet.com/article/hundreds-of-apps-are-using-ultrasonic-sounds-to-track-your-ad-habits/\">secret ultrasonic tracking in some shops and adverts</a> (probably unexpectedly) are using machine learning to track our habits.</p> <p>We also know that everything from <a href=\"https://www.techrepublic.com/article/google-home-mini-spied-on-user-thousands-of-times-a-day-sent-recordings-to-google/\">in-home voice assistants</a> to <a href=\"https://www.nytimes.com/2017/02/17/technology/cayla-talking-doll-hackers.html\">dolls</a> are being (mis)used to listen to us without our permission. Maybe we're ok with that? Maybe we're not? What if it's used for good – is that ok?",
+  
   'wanda' => [
     'hello' => ":wandaHello",
     'observation' => ":wandaObservation",

@@ -11,6 +11,7 @@ return [
   */
   
   'description' => "Wanda wants to take on a job – so you don't have to earn",
+  'explanation' => "We increasingly hear about AI and robots taking over jobs – <a href=\"https://www.forbes.com/sites/forbestechcouncil/2018/01/26/if-youre-worried-about-ai-taking-your-job-consider-this/#372e257d768a\">maybe it's a good thing?</a> Perhaps it would <a href=\"https://www.bbc.co.uk/news/business-44849492\">create as many jobs as it removes</a> – but are we ok with there being winners and losers? And should <a href=\"https://www.theguardian.com/commentisfree/2018/jul/02/robo-carers-human-principles-technology-care-crisis\">some jobs be out of bounds</a> – where we only want humans?",
 
   'wanda' => [
     'hello' => ":wandaHello",

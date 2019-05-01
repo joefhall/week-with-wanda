@@ -11,7 +11,8 @@ return [
   */
   
   'description' => "Wanda wants to exclude some 'high risk' people from health care in your area",
-
+  'explanation' => "<a href=\"https://www.theverge.com/2018/3/21/17144260/healthcare-medicaid-algorithm-arkansas-cerebral-palsy\">Algorithms are denying people care today</a> although we may not be aware of it. Should technology be deciding winners and losers at all? How transparent should it be?</p> <p>You might also have seen Wanda showing you a <em>very white</em> selection of people she's been analysing to help with skin cancer diagnosis – unintentional (but still very dangerous) exclusion of people is <a href=\"https://www.medicalbag.com/home/more/tech-talk/ai-powered-cancer-diagnoses-in-dermatology-leave-patients-of-color-in-the-dust/\">already happening in similar ways</a>, affecting ethnic minorities for example.",
+  
   'wanda' => [
     'name' => ":name!",
     'nameName' => ":name :name :name :name :name!",

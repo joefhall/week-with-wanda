@@ -11,7 +11,8 @@ return [
   */
   
   'description' => "Wanda contacts nearby restaurants and supermarkets to reduce your salt as she thinks you have high blood pressure",
-
+  'explanation' => "We've already seen that <a href=\"https://www.nytimes.com/2015/06/12/business/technology-to-prevent-drunken-driving-could-soon-come-in-new-cars.html\">technology in cars could automatically stop drunk drivers</a> – taking away human choice – and <a href=\"https://www.newstatesman.com/science-tech/technology/2018/05/how-artificial-intelligence-could-personalise-food-future\">AI could personalise our food</a> – what if these things combined? How far do we want AI to go in taking decisions for us?",
+  
   'wanda' => [
     'hello' => ":wandaHello",
     'closer' => ":name, can you move your face closer to the screen please?",

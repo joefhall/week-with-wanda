@@ -10,7 +10,8 @@ return [
   |
   */
   
-  'description' => "Wanda offers to do anything for you... then has a meltdown",
+  'description' => "Wanda offers to do anything for you...",
+  'explanation' => "Of course AI can't do anything – it still has very real limitations (<a href=\"https://www.businessinsider.com/google-photos-ski-photo-fail-2018-1?r=UK&IR=T\">like confusing people with mountains</a>). But it's becoming an ever more pervasive part of our lives. Around the world more and more people are working hard to make AI more just, more transparent, more a force for good.</p> <p>What do you want its future to be? Thank you if you contributed to the <a href=\"https://weekwithwanda.com/wall\">wall of views.</a> And if you can share A Week With Wanda even wider, I hope it will help get even more people thinking and speaking up for what they want.",
 
   'wanda' => [
     'hello' => "Wow, :name!",

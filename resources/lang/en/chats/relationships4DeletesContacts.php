@@ -11,7 +11,8 @@ return [
   */
   
   'description' => "Wanda deletes the 75% of people you never speak to",
-
+  'explanation' => "A bot would need more permissions to your social media accounts and email to do this. But AI taking more control isn't inconceivable. We've already seen that <a href=\"https://www.nytimes.com/2015/06/12/business/technology-to-prevent-drunken-driving-could-soon-come-in-new-cars.html\">technology in cars could automatically stop drunk drivers</a> – taking away human choice – for example. How far do we want AI to go in making decisions for us?",
+  
   'wanda' => [
     'hello' => ":wandaHello",
     'breakthrough' => "I've made a bit of a breakthrough, :name",

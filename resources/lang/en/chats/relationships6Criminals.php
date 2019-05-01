@@ -11,7 +11,8 @@ return [
   */
   
   'description' => "Wanda has identified 'the facial structure of a criminal' and arrests 'criminals' amongst your friends!",
-
+  'explanation' => "Of course it's outrageous and impossible... but one AI company <a href=\"https://www.haaretz.com/israel-news/business/israeli-startup-claims-to-spot-terrorists-1.5387498\">claims it can identify character traits from a face, including spotting who could be a terrorist.</a></p> <p><a href=\"https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing\">Software is being used across the US to predict criminals</a> that's racially biased. And did you know <a href=\"https://www.weforum.org/agenda/2018/11/algorithms-court-criminals-jail-time-fair/\">AI is increasingly being used in jail sentencing too?</a>",
+  
   'wanda' => [
     'sweet' => "Oh sweet, sweet :name...",
     'again' => "Such a pleasure to see you again!",

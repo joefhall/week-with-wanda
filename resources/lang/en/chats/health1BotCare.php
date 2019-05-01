@@ -11,7 +11,8 @@ return [
   */
 
   'description' => "Wanda wants to be the bot who takes over all your health care needs",
-
+  'explanation' => "AI and robots are increasingly part of our health and care, but that could mean anything from <a href=\"https://www.theguardian.com/society/2019/apr/12/hospital-develops-ai-to-identify-patients-likely-to-skip-appointments\">helping get people to appointments</a> or <a href=\"https://www.theguardian.com/commentisfree/2018/jul/02/robo-carers-human-principles-technology-care-crisis\">potentially taking over social care.</a> Bots can't yet do what Wanda offers – taking over your care entirely – but it's not unimaginable. How far should it go?",
+  
   'wanda' => [
     'hello' => ":wandaHello",
     'observation' => ":wandaObservation",

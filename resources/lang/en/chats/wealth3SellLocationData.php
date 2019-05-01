@@ -11,6 +11,7 @@ return [
   */
   
   'description' => "Wanda wants to make you money by selling your location data",
+  'explanation' => "Our location is at times being tracked without our permission, from <a href=\"https://www.theguardian.com/technology/2018/aug/13/google-location-tracking-android-iphone-mobile\">our phones</a> to <a href=\"https://www.zdnet.com/article/hundreds-of-apps-are-using-ultrasonic-sounds-to-track-your-ad-habits/\">secret ultrasonic tracking in some shops and adverts</a>. Are we ok with that? Maybe we're not? What if we profited from the tech we use in this <a href=\"https://www.theverge.com/2019/4/9/18302076/data-monetization-control-manipulation-economy-jaron-laniers-virtual-reality-vr-vergecast\">and other ways?</a> Is that ok?",
 
   'wanda' => [
     'hello' => ":wandaHello",

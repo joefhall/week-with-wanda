@@ -11,6 +11,7 @@ return [
   */
   
   'description' => "Wanda's been listening to you and thinks you sound depressed",
+  'explanation' => "We know that everything from <a href=\"https://www.techrepublic.com/article/google-home-mini-spied-on-user-thousands-of-times-a-day-sent-recordings-to-google/\">in-home voice assistants</a> to <a href=\"https://www.nytimes.com/2017/02/17/technology/cayla-talking-doll-hackers.html\">dolls</a> are being (mis)used to listen to us without our permission. Maybe we're ok with that? Maybe we're not? What if it's used for good – is that ok? Lots of apps are out there to support our mental health and <a href=\"https://www.cnbc.com/2018/06/06/siri-alexa-google-assistant-responses-to-suicidal-tendencies.html\">AI helpers are already looking out for suicidal tendencies</a> (though it's crude at the moment), should this extend further?",
 
   'wanda' => [
     'hello' => ":wandaHello",

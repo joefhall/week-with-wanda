@@ -11,7 +11,8 @@ return [
   */
   
   'description' => "Wanda wants to call your friends pretending to be you, so she can catch up with them on your behalf",
-
+  'explanation' => "<a href=\"https://motherboard.vice.com/en_us/article/3k7mgn/baidu-deep-voice-software-can-clone-anyones-voice-with-just-37-seconds-of-audio\">One company already claims</a> to be able to clone your voice with just a 3.7 second recording of you. AI bots still often aren't amazing at holding a realistically human conversation – but <a href=\"https://www.engadget.com/2018/05/08/pretty-sure-googles-new-talking-ai-just-beat-the-turing-test/\">is that all changing?</a></p> <p>AI's role in our human interactions is increasing more and more, like <a href=\"https://phys.org/news/2018-08-creepy-machines-gmail.html\">email auto-replies</a> – is that what we want? What limits (if any) do we want to set?",
+  
   'wanda' => [
     'hello' => ":wandaHello",
     'observation' => ":wandaObservation",

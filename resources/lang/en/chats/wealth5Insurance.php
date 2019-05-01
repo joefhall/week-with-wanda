@@ -11,7 +11,8 @@ return [
   */
   
   'description' => "Wanda offers you a better insurance deal – based on your skin colour",
-
+  'explanation' => "Racial bias (and bias of other kinds, such as gender) is a real and live issue in AI – with <a href=\"https://www.wired.com/story/ideas-joi-ito-insurance-algorithms/\">insurance just one example.</a> How much of this is down to tech itself still being dominated by people who are white, male, Western and university-educated? How can it get more representative and more responsible?",
+  
   'wanda' => [
     'name' => ":name!",
     'nameName' => ":name :name :name :name :name!",

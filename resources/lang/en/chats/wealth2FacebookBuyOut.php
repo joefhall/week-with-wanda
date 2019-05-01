@@ -11,7 +11,8 @@ return [
   */
   
   'description' => "Facebook wants to buy out Wanda and other AI companies... great news?",
-
+  'explanation' => "The big tech companies are getting bigger and bigger – and are <a href=\"https://www.cbinsights.com/research/top-acquirers-ai-startups-ma-timeline/\">snapping up other companies at a faster and faster rate.</a> Is it better (and is it ok) having lots of power in the hands of a few?",
+  
   'wanda' => [
     'hello' => ":wandaHello",
     'omg' => "OMG! OMG! OMG!",

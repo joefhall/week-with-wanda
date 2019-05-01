@@ -11,6 +11,7 @@ return [
   */
   
   'description' => "Wanda wants to sell a sex tape of you and a celebrity!",
+  'explanation' => "This might be funnier... if it weren't so real and possible. People have already collaborated online to create 'deepfakes' – <a href=\"https://www.ibtimes.co.uk/deepfakes-reddit-bans-subreddit-featuring-ai-enchanced-celebrity-porn-1660302\">celebrities' faces superimposed on porn videos using AI.</a> As well as the individual harm, if videos of anyone doing anything can be faked, what does this mean for truth itself?",
 
   'wanda' => [
     'lovely' => "Ah, lovely :name...",

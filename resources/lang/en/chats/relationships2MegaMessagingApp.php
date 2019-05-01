@@ -11,7 +11,8 @@ return [
   */
   
   'description' => "Wanda wants to buy up every messaging app and combine them into one, to make life easier for you",
-
+  'explanation' => "It would take a lot of money to do this of course, but tech companies are getting bigger and bigger – and are <a href=\"https://www.cbinsights.com/research/top-acquirers-ai-startups-ma-timeline/\">snapping up other companies at a faster and faster rate.</a> Is it better (and is it ok) having lots of power in the hands of a few, whether it's messaging or anything else?",
+  
   'wanda' => [
     'hello' => ":wandaHello",
     'glad' => "I'm so glad you saw my message",

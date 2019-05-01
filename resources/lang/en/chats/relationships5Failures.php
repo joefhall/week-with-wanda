@@ -10,8 +10,9 @@ return [
   |
   */
   
-  'description' => "Wanda finds out who's 'failing at life' (earning less) so you can stay away from them",
-
+  'description' => "Wanda finds out who's 'failing at life' (earning less... which turns out to be mostly women) so you can stay away from them",
+  'explanation' => "Gender bias (and bias of other kinds, such as race) is a real and live issue in AI, even in the companies with the greatest tech resources, such as <a href=\"https://qz.com/1141122/google-translates-gender-bias-pairs-he-with-hardworking-and-she-with-lazy-and-other-examples/\">sexist Google Translate</a> and <a href=\"https://www.independent.co.uk/life-style/gadgets-and-tech/amazon-ai-sexist-recruitment-tool-algorithm-a8579161.html\">Amazon's recruitment algorithms.</a> How much of this is down to tech itself still being dominated by people who are white, male, Western and university-educated? How can it get more representative and more responsible?",
+  
   'wanda' => [
     'name' => ":name!",
     'nameName' => ":name :name :name :name :name!",
