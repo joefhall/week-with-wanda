@@ -2,6 +2,7 @@
 
 namespace App\Utilities;
 
+use App\Jobs\FinishWeek;
 use App\Jobs\ScheduleWeek;
 use App\Jobs\SendVerificationEmail;
 use App\Jobs\SendVerificationTextMessage;
@@ -121,7 +122,10 @@ trait DoesSpecialMessageActions
         break;
         
       case 'all7Finale':
-        if ($emotion === 'new-identity') {
+        if ($wandaMessageId === 'anything') {
+          FinishWeek::dispatch($userId);
+        }
+        if ($wandaMessageId === 'reveal') {
           $this->setWandaNewIdentity($user);
         }
         if ($wandaMessageId === 'asking') {
