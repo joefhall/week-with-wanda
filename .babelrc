@@ -1,11 +1,24 @@
 {
   "plugins": [
+    "transform-es2015-arrow-functions",
+    "babel-plugin-transform-class-properties",
     [
       "@babel/plugin-proposal-class-properties",
       {
         "loose": true
       }
     ]
+  ],
+  "presets": [
+    ["@babel/preset-react", {}],
+    ["@babel/env", {
+      "modules": true,
+      "targets": {
+        "browsers": [
+          "> 0.1%",
+          "ie 11"
+        ]
+      }
+    }]
   ]
 }
-  

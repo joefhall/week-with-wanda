@@ -1,5 +1,3 @@
-let mix = require('laravel-mix');
-
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,8 +9,17 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.react('resources/js/index.js', 'public/js')
+let mix = require('laravel-mix');
+require('laravel-mix-polyfill');
+
+mix
+  .react('resources/js/index.js', 'public/js')
   .sass('resources/sass/app.scss', 'public/css')
+  .polyfill({
+      enabled: true,
+      useBuiltIns: "entry",
+      targets: "> 0.1%"
+   })
   .options({
     postCss: [
       require('postcss-css-variables')()

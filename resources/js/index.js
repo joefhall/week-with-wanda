@@ -1,3 +1,4 @@
+import 'react-app-polyfill/stable';
 require('./bootstrap');
 
 import React from 'react';
