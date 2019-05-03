@@ -7,7 +7,6 @@ use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class UserRepository
@@ -77,22 +76,6 @@ class UserRepository
     $this->updateField($userId, 'password', bcrypt($password));
     $this->updateMessageFromChatHistory($userId, 'user', 'signupPasswordNone', str_repeat('*', strlen($password)));
     $this->storeCountryFromIp($userId, $ip);
-  }
-
-  /**
-   * Get a user's Facebook profile pic, store it ourselves and add the URL to user's record.
-   *
-   * @param int $userId
-   * @param string $originalProfilePic
-   * @return void
-   */
-  public function storeProfilePic(int $userId, string $originalProfilePic) {    
-    $image = $this->client->get($originalProfilePic)->getBody()->getContents();
-    Storage::disk('s3')->put($userId . '/' . User::PROFILE_PIC_FILENAME, $image);
-    
-    $user = User::find($userId);
-    $user->profile_pic = true;
-    $user->save();
   }
   
   /**
