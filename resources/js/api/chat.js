@@ -7,9 +7,9 @@ import uuidv4 from 'uuid/v4';
 import { addMessage, setEmotion, setIdentity, setInput, setMeltdownLevel, setLoading, setTyping } from '../actions';
 
 let checkMessagesDisplayedTimer;
-const minTypingTime = 2000;
+const minTypingTime = 1000;
 const sessionId = uuidv4();
-const timeToBeginTyping = 500;
+const timeToBeginTyping = 250;
 
 const checkMessagesDisplayed = wandaMessagesCount => {
   const wandaMessagesBubbles = document.querySelectorAll('.chat__messages__message__bubble--wanda');
@@ -63,7 +63,7 @@ const timezone = () => {
 
 const typingDelay = messageText => {
   console.log('Typing delay', timeToBeginTyping + (striptags(messageText).length * 50));
-  const delayTime = timeToBeginTyping + (striptags(messageText).length * 50);
+  const delayTime = timeToBeginTyping + (striptags(messageText).length * 30);
   
   return delayTime > minTypingTime ? delayTime : minTypingTime;
 };
