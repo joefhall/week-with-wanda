@@ -1,20 +1,17 @@
 {
-    "name": "botman/studio",
-    "description": "BotMan Chatbot framework.",
+    "name": "joefhall/week-with-wanda",
+    "description": "A Week With Wanda - a humorous game with a virtual assistant to discover the dark side of AI.",
     "keywords": [
-        "botman",
-        "chatbot",
-        "framework",
-        "laravel"
+        "artificial",
+        "intelligence",
+        "ai",
+        "week",
+        "wanda"
     ],
     "license": "MIT",
     "type": "project",
     "require": {
         "php": "^7.1.3",
-        "botman/botman": "~2.0",
-        "botman/driver-web": "~1.0",
-        "botman/studio-addons": "~1.3",
-        "botman/tinker": "~1.0",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
         "fzaninotto/faker": "^1.8",
@@ -60,12 +57,10 @@
             "php artisan key:generate"
         ],
         "post-install-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "BotMan\\Studio\\Providers\\DriverServiceProvider::publishDriverConfigurations"
+            "Illuminate\\Foundation\\ComposerScripts::postInstall"
         ],
         "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "BotMan\\Studio\\Providers\\DriverServiceProvider::publishDriverConfigurations"
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",

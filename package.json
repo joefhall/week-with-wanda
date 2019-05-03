@@ -31,7 +31,6 @@
         "serve": "^10.1.2"
     },
     "dependencies": {
-        "botman-tinker": "^0.0.1",
         "emoji-regex": "^8.0.0",
         "jstz": "^2.1.1",
         "preact": "^8.4.2",
