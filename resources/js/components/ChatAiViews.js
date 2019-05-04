@@ -122,14 +122,14 @@ class ChatAiViews extends React.Component {
         <div className="chat__ai-views__wanda">
           <div className="chat__messages__message chat__messages__message--wanda">
             <div className="chat__ai-views__views__wanda__message__bubble--extra-wide chat__messages__message__bubble chat__messages__message__bubble--wanda">
-              Will you share your views on the future of AI for <strong><a href="/wall" target="_blank">my wall</a></strong>? Tap to add and/or type below
+              Will you share your views on the future of AI for <strong><a href="/wall" target="_blank">my wall</a></strong>? { this.state.aiViews ? 'Just' : 'Tap to add and/or' } type below
             </div>
           </div>
           { this.renderUserDetails() }
         </div>
         
         <div className="chat__ai-views__views">
-          { this.state.aiViews ? this.renderAiViews() : (this.state.error ? 'Sorry, I couldn\'t load your views' : 'Loading...') }
+          { this.state.aiViews ? this.renderAiViews() : (this.state.error ? '' : 'Loading...') }
         </div>
       </div>
     );

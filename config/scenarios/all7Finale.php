@@ -555,7 +555,20 @@ return [
     'asking' => [
       'type' => 'aiViews',
       'user' => [
-        'askingNone',
+        'askingSubmittedNone',
+        'askingSkippedNone',
+      ],
+    ],
+    'thanks' => [
+      'type' => 'none',
+      'user' => [
+        'thanksNone',
+      ],
+    ],
+    'noProblem' => [
+      'type' => 'choice',
+      'user' => [
+        'changedMind',
       ],
     ],
   ],
@@ -843,11 +856,17 @@ return [
     'easyNone' => [
       'wanda' => 'asking',
     ],
-    'bye1' => [
-      'wanda' => 'survey',
+    'askingSubmittedNone' => [
+      'wanda' => 'thanks',
     ],
-    'bye2' => [
-      'wanda' => 'survey',
+    'askingSkippedNone' => [
+      'wanda' => 'noProblem',
+    ],
+    'thanksNone' => [
+      'wanda' => '',
+    ],
+    'changedMind' => [
+      'wanda' => 'asking',
     ],
   ],
   

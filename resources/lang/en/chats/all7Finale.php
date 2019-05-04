@@ -100,7 +100,8 @@ return [
     'doIt' => "Will you do it?",
     'easy' => "It's easy, :name",
     'asking' => "Here's what I'm asking...",
-    'survey' => "Now as you're helping test me out... Just one last time <a href='https://docs.google.com/forms/d/e/1FAIpQLSdj_xi5ZUZYNHIpI4C86cL7qVl91bt-V7Ii_fvnBBp32rJbow/viewform' target='_blank'>please click here to take the user testing survey</a> -- it really helps. Thank you!",
+    'thanks' => "Thanks so much! <strong><a target='_blank' href='/wall'>Now check out what you and other people have written on my wall here.</a></strong> How incredible – it's now the end of our week together!",
+    'noProblem' => "No problem. <strong><a target='_blank' href='/wall'>Why not check out what other people have written on my wall here.</a></strong> And if you change your mind, you can still add something. Otherwise, how incredible – it's now the end of our week together!",
   ],
 
   'user' => [
@@ -122,6 +123,7 @@ return [
     'helpMean' => "What do you mean?",
     'doItAgree' => "I'm with you",
     'doItUnsure' => "I'm not sure...",
+    'changedMind' => "I want to write something on your wall",
   ],
 
 ];

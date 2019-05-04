@@ -88,18 +88,11 @@ class WandaWallController extends Controller
         $count++;
       }
       
-      if ($aiViewsFound) {
-        $response = [
-          'name' => $user->first_name,
-          'countryName' => $this->getCountryName($user->country),
-          'views' => $aiViewsFound,
-        ];
-      } else {
-        $response = [
-          'error' => 'views',
-          'reason' => 'No AI views found for user',
-        ];
-      }
+      $response = [
+        'name' => $user->first_name,
+        'countryName' => $this->getCountryName($user->country),
+        'views' => $aiViewsFound,
+      ];
     }
     
     return response()->json($response);

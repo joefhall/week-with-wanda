@@ -69,6 +69,7 @@
     }
     
     &__skip {
+      cursor: pointer;
       font-size: $font-size-xxsm;
       margin-top: $spacer * .25;
     }
