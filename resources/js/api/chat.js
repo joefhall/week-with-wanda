@@ -136,6 +136,7 @@ export const getHistory = async () => {
         console.log('Latest chat entry:', latestChatEntry);
         store.dispatch(setInput(latestChatEntry.scenario, latestChatEntry.type, latestChatEntry.userInput, latestChatEntry.meltdownLevel));
         store.dispatch(setMeltdownLevel(latestChatEntry.meltdownLevel ? latestChatEntry.meltdownLevel : 0));
+        store.dispatch(setIdentity(latestChatEntry.identity));
         store.dispatch(setTyping(false));
         
         if (startScenario && startMessage) {

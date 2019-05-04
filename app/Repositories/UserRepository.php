@@ -247,7 +247,7 @@ class UserRepository
   )
   {
     if ($userMessageId !== 'begin') {
-      Log::info("Storing chat history - user($userId), scenario($currentScenario), userMessage($userMessageId)");
+      Log::info("Storing chat history - user($userId), scenario($currentScenario), sender(user), userMessage($userMessageId)");
       
       $this->addToChatHistory($userId, [
         'sender' => 'user',
@@ -261,7 +261,7 @@ class UserRepository
     if ($response && array_get($response, 'wanda') && !array_has($response, 'error')) {
       $user = User::find($userId);
       $wandaMessageId = key(array_get($response, 'wanda'));
-      Log::info("Storing chat history - user($userId), scenario($currentScenario), wandaMessage($wandaMessageId)");
+      Log::info("Storing chat history - user($userId), scenario($currentScenario), sender(wanda), wandaMessage($wandaMessageId)");
       
       $this->addToChatHistory($userId, [
         'sender' => 'wanda',
@@ -271,6 +271,7 @@ class UserRepository
         'type' => array_get($response, 'type'),
         'userInput' => array_get($response, 'user'),
         'meltdownLevel' => $user->meltdown_level,
+        'identity' => $user->wanda_identity,
         'time' => Carbon::now()->timestamp + 1,
       ]);
     }

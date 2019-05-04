@@ -63,6 +63,8 @@ class ChatMeltdown extends React.Component {
   render() {
     console.log('Meltdown level is...', this.props.meltdownLevel);
     
+    const identity = (this.props.identity && !Array.isArray(this.props.identity)) ? this.props.identity : null;
+    
     const crackImage = document.querySelector('.chat__meltdown__cracks');
     let crackImageTopClip;
     let crackImageBottomClip;
@@ -106,7 +108,7 @@ class ChatMeltdown extends React.Component {
         
         <img src="/img/meltdowns/flame2.gif" className={'chat__meltdown__flame' + ((this.props.meltdownLevel >= 8 && this.props.meltdownLevel < 50) ? '' : ' d-none')} alt="Flames" />
         
-        <img src="/img/meltdowns/cloud.png" className={'chat__meltdown__cloud' + ((this.props.meltdownLevel >= 50 && this.props.emotion !== 'blown-up' && this.props.emotion !== 'new-identity') ? '' : ' d-none')} alt="Cloud" />
+        <img src="/img/meltdowns/cloud.png" className={'chat__meltdown__cloud' + ((this.props.meltdownLevel >= 50 && this.props.emotion !== 'blown-up' && identity === null) ? '' : ' d-none')} alt="Cloud" />
       </div>
     );
   }
@@ -115,6 +117,7 @@ class ChatMeltdown extends React.Component {
 const mapStateToProps = (state) => {
   return {
     emotion: state.emotion,
+    identity: state.identity,
     meltdownLevel: state.meltdownLevel,
     messages: state.messages
   };

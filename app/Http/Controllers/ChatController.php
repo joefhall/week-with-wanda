@@ -51,11 +51,13 @@ class ChatController extends Controller
     
     if (!config("scenarios.doNotStore.{$currentScenario}")) {
       $this->doSpecialMessageActions($user->id, $request, $userMessageId, $userMessage, $response);
+    }
+      
+    $response = $this->mergeDataIntoResponse($user, $response);
+    
+    if (!config("scenarios.doNotStore.{$currentScenario}")) {
       $this->userRepository->storeChatHistory($user->id, $currentScenario, $userMessageId, $userMessage, $response);
     }
-    
-    $response = $this->mergeMeltdownLevel($user, $response);
-    $response = $this->mergeWandaNewIdentity($user, $response);
     
     return response()->json($response);
   }

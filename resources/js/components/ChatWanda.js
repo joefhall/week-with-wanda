@@ -9,14 +9,11 @@ class ChatWanda extends React.Component {
   }
   
   render() {
-    let emotion = (!Array.isArray(this.props.emotion) && this.props.emotion) ? this.props.emotion : 'base';
+    let emotion = (this.props.emotion && !Array.isArray(this.props.emotion)) ? this.props.emotion : 'base';
+    const identity = (this.props.identity && !Array.isArray(this.props.identity)) ? this.props.identity : null;
     
-    if (emotion === 'new-identity') {
-      if (this.props.identity) {
-        emotion = this.props.identity;
-      } else {
-        emotion = 'base';
-      }
+    if (identity) {
+      emotion = this.props.identity;
     }
     
     console.log('Emotion is...', emotion);
@@ -26,8 +23,8 @@ class ChatWanda extends React.Component {
         <ChatMeltdown />
         
         <div className="chat__wanda__title">
-          <div className={'chat__wanda__title--1' + ((this.props.emotion === 'new-identity' && this.props.identity.length) ? ' d-none' : '')}>A Week With</div>
-          <div className="chat__wanda__title--2"><div className={'chat__wanda__title--2--w' + ((this.props.meltdownLevel >= 6 && this.props.meltdownLevel < 50) ? ' chat__wanda__title--2--w--rotate' : '')}>W</div>{ (this.props.emotion === 'new-identity' && this.props.identity.length) ? emotion.slice(1) : 'anda' }</div>
+          <div className={'chat__wanda__title--1' + (identity ? ' d-none' : '')}>A Week With</div>
+          <div className="chat__wanda__title--2"><div className={'chat__wanda__title--2--w' + ((this.props.meltdownLevel >= 6 && this.props.meltdownLevel < 50) ? ' chat__wanda__title--2--w--rotate' : '')}>W</div>{ identity ? identity.slice(1) : 'anda' }</div>
         </div>
         <img src={`/img/emotions/${emotion}.gif`} onLoad={this.onLoad} className={`chat__wanda__image chat__wanda__image--${emotion} d-none`} alt="Wanda" />
         

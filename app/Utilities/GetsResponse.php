@@ -80,6 +80,21 @@ trait GetsResponse
   }
   
   /**
+   * Merge any extra data into a response.
+   *
+   * @param User $user
+   * @param array $response
+   * @return void
+   */
+  public function mergeDataIntoResponse(User $user = null, array $response)
+  {
+    $response = $this->mergeWandaNewIdentity($user, $response);
+    $response = $this->mergeMeltdownLevel($user, $response);
+    
+    return $response;
+  }
+  
+  /**
    * Merge Wanda's new identity into a response.
    *
    * @param User $user
