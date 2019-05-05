@@ -41,7 +41,6 @@
         "jstz": "^2.1.1",
         "preact": "^8.4.2",
         "react-app-polyfill": "^1.0.0",
-        "react-div-100vh": "^0.3.2",
         "react-html-parser": "^2.0.2",
         "react-phone-number-input": "^2.3.7",
         "react-redux": "^6.0.0",

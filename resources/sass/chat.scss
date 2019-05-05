@@ -3,12 +3,12 @@
   display: flex;
   flex-flow: column;
   height: 100%;
+  max-width: 400px;
   width: 100vw;
   
   @include media-breakpoint-up(sm) {
     border-radius: $spacer * .5;
     max-height: 600px;
-    max-width: 400px;
   }
   
   &__loading {
