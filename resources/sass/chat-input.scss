@@ -1,7 +1,7 @@
 .chat__input {
   background-color: beige;
   flex: 1 1 auto;
-  padding: 0 $spacer $spacer $spacer;
+  padding: $spacer * .5 $spacer * .5 0;
   
   @include media-breakpoint-up(md) {
     border-bottom-left-radius: $spacer * .5;
@@ -23,7 +23,11 @@
       cursor: pointer;
       display: flex;
       margin: $spacer * .25;
-      padding: $spacer * .5 $spacer * .75;
+      padding: $spacer * .15 $spacer * .6 $spacer * .15;
+      
+      @media screen and (min-height: $small-screen-height) {
+        padding: $spacer * .25 $spacer * .7 $spacer * .25;
+      }
 
       &:hover {
         background-color: white;
@@ -49,11 +53,21 @@
       text-decoration: none;
     }
   }
+  
+  &__container {
+    min-height: $spacer * .6;
+  }
 
   &__form {
     align-items: center;
     display: flex;
+    font-size: $font-size-sm;
     justify-content: flex-end;
+    padding-bottom: $spacer * .5;
+    
+    @media screen and (min-height: $small-screen-height) {
+      font-size: $font-size-md;
+    }
 
     &__error-message {
       font-size: $font-size-xxsm;
@@ -65,13 +79,13 @@
     
     &__forgotten-password {
       font-size: $font-size-xxsm;
-      margin-top: $spacer * .25;
+      margin: $spacer * .25 0 $spacer * .5;
     }
     
     &__skip {
       cursor: pointer;
       font-size: $font-size-xxsm;
-      margin-top: $spacer * .25;
+      margin: $spacer * .25 0 $spacer * .5;
     }
 
     &__submit-button {

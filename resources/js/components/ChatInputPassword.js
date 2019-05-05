@@ -23,6 +23,12 @@ class ChatInputPassword extends React.Component {
     }
   };
 
+  onBlur = event => {
+    if (this.props.onBlur) {
+      this.props.onBlur(event);
+    }
+  };
+
   onChange = event => {
     const passwordInput = document.querySelector('input.chat__input__form__input[type="password"]');
     this.setState({
@@ -30,6 +36,12 @@ class ChatInputPassword extends React.Component {
     });
     
     this.validatePassword();
+  };
+
+  onFocus = event => {
+    if (this.props.onFocus) {
+      this.props.onFocus(event);
+    }
   };
 
   onFormSubmit = event => {
@@ -42,11 +54,17 @@ class ChatInputPassword extends React.Component {
     }
   };
 
+  componentWillUnmount() {
+    if (this.props.onBlur) {
+      this.props.onBlur();
+    }
+  }
+
   render() {
     return (
       <form onSubmit={this.onFormSubmit}>
         <div className="chat__input__form">
-          <input className="chat__input__form__input" name="password" type="password" placeholder="Password" value={this.state.password} onChange={this.onChange} onFocus={this.onFocus} />
+          <input className="chat__input__form__input" name="password" type="password" placeholder="Password" value={this.state.password} onBlur={this.onBlur} onChange={this.onChange} onFocus={this.onFocus} />
           <i className="chevron circle right icon chat__input__form__submit-button" onClick={this.onFormSubmit}></i>
         </div>
         <div className="chat__input__form__forgotten-password">

@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Chat from './Chat';
-import Register from './Register';
 
 export default class App extends React.Component {
   state = {

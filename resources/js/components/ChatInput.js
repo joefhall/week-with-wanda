@@ -14,6 +14,7 @@ import ChatInputTextArea from './ChatInputTextArea';
 import ChatMessages from './ChatMessages';
 import LoginHidden from './LoginHidden';
 import store from '../store';
+import { hideWandaOnSmallScreens, showWanda } from '../utils/screen';
 import { toTitleCase } from '../utils/text';
 
 class ChatInput extends React.Component {
@@ -128,7 +129,7 @@ class ChatInput extends React.Component {
       switch(this.props.input.type) {
         case 'aiViews':
           return (
-            <ChatInputAiViews minLength={40} onComplete={this.addAndSendMessage} placeholder="How do you want AI to be in the future?" rows="3" userInput={this.props.input.userInput} />
+            <ChatInputAiViews minLength={40} onComplete={this.addAndSendMessage} onBlur={showWanda} onFocus={hideWandaOnSmallScreens} placeholder="How do you want AI to be in the future?" rows="3" userInput={this.props.input.userInput} />
           );
           break;
           
@@ -145,7 +146,7 @@ class ChatInput extends React.Component {
           return (
             <div>
               <ChatInputChoices onClick={this.addAndSendMessage} userInput={userInputFiltered} />
-              <ChatInputText minLength={5} placeholder="Other" onFormSubmit={this.receiveTextInput} />
+              <ChatInputText minLength={5} placeholder="Other" onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} />
             </div>
           );
           break;
@@ -164,13 +165,13 @@ class ChatInput extends React.Component {
           
         case 'loginEmail':
           return (
-            <ChatInputText name="email" placeholder="Your email" onFormSubmit={this.receiveTextInput} />
+            <ChatInputText name="email" placeholder="Your email" onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} />
           );
           break;
           
         case 'loginPassword':
           return (
-            <ChatInputPassword onFormSubmit={this.receiveTextInput} />
+            <ChatInputPassword onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} />
           );
           break;
         
@@ -183,31 +184,31 @@ class ChatInput extends React.Component {
 
         case 'signupEmail':
           return (
-            <ChatInputText name="email" placeholder="Your email" onFormSubmit={this.receiveTextInput} />
+            <ChatInputText name="email" placeholder="Your email" onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} />
           );
           break;
           
         case 'signupMobileNumber':
           return (
-            <ChatInputPhone onFormSubmit={this.receiveTextInput} />
+            <ChatInputPhone onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} />
           );
           break;
         
         case 'signupName':
           return (
-            <ChatInputText minLength={2} name="first_name" placeholder="Your first name" onFormSubmit={this.receiveTextInput} />
+            <ChatInputText minLength={2} name="first_name" placeholder="Your first name" onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} />
           );
           break;
           
         case 'signupPassword':
           return (
-            <ChatInputPasswordCreate onFormSubmit={this.receiveTextInput} />
+            <ChatInputPasswordCreate onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} />
           );
           break;
           
         case 'text':
           return (
-            <ChatInputText placeholder="" onFormSubmit={this.receiveTextInput} />
+            <ChatInputText placeholder="" onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} />
           );
           break;
           
@@ -219,7 +220,7 @@ class ChatInput extends React.Component {
           
           return (
             <div>
-              <ChatInputText minLength={7} placeholder={textPlaceholder} onFormSubmit={this.receiveTextInput} />
+              <ChatInputText minLength={7} placeholder={textPlaceholder} onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} />
               <ChatInputChoices onClick={this.addAndSendMessage} userInput={userInputFiltered} />
             </div>
           );
@@ -227,7 +228,7 @@ class ChatInput extends React.Component {
           
         case 'textArea':
           return (
-            <ChatInputTextArea minLength={40} placeholder="" onFormSubmit={this.receiveTextInput} rows="2" />
+            <ChatInputTextArea minLength={40} placeholder="" onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} rows="2" />
           );
           break;
 

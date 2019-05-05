@@ -4,6 +4,7 @@
   flex-flow: column;
   height: 100%;
   max-width: 400px;
+  position: relative;
   width: 100vw;
   
   @include media-breakpoint-up(sm) {
@@ -31,7 +32,7 @@
     flex: 1 1 auto;
     height: 80%;
     overflow-y: auto;
-    padding: $spacer 0;
+    padding: $spacer * .25 0;
     
     &__bottom {
       max-height: 1px;
@@ -63,10 +64,16 @@
       
       &__bubble {
         border-radius: $border-radius-xxxxxlg;
-        font-size: $font-size-base;
-        max-width: 65%;
-        padding: $spacer * .25 $spacer * .7 $spacer * .25;
+        font-size: $font-size-sm;
+        max-width: 90%;
+        padding: $spacer * .15 $spacer * .6 $spacer * .15;
         word-wrap: break-word;
+        
+        @media screen and (min-height: $small-screen-height) {
+          font-size: $font-size-base;
+          max-width: 65%;
+          padding: $spacer * .25 $spacer * .7 $spacer * .25;
+        }
         
         &--large-text {
           font-size: $font-size-xxlg;

@@ -5,8 +5,14 @@
   background-size: contain;
   filter: brightness(115%) saturate(140%);
   line-height: 0;
-  min-height: calc(100vw / (400 / 225));
+  min-height: calc((100vw / (400 / 225)) - #{$small-screen-vertical-crop});
   position: relative;
+  top: -$small-screen-vertical-crop;
+  
+  @media screen and (min-height: $small-screen-height) {
+    min-height: calc(100vw / (400 / 225));
+    top: 0;
+  }
   
   @include media-breakpoint-up(sm) {
     border-top-left-radius: $spacer * .5;
@@ -30,16 +36,28 @@
     left: 8px;
     line-height: 1.1;
     position: absolute;
-    top: 18px;
+    top: calc(18px + (#{$small-screen-vertical-crop} / 1.5));
     width: 100%;
     
+    @media screen and (min-height: $small-screen-height) {
+      top: 18px;
+    }
+    
     &--1 {
-      font-size: $font-size-lg;
+      font-size: $font-size-md;
+      
+      @media screen and (min-height: $small-screen-height) {
+        font-size: $font-size-lg;
+      }
     }
     
     &--2 {
-      font-size: $font-size-xxxlg;
+      font-size: $font-size-xxlg;
       text-shadow: 1px 1px 1px black;
+      
+      @media screen and (min-height: $small-screen-height) {
+        font-size: $font-size-xxxlg;
+      }
       
       &--w {
         display: inline-block;

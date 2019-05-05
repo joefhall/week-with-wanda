@@ -35,6 +35,12 @@ class ChatInputPasswordCreate extends React.Component {
     }
   };
 
+  onBlur = event => {
+    if (this.props.onBlur) {
+      this.props.onBlur(event);
+    }
+  };
+
   onChange = event => {
     const passwordInputs = document.querySelectorAll('input.chat__input__form__input[type="password"]');
     this.setState({
@@ -43,6 +49,12 @@ class ChatInputPasswordCreate extends React.Component {
     });
     
     this.validatePasswords();
+  };
+
+  onFocus = event => {
+    if (this.props.onFocus) {
+      this.props.onFocus(event);
+    }
   };
 
   onFormSubmit = event => {
@@ -55,6 +67,12 @@ class ChatInputPasswordCreate extends React.Component {
     }
   };
 
+  componentWillUnmount() {
+    if (this.props.onBlur) {
+      this.props.onBlur();
+    }
+  }
+
   render() {
     return (
       <form onSubmit={this.onFormSubmit}>
@@ -62,11 +80,11 @@ class ChatInputPasswordCreate extends React.Component {
           {this.state.errorMessage}
         </div>
         <div className="chat__input__form">
-          <input className="chat__input__form__input" name="password" type="password" placeholder="Password" value={this.state.password} onChange={this.onChange} onFocus={this.onFocus} />
+          <input className="chat__input__form__input" name="password" type="password" placeholder="Password" value={this.state.password} onBlur={this.onBlur} onChange={this.onChange} onFocus={this.onFocus} />
           <i className="invisible chevron circle right icon chat__input__form__submit-button"></i>
         </div>
         <div className="chat__input__form">
-          <input className="chat__input__form__input"  name="password-confirm" type="password" placeholder="Confirm password" value={this.state.passwordConfirm} onChange={this.onChange} onFocus={this.onFocus} />
+          <input className="chat__input__form__input"  name="password-confirm" type="password" placeholder="Confirm password" value={this.state.passwordConfirm} onBlur={this.onBlur} onChange={this.onChange} onFocus={this.onFocus} />
           <i className="chevron circle right icon chat__input__form__submit-button" onClick={this.onFormSubmit}></i>
         </div>
         <input className="d-none" type="submit" />

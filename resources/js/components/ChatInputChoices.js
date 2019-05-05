@@ -95,12 +95,22 @@ export default class ChatInputChoices extends React.Component {
     });
   }
 
-  render() {
-    return (
-      <div>
+  renderErrorMessage() {
+    const choiceMulti = (this.props.type && this.props.type === 'choiceMulti');
+    
+    if (choiceMulti) {
+      return (
         <div className={(this.state.hasError ? 'chat__input__form__error-message--has-error ' : '') + 'chat__input__form__error-message'}>
           {this.state.errorMessage}
         </div>
+      );
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        { this.renderErrorMessage() }
         <div className="chat__input__form">
           <div className="chat__input__choices">
             { this.renderBefore() }

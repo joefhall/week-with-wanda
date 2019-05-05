@@ -15,7 +15,12 @@ $font-family-sans-serif: "Raleway", sans-serif;
 $font-size-xxxlg: $font-size-base * 2.5 !default;
 $font-size-xxlg: $font-size-base * 2 !default;
 $font-size-xlg: $font-size-base * 1.5 !default;
+$font-size-md: $font-size-base !default;
 $font-size-xsm: $font-size-base * .75 !default;
 $font-size-xxsm: $font-size-base * .65 !default;
 $font-size-xxxsm: $font-size-base * .5 !default;
 $line-height-base: 1.6;
+
+// Layout
+$small-screen-height: 568px;
+$small-screen-vertical-crop: 36px;

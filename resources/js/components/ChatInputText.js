@@ -23,6 +23,12 @@ export default class ChatInputText extends React.Component {
     }
   };
 
+  onBlur = event => {
+    if (this.props.onBlur) {
+      this.props.onBlur(event);
+    }
+  };
+
   onChange = event => {
     this.setState({inputText: event.target.value});
     if (this.props.onChange) {
@@ -48,6 +54,12 @@ export default class ChatInputText extends React.Component {
     }
   };
 
+  componentWillUnmount() {
+    if (this.props.onBlur) {
+      this.props.onBlur();
+    }
+  }
+
   render() {
     return (
       <form onSubmit={this.onFormSubmit}>
@@ -55,7 +67,7 @@ export default class ChatInputText extends React.Component {
           {this.state.errorMessage}
         </div>
         <div className="chat__input__form">
-          <input className="chat__input__form__input" name={this.props.name} type={this.props.type || 'text'} placeholder={this.props.placeholder} value={this.state.inputText} onChange={this.onChange} onFocus={this.onFocus} />
+          <input className="chat__input__form__input" name={this.props.name} type={this.props.type || 'text'} placeholder={this.props.placeholder} value={this.state.inputText} onBlur={this.onBlur} onChange={this.onChange} onFocus={this.onFocus} />
           <i className={(this.props.hideButton ? 'invisible ' : '') + 'chevron circle right icon chat__input__form__submit-button'} onClick={this.onFormSubmit}></i>
         </div>
       </form>

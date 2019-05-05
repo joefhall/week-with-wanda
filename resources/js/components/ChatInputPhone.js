@@ -9,6 +9,12 @@ export default class ChatInputPhone extends React.Component {
     inputValue: ''
   };
 
+  onBlur = event => {
+    if (this.props.onBlur) {
+      this.props.onBlur(event);
+    }
+  };
+
   onChange = value => {
     this.setState({inputValue: value});
     
@@ -16,6 +22,12 @@ export default class ChatInputPhone extends React.Component {
     
     if (this.props.onChange) {
       this.props.onChange(event);
+    }
+  };
+
+  onFocus = event => {
+    if (this.props.onFocus) {
+      this.props.onFocus(event);
     }
   };
 
@@ -58,6 +70,12 @@ export default class ChatInputPhone extends React.Component {
     this.validatePhoneNumber(null);
   }
 
+  componentWillUnmount() {
+    if (this.props.onBlur) {
+      this.props.onBlur();
+    }
+  }
+
   render() {
     return (
       <div>
@@ -71,6 +89,8 @@ export default class ChatInputPhone extends React.Component {
             countryOptions={['US', 'CA', 'AU', 'GB', 'FR', 'IT', 'BE', 'NL', 'DE']}
             international={false}
             limitMaxLength={true}
+            onBlur={event => this.onBlur(event)}
+            onFocus={event => this.onFocus(event)}
             onChange={value => this.onChange(value)}
           />
           <i className={(this.props.hideButton ? 'invisible ' : '') + 'chevron circle right icon chat__input__form__submit-button'} onClick={this.onFormSubmit}></i>
