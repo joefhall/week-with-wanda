@@ -3,14 +3,16 @@ A humorous, web-based game featuring a virtual assistant called Wanda - to raise
 
 It's essentially a [branching narrative](https://thestoryelement.wordpress.com/2015/02/11/designing-branching-narrative/) interactive story (with lots of fiction to suggest Wanda is way smarter and more advanced than she really is!)
 
-[Find out more about the project here.](https://weekwithwanda.wordpress.com)
+[Find out more about the project here](https://weekwithwanda.wordpress.com) and if you're interested, you can [read the project strategy developed with Mozilla and Harmony Labs here.](https://docs.google.com/presentation/d/1yZxPHUgbvfass-heNNZ0edBXXge0EfHhNaSqcUVdaGo/edit)
 
 ## Behind the scenes
-When developing this project, I created a couple of crude admin tools to preview Wanda's range of emotions, and the different chats. You can see these here:
-[Scenarios & chats](https://weekwithwanda.com/scenarios)
-[Emotions](https://weekwithwanda.com/emotions)
+When developing this project, I created a couple of crude admin tools to preview Wanda's range of emotions, and the chats for the different 'scenarios' (the things Wanda does each day). You can see these here:
+* [Scenarios & chats](https://weekwithwanda.com/scenarios)
+* [Emotions](https://weekwithwanda.com/emotions)
 
 You can find the [scenario chats structure here](https://github.com/joefhall/week-with-wanda/tree/master/config/scenarios) and [language files here](https://github.com/joefhall/week-with-wanda/tree/master/resources/lang/en/chats) in this project.
+
+
 
 ## Installation
 Want to run A Week With Wanda on your own server, modify or improve it?  Here's how to get it set up.
