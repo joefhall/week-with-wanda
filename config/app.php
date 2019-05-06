@@ -165,6 +165,11 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+      
+        /*
+         * Other providers...
+         */
+        Understand\UnderstandLaravel5\UnderstandLaravel5ServiceProvider::class,
     ],
 
     /*

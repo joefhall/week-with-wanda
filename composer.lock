@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "84b652b43ee2061793e6779efa96d51a",
+    "content-hash": "da893b3c30be0a43fce658c4cc2d1638",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -4337,6 +4337,70 @@
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "time": "2017-11-27T11:13:29+00:00"
+        },
+        {
+            "name": "understand/understand-laravel5",
+            "version": "v2.0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/understand/understand-laravel5.git",
+                "reference": "3eb3e50361a61603c2a658e9b8d47594ee474b12"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/understand/understand-laravel5/zipball/3eb3e50361a61603c2a658e9b8d47594ee474b12",
+                "reference": "3eb3e50361a61603c2a658e9b8d47594ee474b12",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "illuminate/support": "~5.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "orchestra/testbench": "^3.5",
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "component": "package",
+                "frameworks": [
+                    "Laravel 5"
+                ],
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Understand\\UnderstandLaravel5\\UnderstandLaravel5ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Understand\\UnderstandLaravel5\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aivis",
+                    "email": "aivis.silins@gmail.com"
+                }
+            ],
+            "description": "Laravel 5 service provider for Understand.io",
+            "keywords": [
+                "Understand.io",
+                "laravel",
+                "laravel 5",
+                "logs",
+                "understand"
+            ],
+            "time": "2019-05-02T10:33:08+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
