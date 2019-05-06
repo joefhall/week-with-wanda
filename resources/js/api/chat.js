@@ -49,6 +49,36 @@ const hideLoading = () => {
   }
 };
 
+const showError = errorMessage => {
+  const errorMessageDisplayed = document.querySelector('.chat__messages__message__error');
+  
+  if (!errorMessageDisplayed) {
+    const emoji = '💩';
+    const message = `<div class='chat__messages__message__error'>${errorMessage}. You could try refreshing the page - or email my maker at <a href='mailto:hello@weekwithwanda.com'>hello@weekwithwanda.com</a> if this continues.</div>`;
+    const emotion = 'thumbs-down';
+
+    store.dispatch(setEmotion(emotion));
+
+    showResponse({
+      emotion: emotion,
+      meltdownLevel: 10,
+      scenario: '',
+      type: 'none',
+      user: {none: null},
+      wanda: {errorEmoji: emoji}
+    }, 'errorEmoji', emoji);
+
+    showResponse({
+      emotion: null,
+      meltdownLevel: 10,
+      scenario: '',
+      type: 'none',
+      user: {none: null},
+      wanda: {error: message}
+    }, 'error', message);
+  }
+};
+
 const showResponse = (responseData, wandaMessageId, wandaMessage) => {
   store.dispatch(setTyping(false));
   store.dispatch(addMessage(Date.now(), responseData.scenario, 'wanda', wandaMessageId, wandaMessage, responseData.meltdownLevel));
@@ -85,7 +115,8 @@ export const respond = async (scenario, messageId, message, requiresResponse = t
     const response = await axios.post('/api/respond', sendData);
     
     if (response.data.error) {
-      console.log(`An error occured getting Wanda's response back from the server: ${response.data.error}`);
+      console.log(`An error occured getting Wanda's response: ${response.data.error}`);
+      showError(response.data.error);
     } else {
       console.log('Message response:', response.data);
       
@@ -109,6 +140,7 @@ export const respond = async (scenario, messageId, message, requiresResponse = t
     }
   } catch(error) {
     console.log(`An error occured getting Wanda's response back from the server: ${error}`);
+    showError("Sorry! I couldn't connect to Wanda HQ - it could be your internet connection");
   }
 };
 
@@ -118,8 +150,9 @@ export const getHistory = async () => {
   try {
     const response = await axios.get('/api/history');
     
-    if (response.data.error) {
+    if (response.data.error || !response.data.length) {
       console.log(`An error occured getting user's chat history back from the server: ${response.data.error}`);
+      showError(response.data.error);
     } else {
       let chatHistory = response.data;
       console.log('User chat history:', chatHistory);
@@ -151,6 +184,7 @@ export const getHistory = async () => {
     }
   } catch(error) {
     console.log(`An error occured getting user's chat history back from the server: ${error}`);
+    showError("Sorry! I couldn't connect to Wanda HQ - it could be your internet connection");
   }
 };
 

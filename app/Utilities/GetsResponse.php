@@ -7,6 +7,7 @@ use App\Utilities\GetsChat;
 use App\Utilities\GetsScenarioDetails;
 use App\Utilities\ValidatesChatInput;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 trait GetsResponse
 {
@@ -24,6 +25,9 @@ trait GetsResponse
    */
   public function getResponse(User $user = null, string $scenario, string $userInput, string $userMessage = null, bool $requiresResponse)
   {
+    $userId = $user ? $user->id : null;
+    Log::info("Getting response for user($userId), scenario($scenario), userInput($userInput), userMessage($userMessage), requiresResponse($requiresResponse)");
+    
     if (!$requiresResponse) {
       return [
         'scenario' => $scenario,
@@ -61,19 +65,21 @@ trait GetsResponse
     } else {
       if (!$hasUser) {
         $reason = 'user';
-        $error = 'User not found';
+        $error = "Sorry! I couldn't find your user details";
       } else if (!$nextScenarioAllowed) {
         $reason = 'permission';
-        $error = 'Permission denied';
+        $error = "Sorry! You don't seem to have permission to get a response";
       } else {
         $reason = 'match';
-        $error = 'Could not match interaction or find a response';
+        $error = "Sorry, I couldn't find a response to the message you sent";
       }
       
       $response = [
         'reason' => $reason,
         'error' => $error,
       ];
+      
+      Log::error("Cannot get response for user($userId), scenario($scenario), userInput($userInput), userMessage($userMessage), requiresResponse($requiresResponse), reason($reason)");
     }
     
     return $response;
