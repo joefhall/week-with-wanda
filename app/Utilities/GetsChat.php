@@ -176,6 +176,10 @@ trait GetsChat
    */
   public function getCountryName(string $countryCode)
   {
+    if ($countryCode === 'XX') {
+      return 'your country';
+    }
+    
     $countryName = locale_get_display_region("-{$countryCode}", 'en');
     
     $replacements = [
@@ -212,6 +216,10 @@ trait GetsChat
    */
   public function getFakeMostlyWomenFirstNames(string $countryCode)
   {
+    if ($countryCode === 'XX') {
+      $countryCode = 'US';
+    }
+    
     $womenNames = $this->getFakeFirstNames($countryCode, 'female', 8);
     $menNames = $this->getFakeFirstNames($countryCode, 'male', 2);
 
@@ -228,6 +236,10 @@ trait GetsChat
    */
   public function getFakeFirstNames(string $countryCode, string $gender, int $count)
   {
+    if ($countryCode === 'XX') {
+      $countryCode = 'US';
+    }
+    
     $faker = Factory::create($this->getLanguageCountryCode($countryCode));
     
     if ($count === 1) {
@@ -250,6 +262,10 @@ trait GetsChat
    */
   public function getFakeSurname(string $countryCode)
   {
+    if ($countryCode === 'XX') {
+      $countryCode = 'US';
+    }
+    
     $faker = Factory::create($this->getLanguageCountryCode($countryCode));
     
     return $faker->lastName();

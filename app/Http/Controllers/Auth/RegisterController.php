@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\GetCountry;
 use App\Repositories\UserRepository;
 use App\User;
 use Illuminate\Http\Request;
@@ -87,7 +88,7 @@ class RegisterController extends Controller
         'password' => bcrypt($data['password']),
       ]);
       
-      $this->userRepository->storeCountryFromIp($user->id, $this->request->ip());
+      GetCountry::dispatch($user->id, $this->request->ip());
       
       return $user;
     }

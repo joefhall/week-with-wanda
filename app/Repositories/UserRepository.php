@@ -2,33 +2,15 @@
 
 namespace App\Repositories;
 
+use App\Jobs\GetCountry;
 use App\User;
 use Carbon\Carbon;
-use GuzzleHttp\Client;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class UserRepository
 {
-  /**
-   * Guzzle HTTP Client.
-   *
-   * @var Client
-   */
-  protected $client;
-
-  /**
-   * Constructor.
-   *
-   * @param Client $client
-   * @return void
-   */
-  public function __construct(Client $client)
-  {
-    $this->client = $client;
-  }
-  
   /**
    * Find or create a user from their session ID.
    * We need this in order to start storing the user's chat history before they are actually registered.
@@ -75,24 +57,7 @@ class UserRepository
     $this->updateField($userId, 'email', $this->getMessageFromChatHistory($userId, 'user', 'myEmail'));
     $this->updateField($userId, 'password', bcrypt($password));
     $this->updateMessageFromChatHistory($userId, 'user', 'signupPasswordNone', str_repeat('*', strlen($password)));
-    $this->storeCountryFromIp($userId, $ip);
-  }
-  
-  /**
-   * Look up a user's country from their IP address and store it in the user's record.
-   *
-   * @param int $userId
-   * @param string $ip
-   * @return void
-   */
-  public function storeCountryFromIp(int $userId, string $ip) {
-    $lookupUrl = env('IP_GEO_LOOKUP_URL') . '/' . env('IP_GEO_LOOKUP_KEY') . '/' . $ip;
-    $ipDataJson = $this->client->get($lookupUrl)->getBody()->getContents();
-    $ipData = json_decode($ipDataJson);
-    
-    $user = User::find($userId);
-    $user->country = $ipData->country_code;
-    $user->save();
+    GetCountry::dispatch($userId, $ip);
   }
   
   /**
