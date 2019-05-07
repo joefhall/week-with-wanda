@@ -15,7 +15,7 @@ const checkMessagesDisplayed = wandaMessagesCount => {
   const wandaMessagesBubbles = document.querySelectorAll('.chat__messages__message__bubble--wanda');
   const aiViews = document.querySelector('.chat__ai-views');
   
-  if (wandaMessagesBubbles && ((wandaMessagesBubbles.length >= wandaMessagesCount) || aiViews)) {
+  if ((wandaMessagesBubbles && wandaMessagesBubbles.length >= wandaMessagesCount) || aiViews) {
     clearInterval(checkMessagesDisplayedTimer);
     hideLoading();
   }
