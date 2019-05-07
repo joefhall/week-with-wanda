@@ -43,7 +43,7 @@ class DeleteUser implements ShouldQueue
     
     if ($user) {
       Log::info("Deleting user id ({$this->userId})");
-//       $user->delete();
+      $user->delete();
     }
   }
 }
