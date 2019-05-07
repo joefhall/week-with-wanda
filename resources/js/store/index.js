@@ -1,4 +1,6 @@
-import reducers from '../reducers';
 import { createStore } from 'redux';
+import { reduxBatch }  from '@manaflair/redux-batch';
 
-export default createStore(reducers);
+import reducers from '../reducers';
+
+export default createStore(reducers, reduxBatch);

@@ -1,10 +1,10 @@
 import axios from 'axios';
 import jstz from 'jstz';
-import store from '../store';
 import striptags from 'striptags';
 import uuidv4 from 'uuid/v4';
 
 import { addMessage, setEmotion, setIdentity, setInput, setMeltdownLevel, setLoading, setTyping } from '../actions';
+import store from '../store';
 
 let checkMessagesDisplayedTimer;
 const minTypingTime = 1000;
@@ -17,7 +17,7 @@ const checkMessagesDisplayed = wandaMessagesCount => {
   
   if (wandaMessagesBubbles && ((wandaMessagesBubbles.length >= wandaMessagesCount) || aiViews)) {
     clearInterval(checkMessagesDisplayedTimer);
-    setTimeout(hideLoading, 2500);
+    hideLoading();
   }
 };
 
@@ -49,6 +49,18 @@ const hideLoading = () => {
   }
 };
 
+const latestEmotion = chatHistory => {
+  chatHistory.reverse();
+  
+  const latestMessageWithEmotion = chatHistory.find(message => {
+    return message.hasOwnProperty('emotion') && message.emotion;
+  });
+  
+  console.log('Latest message with emotion', latestMessageWithEmotion);
+  
+  return latestMessageWithEmotion === undefined ? 'base' : latestMessageWithEmotion.emotion;
+};
+
 const showError = errorMessage => {
   const errorMessageDisplayed = document.querySelector('.chat__messages__message__error');
   
@@ -63,7 +75,7 @@ const showError = errorMessage => {
       emotion: emotion,
       meltdownLevel: 10,
       scenario: '',
-      type: 'none',
+      type: 'error',
       user: {none: null},
       wanda: {errorEmoji: emoji}
     }, 'errorEmoji', emoji);
@@ -72,7 +84,7 @@ const showError = errorMessage => {
       emotion: null,
       meltdownLevel: 10,
       scenario: '',
-      type: 'none',
+      type: 'error',
       user: {none: null},
       wanda: {error: message}
     }, 'error', message);
@@ -81,7 +93,7 @@ const showError = errorMessage => {
 
 const showResponse = (responseData, wandaMessageId, wandaMessage) => {
   store.dispatch(setTyping(false));
-  store.dispatch(addMessage(Date.now(), responseData.scenario, 'wanda', wandaMessageId, wandaMessage, responseData.meltdownLevel));
+  store.dispatch(addMessage(Date.now(), responseData.scenario, 'wanda', wandaMessageId, wandaMessage, responseData.emotion, responseData.meltdownLevel));
   store.dispatch(setInput(responseData.scenario, responseData.type, responseData.user));
 };
 
@@ -161,15 +173,21 @@ export const getHistory = async () => {
       const startMessage = document.head.querySelector('meta[name="start-message"]').content;
       
       if (chatHistory.length) {
+        let addMessages = [];
         for (let chatEntry of chatHistory) {
-          store.dispatch(addMessage(chatEntry.time * 1000, chatEntry.scenario, chatEntry.sender, chatEntry.id, chatEntry.message));
+          addMessages.push(addMessage(chatEntry.time * 1000, chatEntry.scenario, chatEntry.sender, chatEntry.id, chatEntry.message, chatEntry.hasOwnProperty('emotion') ? chatEntry.emotion : null));
         }
+        store.dispatch(addMessages);
 
         const latestChatEntry = chatHistory.slice(-1)[0];
-        console.log('Latest chat entry:', latestChatEntry);
-        store.dispatch(setInput(latestChatEntry.scenario, latestChatEntry.type, latestChatEntry.userInput, latestChatEntry.meltdownLevel));
-        store.dispatch(setMeltdownLevel(latestChatEntry.meltdownLevel ? latestChatEntry.meltdownLevel : 0));
-        store.dispatch(setIdentity(latestChatEntry.identity));
+        const penultimateChatEntry = chatHistory.slice(-2)[0];
+        const latestWandaChatEntry = latestChatEntry.sender === 'wanda' ? latestChatEntry : penultimateChatEntry;
+        console.log('Latest Wanda chat entry:', latestWandaChatEntry);
+        
+        store.dispatch(setInput(latestWandaChatEntry.scenario, latestWandaChatEntry.type, latestWandaChatEntry.userInput, latestWandaChatEntry.meltdownLevel));
+        store.dispatch(setEmotion(latestEmotion(chatHistory)));
+        store.dispatch(setMeltdownLevel(latestWandaChatEntry.meltdownLevel));
+        store.dispatch(setIdentity(latestWandaChatEntry.identity));
         store.dispatch(setTyping(false));
         
         if (startScenario && startMessage) {

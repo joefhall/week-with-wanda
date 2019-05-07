@@ -22,6 +22,12 @@ class ChatMessages extends React.Component {
     return regex.test(text);
   };
 
+  isLoading = () => {
+    const chatLoading = document.querySelector('.chat__loading');
+    
+    return !chatLoading.classList.contains('d-none');
+  };
+
   jumpToBottom = smooth => {
     const chatMessagesBottom = document.querySelector('.chat__messages__bottom');
     if (chatMessagesBottom) {
@@ -35,7 +41,7 @@ class ChatMessages extends React.Component {
 
   componentDidUpdate() {
     console.log('Chat messages updated');
-    this.jumpToBottom(true);
+    this.jumpToBottom(!this.isLoading());
     this.addImagesOnLoad();
   }
 

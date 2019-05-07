@@ -290,7 +290,7 @@ return [
       'emotion' => 'waving',
     ],
     'survey' => [
-      'type' => 'none',
+      'type' => 'end',
       'user' => [
         'surveyNone',
       ],

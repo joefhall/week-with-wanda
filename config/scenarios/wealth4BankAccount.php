@@ -360,7 +360,7 @@ return [
       ],
     ],
     'survey' => [
-      'type' => 'none',
+      'type' => 'end',
       'user' => [
         'surveyNone',
       ],

@@ -235,6 +235,7 @@ class UserRepository
         'message' => current(array_get($response, 'wanda')),
         'type' => array_get($response, 'type'),
         'userInput' => array_get($response, 'user'),
+        'emotion' => array_get($response, 'emotion'),
         'meltdownLevel' => $user->meltdown_level,
         'identity' => $user->wanda_identity,
         'time' => Carbon::now()->timestamp + 1,

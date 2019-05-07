@@ -1,4 +1,4 @@
-export const addMessage = (time, scenario, sender, id, message, meltdownLevel = null, identity = null) => {
+export const addMessage = (time, scenario, sender, id, message, emotion = null, meltdownLevel = null, identity = null) => {
   return {
     type: sender === 'user' ? 'USER_MESSAGE_INPUTTED' : 'WANDA_MESSAGE_RECEIVED',
     payload: {
@@ -7,6 +7,7 @@ export const addMessage = (time, scenario, sender, id, message, meltdownLevel = 
       sender: sender,
       id: id,
       message: message,
+      emotion: emotion,
       meltdownLevel: meltdownLevel,
       identity: identity
     }
