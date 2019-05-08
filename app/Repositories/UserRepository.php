@@ -40,8 +40,11 @@ class UserRepository
    */
   public function updateField(int $userId, string $field, $value) {    
     $user = User::find($userId);
-    $user->{$field} = $value;
-    $user->save();
+    
+    if ($user) {
+      $user->{$field} = $value;
+      $user->save();
+    }
   }
   
   /**
@@ -72,10 +75,14 @@ class UserRepository
   public function setScenarioPivot(int $userId, string $scenarioId, string $field, $value) {
     $user = User::find($userId);
     
-    $scenario = $user->scenarios()->where('scenario_id', $scenarioId)->first();
-    
-    $scenario->pivot[$field] = $value;
-    $scenario->pivot->save();
+    if ($user) {
+      $scenario = $user->scenarios()->where('scenario_id', $scenarioId)->first();
+
+      if ($scenario) {
+        $scenario->pivot[$field] = $value;
+        $scenario->pivot->save();
+      }
+    }
   }
   
   /**
@@ -88,11 +95,13 @@ class UserRepository
   public function addToChatHistory(int $userId, array $newChat) {
     $user = User::find($userId);
     
-    $chatHistory = json_decode($user->chat_history) ?? [];
-    $chatHistory[] = $newChat;
-    
-    $user->chat_history = json_encode($chatHistory);
-    $user->save();
+    if ($user) {
+      $chatHistory = json_decode($user->chat_history) ?? [];
+      $chatHistory[] = $newChat;
+
+      $user->chat_history = json_encode($chatHistory);
+      $user->save();
+    }
   }
   
   /**
@@ -104,7 +113,7 @@ class UserRepository
   public function getChatHistory(int $userId) {
     $user = User::find($userId);
     
-    return json_decode($user->chat_history) ?? [];
+    return $user && $user->chat_history ? json_decode($user->chat_history) : [];
   }
   
   /**
@@ -116,12 +125,14 @@ class UserRepository
   public function getLastSenderFromChatHistory(int $userId) {
     $user = User::find($userId);
     
-    $chatHistory = json_decode($user->chat_history);
+    if ($user) {
+      $chatHistory = json_decode($user->chat_history);
     
-    if ($chatHistory) {
-      $lastChatInteraction = end($chatHistory);
-    
-      return $lastChatInteraction->sender;
+      if ($chatHistory) {
+        $lastChatInteraction = end($chatHistory);
+
+        return $lastChatInteraction->sender;
+      }
     }
     
     return null;
@@ -136,12 +147,14 @@ class UserRepository
   public function getLastScenarioFromChatHistory(int $userId) {
     $user = User::find($userId);
     
-    $chatHistory = json_decode($user->chat_history);
-    
-    if ($chatHistory) {
-      $lastChatInteraction = end($chatHistory);
-    
-      return $lastChatInteraction->scenario;
+    if ($user) {
+      $chatHistory = json_decode($user->chat_history);
+
+      if ($chatHistory) {
+        $lastChatInteraction = end($chatHistory);
+
+        return $lastChatInteraction->scenario;
+      }
     }
     
     return null;
@@ -158,11 +171,13 @@ class UserRepository
   public function getMessageFromChatHistory(int $userId, string $sender, string $messageId) {
     $user = User::find($userId);
     
-    $chatHistory = json_decode($user->chat_history);
-    
-    foreach(array_reverse($chatHistory) as $chatInteraction) {
-      if ($chatInteraction->sender === $sender && $chatInteraction->id === $messageId) {
-        return $chatInteraction->message;
+    if ($user) {
+      $chatHistory = json_decode($user->chat_history);
+
+      foreach(array_reverse($chatHistory) as $chatInteraction) {
+        if ($chatInteraction->sender === $sender && $chatInteraction->id === $messageId) {
+          return $chatInteraction->message;
+        }
       }
     }
     
@@ -181,16 +196,18 @@ class UserRepository
   public function updateMessageFromChatHistory(int $userId, string $sender, string $messageId, string $newMessageText) {
     $user = User::find($userId);
     
-    $chatHistory = json_decode($user->chat_history);
-    
-    foreach(array_reverse($chatHistory) as $chatInteraction) {
-      if ($chatInteraction->sender === $sender && $chatInteraction->id === $messageId) {
-        $chatInteraction->message = $newMessageText;
+    if ($user) {
+      $chatHistory = json_decode($user->chat_history);
+
+      foreach(array_reverse($chatHistory) as $chatInteraction) {
+        if ($chatInteraction->sender === $sender && $chatInteraction->id === $messageId) {
+          $chatInteraction->message = $newMessageText;
+        }
       }
+
+      $user->chat_history = json_encode($chatHistory);
+      $user->save();
     }
-    
-    $user->chat_history = json_encode($chatHistory);
-    $user->save();
   }
   
   /**
@@ -253,20 +270,24 @@ class UserRepository
   {
     $user = User::find($userId);
     
-    switch ($type) {
-      case 'email':
-        $uuid = (string) Str::uuid();
-        break;
-      case 'mobile_number':
-        $uuid = (string) rand(1000000, 9999999);
-        break;
-    }
+    if ($user) {
+      switch ($type) {
+        case 'email':
+          $uuid = (string) Str::uuid();
+          break;
+        case 'mobile_number':
+          $uuid = (string) rand(1000000, 9999999);
+          break;
+      }
 
-    $token = $user->verificationTokens()->create([
-      'type' => $type,
-      'uuid' => $uuid,
-    ]);
+      $token = $user->verificationTokens()->create([
+        'type' => $type,
+        'uuid' => $uuid,
+      ]);
+
+      return $token;
+    }
     
-    return $token;
+    return null;
   }
 }
