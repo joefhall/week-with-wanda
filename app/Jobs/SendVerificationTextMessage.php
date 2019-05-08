@@ -46,6 +46,6 @@ class SendVerificationTextMessage implements ShouldQueue
     $user = User::find($this->userId);
     $token = $userRepository->addVerificationToken($this->userId, 'mobile_number');
     
-    SendTextMessage::dispatch($this->userId, __('texts.verification', ['name' => $user->first_name]) . $token->uuid);
+    SendTextMessage::dispatch($this->userId, __('texts.verification', ['name' => $user->first_name]) . $token->uuid)->onQueue('high');
   }
 }

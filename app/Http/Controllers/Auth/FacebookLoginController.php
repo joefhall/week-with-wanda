@@ -110,7 +110,7 @@ class FacebookLoginController extends Controller
           $authUser->email = $facebookUser->email;
           $authUser->email_verified_at = Carbon::now();
           $authUser->facebook_id = $facebookUser->id;
-          GetCountry::dispatch($authUser->id, $this->request->ip());
+          GetCountry::dispatch($authUser->id, $this->request->ip())->onQueue('high');
         }
       }
       

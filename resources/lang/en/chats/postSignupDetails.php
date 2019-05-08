@@ -23,7 +23,10 @@ return [
       'checkMobileNumberAgain' => "Hmm sorry that code didn't work. Can you enter it again? Or I can text you a new code",
       'checkMobileNumberResend' => "Ok I've sent another text to :mobileNumber - can you tell me the code in that text please?",
       'checkMobileNumberChange' => "Alright then, I've sent a text to that number - can you tell me the code in that message?",
+      'checkMobileNumberNotWorking' => "Ah, sorry about that. The mobile networks can be unreliable in some places. (Don't worry, I'll be running them all one day!)",
+      'checkMobileNumberNotWorkingAllDone' => "Otherwise, great – that's it for now! I'll be in touch tomorrow and we can start our week together!",
       'allDone' => "Great, that's it for now! I'll be in touch tomorrow and we can start our week together!",
+      'end' => ":wandaBye",
     ],
   
     'user' => [
@@ -31,11 +34,11 @@ return [
       'resendEmail' => "Resend that email",
       'changeEmail' => "Change my email address",
       'contactEmailOnly' => "Email only",
-      'contactTextMessageOnly' => "Text message only",
       'contactBoth' => "Email and text message (it's the best!)",
       'doneMobileNumber' => "",
       'resendMobileNumber' => "Resend the text",
       'changeMobileNumber' => "Change mobile number",
+      'notWorkingMobileNumber' => "Text message didn't come - let's skip this",
       'bye1' => ":userBye1",
       'bye2' => ":userBye2",
     ],

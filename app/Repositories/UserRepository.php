@@ -60,7 +60,7 @@ class UserRepository
     $this->updateField($userId, 'email', $this->getMessageFromChatHistory($userId, 'user', 'myEmail'));
     $this->updateField($userId, 'password', bcrypt($password));
     $this->updateMessageFromChatHistory($userId, 'user', 'signupPasswordNone', str_repeat('*', strlen($password)));
-    GetCountry::dispatch($userId, $ip);
+    GetCountry::dispatch($userId, $ip)->onQueue('high');
   }
   
   /**

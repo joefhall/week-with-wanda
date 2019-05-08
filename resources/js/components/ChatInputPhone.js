@@ -77,6 +77,11 @@ export default class ChatInputPhone extends React.Component {
   }
 
   render() {
+    let country = document.querySelector('#country-code').dataset.country.toUpperCase();
+    if (country === 'XX') {
+      country = 'US';
+    }
+    
     return (
       <div>
         <div className={(this.state.errorMessage ? '' : 'd-none ') + (this.state.hasError ? 'chat__input__form__error-message--has-error ' : '') + 'chat__input__form__error-message'}>
@@ -85,7 +90,7 @@ export default class ChatInputPhone extends React.Component {
         <form className="chat__input__form" onSubmit={this.onFormSubmit}>
           <PhoneInput
             inputClassName="chat__input__form__input"
-            country={document.querySelector('#country-code').dataset.country.toUpperCase()}
+            country={country}
             countryOptions={['US', 'CA', 'AU', 'GB', 'FR', 'IT', 'BE', 'NL', 'DE']}
             international={false}
             limitMaxLength={true}

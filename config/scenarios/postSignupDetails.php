@@ -77,6 +77,7 @@ return [
         'doneMobileNumber',
         'resendMobileNumber',
         'changeMobileNumber',
+        'notWorkingMobileNumber',
       ],
     ],
     'checkMobileNumberAgain' => [
@@ -85,6 +86,7 @@ return [
         'doneMobileNumber',
         'resendMobileNumber',
         'changeMobileNumber',
+        'notWorkingMobileNumber',
       ],
     ],
     'checkMobileNumberResend' => [
@@ -93,6 +95,7 @@ return [
         'doneMobileNumber',
         'resendMobileNumber',
         'changeMobileNumber',
+        'notWorkingMobileNumber',
       ],
     ],
     'checkMobileNumberChange' => [
@@ -101,7 +104,22 @@ return [
         'doneMobileNumber',
         'resendMobileNumber',
         'changeMobileNumber',
+        'notWorkingMobileNumber',
       ],
+    ],
+    'checkMobileNumberNotWorking' => [
+      'type' => 'none',
+      'user' => [
+        'checkMobileNumberNotWorkingNone',
+      ],
+    ],
+    'checkMobileNumberNotWorkingAllDone' => [
+      'type' => 'choice',
+      'user' => [
+        'bye1',
+        'bye2',
+      ],
+      'emotion' => 'waving',
     ],
     'allDone' => [
       'type' => 'choice',
@@ -110,6 +128,12 @@ return [
         'bye2',
       ],
       'emotion' => 'waving',
+    ],
+    'end' => [
+      'type' => 'end',
+      'user' => [
+        'endNone',
+      ],
     ],
   ],
 
@@ -137,9 +161,6 @@ return [
     'contactEmailOnly' => [
       'wanda' => 'allDone',
     ],
-    'contactTextMessageOnly' => [
-      'wanda' => 'whatsMobileNumber',
-    ],
     'contactBoth' => [
       'wanda' => 'whatsMobileNumber',
     ],
@@ -165,6 +186,21 @@ return [
     ],
     'changeMobileNumber' => [
       'wanda' => 'whatsYourNewMobileNumber',
+    ],
+    'notWorkingMobileNumber' => [
+      'wanda' => 'checkMobileNumberNotWorking',
+    ],
+    'checkMobileNumberNotWorkingNone' => [
+      'wanda' => 'checkMobileNumberNotWorkingAllDone',
+    ],
+    'bye1' => [
+      'wanda' => 'end',
+    ],
+    'bye2' => [
+      'wanda' => 'end',
+    ],
+    'endNone' => [
+      'wanda' => '',
     ],
   ],
   

@@ -88,7 +88,7 @@ class RegisterController extends Controller
         'password' => bcrypt($data['password']),
       ]);
       
-      GetCountry::dispatch($user->id, $this->request->ip());
+      GetCountry::dispatch($user->id, $this->request->ip())->onQueue('high');
       
       return $user;
     }

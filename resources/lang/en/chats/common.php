@@ -19,7 +19,7 @@ return [
       "You look like a kind soul",
       "You look like you're in a good mood today",
       "I was hoping someone like you would come and see me",
-      "It's very nice of you to come along",
+      "I'm so glad you came along when you did",
       "I think you might like what I have to offer",
     ],
     'observation' => [

@@ -96,7 +96,7 @@ trait DoesSpecialMessageActions
           $this->userRepository->updateField($userId, 'email', $userMessage);
         }
         if (in_array($wandaMessageId, ['checkEmail', 'checkEmailChange', 'resendEmail'])) {
-          SendVerificationEmail::dispatch($userId);
+          SendVerificationEmail::dispatch($userId)->onQueue('high');
         }
         if ($userMessageId === 'contactEmailOnly' || $userMessageId === 'contactTextMessageOnly' || $userMessageId === 'contactBoth') {
           ScheduleWeek::dispatch($userId);
@@ -111,8 +111,8 @@ trait DoesSpecialMessageActions
         if (in_array($userMessageId, ['myMobileNumber', 'myMobileNumberChange'])) {
           $this->userRepository->updateField($userId, 'mobile_number', preg_replace('~\D~', '', $userMessage));
         }
-        if (in_array($wandaMessageId, ['checkMobileNumber', 'checkMobileNumberChange', 'resendMobileNumber'])) {
-          SendVerificationTextMessage::dispatch($userId);
+        if (in_array($wandaMessageId, ['checkMobileNumber', 'checkMobileNumberChange', 'checkMobileNumberResend'])) {
+          SendVerificationTextMessage::dispatch($userId)->onQueue('high');
         }
         if ($wandaMessageId === 'allDone') {
           if ($user->send_text_messages) {

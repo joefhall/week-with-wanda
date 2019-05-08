@@ -58,7 +58,9 @@ class SendTextMessage implements ShouldQueue
     
     Log::info("Sending text message to user({$this->userId}), mobile number($mobileNumber), message({$this->message})");
     
-    if ($mobileNumber && $sendTextMessages && $user->mobile_number_verified_at) {
+    if ($mobileNumber && $sendTextMessages && ($user->mobile_number_verified_at || $user->current_scenario === 'postSignupDetails')) {
+      Log::info("Doing text message sending");
+      
       $headers = [
         'Authorization' => 'AccessKey ' . env('SMS_SENDER_KEY'),
         'Accept' => 'application/json',
@@ -83,9 +85,9 @@ class SendTextMessage implements ShouldQueue
           ])->getBody()->getContents();
 
           Log::info("SMS sender response: $response");
-        } catch (RequestException $e) {
+        } catch (BadResponseException|ConnectException|ClientException|RequestException|ServerException|TransferException $e) {
           Log::error("SMS sender error: " . print_r($e));
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
           Log::error("SMS sender error: " . print_r($e));
         }
       } else {
@@ -107,7 +109,7 @@ class SendTextMessage implements ShouldQueue
             )->getBody()->getContents();
 
           Log::info("SMS sender response: $response");
-        } catch (RequestException $e) {
+        } catch (BadResponseException|ConnectException|ClientException|RequestException|ServerException|TransferException $e) {
           Log::error("SMS sender error: " . print_r($e));
         } catch (\Exception $e) {
           Log::error("SMS sender error: " . print_r($e));
