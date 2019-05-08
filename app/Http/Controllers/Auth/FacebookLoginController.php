@@ -69,7 +69,7 @@ class FacebookLoginController extends Controller
     public function handleProviderCallback(Request $request)
     {
       if (!$request->has('code') || $request->has('denied')) {
-        return redirect()->route('facebook-signup-denied');
+        return redirect()->route('facebook-login-denied');
       }
       
       $socialite = Socialite::driver('facebook');
@@ -116,4 +116,22 @@ class FacebookLoginController extends Controller
       
       return $authUser;
     }
+
+    /**
+       * Show the Facebook login denied chat flow.
+       *
+       * @return \Illuminate\Http\Response
+       */
+      public function denied(Request $request)
+      {
+        $loggedIn = 'false';
+        $getHistory = 'false';
+        $startScenario = 'loginFacebookDenied';
+        $startMessage = 'begin';
+
+        return response()
+                ->view('app', compact('loggedIn', 'getHistory', 'startScenario', 'startMessage'));
+
+        return view('auth.login');
+      }
 }

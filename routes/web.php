@@ -16,7 +16,7 @@ Route::get('login-facebook', 'Auth\FacebookLoginController@showLoginWithFacebook
 Route::get('login/facebook', 'Auth\FacebookLoginController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\FacebookLoginController@handleProviderCallback');
 Route::post('login/facebook/callback', 'Auth\FacebookLoginController@handleProviderCallback');
-Route::view('login/facebook/denied', 'auth.facebook-signup-denied')->name('facebook-signup-denied');
+Route::get('login/facebook/denied', 'Auth\FacebookLoginController@denied')->name('facebook-login-denied');
 Route::get('logged-out', function () {
     return view('auth.logged-out');
 })->name('logged-out');
