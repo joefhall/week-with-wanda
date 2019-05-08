@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import ChatMeltdown from './ChatMeltdown';
+import SiteMenu from './SiteMenu';
 
 class ChatWanda extends React.Component {
   onLoad = () => {
@@ -21,6 +22,7 @@ class ChatWanda extends React.Component {
     return (
       <div className="chat__wanda">
         <ChatMeltdown />
+        <SiteMenu />
         
         <div className="chat__wanda__title">
           <div className={'chat__wanda__title--1' + (identity ? ' d-none' : '')}>A Week With</div>

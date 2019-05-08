@@ -1,0 +1,48 @@
+.site-menu {
+  border-bottom-left-radius: $spacer * .8;
+  line-height: 1.5;
+  padding: $spacer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10000;
+  
+  &--closed {
+    
+  }
+  
+  &--open {
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  
+  &__hamburger {
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  &__items {
+    color: darkgoldenrod;
+    padding: $spacer * .5 $spacer * .8 0;
+    
+    &--closed {
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0.5s, opacity 0.5s linear;
+    }
+    
+    &--open {
+      visibility: visible;
+      opacity: 1;
+      transition: visibility 0s, opacity 0.5s linear;
+    }
+    
+    &__item {
+      padding-top: $spacer * .3;
+      
+      &__link {
+
+      }
+    }
+  }
+}
