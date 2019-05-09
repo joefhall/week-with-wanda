@@ -26,7 +26,9 @@ trait GetsResponse
   public function getResponse(User $user = null, string $scenario, string $userInput, string $userMessage = null, bool $requiresResponse)
   {
     $userId = $user ? $user->id : null;
-    Log::info("Getting response for user($userId), scenario($scenario), userInput($userInput), userMessage($userMessage), requiresResponse($requiresResponse)");
+
+    $userMessageToLog = in_array($userInput, ['myPassword', 'signupPasswordNone']) ? '****hidden****' : $userMessage;
+    Log::info("Getting response for user($userId), scenario($scenario), userInput($userInput), userMessage($userMessageToLog), requiresResponse($requiresResponse)");
     
     if (!$requiresResponse) {
       return [
