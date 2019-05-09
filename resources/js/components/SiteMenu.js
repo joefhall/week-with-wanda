@@ -57,6 +57,7 @@ export default class SiteMenu extends React.Component {
         <div className={ 'site-menu__items' + (this.state.open ? ' site-menu__items--open' : ' site-menu__items--closed') }>
           { this.renderMenuItem('', 'Home') }
           { this.renderMenuItem('about', 'About', true) }
+          { this.renderMenuItem('wall', 'My wall', true) }
           { this.renderMenuItem('privacy', 'Terms & privacy', true) }
           { this.renderLogInOut(loggedIn) }
           { this.renderUnsubscribe(loggedIn) }

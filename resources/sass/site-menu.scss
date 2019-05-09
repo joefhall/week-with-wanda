@@ -20,9 +20,12 @@
   }
   
   &__hamburger {
-    cursor: pointer;
     display: flex;
     justify-content: flex-end;
+    
+    div {
+      cursor: pointer;
+    }
   }
   
   &__items {
