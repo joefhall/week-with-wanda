@@ -43,6 +43,8 @@ class DeleteUser implements ShouldQueue
     
     if ($user) {
       Log::info("Deleting user id ({$this->userId})");
+      $user->verificationTokens()->delete();
+      $user->scenarios()->detach();
       $user->delete();
     }
   }
