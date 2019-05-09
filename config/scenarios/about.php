@@ -50,6 +50,12 @@ return [
       ],
     ],
     'about6a' => [
+      'type' => 'none',
+      'user' => [
+        'about6aNone',
+      ],
+    ],
+    'about6b' => [
       'type' => 'choice',
       'user' => [
         'aboutWho',
@@ -157,6 +163,9 @@ return [
     ],
     'about6None' => [
       'wanda' => 'about6a',
+    ],
+    'about6aNone' => [
+      'wanda' => 'about6b',
     ],
     'aboutWho' => [
       'wanda' => 'about7',

@@ -18,6 +18,7 @@ return [
     'about5' => "Some of it is already happening today – in some cases even more extreme things are happening in real life",
     'about6' => "In other cases Wanda's actions are a combination of existing trends, to create something fictional and maybe humorous but (quite possibly) conceivable",
     'about6a' => "This project isn't anti-AI, but it does show the darker side of AI in order to provoke questions",
+    'about6b' => "<a href='https://weekwithwanda.wordpress.com/' target='_blank'>Find out more about the project background here</a> and you can <a href='https://github.com/joefhall/week-with-wanda' target='_blank'>access the open-source code here</a>",
     'about7' => "It was created by Joe Hall (<a href='mailto:hello@weekwithwanda.com'>hello@weekwithwanda.com</a>) in London, with the generous support of a <a href='https://blog.mozilla.org/blog/2018/10/24/keeping-ai-accountable-with-science-fiction-documentaries-and-doodles-plus-225000/' target='_blank'>Mozilla Creative Media Award</a>",
     'about8' => "Joe says: <em>\"An enormous thank you to everyone who has shared research, advised, guided, supported, tried this out and helped make it better. (Any mistakes or misjudgments are my own!)\"</em>",
     'about9' => "Brett Gaylor, Jenn Beard, Lindsey Frost, Kalpana Simhan, Kevin Zawacki, Anil Kanji and others at the Mozilla Foundation",
