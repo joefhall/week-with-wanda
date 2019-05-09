@@ -13,7 +13,7 @@ return [
   'wanda' => [
     'privacy0' => "Want to know more about my privacy vibe?",
     'privacy1' => "First up – don't panic! Remember it's all a game",
-    'privacy2' => "If I say I've done something that sounds awful or violates your privacy... I haven't! It's just a simulation, based on actual AI happening today, to encouraging people to think and question",
+    'privacy2' => "If I say I've done something that sounds awful or violates your privacy... I haven't! It's just a simulation, based on actual AI happening today, to encourage people to think and question",
     'privacy3' => "Here's the only data that I store about you...",
     'privacy4' => "<em>First name, email, password and/or Facebook ID (depending on how you sign up), mobile number (if you opt for text messages), start date, country, timezone, and your chat interactions with me</em>",
     'privacy5' => "I will email you each day for a week (and send text messages if you choose them) – but that's the end of it",
