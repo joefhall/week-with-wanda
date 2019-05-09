@@ -35,16 +35,8 @@ class FacebookLoginController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function showLoginWithFacebookForm(Request $request)
-    { 
-      $loggedIn = 'false';
-      $getHistory = 'false';
-      $startScenario = 'loginFacebook';
-      $startMessage = 'begin';
-
-      return response()
-              ->view('app', compact('loggedIn', 'getHistory', 'startScenario', 'startMessage'));
-      
-      return view('auth.login');
+    {
+      return $this->chatView($request, 'false', 'loginFacebook');
     }
   
     /**
@@ -124,14 +116,6 @@ class FacebookLoginController extends Controller
        */
       public function denied(Request $request)
       {
-        $loggedIn = 'false';
-        $getHistory = 'false';
-        $startScenario = 'loginFacebookDenied';
-        $startMessage = 'begin';
-
-        return response()
-                ->view('app', compact('loggedIn', 'getHistory', 'startScenario', 'startMessage'));
-
-        return view('auth.login');
+        return $this->chatView($request, 'false', 'loginFacebookDenied');
       }
 }

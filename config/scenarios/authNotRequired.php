@@ -12,10 +12,13 @@ return [
   |
   */
 
+  'about' => true,
   'login' => true,
   'loginFacebook' => true,
   'loginFacebookDenied' => true,
   'loginFailed' => true,
+  'privacy' => true,
+  'unsubscribe' => true,
   'wandaWall' => true,
   'welcomeSignup' => true,
   

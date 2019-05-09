@@ -17,15 +17,15 @@ Route::get('login/facebook', 'Auth\FacebookLoginController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\FacebookLoginController@handleProviderCallback');
 Route::post('login/facebook/callback', 'Auth\FacebookLoginController@handleProviderCallback');
 Route::get('login/facebook/denied', 'Auth\FacebookLoginController@denied')->name('facebook-login-denied');
-Route::get('logged-out', function () {
+Route::get('logout', function () {
     return view('auth.logged-out');
-})->name('logged-out');
+})->name('logout');
 
-Route::get('/', 'AppController@index')->name('app');
+Route::get('/', 'AppController@index')->name('home');
+Route::get('/about', 'AppController@about')->name('about');
+Route::get('/privacy', 'AppController@privacy')->name('privacy');
 Route::get('/verify/{verificationTokenId}', 'VerifyController@verify')->name('verify');
 
-Route::get('/about', 'AboutController@about')->name('about');
-Route::get('/privacy', 'AboutController@privacy')->name('privacy');
 Route::get('/wall', 'WandaWallController@index')->name('wall');
 Route::post('/wall/create', 'WandaWallController@store')->name('wall-create');
 

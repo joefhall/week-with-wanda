@@ -47,16 +47,8 @@ class LoginController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function showLoginForm(Request $request)
-    { 
-      $loggedIn = 'false';
-      $getHistory = 'false';
-      $startScenario = $request->session()->has('errors') ? 'loginFailed' : 'login';
-      $startMessage = 'begin';
-
-      return response()
-              ->view('app', compact('loggedIn', 'getHistory', 'startScenario', 'startMessage'));
-      
-      return view('auth.login');
+    {
+      return $this->chatView($request, 'false', 'login');
     }
   
     /**
@@ -68,6 +60,6 @@ class LoginController extends Controller
     {
       $this->performLogout($request);
       
-      return redirect()->route('logged-out');
+      return $this->chatView($request, 'false', 'logout');
     }
 }

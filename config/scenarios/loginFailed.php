@@ -11,7 +11,7 @@ return [
     */
 
     'day' => 0,
-    'category' => 'login',
+    'category' => 'auth',
   
     'wanda' => [
       'hello' => [

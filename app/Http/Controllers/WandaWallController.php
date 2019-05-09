@@ -108,12 +108,8 @@ class WandaWallController extends Controller
   {
     $user = Auth::user();
     $loggedIn = $user ? 'true' : 'false';
-    $getHistory = 'false';
-    $startScenario = 'wandaWall';
-    $startMessage = 'begin';
     
-    return response()
-            ->view('app', compact('loggedIn', 'getHistory', 'startScenario', 'startMessage'));
+    return $this->chatView($request, $loggedIn, 'wandaWall');
   }
   
   /**

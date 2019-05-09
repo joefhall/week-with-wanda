@@ -11,7 +11,7 @@ class AppController extends Controller
   use GetsResponse;
   
   /**
-   * Show the React app.
+   * Show the React app with the main chat.
    *
    * @param Request $request
    * @return \Illuminate\Contracts\Support\Renderable
@@ -24,7 +24,34 @@ class AppController extends Controller
     $startScenario = $user ? $user->current_scenario : 'welcomeSignup';
     $startMessage = $this->getUserScenarioStartMessage($user ? $user->id : null, $startScenario);
 
-    return response()
-            ->view('app', compact('loggedIn', 'getHistory', 'startScenario', 'startMessage'));
+    return $this->chatView($request, $loggedIn, $startScenario, $startMessage, $getHistory);
+  }
+  
+  /**
+   * Show the React app with the About chat.
+   *
+   * @param Request $request
+   * @return \Illuminate\Contracts\Support\Renderable
+   */
+  public function about(Request $request)
+  {
+    $user = Auth::user() ?? null;
+    $loggedIn = $user ? 'true' : 'false';
+    
+    return $this->chatView($request, $loggedIn, 'about');
+  }
+  
+  /**
+   * Show the React app with the Privacy and Terms & conditions chat.
+   *
+   * @param Request $request
+   * @return \Illuminate\Contracts\Support\Renderable
+   */
+  public function privacy(Request $request)
+  {
+    $user = Auth::user() ?? null;
+    $loggedIn = $user ? 'true' : 'false';
+    
+    return $this->chatView($request, $loggedIn, 'privacy');
   }
 }
