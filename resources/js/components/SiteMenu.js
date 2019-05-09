@@ -58,7 +58,7 @@ export default class SiteMenu extends React.Component {
           { this.renderMenuItem('', 'Home') }
           { this.renderMenuItem('about', 'About', true) }
           { this.renderMenuItem('wall', 'My wall', true) }
-          { this.renderMenuItem('privacy', 'Terms & privacy', true) }
+          { this.renderMenuItem('privacy', 'Privacy', true) }
           { this.renderLogInOut(loggedIn) }
           { this.renderUnsubscribe(loggedIn) }
         </div>
