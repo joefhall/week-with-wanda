@@ -3,12 +3,11 @@
   line-height: 1.5;
   padding: $spacer;
   position: absolute;
-  right: 1px;
-  top: 39px;
+  right: 0;
+  top: 36px;
   z-index: 10000;
   
   @media screen and (min-height: $small-screen-height) {
-    right: 0;
     top: 0;
   }
   
