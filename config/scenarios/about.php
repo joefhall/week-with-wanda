@@ -49,6 +49,12 @@ return [
           'about6None',
         ],
       ],
+      'about6a' => [
+        'type' => 'choice',
+        'user' => [
+          'aboutWho',
+        ],
+      ],
       'about7' => [
         'type' => 'none',
         'user' => [
@@ -56,17 +62,17 @@ return [
         ],
       ],
       'about8' => [
-        'type' => 'none',
+        'type' => 'choice',
         'user' => [
-          'about8None',
+          'aboutThanks',
         ],
-        'emotion' => 'heart',
       ],
       'about9' => [
         'type' => 'none',
         'user' => [
           'about9None',
         ],
+        'emotion' => 'heart',
       ],
       'about10' => [
         'type' => 'none',
@@ -150,12 +156,15 @@ return [
         'wanda' => 'about6',
       ],
       'about6None' => [
+        'wanda' => 'about6a',
+      ],
+      'aboutWho' => [
         'wanda' => 'about7',
       ],
       'about7None' => [
         'wanda' => 'about8',
       ],
-      'about8None' => [
+      'aboutThanks' => [
         'wanda' => 'about9',
       ],
       'about9None' => [
