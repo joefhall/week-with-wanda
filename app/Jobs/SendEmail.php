@@ -65,7 +65,7 @@ class SendEmail implements ShouldQueue
     
     $user = User::find($this->userId);
     
-    if ($user->email && $user->send_emails && $user->email_verified_at) {
+    if ($user && $user->email && $user->send_emails && $user->email_verified_at) {
       Mail::to($user->email)->send(new EmailGeneric($this->subject, $this->messageText));
     }
   }

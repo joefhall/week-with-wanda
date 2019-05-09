@@ -60,8 +60,11 @@ class SetCurrentDayScenario implements ShouldQueue
     Log::info("Setting current day and scenario for user ({$this->userId}), day ({$this->day}), scenario ({$this->scenarioId})");
     
     $user = User::find($this->userId);
-    $user->current_day = $this->day;
-    $user->current_scenario = $this->scenarioId;
-    $user->save();
+    
+    if ($user) {
+      $user->current_day = $this->day;
+      $user->current_scenario = $this->scenarioId;
+      $user->save();
+    }
   }
 }

@@ -63,37 +63,40 @@ class SendNotifications implements ShouldQueue
   public function handle()
   {
     $user = User::find($this->userId);
-    $name = $user->first_name;
-    $loginLink = route($user->facebook_id ? 'facebookLogin' : 'login');
     
-    Log::info("Sending notifications to user({$this->userId}), for scenario($this->scenarioId), notification type({$this->notificationType})");
-    
-    $scenariosNotStarted = $user->scenarios()
-                                ->wherePivot('started', '=', null)
-                                ->orWherePivot('started', '=', false)
-                                ->get(['scenarios.id AS scenario_id']);
-    
-    $scenarioId = $this->scenarioId;
+    if ($user) {
+      $name = $user->first_name;
+      $loginLink = route($user->facebook_id ? 'facebookLogin' : 'login');
 
-    $thisScenarioNotStarted = $scenariosNotStarted->filter(function ($scenario, $key) use ($scenarioId) {
-      return $scenario->scenario_id === $scenarioId;
-    });
+      Log::info("Sending notifications to user({$this->userId}), for scenario($this->scenarioId), notification type({$this->notificationType})");
 
-    if ($thisScenarioNotStarted->count()) {
-      SendEmail::dispatch(
-        $this->userId,
-        __("notifications.{$scenarioId}.email.{$this->notificationType}.subject", compact('name', 'loginLink')),
-        __("notifications.{$scenarioId}.email.{$this->notificationType}.message", compact('name', 'loginLink'))
-      );
-      
-      // Remove links in text messages - cannot guarantee deliverability
-      $loginLink = '-Wanda';
-      
-      SendTextMessage::dispatch($this->userId, __("notifications.{$scenarioId}.textMessage.{$this->notificationType}", compact('name', 'loginLink')));
-      
-      Log::info("Notifications sent");
-    } else {
-      Log::info("Notifications not needed - scenario has already been started");
+      $scenariosNotStarted = $user->scenarios()
+                                  ->wherePivot('started', '=', null)
+                                  ->orWherePivot('started', '=', false)
+                                  ->get(['scenarios.id AS scenario_id']);
+
+      $scenarioId = $this->scenarioId;
+
+      $thisScenarioNotStarted = $scenariosNotStarted->filter(function ($scenario, $key) use ($scenarioId) {
+        return $scenario->scenario_id === $scenarioId;
+      });
+
+      if ($thisScenarioNotStarted->count()) {
+        SendEmail::dispatch(
+          $this->userId,
+          __("notifications.{$scenarioId}.email.{$this->notificationType}.subject", compact('name', 'loginLink')),
+          __("notifications.{$scenarioId}.email.{$this->notificationType}.message", compact('name', 'loginLink'))
+        );
+
+        // Remove links in text messages - cannot guarantee deliverability
+        $loginLink = '-Wanda';
+
+        SendTextMessage::dispatch($this->userId, __("notifications.{$scenarioId}.textMessage.{$this->notificationType}", compact('name', 'loginLink')));
+
+        Log::info("Notifications sent");
+      } else {
+        Log::info("Notifications not needed - scenario has already been started");
+      }
     }
   }
 }

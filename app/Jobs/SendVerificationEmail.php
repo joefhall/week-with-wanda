@@ -46,8 +46,11 @@ class SendVerificationEmail implements ShouldQueue
     Log::info('Sending verification email for user id ' . $this->userId);
     
     $user = User::find($this->userId);
-    $token = $userRepository->addVerificationToken($this->userId, 'email');
     
-    Mail::to($user->email)->send(new EmailVerification($user->first_name, $token->uuid));
+    if ($user) {
+      $token = $userRepository->addVerificationToken($this->userId, 'email');
+    
+      Mail::to($user->email)->send(new EmailVerification($user->first_name, $token->uuid));
+    }
   }
 }

@@ -47,12 +47,14 @@ class ScheduleWeek implements ShouldQueue
   {
     $this->user = User::find($this->userId);
     
-    Log::info("Scheduling the week for user({$this->userId})");
-    
-    $userScenarios = $this->pickUserScenarios();
-    $this->user->scenarios()->sync($userScenarios);
-    
-    $this->scheduleJobs($userScenarios);
+    if ($this->user) {
+      Log::info("Scheduling the week for user({$this->userId})");
+
+      $userScenarios = $this->pickUserScenarios();
+      $this->user->scenarios()->sync($userScenarios);
+
+      $this->scheduleJobs($userScenarios);
+    }
   }
   
   /**

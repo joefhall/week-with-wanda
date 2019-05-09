@@ -51,68 +51,70 @@ class SendTextMessage implements ShouldQueue
   public function handle(Client $client)
   {
     $user = User::find($this->userId);
-    $mobileNumber = $user->mobile_number;
-    $sendTextMessages = $user->send_text_messages;
     
-    $countriesRequiringFromNumber = ['CA', 'US'];
-    
-    Log::info("Sending text message to user({$this->userId}), mobile number($mobileNumber), message({$this->message})");
-    
-    if ($mobileNumber && $sendTextMessages && ($user->mobile_number_verified_at || $user->current_scenario === 'postSignupDetails')) {
-      Log::info("Doing text message sending");
-      
-      $headers = [
-        'Authorization' => 'AccessKey ' . env('SMS_SENDER_KEY'),
-        'Accept' => 'application/json',
-      ];
-      
-      if ($user->country && in_array($user->country, $countriesRequiringFromNumber)) {
-        $url = env('SMS_CONVERSATIONS_URL');
-        
-        $params = [
-            'to' => (string) $user->mobile_number,
-            'from' => env('SMS_CHANNEL_ID'),
-            'type' => 'text',
-            'content' => [
-              'text' => $this->message,
-            ],
-        ];
-        
-        try {
-          $response = $client->post($url, [
-            'headers' => $headers,
-            'body' => json_encode($params)
-          ])->getBody()->getContents();
+    if ($user) {
+      $mobileNumber = $user->mobile_number;
+      $sendTextMessages = $user->send_text_messages;
+      $countriesRequiringFromNumber = ['CA', 'US'];
 
-          Log::info("SMS sender response: $response");
-        } catch (BadResponseException|ConnectException|ClientException|RequestException|ServerException|TransferException $e) {
-          Log::error("SMS sender error: " . print_r($e));
-        } catch (Exception $e) {
-          Log::error("SMS sender error: " . print_r($e));
-        }
-      } else {
-        $url = env('SMS_SENDER_URL');
-        
-        $params = [
-          'recipients' => $user->mobile_number,
-          'originator' => env('SMS_FROM_NAME'),
-          'body' => $this->message,
-        ];
-        
-        try {
-          $response = $client->post(
-              $url,
-              [
-                'headers' => $headers,
-                'form_params' => $params,
-              ]
-            )->getBody()->getContents();
+      Log::info("Sending text message to user({$this->userId}), mobile number($mobileNumber), message({$this->message})");
 
-          Log::info("SMS sender response: $response");
-        } catch (BadResponseException|ConnectException|ClientException|RequestException|ServerException|TransferException $e) {
-          Log::error("SMS sender error: " . print_r($e));
-        } catch (\Exception $e) {
-          Log::error("SMS sender error: " . print_r($e));
+      if ($mobileNumber && $sendTextMessages && ($user->mobile_number_verified_at || $user->current_scenario === 'postSignupDetails')) {
+        Log::info("Doing text message sending");
+
+        $headers = [
+          'Authorization' => 'AccessKey ' . env('SMS_SENDER_KEY'),
+          'Accept' => 'application/json',
+        ];
+
+        if ($user->country && in_array($user->country, $countriesRequiringFromNumber)) {
+          $url = env('SMS_CONVERSATIONS_URL');
+
+          $params = [
+              'to' => (string) $user->mobile_number,
+              'from' => env('SMS_CHANNEL_ID'),
+              'type' => 'text',
+              'content' => [
+                'text' => $this->message,
+              ],
+          ];
+
+          try {
+            $response = $client->post($url, [
+              'headers' => $headers,
+              'body' => json_encode($params)
+            ])->getBody()->getContents();
+
+            Log::info("SMS sender response: $response");
+          } catch (BadResponseException|ConnectException|ClientException|RequestException|ServerException|TransferException $e) {
+            Log::error("SMS sender error: " . print_r($e));
+          } catch (Exception $e) {
+            Log::error("SMS sender error: " . print_r($e));
+          }
+        } else {
+          $url = env('SMS_SENDER_URL');
+
+          $params = [
+            'recipients' => $user->mobile_number,
+            'originator' => env('SMS_FROM_NAME'),
+            'body' => $this->message,
+          ];
+
+          try {
+            $response = $client->post(
+                $url,
+                [
+                  'headers' => $headers,
+                  'form_params' => $params,
+                ]
+              )->getBody()->getContents();
+
+            Log::info("SMS sender response: $response");
+          } catch (BadResponseException|ConnectException|ClientException|RequestException|ServerException|TransferException $e) {
+            Log::error("SMS sender error: " . print_r($e));
+          } catch (\Exception $e) {
+            Log::error("SMS sender error: " . print_r($e));
+          }
         }
       }
     }
