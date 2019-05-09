@@ -19,10 +19,12 @@ export default class SiteMenu extends React.Component {
     return this.renderMenuItem(link, text);
   };
 
-  renderMenuItem = (link, text) => {
+  renderMenuItem = (link, text, newWindow = false) => {
     return (
       <div className="site-menu__items__item">
-        <a className="site-menu__items__item__link" href={`/${link}`}>{text}</a>
+        <a className="site-menu__items__item__link" href={`/${link}`} target={newWindow ? '_blank' : '_self'}>
+          {text}
+        </a>
       </div>
     );
   };
@@ -54,8 +56,8 @@ export default class SiteMenu extends React.Component {
         </div>
         <div className={ 'site-menu__items' + (this.state.open ? ' site-menu__items--open' : ' site-menu__items--closed') }>
           { this.renderMenuItem('', 'Home') }
-          { this.renderMenuItem('about', 'About') }
-          { this.renderMenuItem('privacy', 'Terms & privacy') }
+          { this.renderMenuItem('about', 'About', true) }
+          { this.renderMenuItem('privacy', 'Terms & privacy', true) }
           { this.renderLogInOut(loggedIn) }
           { this.renderUnsubscribe(loggedIn) }
         </div>
