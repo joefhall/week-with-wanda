@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\DeleteUser;
 use App\Utilities\GetsResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

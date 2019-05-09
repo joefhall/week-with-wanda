@@ -35,10 +35,10 @@ return [
         'wanda' => 'hello',
       ],
       'startAgain' => [
-        'wanda' => 'end',
+        'wanda' => 'great',
       ],
       'loginAgain' => [
-        'wanda' => 'end',
+        'wanda' => 'great',
       ],
     ],
 
