@@ -33,14 +33,14 @@
   &__title {
     color: $main-colour;
     font-family: 'Pacifico', cursive;
-    left: 8px;
+    left: 13px;
     line-height: 1.1;
     position: absolute;
-    top: calc(18px + (#{$small-screen-vertical-crop} / 1.5));
+    top: calc(28px + (#{$small-screen-vertical-crop} / 1.5));
     width: 100%;
     
     @media screen and (min-height: $small-screen-height) {
-      top: 18px;
+      top: 12px;
     }
     
     &--1 {
