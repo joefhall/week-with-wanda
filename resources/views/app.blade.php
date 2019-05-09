@@ -47,7 +47,7 @@
         var previewCodeInput = document.querySelector('#preview-code');
         var previewErrorMessage = document.querySelector('#preview-error-message');
 
-        if (previewCodeInput.value.toLowerCase() === 'alive') {
+        if (previewCodeInput.value.toLowerCase().trim() === 'alive') {
           previewNotice.classList.add('d-none');
           previewCodeInput.blur();
         } else {
