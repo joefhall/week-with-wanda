@@ -28,7 +28,7 @@ return [
     'privacy14' => "He's the only person with access to your data (not even Mozilla who funded the project) and like I say, even he can't see it after your week is over and your data's been deleted",
     'privacy15' => "He's doing his best to keep your data secure and follow GDPR and other laws and good practices",
     'privacy16' => "🙂",
-    'privacy17' => "(You can close this window to return to the main chat)",
+    'privacy17' => "(You can close this window now if you want)",
   ],
 
   'user' => [

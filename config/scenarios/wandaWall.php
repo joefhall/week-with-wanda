@@ -62,9 +62,9 @@ return [
         ],
       ],
       'wallEntry5' => [
-        'type' => 'none',
+        'type' => 'choice',
         'user' => [
-          'wallEntry5None',
+          'wallEntry5More',
         ],
       ],
       'wallEntry6' => [
@@ -92,9 +92,9 @@ return [
         ],
       ],
       'wallEntry10' => [
-        'type' => 'none',
+        'type' => 'choice',
         'user' => [
-          'wallEntry10None',
+          'wallEntry10More',
         ],
       ],
       'wallEntry11' => [
@@ -122,9 +122,9 @@ return [
         ],
       ],
       'wallEntry15' => [
-        'type' => 'none',
+        'type' => 'choice',
         'user' => [
-          'wallEntry15None',
+          'wallEntry15More',
         ],
       ],
       'wallEntry16' => [
@@ -157,6 +157,12 @@ return [
           'wallEntry20None',
         ],
       ],
+      'wallEntry21' => [
+        'type' => 'end',
+        'user' => [
+          'wallEntry21None',
+        ],
+      ],
     ],
   
     'user' => [
@@ -187,7 +193,7 @@ return [
       'wallEntry4None' => [
         'wanda' => 'wallEntry5',
       ],
-      'wallEntry5None' => [
+      'wallEntry5More' => [
         'wanda' => 'wallEntry6',
       ],
       'wallEntry6None' => [
@@ -202,7 +208,7 @@ return [
       'wallEntry9None' => [
         'wanda' => 'wallEntry10',
       ],
-      'wallEntry10None' => [
+      'wallEntry10More' => [
         'wanda' => 'wallEntry11',
       ],
       'wallEntry11None' => [
@@ -217,7 +223,7 @@ return [
       'wallEntry14None' => [
         'wanda' => 'wallEntry15',
       ],
-      'wallEntry15None' => [
+      'wallEntry15More' => [
         'wanda' => 'wallEntry16',
       ],
       'wallEntry16None' => [
@@ -234,6 +240,9 @@ return [
       ],
       'wallEntry20None' => [
         'wanda' => 'wallEntry21',
+      ],
+      'wallEntry21None' => [
+        'wanda' => '',
       ],
     ],
 

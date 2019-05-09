@@ -31,7 +31,7 @@ return [
     'about16' => "Kathy Peach who originally suggested the Creative Media Awards",
     'about17' => "Everyone who tested out the game and gave their feedback",
     'about18' => "Joe's family, friends and lovely fiancée Johanna for all their support!",
-    'about19' => "(You can close this window to return to the main chat)",
+    'about19' => "(You can close this window now if you want)",
   ],
 
   'user' => [
