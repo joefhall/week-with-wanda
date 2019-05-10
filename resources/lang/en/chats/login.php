@@ -22,7 +22,7 @@ return [
   ],
 
   'user' => [
-    'login' => 'Log in',
+    'login' => 'Log in with email and password',
   ],
 
 ];
