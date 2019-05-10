@@ -62,6 +62,9 @@ return [
       'loginFacebook' => [
         'wanda' => 'greatThanksFacebook',
       ],
+      'doLoginFacebook' => [
+        'wanda' => '',
+      ],
       'login' => [
         'wanda' => 'whatsYourEmail',
       ],
@@ -78,6 +81,9 @@ return [
       ],
       'myPassword' => [
         'wanda' => 'greatThanks',
+      ],
+      'doLogin' => [
+        'wanda' => '',
       ],
     ],
 
