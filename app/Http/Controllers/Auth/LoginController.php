@@ -51,7 +51,27 @@ class LoginController extends Controller
     {
       return $this->chatView($request, 'false', 'login');
     }
-  
+
+    /**
+     * Handle failed login if login fails e.g. wrong password.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    protected function sendFailedLoginResponse(Request $request)
+    {
+      return redirect()->route('login-failed');
+    }
+
+    /**
+     * Show login failed chat flow if login fails e.g. wrong password.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function loginFailed(Request $request)
+    {
+      return $this->chatView($request, 'false', 'loginFailed');
+    }
+
     /**
      * Log out.
      *
