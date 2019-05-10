@@ -111,15 +111,9 @@ return [
       ],
     ],
     'privacy16' => [
-      'type' => 'none',
+      'type' => 'closeWindow',
       'user' => [
         'privacy16None',
-      ],
-    ],
-    'privacy17' => [
-      'type' => 'end',
-      'user' => [
-        'privacy17None',
       ],
       'emotion' => 'clapping',
     ],
@@ -178,9 +172,6 @@ return [
       'wanda' => 'privacy16',
     ],
     'privacy16None' => [
-      'wanda' => 'privacy17',
-    ],
-    'privacy17None' => [
       'wanda' => '',
     ],
   ],

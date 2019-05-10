@@ -6,6 +6,7 @@ import { addMessage, setEmotion, setInput, setUserProperty } from '../actions';
 import { getHistory, getSessionId, respond } from '../api/chat';
 import ChatInputAiViews from './ChatInputAiViews';
 import ChatInputChoices from './ChatInputChoices';
+import ChatInputCloseWindow from './ChatInputCloseWindow';
 import ChatInputPassword from './ChatInputPassword';
 import ChatInputPasswordCreate from './ChatInputPasswordCreate';
 import ChatInputPhone from './ChatInputPhone';
@@ -156,7 +157,13 @@ class ChatInput extends React.Component {
             <ChatInputChoices onFormSubmit={this.addAndSendMessage} scenario={this.props.input.scenario} sessionId={this.state.sessionId} type={this.props.input.type} userInput={this.props.input.userInput} />
           );
           break;
-          
+        
+        case 'closeWindow':
+          return (
+            <ChatInputCloseWindow />
+          );
+          break;
+
         case 'doLogin':
           return (
             <LoginHidden followUpAction={this.addAndSendMessage} />

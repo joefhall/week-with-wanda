@@ -152,15 +152,9 @@ return [
         ],
       ],
       'wallEntry20' => [
-        'type' => 'none',
+        'type' => 'closeWindow',
         'user' => [
           'wallEntry20None',
-        ],
-      ],
-      'wallEntry21' => [
-        'type' => 'end',
-        'user' => [
-          'wallEntry21None',
         ],
       ],
     ],
@@ -239,9 +233,6 @@ return [
         'wanda' => 'wallEntry20',
       ],
       'wallEntry20None' => [
-        'wanda' => 'wallEntry21',
-      ],
-      'wallEntry21None' => [
         'wanda' => '',
       ],
     ],

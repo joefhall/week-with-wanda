@@ -17,10 +17,10 @@ return [
     'privacy3' => "Here's the only data that I store about you...",
     'privacy4' => "<em>First name, email, password and/or Facebook ID (depending on how you sign up), mobile number (if you opt for text messages), start date, country, timezone, and your chat interactions with me</em>",
     'privacy5' => "I will email you each day for a week (and send text messages if you choose them) – but that's the end of it",
-    'privacy6' => "On the final day of your experience with me I delete <em>all</em> your data – wiping the slate completely clean",
+    'privacy6' => "On the final day of your experience with me I delete all your data – wiping the slate clean",
     'privacy7' => "The only exception is, at the end of the experience if you choose to share a comment on my wall, I will store your first name, country, message and the date",
     'privacy8' => "All the other stuff I say like having your location data or access to your contacts is something that other apps and devices do – but not me in reality",
-    'privacy9' => "Your data is stored on a server(s) in the EU",
+    'privacy9' => "Your data is stored on server(s) in the EU",
     'privacy10' => "I capture some general site usage stats via Google Analytics, but not data that could identify you personally",
     'privacy11' => "I only use a cookie to remember you so that you don't need to log in again each time",
     'privacy12' => "I use a few external services e.g. to send you emails and text messages (and they keep logs of messages sent), otherwise your data is not shared with anyone else and it never will be",
@@ -28,7 +28,6 @@ return [
     'privacy14' => "He's the only person with access to your data (not even Mozilla who funded the project) and like I say, even he can't see it after your week is over and your data's been deleted",
     'privacy15' => "He's doing his best to keep your data secure and follow GDPR and other laws and good practices",
     'privacy16' => "🙂",
-    'privacy17' => "(You can close this window now if you want)",
   ],
 
   'user' => [

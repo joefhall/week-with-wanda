@@ -123,21 +123,9 @@ return [
       ],
     ],
     'about17' => [
-      'type' => 'none',
+      'type' => 'closeWindow',
       'user' => [
         'about17None',
-      ],
-    ],
-    'about18' => [
-      'type' => 'none',
-      'user' => [
-        'about18None',
-      ],
-    ],
-    'about19' => [
-      'type' => 'end',
-      'user' => [
-        'about19None',
       ],
     ],
   ],
@@ -201,12 +189,6 @@ return [
       'wanda' => 'about17',
     ],
     'about17None' => [
-      'wanda' => 'about18',
-    ],
-    'about18None' => [
-      'wanda' => 'about19',
-    ],
-    'about19None' => [
       'wanda' => '',
     ],
   ],

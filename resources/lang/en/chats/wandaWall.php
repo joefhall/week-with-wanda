@@ -35,7 +35,6 @@ return [
     'wallEntry18' => ":wallEntry18",
     'wallEntry19' => ":wallEntry19",
     'wallEntry20' => ":wallEntry20",
-    'wallEntry21' => "(You can close this window now if you want)",
   ],
 
   'user' => [
