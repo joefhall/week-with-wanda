@@ -4,7 +4,7 @@ return [
 
   /*
   |--------------------------------------------------------------------------
-  | Wanda scenarios - Post-signup, get some extra details from the user
+  | Wanda scenarios - Post-signup email / text message confirmation
   |--------------------------------------------------------------------------
   | Actual chat content can be found in resources/lang/chats directory
   |
