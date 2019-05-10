@@ -10,7 +10,7 @@ return [
     |
     */
 
-    'day' => 0,
+    'day' => null,
     'category' => 'auth',
   
     'wanda' => [
