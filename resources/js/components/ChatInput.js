@@ -223,7 +223,9 @@ class ChatInput extends React.Component {
           userInputFiltered = Object.assign({}, this.props.input.userInput);
           delete userInputFiltered[Object.keys(userInputFiltered)[0]];
           
-          const textPlaceholder = Object.keys(userInputFiltered)[0].includes('MobileNumber') ? 'Enter the code I sent you' : 'Type here';
+          const textPlaceholder =
+            (Object.keys(this.props.input.userInput).includes('doneEmail') || Object.keys(this.props.input.userInput).includes('doneMobileNumber'))
+            ? 'Enter the code I sent you' : 'Type here';
           
           return (
             <div>

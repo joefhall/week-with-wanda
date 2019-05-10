@@ -96,7 +96,7 @@ trait DoesSpecialMessageActions
         if ($userMessageId === 'myEmail') {
           $this->userRepository->updateField($userId, 'email', $userMessage);
         }
-        if (in_array($wandaMessageId, ['checkEmail', 'checkEmailChange', 'resendEmail'])) {
+        if (in_array($wandaMessageId, ['checkEmail', 'checkEmailChange', 'checkEmailResend'])) {
           SendVerificationEmail::dispatch($userId)->onQueue('high');
         }
         if ($userMessageId === 'contactEmailOnly' || $userMessageId === 'contactTextMessageOnly' || $userMessageId === 'contactBoth') {

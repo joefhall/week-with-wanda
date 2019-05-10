@@ -7,11 +7,11 @@
 </p>
 
 <p>
-  Can you confirm your email address per-leeez?  Just click this link:
+  Can you confirm your email address per-leeez?  Just copy the code below and paste it back into the chat window:
 </p>
 
 <p>
-  <a href="{{ route('verify', ['verificationTokenId' => $verificationTokenId]) }}">{{ route('verify', ['verificationTokenId' => $verificationTokenId]) }}</a>
+  <strong>{{ $verificationTokenId }}</strong>
 </p>
 
 <p>

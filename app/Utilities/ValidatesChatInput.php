@@ -70,7 +70,8 @@ trait ValidatesChatInput
       case 'emailVerify':
         $user = User::find($userId);
         
-        if ($user->email_verified_at) {
+        if ($user->verificationTokens()->where('uuid', $userMessage)->count()) {
+          $user->email_verified_at = Carbon::now();
           return 'verified';
         }
         

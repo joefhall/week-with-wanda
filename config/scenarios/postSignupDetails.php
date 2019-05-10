@@ -15,7 +15,7 @@ return [
 
   'wanda' => [
     'checkEmail' => [
-      'type' => 'choice',
+      'type' => 'textAndChoice',
       'user' => [
         'doneEmail',
         'resendEmail',
@@ -23,7 +23,7 @@ return [
       ],
     ],
     'checkEmailAgain' => [
-      'type' => 'choice',
+      'type' => 'textAndChoice',
       'user' => [
         'doneEmail',
         'resendEmail',
@@ -31,7 +31,7 @@ return [
       ],
     ],
     'checkEmailResend' => [
-      'type' => 'choice',
+      'type' => 'textAndChoice',
       'user' => [
         'doneEmail',
         'resendEmail',
@@ -39,7 +39,7 @@ return [
       ],
     ],
     'checkEmailChange' => [
-      'type' => 'choice',
+      'type' => 'textAndChoice',
       'user' => [
         'doneEmail',
         'resendEmail',

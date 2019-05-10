@@ -273,7 +273,7 @@ class UserRepository
     if ($user) {
       switch ($type) {
         case 'email':
-          $uuid = (string) Str::uuid();
+          $uuid = substr((string) Str::uuid(), 0, 7);
           break;
         case 'mobile_number':
           $uuid = (string) rand(1000000, 9999999);

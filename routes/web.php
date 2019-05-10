@@ -25,7 +25,6 @@ Route::get('unsubscribe', 'Auth\UnsubscribeController@unsubscribe');
 Route::get('/', 'AppController@index')->name('home');
 Route::get('/about', 'AppController@about')->name('about');
 Route::get('/privacy', 'AppController@privacy')->name('privacy');
-Route::get('/verify/{verificationTokenId}', 'VerifyController@verify')->name('verify');
 
 Route::get('/wall', 'WandaWallController@index')->name('wall');
 Route::post('/wall/create', 'WandaWallController@store')->name('wall-create');
