@@ -14,7 +14,7 @@ return [
   'loginFacebook' => true,
   'loginFacebookDenied' => true,
   'loginFailed' => true,
-  'logout' => true,
+  'loggedOut' => true,
   'privacy' => true,
   'unsubscribe' => true,
   'unsubscribeLogin' => true,

@@ -31,10 +31,16 @@
       </form>
     </div>
     <script>
+      var authNotRequired = [
+        @foreach($authNotRequired as $scenarioId => $notRequired)
+          @if($notRequired)
+            '{{ $scenarioId }}',
+          @endif
+        @endforeach
+      ];
       if (
         document.head.querySelector('meta[name="logged-in"]').content === 'true' ||
-        window.location.href.indexOf('login') > -1 ||
-        window.location.href.indexOf('logged-out') > -1 ||
+        authNotRequired.indexOf(document.head.querySelector('meta[name="start-scenario"]').content) > -1 ||
         window.location.href.indexOf('verify') > -1
       ) {
         document.querySelector('#preview-notice').classList.add('d-none');

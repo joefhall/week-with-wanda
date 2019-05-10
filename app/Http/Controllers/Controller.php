@@ -20,6 +20,8 @@ class Controller extends BaseController
    */
   public function chatView(Request $request, string $loggedIn = 'false', string $startScenario, string $startMessage = 'begin', string $getHistory = 'false')
   {
-    return response()->view('app', compact('loggedIn', 'getHistory', 'startScenario', 'startMessage'));
+    $authNotRequired = config('scenarios.authNotRequired');
+    
+    return response()->view('app', compact('loggedIn', 'getHistory', 'startScenario', 'startMessage', 'authNotRequired'));
   }
 }

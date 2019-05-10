@@ -14,7 +14,7 @@ return [
   'loginFacebook' => true,
   'loginFacebookDenied' => true,
   'loginFailed' => true,
-  'logout' => true,
+  'loggedOut' => true,
   'privacy' => true,
   'unsubscribeLogin' => true,
   'wandaWall' => true,
