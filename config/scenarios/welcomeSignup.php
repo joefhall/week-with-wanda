@@ -396,16 +396,10 @@ return [
         'wanda' => 'greatThanks',
       ],
       'doLogin' => [
-        'wanda' => 'okWereBack',
-      ],
-      'doLoginFacebook' => [
-        'wanda' => 'okWereBackFacebook',
-      ],
-      'okWereBackNone' => [
         'scenario' => 'postSignupDetails',
         'wanda' => 'checkEmail',
       ],
-      'okWereBackFacebookNone' => [
+      'doLoginFacebook' => [
         'scenario' => 'postSignupDetails',
         'wanda' => 'contactPreferences',
       ],
