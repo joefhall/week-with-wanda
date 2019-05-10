@@ -20,6 +20,7 @@ Route::get('login/facebook/denied', 'Auth\FacebookLoginController@denied')->name
 Route::get('logout', function () {
     return view('auth.logged-out');
 })->name('logout');
+Route::get('unsubscribe', 'Auth\UnsubscribeController@unsubscribe');
 
 Route::get('/', 'AppController@index')->name('home');
 Route::get('/about', 'AppController@about')->name('about');

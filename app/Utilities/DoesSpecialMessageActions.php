@@ -2,6 +2,7 @@
 
 namespace App\Utilities;
 
+use App\Jobs\DeleteUser;
 use App\Jobs\FinishWeek;
 use App\Jobs\ScheduleWeek;
 use App\Jobs\SendVerificationEmail;
@@ -130,6 +131,12 @@ trait DoesSpecialMessageActions
         }
         if ($wandaMessageId === 'asking') {
           $this->userRepository->setScenarioPivot($userId, $scenario, 'finished', true);
+        }
+        break;
+
+      case 'unsubscribe':
+        if ($wandaMessageId === 'feedback') {
+          DeleteUser::dispatch($userId)->onQueue('high');
         }
         break;
     }

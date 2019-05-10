@@ -4,8 +4,8 @@ return [
 
   /*
   |--------------------------------------------------------------------------------
-  | List of Wanda scenarios where the chat interactions should *not* be saved
-  | in the user's chat history
+  | List of Wanda scenarios where we should *not* check for special message actions
+  | using App\Utilities\DoesSpecialMessageActions
   |--------------------------------------------------------------------------------
   */
 
@@ -16,7 +16,6 @@ return [
   'loginFailed' => true,
   'logout' => true,
   'privacy' => true,
-  'unsubscribe' => true,
   'unsubscribeLogin' => true,
   'wandaWall' => true,
   
