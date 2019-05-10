@@ -36,6 +36,9 @@ return [
       'loginFacebook' => [
         'wanda' => 'greatThanksFacebook',
       ],
+      'doLoginFacebook' => [
+        'wanda' => '',
+      ],
     ],
 
     
