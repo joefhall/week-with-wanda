@@ -38,6 +38,9 @@
           @endif
         @endforeach
       ];
+      var welcomeSignupIndex = authNotRequired.indexOf('welcomeSignup');
+      authNotRequired.splice(welcomeSignupIndex, 1);
+
       if (
         document.head.querySelector('meta[name="logged-in"]').content === 'true' ||
         authNotRequired.indexOf(document.head.querySelector('meta[name="start-scenario"]').content) > -1 ||
