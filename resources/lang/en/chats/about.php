@@ -25,7 +25,7 @@ return [
     'about10' => "Paul Johnson and Mary Joyce from Harmony Labs",
     'about11' => "The other awesome creators in our <a href='https://blog.mozilla.org/blog/2018/10/24/keeping-ai-accountable-with-science-fiction-documentaries-and-doodles-plus-225000/' target='_blank'>Creative Media Awards cohort</a>",
     'about12' => "Mozilla Fellows Kadija Ferryman and Jason Schultz",
-    'about13' => "Amber Macintyre from Tactical Tech",
+    'about13' => "Amber Macintyre from Tactical Tech, Lydia Shellien-Walker",
     'about14' => "Research from the <a href='https://ainowinstitute.org' target='_blank'>AI Now Institute</a>, <a href='https://futureoflife.org/' target='_blank'>Internet Health Report</a>, <a href='https://futureoflife.org/' target='_blank'>Future of Life Institute</a> and others",
     'about15' => "Reporting from the BBC, CNN, Fast Company, Forbes, the Guardian, the Independent, New York Times, TechCrunch, Vice, Wired and others",
     'about16' => "Everyone who tested out the game and gave their feedback",
