@@ -78,6 +78,8 @@
     }
     
     &__forgotten-password {
+      cursor: pointer;
+      display: inline-block;
       font-size: $font-size-xxsm;
       margin: $spacer * .25 0 $spacer * .5;
     }

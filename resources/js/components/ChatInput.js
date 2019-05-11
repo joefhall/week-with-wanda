@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { addMessage, setEmotion, setInput, setUserProperty } from '../actions';
 import { getHistory, getSessionId, respond } from '../api/chat';
+import DoPasswordResetHidden from './DoPasswordResetHidden';
 import ChatInputAiViews from './ChatInputAiViews';
 import ChatInputChoices from './ChatInputChoices';
 import ChatInputCloseWindow from './ChatInputCloseWindow';
@@ -14,6 +15,7 @@ import ChatInputText from './ChatInputText';
 import ChatInputTextArea from './ChatInputTextArea';
 import ChatMessages from './ChatMessages';
 import LoginHidden from './LoginHidden';
+import SendPasswordResetHidden from './SendPasswordResetHidden';
 import store from '../store';
 import { hideWandaOnSmallScreens, showWanda } from '../utils/screen';
 import { toTitleCase } from '../utils/text';
@@ -72,6 +74,7 @@ class ChatInput extends React.Component {
         break;
         
       case 'signupPassword':
+      case 'newPassword':
         messageId = Object.keys(this.props.input.userInput)[0];    
         store.dispatch(setInput(null, null, null));
         store.dispatch(setUserProperty('password', inputText));
@@ -170,6 +173,12 @@ class ChatInput extends React.Component {
           );
           break;
           
+        case 'doPasswordReset':
+          return (
+            <DoPasswordResetHidden />
+          );
+          break;
+          
         case 'loginEmail':
           return (
             <ChatInputText name="email" placeholder="Your email" onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} />
@@ -178,7 +187,7 @@ class ChatInput extends React.Component {
           
         case 'loginPassword':
           return (
-            <ChatInputPassword onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} />
+            <ChatInputPassword onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} resetPassword={this.addAndSendMessage} />
           );
           break;
         
@@ -186,6 +195,12 @@ class ChatInput extends React.Component {
         case 'signupChoice':
           return (
             <ChatInputChoices onClick={this.addAndSendMessage} sessionId={this.state.sessionId} type={this.props.input.type} userInput={this.props.input.userInput} />
+          );
+          break;
+          
+        case 'sendPasswordReset':
+          return (
+            <SendPasswordResetHidden />
           );
           break;
 
@@ -208,6 +223,7 @@ class ChatInput extends React.Component {
           break;
           
         case 'signupPassword':
+        case 'newPassword':
           return (
             <ChatInputPasswordCreate onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} />
           );

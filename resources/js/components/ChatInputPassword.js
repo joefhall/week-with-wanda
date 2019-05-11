@@ -5,7 +5,8 @@ class ChatInputPassword extends React.Component {
   state = { 
     errorMessage: 'Enter your password',
     hasError: false,
-    password: ''
+    password: '',
+    resetPasswordText: 'I\'ve forgotten my password – email me to reset it'
   };
 
   validatePassword = () => {
@@ -54,6 +55,10 @@ class ChatInputPassword extends React.Component {
     }
   };
 
+  resetPassword = () => {
+    this.props.resetPassword('sendPasswordReset', this.state.resetPasswordText);
+  };
+
   componentWillUnmount() {
     if (this.props.onBlur) {
       this.props.onBlur();
@@ -68,7 +73,7 @@ class ChatInputPassword extends React.Component {
           <i className="chevron circle right icon chat__input__form__submit-button" onClick={this.onFormSubmit}></i>
         </div>
         <div className="chat__input__form__forgotten-password">
-          <a href="/password/reset">I've forgotten my password</a>
+          <span onClick={this.resetPassword}>{this.state.resetPasswordText}</span>
         </div>
         <input className="d-none" type="submit" />
       </form>

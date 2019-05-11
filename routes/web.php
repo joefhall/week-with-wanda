@@ -20,6 +20,8 @@ Route::post('login/facebook/callback', 'Auth\FacebookLoginController@handleProvi
 Route::get('login/facebook/denied', 'Auth\FacebookLoginController@denied')->name('facebook-login-denied');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('logged-out', 'Auth\LoginController@loggedOut')->name('logged-out');
+Route::get('password-reset-sent', 'Auth\ForgotPasswordController@resetPasswordSent')->name('password-reset-sent');
+Route::get('password-reset-sent-failed', 'Auth\ForgotPasswordController@resetPasswordSentFailed')->name('password-reset-sent-failed');
 Route::get('unsubscribe', 'Auth\UnsubscribeController@unsubscribe');
 
 Route::get('/', 'AppController@index')->name('home');

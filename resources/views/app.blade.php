@@ -9,6 +9,7 @@
     <meta name="get-history" content="{{ $getHistory }}">
     <meta name="start-scenario" content="{{ $startScenario }}">
     <meta name="start-message" content="{{ $startMessage }}">
+    <meta name="password-reset-token" content="{{ $passwordResetToken }}">
 
     <title>A Week With Wanda</title>
 

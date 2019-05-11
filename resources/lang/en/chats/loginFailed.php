@@ -19,11 +19,11 @@ return [
     'invalidEmail' => "Hmm, that doesn't look like a valid email address. Please try again",
     'whatsYourPassword' => "Great, and what's your password?",
     'greatThanks' => "Thank you!",
+    'sendingPasswordReset' => "Ok – doing that for you now...",
   ],
 
   'user' => [
     'login' => 'Log in again',
-    'resetPassword' => "<a href='/password/reset'>Reset my password</a>",
   ],
 
 ];

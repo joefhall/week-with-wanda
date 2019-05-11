@@ -621,7 +621,7 @@ trait GetsChat
     $type = array_get($interaction, 'type');
     $chatData = $this->getChatData($previousUserMessageId);
     
-    if (!in_array($type, ['doLogin', 'none', 'signupEmail', 'signupMobileNumber', 'signupName', 'signupPassword', 'text'])) {
+    if (!in_array($type, ['doLogin', 'doLoginFacebook', 'doPasswordReset', 'none', 'sendPasswordReset', 'signupEmail', 'signupMobileNumber', 'signupName', 'signupPassword', 'text'])) {
       foreach (array_get($interaction, 'user') as $userResponse) {
         $userMessages[$userResponse] = $this->getUserChat($scenario, $userResponse, $chatData);
       }

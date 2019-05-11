@@ -16,6 +16,9 @@ return [
   'loginFailed' => true,
   'loggedOut' => true,
   'privacy' => true,
+  'resetPassword' => true,
+  'resetPasswordSent' => true,
+  'resetPasswordSentFailed' => true,
   'unsubscribeLogin' => true,
   'wandaWall' => true,
   

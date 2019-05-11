@@ -17,12 +17,12 @@ class ChatInputPasswordCreate extends React.Component {
       hasError: false
     });
     
-    if (!passwordInputs[0].value || passwordInputs[0].value.length < 5) {
+    if (!passwordInputs[0].value || passwordInputs[0].value.length < 6) {
       this.setState({
-        errorMessage: 'Enter a password, at least 5 characters long',
+        errorMessage: 'Enter a password, at least 6 characters long',
         hasError: false
       });
-    } else if (passwordInputs[0].value.length >= 5 && !passwordInputs[1].value) {
+    } else if (passwordInputs[0].value.length >= 6 && !passwordInputs[1].value) {
       this.setState({
         errorMessage: 'Please confirm your password',
         hasError: false
