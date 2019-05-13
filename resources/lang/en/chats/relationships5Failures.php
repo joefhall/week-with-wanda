@@ -21,7 +21,7 @@ return [
     'bookWorry' => "Ok well, don't worry",
     'selfHelp' => "I digested that and 492 other self-help books",
     'selfHelpPic' => "<img class='chat__messages__message__bubble__image' src='/img/relationships5FailuresReading.gif' />",
-    'learned' => "Among over 3,000 improvements I made to my algorithms as a result",
+    'learned' => "And among over 3,100 improvements I made to my algorithms as a result...",
     'learnedBiggest' => "Do you know what's the biggest thing I learned?",
     'key' => "The key to a successful life is...",
     'people' => "PEOPLE!",
