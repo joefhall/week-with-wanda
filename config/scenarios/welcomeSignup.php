@@ -27,7 +27,7 @@ return [
           'imWandaNone',
         ],
       ],
-      'makeLifeBetter' => [
+      'video' => [
         'type' => 'choice',
         'user' => [
           'hello',
@@ -86,17 +86,11 @@ return [
           'moreInfo4None',
         ],
       ],
-      'moreInfoVideo' => [
+      'moreInfo5' => [
         'type' => 'choice',
         'user' => [
           'moreInfoGreat',
           'moreInfoOk',
-        ],
-      ],
-      'moreInfo5' => [
-        'type' => 'none',
-        'user' => [
-          'moreInfo5None',
         ],
         'emotion' => 'base',
       ],
@@ -163,9 +157,9 @@ return [
         ],
       ],
       'moreInfoNotPersuaded' => [
-        'type' => 'none',
+        'type' => 'choice',
         'user' => [
-          'moreInfoNotPersuadedNone',
+          'moreInfoNotPersuadedTryAnyway',
         ],
         'emotion' => 'unhappy',
       ],
@@ -270,6 +264,9 @@ return [
       'helloNone' => [
         'wanda' => 'imWanda',
       ],
+      'imWandaNone' => [
+        'wanda' => 'video',
+      ],
       'hello' => [
         'wanda' => 'soGood',
       ],
@@ -278,9 +275,6 @@ return [
       ],
       'soGoodNone' => [
         'wanda' => 'initialObservation',
-      ],
-      'imWandaNone' => [
-        'wanda' => 'makeLifeBetter',
       ],
       'initialObservationNone' => [
         'wanda' => 'whatWantDo',
@@ -301,15 +295,12 @@ return [
         'wanda' => 'moreInfo4',
       ],
       'moreInfo4None' => [
-        'wanda' => 'moreInfoVideo',
+        'wanda' => 'moreInfo5',
       ],
       'moreInfoGreat' => [
-        'wanda' => 'moreInfo5',
+        'wanda' => 'moreInfo6',
       ],
       'moreInfoOk' => [
-        'wanda' => 'moreInfo5',
-      ],
-      'moreInfo5None' => [
         'wanda' => 'moreInfo6',
       ],
       'moreInfo6None' => [
@@ -348,6 +339,9 @@ return [
       ],
       'moreInfoPersuadeUnsure' => [
         'wanda' => 'moreInfoNotPersuaded',
+      ],
+      'moreInfoNotPersuadedTryAnyway' => [
+        'wanda' => 'soTellMe',
       ],
       
       'getStarted' => [
