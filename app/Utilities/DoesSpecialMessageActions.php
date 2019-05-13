@@ -99,6 +99,9 @@ trait DoesSpecialMessageActions
         if (in_array($wandaMessageId, ['checkEmail', 'checkEmailChange', 'checkEmailResend'])) {
           SendVerificationEmail::dispatch($userId)->onQueue('high');
         }
+        if ($wandaMessageId === 'contactPreferences') {
+          $this->userRepository->updateField($userId, 'email_verified_at', Carbon::now());
+        }
         if ($userMessageId === 'contactEmailOnly' || $userMessageId === 'contactTextMessageOnly' || $userMessageId === 'contactBoth') {
           ScheduleWeek::dispatch($userId);
 
