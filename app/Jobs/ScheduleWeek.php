@@ -78,10 +78,10 @@ class ScheduleWeek implements ShouldQueue
         'minutes' => rand(1,59),
       ];
       
-      SetCurrentDayScenario::dispatch($this->userId, $day, $scenarioId)
-        ->delay(Carbon::today($this->user->timezone)->addDays($day)->addHours($mainTime['hours'])->addMinutes($mainTime['minutes']));
-      
-      SendNotifications::dispatch($this->userId, $scenarioId, 'main')
+      SetCurrentDayScenario::withChain([
+        new SendNotifications($this->userId, $scenarioId, 'main')
+      ])
+        ->dispatch($this->userId, $day, $scenarioId)
         ->delay(Carbon::today($this->user->timezone)->addDays($day)->addHours($mainTime['hours'])->addMinutes($mainTime['minutes']));
       
       SendNotifications::dispatch($this->userId, $scenarioId, 'reminder')
