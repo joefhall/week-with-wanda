@@ -432,17 +432,11 @@ return [
       'emotion' => 'thumbs-up',
     ],
     'bye' => [
-      'type' => 'none',
+      'type' => 'end',
       'user' => [
         'byeNone',
       ],
       'emotion' => 'waving',
-    ],
-    'survey' => [
-      'type' => 'end',
-      'user' => [
-        'surveyNone',
-      ],
     ],
   ],
 
@@ -679,7 +673,7 @@ return [
       'wanda' => 'ifListening',
     ],
     'byeNone' => [
-      'wanda' => 'survey',
+      'wanda' => '',
     ],
   ],
   

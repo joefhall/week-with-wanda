@@ -78,7 +78,7 @@ return [
     'regroup' => "Hopefully I can regroup my thoughts after I take a long digital bath",
     'happier' => "And do something you're happier with tomorrow",
     'bye' => ":wandaBye",
-    'survey' => "Now as you're helping test me out... <a href='https://docs.google.com/forms/d/e/1FAIpQLSenx-3PCW8E1g7Cix3d0PG4ACkn0kf66ukue2nfsWz39Wqjdg/viewform' target='_blank'>Please click here to take the user testing survey</a> -- it really helps. Thank you!",
+    'byeEnd' => "Bye!",
   ],
 
   'user' => [

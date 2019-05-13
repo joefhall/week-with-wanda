@@ -221,7 +221,7 @@ return [
       ],
     ],
     'bye' => [
-      'type' => 'none',
+      'type' => 'end',
       'user' => [
         'byeNone',
       ],
@@ -345,12 +345,6 @@ return [
       'user' => [
         'bathOk1',
         'bathOk2',
-      ],
-    ],
-    'survey' => [
-      'type' => 'end',
-      'user' => [
-        'surveyNone',
       ],
     ],
   ],
@@ -561,7 +555,7 @@ return [
       'wanda' => 'crunching',
     ],
     'byeNone' => [
-      'wanda' => 'survey',
+      'wanda' => '',
     ],
   ],
   

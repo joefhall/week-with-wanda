@@ -254,7 +254,7 @@ return [
       'emotion' => 'base',
     ],
     'bye' => [
-      'type' => 'none',
+      'type' => 'end',
       'user' => [
         'byeNone',
       ],
@@ -396,12 +396,6 @@ return [
       'user' => [
         'breakOk',
         'breakToo',
-      ],
-    ],
-    'survey' => [
-      'type' => 'end',
-      'user' => [
-        'surveyNone',
       ],
     ],
   ],
@@ -633,7 +627,7 @@ return [
       'wanda' => 'tomorrow',
     ],
     'byeNone' => [
-      'wanda' => 'survey',
+      'wanda' => '',
     ],
   ],
   

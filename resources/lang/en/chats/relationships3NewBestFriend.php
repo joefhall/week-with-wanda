@@ -79,7 +79,7 @@ return [
     'chew' => 'Alrighty, I\'ll go chew on what you said',
     'haveThink' => 'Well, have a think about it, :name. I have a good feeling about the two of you.',
     'ifListening' => 'And if you do meet him, I\'ll be listening on both your phones\' microphones of course, to make sure it goes well!',
-    'survey' => "Now as you're helping test me out... <a href='https://docs.google.com/forms/d/e/1FAIpQLSe96BsRHHNOLkzFDZYZ6ZLhFJwpnGYnqr_OrHkh41Lvgt3nXQ/viewform' target='_blank'>Please click here to take the user testing survey</a> -- it really helps. Thank you!",
+    'byeEnd' => "Bye!",
   ],
 
   'user' => [

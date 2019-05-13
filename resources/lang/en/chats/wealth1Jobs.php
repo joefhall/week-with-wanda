@@ -42,7 +42,7 @@ return [
     'makingYouRicherEmoji' => "🤑",
     'haveAThink' => "But I'll go have a think about what you said",      
     'bye' => ":wandaBye",
-    'survey' => "Now as you're helping test me out... <a href='https://docs.google.com/forms/d/e/1FAIpQLSfVKfqAbk3Gwy-z_V61DEJ6kiwXMEIjchAfxBIqWXSYTkbmFg/viewform' target='_blank'>Please click here to take the user testing survey</a> -- it really helps. Thank you!",
+    'byeEnd' => "Bye!",
   ],
 
   'user' => [

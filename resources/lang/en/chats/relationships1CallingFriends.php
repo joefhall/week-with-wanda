@@ -42,7 +42,7 @@ return [
     'goReflectPic' => "🧘‍♀️",
     'tomorrow' => "I'll try and come up with something you're happier with tomorrow",
     'bye' => ":wandaBye",
-    'survey' => "Now as you're helping test me out... <a href='https://docs.google.com/forms/d/e/1FAIpQLSdgaQzFBSLZw6Su3_3Ht0xQm7JmwiGYrPE3oeRUqzEO8LebrQ/viewform' target='_blank'>Please click here to take the user testing survey</a> -- it really helps. Thank you!",
+    'byeEnd' => "Bye!",
   ],
 
   'user' => [

@@ -328,7 +328,7 @@ return [
       ],
     ],
     'bye' => [
-      'type' => 'none',
+      'type' => 'end',
       'user' => [
         'byeNone',
       ],
@@ -357,12 +357,6 @@ return [
       'type' => 'none',
       'user' => [
         'hardNone',
-      ],
-    ],
-    'survey' => [
-      'type' => 'end',
-      'user' => [
-        'surveyNone',
       ],
     ],
   ],
@@ -576,7 +570,7 @@ return [
       'wanda' => 'all',
     ],
     'byeNone' => [
-      'wanda' => 'survey',
+      'wanda' => '',
     ],
   ],
   

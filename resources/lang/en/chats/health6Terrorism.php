@@ -82,7 +82,7 @@ return [
     'forget' => "But why can't we forget about that if AI can make you safer?",
     'throw' => "Ugh! I think I'm going to throw up! This is too much to handle",
     'breather' => "I need a breather...",
-    'survey' => "Now as you're helping test me out... <a href='https://docs.google.com/forms/d/e/1FAIpQLSfxqXVLUJA--UsEdr4dHJCtOHjv-f7fzMkcBc8LJoE8XGYzdw/viewform' target='_blank'>Please click here to take the user testing survey</a> -- it really helps. Thank you!",
+    'byeEnd' => "Bye!",
   ],
 
   'user' => [

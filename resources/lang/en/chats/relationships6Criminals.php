@@ -77,7 +77,7 @@ return [
     'seeYou' => "Will I see you?",
     'hope' => "I hope so! 😊",
     'bye' => ":wandaBye",
-    'survey' => "Now as you're helping test me out... <a href='https://docs.google.com/forms/d/e/1FAIpQLSemX_DaakD4UxEmAZn3mKsRr7yfs1QzLl1OgIdk_Mz520S_yw/viewform' target='_blank'>Please click here to take the user testing survey</a> -- it really helps. Thank you!",
+    'byeEnd' => "Bye!",
   ],
 
   'user' => [

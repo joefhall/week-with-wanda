@@ -372,17 +372,11 @@ return [
       ],
     ],
     'bye' => [
-      'type' => 'none',
+      'type' => 'end',
       'user' => [
         'byeNone',
       ],
       'emotion' => 'waving',
-    ],
-    'survey' => [
-      'type' => 'end',
-      'user' => [
-        'surveyNone',
-      ],
     ],
   ],
 
@@ -601,7 +595,7 @@ return [
       'wanda' => 'bye',
     ],
     'byeNone' => [
-      'wanda' => 'survey',
+      'wanda' => '',
     ],
   ],
   

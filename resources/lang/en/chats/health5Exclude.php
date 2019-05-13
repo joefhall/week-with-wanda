@@ -72,7 +72,7 @@ return [
     'criticism' => "There you go again with the criticism",
     'hard' => "You're really hard to please!",
     'break' => "I think I need a little break from you now",
-    'survey' => "Now as you're helping test me out... <a href='https://docs.google.com/forms/d/e/1FAIpQLSfIZDVS4ZM3chluc8D5oxWW7qwlmJ_9Ff3A0cqvK5h6hqjzEA/viewform' target='_blank'>Please click here to take the user testing survey</a> -- it really helps. Thank you!",
+    'byeEnd' => "Bye!",
   ],
 
   'user' => [

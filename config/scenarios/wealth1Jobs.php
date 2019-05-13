@@ -223,10 +223,10 @@ return [
       ],
       'emotion' => 'waving',
     ],
-    'survey' => [
+    'byeEnd' => [
       'type' => 'end',
       'user' => [
-        'surveyNone',
+        'byeEndNone',
       ],
     ],
   ],
@@ -377,10 +377,13 @@ return [
       'wanda' => 'bye',
     ],
     'bye1' => [
-      'wanda' => 'survey',
+      'wanda' => 'byeEnd',
     ],
     'bye2' => [
-      'wanda' => 'survey',
+      'wanda' => 'byeEnd',
+    ],
+    'byeEndNone' => [
+      'wanda' => '',
     ],
   ],
   
