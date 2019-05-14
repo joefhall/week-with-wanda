@@ -28,6 +28,7 @@ return [
     'checkMobileNumberNotWorking' => "Ah, sorry about that. The mobile networks can be unreliable in some places. (Don't worry, I'll be running them all one day!)",
     'checkMobileNumberNotWorkingAllDone' => "Otherwise, great – that's it for now! I'll be in touch tomorrow and we can start our week together!",
     'allDone' => "Great, that's it for now! I'll be in touch tomorrow and we can start our week together!",
+    'hopeSeeYou' => "I hope to see you every day... but even if you miss me one day, do come back! Things get more and more exciting near the end of our week!",
     'end' => ":wandaBye",
   ],
 

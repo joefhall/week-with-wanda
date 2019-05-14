@@ -94,6 +94,18 @@ return [
         ],
         'emotion' => 'base',
       ],
+      'moreInfo5a' => [
+        'type' => 'none',
+        'user' => [
+          'moreInfo5aNone',
+        ],
+      ],
+      'moreInfo5b' => [
+        'type' => 'none',
+        'user' => [
+          'moreInfo5bNone',
+        ],
+      ],
       'moreInfo6' => [
         'type' => 'none',
         'user' => [
@@ -228,14 +240,12 @@ return [
         'user' => [
           'doLogin',
         ],
-        'emotion' => 'thumbs-up',
       ],
       'greatThanksFacebook' => [
         'type' => 'doLoginFacebook',
         'user' => [
           'doLoginFacebook',
         ],
-        'emotion' => 'thumbs-up',
       ],
       'giveMeASec' => [
         'type' => 'none',
@@ -298,9 +308,15 @@ return [
         'wanda' => 'moreInfo5',
       ],
       'moreInfoGreat' => [
-        'wanda' => 'moreInfo6',
+        'wanda' => 'moreInfo5a',
       ],
       'moreInfoOk' => [
+        'wanda' => 'moreInfo5a',
+      ],
+      'moreInfo5aNone' => [
+        'wanda' => 'moreInfo5b',
+      ],
+      'moreInfo5bNone' => [
         'wanda' => 'moreInfo6',
       ],
       'moreInfo6None' => [

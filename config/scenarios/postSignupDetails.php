@@ -58,6 +58,7 @@ return [
         'contactEmailOnly',
         'contactBoth',
       ],
+      'emotion' => 'thumbs-up',
     ],
     'whatsMobileNumber' => [
       'type' => 'signupMobileNumber',
@@ -122,6 +123,12 @@ return [
       'emotion' => 'waving',
     ],
     'allDone' => [
+      'type' => 'none',
+      'user' => [
+        'allDoneNone',
+      ],
+    ],
+    'hopeSeeYou' => [
       'type' => 'choice',
       'user' => [
         'bye1',
@@ -192,6 +199,9 @@ return [
     ],
     'checkMobileNumberNotWorkingNone' => [
       'wanda' => 'checkMobileNumberNotWorkingAllDone',
+    ],
+    'allDoneNone' => [
+      'wanda' => 'hopeSeeYou',
     ],
     'bye1' => [
       'wanda' => 'end',
