@@ -63,7 +63,12 @@ class GetCountry implements ShouldQueue
           $ipDataJson = json_decode($ipData->getBody()->getContents());
 
           if (isset($ipDataJson->country_code)) {
-            $user->country = strtoupper($ipDataJson->country_code);
+            $countryCode = $ipDataJson->country_code;
+            if (strlen($countryCode) > 2) {
+              $countryCode = 'XX';
+            }
+
+            $user->country = strtoupper($countryCode);
             $user->save();
           }
         }
