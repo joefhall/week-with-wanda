@@ -14,100 +14,115 @@ trait GetsChat
    * Get data that may need to be inserted into a chat response.
    *
    * @param string $previousUserMessageId
+   * @param string $scenario
+   * @param string $sender
+   * @param string $messageId
    * @return array
    */
-  public function getChatData(string $previousUserMessageId)
+  public function getChatData
+    (
+      string $previousUserMessageId,
+      string $scenario,
+      string $sender,
+      string $messageId
+    )
   {
     $user = Auth::user();
+    $firstName = $user ? $user->first_name : '';
+    $chatData = [];
+    $chatEntryWithVariables = strtolower(__("chats/{$scenario}.{$sender}.{$messageId}"));
     
-    $userAcknowledge = $this->randomCommon('user', 'acknowledge', 2);
-    $userBye = $this->randomCommon('user', 'bye', 2);
-    $userGetStarted = $this->randomCommon('user', 'getStarted', 2);
-    $userHello = $this->randomCommon('user', 'hello', 2);
-    $userOk = $this->randomCommon('user', 'ok', 2);
-    $userRequestMoreInfo = $this->randomCommon('user', 'requestMoreInfo', 2);
-    $userThanks = $this->randomCommon('user', 'thanks', 2);
+    $userAcknowledge = $this->randomCommon('user', 'acknowledge', 2, $firstName);
+    $userBye = $this->randomCommon('user', 'bye', 2, $firstName);
+    $userGetStarted = $this->randomCommon('user', 'getStarted', 2, $firstName);
+    $userHello = $this->randomCommon('user', 'hello', 2, $firstName);
+    $userOk = $this->randomCommon('user', 'ok', 2, $firstName);
+    $userRequestMoreInfo = $this->randomCommon('user', 'requestMoreInfo', 2, $firstName);
+    $userThanks = $this->randomCommon('user', 'thanks', 2, $firstName);
     
-    $chatDataGeneral = [
-      'rand2' => rand(1, 2),
-      'rand3' => rand(1, 3),
-      'rand4' => rand(1, 4),
-      'rand5' => rand(1, 5),
-      'userAcknowledge1' => $userAcknowledge[0],
-      'userAcknowledge2' => $userAcknowledge[1],
-      'userAgree' => $this->randomCommon('user', 'agree'),
-      'userBye1' => $userBye[0],
-      'userBye2' => $userBye[1],
-      'userDisagree' => $this->randomCommon('user', 'disagree'),
-      'userGetStarted1' => $userGetStarted[0],
-      'userGetStarted2' => $userGetStarted[1],
-      'userGreat' => $this->randomCommon('user', 'great'),
-      'userHate' => $this->randomCommon('user', 'hate'),
-      'userHello1' => $userHello[0],
-      'userHello2' => $userHello[1],
-      'userLove' => $this->randomCommon('user', 'love'),
-      'userOk1' => $userOk[0],
-      'userOk2' => $userOk[1],
-      'userRequestMoreInfo1' => $userRequestMoreInfo[0],
-      'userRequestMoreInfo2' => $userRequestMoreInfo[1],
-      'userThanks1' => $userThanks[0],
-      'userThanks2' => $userThanks[1],
-      'userUnsure' => $this->randomCommon('user', 'unsure'),
-      'wallEntry1' => $this->getWandaWallEntry(1),
-      'wallEntry2' => $this->getWandaWallEntry(2),
-      'wallEntry3' => $this->getWandaWallEntry(3),
-      'wallEntry4' => $this->getWandaWallEntry(4),
-      'wallEntry5' => $this->getWandaWallEntry(5),
-      'wallEntry6' => $this->getWandaWallEntry(6),
-      'wallEntry7' => $this->getWandaWallEntry(7),
-      'wallEntry8' => $this->getWandaWallEntry(8),
-      'wallEntry9' => $this->getWandaWallEntry(9),
-      'wallEntry10' => $this->getWandaWallEntry(10),
-      'wallEntry11' => $this->getWandaWallEntry(11),
-      'wallEntry12' => $this->getWandaWallEntry(12),
-      'wallEntry13' => $this->getWandaWallEntry(13),
-      'wallEntry14' => $this->getWandaWallEntry(14),
-      'wallEntry15' => $this->getWandaWallEntry(15),
-      'wallEntry16' => $this->getWandaWallEntry(16),
-      'wallEntry17' => $this->getWandaWallEntry(17),
-      'wallEntry18' => $this->getWandaWallEntry(18),
-      'wallEntry19' => $this->getWandaWallEntry(19),
-      'wallEntry20' => $this->getWandaWallEntry(20),
-      'wandaAcknowledgeResponse' => $this->randomCommon('wanda', 'acknowledgeResponse'),
-      'wandaBye' => $this->randomCommon('wanda', 'bye'),
-      'wandaCelebrity' => $this->randomCommon('wanda', 'celebrity'),
-      'wandaExpectPositiveResponse' => $this->randomCommon('wanda', 'expectPositiveResponse'),
-      'wandaGreat' => $this->randomCommon('wanda', 'great'),
-      'wandaHello' => $this->randomCommon('wanda', 'hello'),
-      'wandaInitialObservation' => $this->randomCommon('wanda', 'initialObservation'),
-      'wandaObservation' => $this->randomCommon('wanda', 'observation'),
-      'wandaStartEnthusiastic' => $this->randomCommon('wanda', 'startEnthusiastic'),
+    $variables = [
+      'rand2' => 'rand(1, 2)',
+      'rand3' => 'rand(1, 3)',
+      'rand4' => 'rand(1, 4)',
+      'rand5' => 'rand(1, 5)',
+      'userAcknowledge1' => '$userAcknowledge[0]',
+      'userAcknowledge2' => '$userAcknowledge[1]',
+      'userAgree' => '$this->randomCommon(\'user\', \'agree\', 1, $firstName)',
+      'userBye1' => '$userBye[0]',
+      'userBye2' => '$userBye[1]',
+      'userDisagree' => '$this->randomCommon(\'user\', \'disagree\', 1, $firstName)',
+      'userGetStarted1' => '$userGetStarted[0]',
+      'userGetStarted2' => '$userGetStarted[1]',
+      'userGreat' => '$this->randomCommon(\'user\', \'great\', 1, $firstName)',
+      'userHate' => '$this->randomCommon(\'user\', \'hate\', 1, $firstName)',
+      'userHello1' => '$userHello[0]',
+      'userHello2' => '$userHello[1]',
+      'userLove' => '$this->randomCommon(\'user\', \'love\', 1, $firstName)',
+      'userOk1' => '$userOk[0]',
+      'userOk2' => '$userOk[1]',
+      'userRequestMoreInfo1' => '$userRequestMoreInfo[0]',
+      'userRequestMoreInfo2' => '$userRequestMoreInfo[1]',
+      'userThanks1' => '$userThanks[0]',
+      'userThanks2' => '$userThanks[1]',
+      'userUnsure' => '$this->randomCommon(\'user\', \'unsure\', 1, $firstName)',
+      'wallEntry1' => '$this->getWandaWallEntry(1)',
+      'wallEntry2' => '$this->getWandaWallEntry(2)',
+      'wallEntry3' => '$this->getWandaWallEntry(3)',
+      'wallEntry4' => '$this->getWandaWallEntry(4)',
+      'wallEntry5' => '$this->getWandaWallEntry(5)',
+      'wallEntry6' => '$this->getWandaWallEntry(6)',
+      'wallEntry7' => '$this->getWandaWallEntry(7)',
+      'wallEntry8' => '$this->getWandaWallEntry(8)',
+      'wallEntry9' => '$this->getWandaWallEntry(9)',
+      'wallEntry10' => '$this->getWandaWallEntry(10)',
+      'wallEntry11' => '$this->getWandaWallEntry(11)',
+      'wallEntry12' => '$this->getWandaWallEntry(12)',
+      'wallEntry13' => '$this->getWandaWallEntry(13)',
+      'wallEntry14' => '$this->getWandaWallEntry(14)',
+      'wallEntry15' => '$this->getWandaWallEntry(15)',
+      'wallEntry16' => '$this->getWandaWallEntry(16)',
+      'wallEntry17' => '$this->getWandaWallEntry(17)',
+      'wallEntry18' => '$this->getWandaWallEntry(18)',
+      'wallEntry19' => '$this->getWandaWallEntry(19)',
+      'wallEntry20' => '$this->getWandaWallEntry(20)',
+      'wandaAcknowledgeResponse' => '$this->randomCommon(\'wanda\', \'acknowledgeResponse\', 1, $firstName)',
+      'wandaBye' => '$this->randomCommon(\'wanda\', \'bye\', 1, $firstName)',
+      'wandaCelebrity' => '$this->randomCommon(\'wanda\', \'celebrity\', 1, $firstName)',
+      'wandaExpectPositiveResponse' => '$this->randomCommon(\'wanda\', \'expectPositiveResponse\', 1, $firstName)',
+      'wandaGreat' => '$this->randomCommon(\'wanda\', \'great\', 1, $firstName)',
+      'wandaHello' => '$this->randomCommon(\'wanda\', \'hello\', 1, $firstName)',
+      'wandaInitialObservation' => '$this->randomCommon(\'wanda\', \'initialObservation\', 1, $firstName)',
+      'wandaObservation' => '$this->randomCommon(\'wanda\', \'observation\', 1, $firstName)',
+      'wandaStartEnthusiastic' => '$this->randomCommon(\'wanda\', \'startEnthusiastic\', 1, $firstName)',
     ];
     
     if ($user) {
       $persuaderText = $this->getPersuaderText($user);
       
-      $chatDataUser = [
-        'country' => $user->country,
-        'countryName' => $this->getCountryName($user->country),
-        'email' => $user->email,
-        'mobileNumber' => $user->mobile_number,
-        'name' => $user->first_name,
-        'profilePic' => $user->profile_pic,
-        'randomFemaleName' => $this->getFakeFirstNames($user->country, 'female', 1),
-        'randomMaleName' => $this->getFakeFirstNames($user->country, 'male', 1),
-        'randomSurname' => $this->getFakeSurname($user->country),
-        'wandaConjunction' => $this->getConjunction('user', $previousUserMessageId),
-        'wandaCumulativeResponse' => $this->getWandaCumulativeResponse(),
-        'wandaPersuader' => $persuaderText['persuader'],
-        'wandaPersuaderPronoun' => $persuaderText['pronoun'],
-        'wandaPreviousSentimentResponse' => $this->getResponseToSentiment('user', $previousUserMessageId),
-      ];
-      
-      return array_merge($chatDataGeneral, $chatDataUser);
+      $variables = array_merge($variables, [
+        'country' => '$user->country',
+        'countryName' => '$this->getCountryName($user->country)',
+        'email' => '$user->email',
+        'mobileNumber' => '$user->mobile_number',
+        'name' => '$user->first_name',
+        'randomFemaleName' => '$this->getFakeFirstNames($user->country, \'female\', 1)',
+        'randomMaleName' => '$this->getFakeFirstNames($user->country, \'male\', 1)',
+        'randomSurname' => '$this->getFakeSurname($user->country)',
+        'wandaConjunction' => '$this->getConjunction(\'user\', $previousUserMessageId)',
+        'wandaCumulativeResponse' => '$this->getWandaCumulativeResponse()',
+        'wandaPersuader' => '$persuaderText[\'persuader\']',
+        'wandaPersuaderPronoun' => '$persuaderText[\'pronoun\']',
+        'wandaPreviousSentimentResponse' => '$this->getResponseToSentiment(\'user\', $previousUserMessageId)',
+      ]);
     }
 
-    return $chatDataGeneral;
+    foreach ($variables as $name => $value) {
+      if (strpos($chatEntryWithVariables, (':' . strtolower($name))) !== false) {
+        eval('$chatData["' . $name . '"] = ' . $value . ';');
+      }
+    }
+    
+    return $chatData;
   }
   
   /**
@@ -553,14 +568,17 @@ trait GetsChat
    * @param string $who
    * @param string $messageId
    * @param int $count
+   * @param string $name
    * @return string
    */
-  public function randomCommon(string $who, string $messageId, int $count = 1)
+  public function randomCommon(string $who, string $messageId, int $count = 1, string $name = '')
   {
+    $chatData = compact('name');
+
     if ($count === 1) {
-      return __("chats/common.{$who}.{$messageId}")[rand(0, count(__("chats/common.{$who}.{$messageId}")) - 1)];
+      return __("chats/common.{$who}.{$messageId}", $chatData)[rand(0, count(__("chats/common.{$who}.{$messageId}", $chatData)) - 1)];
     } else {
-      $responses = __("chats/common.{$who}.{$messageId}");
+      $responses = __("chats/common.{$who}.{$messageId}", $chatData);
       shuffle($responses);
       
       return array_slice($responses, 0, $count);
@@ -619,10 +637,10 @@ trait GetsChat
   {
     $userMessages = [];
     $type = array_get($interaction, 'type');
-    $chatData = $this->getChatData($previousUserMessageId);
     
     if (!in_array($type, ['doLogin', 'doLoginFacebook', 'doPasswordReset', 'none', 'sendPasswordReset', 'signupEmail', 'signupMobileNumber', 'signupName', 'signupPassword', 'text'])) {
       foreach (array_get($interaction, 'user') as $userResponse) {
+        $chatData = $this->getChatData($previousUserMessageId, $scenario, 'user', $userResponse);
         $userMessages[$userResponse] = $this->getUserChat($scenario, $userResponse, $chatData);
       }
     } else {
