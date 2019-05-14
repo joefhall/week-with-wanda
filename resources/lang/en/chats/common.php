@@ -149,7 +149,7 @@ return [
     ],
     'acknowledge' => [
       "Well thanks",
-      "Erm, ok",
+      "Er, ok",
     ],
     'getStarted' => [
       "So what's going on?",
@@ -194,7 +194,7 @@ return [
     'unsure' => [
       "Hmm I'm not sure",
       "Don't know",
-      "I feel a bit icky about this",
+      "I feel a bit uncertain about this",
       "Erm, I'm a bit unsure",
       "Mmmm I'm in two minds",
     ],
@@ -222,7 +222,7 @@ return [
       "Seeya",
       "Bye for now",
       "Till tomorrow",
-      "Cheerio",
+      "Speak later",
     ],
   ],
 
