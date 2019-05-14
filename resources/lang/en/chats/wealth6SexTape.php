@@ -10,8 +10,8 @@ return [
   |
   */
   
-  'description' => "Wanda wants to sell a sex tape of you and a celebrity!",
-  'explanation' => "This might be funnier... if it weren't so real and possible. People have already collaborated online to create 'deepfakes' – <a href=\"https://www.ibtimes.co.uk/deepfakes-reddit-bans-subreddit-featuring-ai-enchanced-celebrity-porn-1660302\">celebrities' faces superimposed on porn videos using AI.</a> As well as the individual harm, if videos of anyone doing anything can be faked, what does this mean for truth itself?",
+  'description' => "Wanda wants to sell a lewd tape of you and a celebrity!",
+  'explanation' => "This might be funnier... if it weren't so real and possible. People have already collaborated online to create 'deepfakes' – with <a href=\"https://www.ibtimes.co.uk/deepfakes-reddit-bans-subreddit-featuring-ai-enchanced-celebrity-porn-1660302\">celebrities' faces superimposed using AI.</a> As well as the individual harm, if videos of anyone doing anything can be faked, what does this mean for truth itself?",
 
   'wanda' => [
     'lovely' => "Ah, lovely :name...",
@@ -95,7 +95,7 @@ return [
     'soDo' => "What did you do?!",
     'readyAwesome' => "This is so awesome",
     'readyPossible' => "This can't be possible",
-    'readySick' => "This makes me fel sick",
+    'readySick' => "This makes me feel sick",
     'hottestGreat' => "Great work",
     'hottestUnsure' => ":userUnsure",
     'haHa' => "Ha ha!",

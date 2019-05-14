@@ -11,7 +11,7 @@ return [
   */
   
   'description' => "Wanda wants to exclude some 'high risk' people from health care in your area",
-  'explanation' => "<a href=\"https://www.theverge.com/2018/3/21/17144260/healthcare-medicaid-algorithm-arkansas-cerebral-palsy\">Algorithms are denying people care today</a> although we may not be aware of it. Should technology be deciding winners and losers at all? How transparent should it be?</p> <p>You might also have seen Wanda showing you a <em>very white</em> selection of people she's been analysing to help with skin cancer diagnosis – unintentional (but still very dangerous) exclusion of people is <a href=\"https://www.medicalbag.com/home/more/tech-talk/ai-powered-cancer-diagnoses-in-dermatology-leave-patients-of-color-in-the-dust/\">already happening in similar ways</a>, affecting ethnic minorities for example.",
+  'explanation' => "<a href=\"https://www.theverge.com/2018/3/21/17144260/healthcare-medicaid-algorithm-arkansas-cerebral-palsy\">Algorithms are already denying people care today</a> although we may not be aware of it. Should we outsource to technology the power to decide winners and losers at all? How transparent should it be?</p> <p>You might also have seen Wanda showing you a <em>very white</em> selection of people she's been analysing to help with skin cancer diagnosis – unintentional (but still very dangerous) exclusion of people is <a href=\"https://www.medicalbag.com/home/more/tech-talk/ai-powered-cancer-diagnoses-in-dermatology-leave-patients-of-color-in-the-dust/\">already happening in similar ways</a>, affecting ethnic minorities for example.",
   
   'wanda' => [
     'name' => ":name!",
@@ -33,7 +33,7 @@ return [
     'anyhow' => "ANYHOW!",
     'irresponsible' => "There are some really irresponsible people out there using up so much of your doctors' time",
     'longer' => "Because of them, it takes longer for you to be seen when you need medical help",
-    'drugs' => "And thye drain the system so there isn't enough money left for some of the lifesaving drugs <strong>you</strong> might need",
+    'drugs' => "And they drain the system so there isn't enough money left for some of the lifesaving drugs <strong>you</strong> might need",
     'bad' => "It's bad",
     'wrong' => "In fact, I'd say it's <em>morally wrong</em>",
     'healthier' => "You want to be healthier, right :name?",
@@ -47,11 +47,11 @@ return [
     'soFar' => "57% of people so far have disagreed with restricting access...",
     'change' => "But I'll change their minds",
     'smileEmoji' => "😄",
-    'go' => "Acutally – I'd better go work on them now!",
+    'go' => "Actually – I'd better go work on them now!",
     'double' => "Maybe telling them I'll double their medication costs will persuade them!",
     'tomorrow' => "See you tomorrow when I'll have more inspiration for how I can help you!",
     'bye' => ":wandaBye",
-    'pharmacies' => "But :name, we've been monitoring <em>these people</em> through pharmacies too",
+    'pharmacies' => "But :name, we've been monitoring <em>these people</em> in pharmacies too",
     'medication' => "18% of the time they don't even pick up their medication!",
     'help' => "They're not helping themselves, so why in hell should we help them?",
     'losing' => "You're the one losing out here, :name!",

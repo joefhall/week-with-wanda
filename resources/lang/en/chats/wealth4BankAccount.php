@@ -10,7 +10,7 @@ return [
   |
   */
   
-  'description' => "Wanda locks you out of your own bank account... because your own 'irresponsible' spending is what's making you poorer!",
+  'description' => "Wanda locks you out of your bank account... because your own 'irresponsible' spending is what's making you poorer!",
   'explanation' => "A bot would need more permissions to your bank accounts to do this. But AI taking more control isn't inconceivable. We've already seen that <a href=\"https://www.nytimes.com/2015/06/12/business/technology-to-prevent-drunken-driving-could-soon-come-in-new-cars.html\">technology in cars could automatically stop drunk drivers</a> – taking away human choice – for example. How far do we want AI to go in saving us from ourselves?",
   
   'wanda' => [
@@ -39,7 +39,7 @@ return [
     'option' => "I have no other option...",
     'locked' => "I have now locked you out of your bank account and deactivated your cards",
     'clear' => "Anything you want to spend, you now need to clear it with me",
-    'course' => "Until you take my <em>Wanda Spending Habits Mind Re-education Course</em>™©®™",
+    'course' => "Until you take my <em>Wanda Spending Habits Mind Re-education Course</em>™©®",
     'ok' => "Ok?",
     'really' => "Really? Really?!",
     'glad' => "Good. I'm glad you can see that, :name",

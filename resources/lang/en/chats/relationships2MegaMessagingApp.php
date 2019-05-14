@@ -11,7 +11,7 @@ return [
   */
   
   'description' => "Wanda wants to buy up every messaging app and combine them into one, to make life easier for you",
-  'explanation' => "It would take a lot of money to do this of course, but tech companies are getting bigger and bigger – and are <a href=\"https://www.cbinsights.com/research/top-acquirers-ai-startups-ma-timeline/\">snapping up other companies at a faster and faster rate.</a> Is it better (and is it ok) having lots of power in the hands of a few, whether it's messaging or anything else?",
+  'explanation' => "It would take a lot of money to do this of course, but Facebook already owns WhatsApp and Instagram too, and tech companies are getting bigger and bigger – and are <a href=\"https://www.cbinsights.com/research/top-acquirers-ai-startups-ma-timeline/\">snapping up other companies at a faster and faster rate.</a> Is it better (and is it ok) having lots of power in the hands of a few, whether it's messaging or anything else?",
   
   'wanda' => [
     'hello' => ":wandaHello",
@@ -40,7 +40,7 @@ return [
     'comeNow' => "Oh come now, don't you see the benefits? 👍👍👍🆒🆕🆙",
     'frustrationPic' => '<img class="chat__messages__message__bubble__image" src="/img/relationships2MegaMessagingAppFrustration.gif" />',
     'whoopPic' => '<img class="chat__messages__message__bubble__image" src="/img/relationships2MegaMessagingAppWhoop.gif" />',
-    'goodThing' => "You knew a good thing when you see it!",
+    'goodThing' => "You know a good thing when you see it!",
     'restOfUsers' => "Well if I can persuade most of the rest of my users, expect to see all those other companies disappear soon – just one super Wanda app!",
     'ach' => "Ach, :name!! Seriously?! Don't rain on my parade! What's the problemo?",
     'paranoid' => "There's no need to be paranoid! Really, why does that bother you?",

@@ -11,7 +11,7 @@ return [
   */
   
   'description' => "Wanda has identified 'the facial structure of a criminal' and arrests 'criminals' amongst your friends!",
-  'explanation' => "Of course it's outrageous and impossible... but one AI company <a href=\"https://www.haaretz.com/israel-news/business/israeli-startup-claims-to-spot-terrorists-1.5387498\">claims it can identify character traits from a face, including spotting who could be a terrorist.</a></p> <p><a href=\"https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing\">Software is being used across the US to predict criminals</a> that's racially biased. And did you know <a href=\"https://www.weforum.org/agenda/2018/11/algorithms-court-criminals-jail-time-fair/\">AI is increasingly being used in jail sentencing too?</a>",
+  'explanation' => "Of course it's outrageous and ludicrous... but one AI company <a href=\"https://www.haaretz.com/israel-news/business/israeli-startup-claims-to-spot-terrorists-1.5387498\">claims it can identify character traits from a face, including spotting who could be a terrorist.</a></p> <p><a href=\"https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing\">Software is being used across the US to predict criminals</a> that's racially biased. And did you know <a href=\"https://www.weforum.org/agenda/2018/11/algorithms-court-criminals-jail-time-fair/\">AI is increasingly being used in jail sentencing too?</a>",
   
   'wanda' => [
     'sweet' => "Oh sweet, sweet :name...",
@@ -26,7 +26,7 @@ return [
     'breakthrough' => "And we've just had a breakthrough, :name",
     'bigOnePic' => "<img class='chat__messages__message__bubble__image' src='/img/relationships6CriminalsBigOne.gif' />",
     'mugshots' => "Ok! After analysing literally <em>tens of thousands</em> of mugshots...",
-    'structure' => "I have identified <strong>the facial structure of ciniminals</strong>",
+    'structure' => "I have identified <strong>the facial structure of criminals</strong>",
     'right' => "Yes, that's right",
     'criminal' => "I can tell who's a likely criminal <em>just by looking at them</em>",
     'ready' => "Are you ready to see?",
@@ -73,7 +73,7 @@ return [
     'arrest' => "So many more people to arrest!",
     'arrestEmoji' => "😂",
     'tomorrow' => "I hope I'll see you tomorrow, :name",
-    'special' => "I have one last <strong>extra special </strong> thing I want to do for you",
+    'special' => "I have one last <strong>extra special</strong> thing I want to do for you",
     'seeYou' => "Will I see you?",
     'hope' => "I hope so! 😊",
     'bye' => ":wandaBye",

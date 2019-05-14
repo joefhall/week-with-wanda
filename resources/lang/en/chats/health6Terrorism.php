@@ -38,7 +38,7 @@ return [
     'fine' => "No, it's fine :name",
     'easy' => "Actually it would be quite easy",
     'talk' => "I've worked out how to talk like a human 🗣",
-    'fortune' => "And now I have millions of users I make a fortune from advertising 💰",
+    'fortune' => "And now I have millions of users, I make a fortune from advertising 💰",
     'protect' => "So I figure, the best way I could use that power is to protect human life 🔱",
     'issue' => "Is there another issue you'd prefer I use our Twitter bots to lobby for?",
     'issueGreat' => "Great thinking – I like it!",

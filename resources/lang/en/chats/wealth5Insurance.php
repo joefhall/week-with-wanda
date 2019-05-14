@@ -11,7 +11,7 @@ return [
   */
   
   'description' => "Wanda offers you a better insurance deal – based on your skin colour",
-  'explanation' => "Racial bias (and bias of other kinds, such as gender) is a real and live issue in AI – with <a href=\"https://www.wired.com/story/ideas-joi-ito-insurance-algorithms/\">insurance just one example.</a> How much of this is down to tech itself still being dominated by people who are white, male, Western and university-educated? How can it get more representative and more responsible?",
+  'explanation' => "Racial bias (and bias of other kinds, such as gender) is a real and live issue in AI – with <a href=\"https://www.wired.com/story/ideas-joi-ito-insurance-algorithms/\">insurance just one example</a>. How much of this is down to tech itself still being dominated by people who are white, male, Western and university-educated? How can it get more representative and more responsible?",
   
   'wanda' => [
     'name' => ":name!",
@@ -23,7 +23,7 @@ return [
     'magic' => "And through the clever magic of my algorithms, I can reveal",
     'safe' => "<strong>You</strong> must be a very safe person, :name",
     'skin' => "Well, it turns out that people with <strong>your</strong> skin colour are <em>much</em> better drivers than other people",
-    'homes' => "You take <em>much</em> better care of your homes",
+    'homes' => "You take <em>a lot</em> better care of your homes",
     'accidents' => "AND you have fewer accidents of basically <em>all kinds</em>",
     'so' => "Sooo............",
     'offer' => "We can offer YOU a 42% saving on all your insurance!!",
@@ -40,7 +40,7 @@ return [
     'happy' => "But you can't keep all the people happy all the time, can you?!",
     'but' => "But I'm saving you money – you wanted to get richer, :name!",
     'whatMind' => "What's on your mind?",
-    'sake' => "Oh for *@$#'s sake, :name!",
+    'sake' => "Oh for *@&#'s sake, :name!",
     'always' => "There's always something with you, isn't there?",
     'affect' => "It doesn't affect YOU",
     'whyCare' => "So why do you care so much??",

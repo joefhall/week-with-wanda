@@ -11,7 +11,7 @@ return [
   */
   
   'description' => "Wanda wants to make you money by selling your location data",
-  'explanation' => "Our location is at times being tracked without our permission, from <a href=\"https://www.theguardian.com/technology/2018/aug/13/google-location-tracking-android-iphone-mobile\">our phones</a> to <a href=\"https://www.zdnet.com/article/hundreds-of-apps-are-using-ultrasonic-sounds-to-track-your-ad-habits/\">secret ultrasonic tracking in some shops and adverts</a>. Are we ok with that? Maybe we're not? What if we profited from the tech we use in this <a href=\"https://www.theverge.com/2019/4/9/18302076/data-monetization-control-manipulation-economy-jaron-laniers-virtual-reality-vr-vergecast\">and other ways?</a> Is that ok?",
+  'explanation' => "Our location is at times being tracked without our permission, from <a href=\"https://www.theguardian.com/technology/2018/aug/13/google-location-tracking-android-iphone-mobile\">our phones</a> to <a href=\"https://www.zdnet.com/article/hundreds-of-apps-are-using-ultrasonic-sounds-to-track-your-ad-habits/\">secret ultrasonic tracking in some shops and adverts</a>. Every day, websites and apps <a target=\"_blank\" href=\"https://techcrunch.com/2018/09/07/a-dozen-popular-iphone-apps-caught-quietly-sending-user-locations-to-monetization-firms/\">make money from our location data</a>. Are we ok with all of this? Maybe we're not? What if we profited from the tech we use in this <a href=\"https://www.theverge.com/2019/4/9/18302076/data-monetization-control-manipulation-economy-jaron-laniers-virtual-reality-vr-vergecast\">and other ways?</a> Is it ok then – or not at all?",
 
   'wanda' => [
     'hello' => ":wandaHello",
@@ -28,7 +28,7 @@ return [
     'calculatingPic' => '<img class="chat__messages__message__bubble__image" src="/img/wealth3SellLocationDataCalculating.gif" />',
     'amount' => "...$46 to be precise!",
     'greatQuestion' => "Great question! So, I can sell it to estate agents, an advertising network, oh - and the local police",
-    'noFear' => "And obviously <em>you've</em> nothing to fear from any of them",
+    'noFear' => "And obviously <em>you</em> have nothing to fear from any of them",
     'whatSay' => "So what do you say?",
     'hardToGet' => "Playing hard to get! I like it :name!",
     'hardToGetEmoji' => "😋",
@@ -58,7 +58,7 @@ return [
     'howCome' => "But how come? Whatever is the matter with it?",
     'moneyWorld' => "Yeah but money makes the world go round",
     'moneyWorldEmoji' => "😅",
-    'whyCare' => "Why would you care about privacy more than hard cash?",
+    'whyCare' => "Why would you care more about privacy than hard cash?",
     'treasure' => "You are a little treasure, :name – with your funny views",
     'mix' => "Ok well I'll throw that back into the mix of my algorithms and see what comes out",
     'mixPic' => '<img class="chat__messages__message__bubble__image" src="/img/wealth3SellLocationDataMix.gif" />',

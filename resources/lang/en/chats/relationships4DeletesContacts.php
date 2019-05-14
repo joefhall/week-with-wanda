@@ -39,7 +39,7 @@ return [
     'rude' => "And I have to say, :name, you do know some rude people!",
     'replies' => "Do you want to hear some of their replies?",
     'initials' => "Well I think to spare their reputations, I'll just use their initials... What language!",
-    'sm' => "SM said: <em>\"I can't believe you, :name! We've known each other for years! You *@&£$#+!!\"</em>",
+    'sm' => "SM said: <em>\"I can't believe you, :name! We've known each other for years! You *@&£#+!!\"</em>",
     'ds' => "And then there was DS: <em>\"What?! What did I do? I know we haven't spoken in a while, but this...\"</em>",
     'cr' => "Oh and CR just said: <em>\"#@*£ you, :name!!!!\"</em> Classy.",
     'happy' => "But 87.4% of people didn't reply, so we can safely assume they're happy",
