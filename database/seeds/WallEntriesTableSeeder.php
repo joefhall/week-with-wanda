@@ -14,41 +14,41 @@ class WallEntriesTableSeeder extends Seeder
     public function run()
     {
       $entries = [
-//         [
-//           'comment' => "",
-//           'countryName' => "Belgium",
-//           'name' => "Pascale",
-//         ],
-//         [
-//           'comment' => "",
-//           'countryName' => "the US",
-//           'name' => "James",
-//         ],
-//         [
-//           'comment' => "",
-//           'countryName' => "the UK",
-//           'name' => "Louise",
-//         ],
-//         [
-//           'comment' => "",
-//           'countryName' => "Canada",
-//           'name' => "Charlotte",
-//         ],
-//         [
-//           'comment' => "",
-//           'countryName' => "the US",
-//           'name' => "Aamal",
-//         ],
-//         [
-//           'comment' => "",
-//           'countryName' => "the US",
-//           'name' => "Tyrone",
-//         ],
-//         [
-//           'comment' => "",
-//           'countryName' => "the UK",
-//           'name' => "Jude",
-//         ],
+        [
+          'comment' => "I am sensitive about sharing my health and private data. I would like it to be clear when apps use this (and what they know)",
+          'countryName' => "Belgium",
+          'name' => "Pascale",
+        ],
+        [
+          'comment' => "This is making me look again at the apps I use!! Funny..... but somewhat scary!!!",
+          'countryName' => "the US",
+          'name' => "James",
+        ],
+        [
+          'comment' => "I hadn't really thought about how central all this stuff is becoming to our lives - even things like criminal sentencing. Needs a lot more debate I'd say",
+          'countryName' => "the UK",
+          'name' => "Louise",
+        ],
+        [
+          'comment' => "Stop taking over my life! I dont want you to do all these things Wanda!",
+          'countryName' => "Canada",
+          'name' => "Charlotte",
+        ],
+        [
+          'comment' => "Thought provoking but let's be honest there are benefits as well as risks how can we make sure technology is done the right way without holding back business innovation and new developments that will genuinely improve our lives",
+          'countryName' => "the US",
+          'name' => "Aamal",
+        ],
+        [
+          'comment' => "What! How do apps know so much about me? Maybe time to do more than #deletefacebook!",
+          'countryName' => "the US",
+          'name' => "Tyrone",
+        ],
+        [
+          'comment' => "Thanks for raising awareness of these issues, I definitely got creeped out by Wanda! I will look twice when I consider signing up for a service now, I wish there was a clearer way to know how my information is being used (and whether it's being done fairly - not sexist, racist, etc)",
+          'countryName' => "the UK",
+          'name' => "Jude",
+        ],
         [
           'comment' => "I just think they need to take into consideration the effects on ordinary people",
           'countryName' => "the UK",
