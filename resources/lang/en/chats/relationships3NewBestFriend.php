@@ -52,7 +52,7 @@ return [
     'goodFeeling' => 'I have a good feeling about you two',
     'whenListening' => '(And I\'ll be listening in on both your phones\' microphones too of course, to make sure it goes well!)',
     'allDone' => ':WandaGreat. Ok I\'m all done for now.',
-    'tomorrow' => 'I\'ll speak to you tomorrow, when I\'ll have another bright idea for you!',
+    'tomorrow' => 'I\'ll speak to you again very soon, when I\'ll have another bright idea for you!',
     'tomorrowEmoji' => '😇',
     'bye' => ':wandaBye',
     'listeningOfCourse' => 'Ha ha, yeah <em>of course</em> :name!',

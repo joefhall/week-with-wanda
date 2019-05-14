@@ -43,7 +43,7 @@ return [
     'family' => "I know what it is – you also want me to instruct your friends and family to feed you less salt",
     'familyEmailed' => "Don't worry, I've just emailed them. All good?",
     'tooMuch' => "But of course, :name. Nothing is too much for you",
-    'crunching' => "And now I've got some more algorithm-crunching to do for you ahead of tomorrow",
+    'crunching' => "And now I've got some more algorithm-crunching to do for you ahead of when I next see you",
     'soon' => "But I'll see you soon",
     'bye' => ":wandaBye",
     'doMore' => "Is there more you want me to do for your blood pressure?",

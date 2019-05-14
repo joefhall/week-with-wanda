@@ -49,7 +49,7 @@ return [
     'smileEmoji' => "😄",
     'go' => "Actually – I'd better go work on them now!",
     'double' => "Maybe telling them I'll double their medication costs will persuade them!",
-    'tomorrow' => "See you tomorrow when I'll have more inspiration for how I can help you!",
+    'tomorrow' => "See you again very soon when I'll have more inspiration for how I can help you!",
     'bye' => ":wandaBye",
     'pharmacies' => "But :name, we've been monitoring <em>these people</em> in pharmacies too",
     'medication' => "18% of the time they don't even pick up their medication!",

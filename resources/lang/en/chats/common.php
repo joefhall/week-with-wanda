@@ -109,7 +109,7 @@ return [
       "Speak again soon!",
       "Ciao for now, :name",
       "Hasta mañana, :name!",
-      "Talk to you tomorrow",
+      "Talk to you later",
     ],
     'celebrity' => [
       'Jennifer Aniston',
@@ -221,7 +221,7 @@ return [
       "Bye, Wanda",
       "Seeya",
       "Bye for now",
-      "Till tomorrow",
+      "Till the next time",
       "Speak later",
     ],
   ],

@@ -72,7 +72,7 @@ return [
     'streets' => "Now I need to go clean up these streets some more",
     'arrest' => "So many more people to arrest!",
     'arrestEmoji' => "😂",
-    'tomorrow' => "I hope I'll see you tomorrow, :name",
+    'tomorrow' => "I hope I'll see you one final time, :name",
     'special' => "I have one last <strong>extra special</strong> thing I want to do for you",
     'seeYou' => "Will I see you?",
     'hope' => "I hope so! 😊",

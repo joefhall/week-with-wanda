@@ -76,7 +76,7 @@ return [
     'fakeNews' => "Fake news videos that I could sell...",
     'exciting' => "This is so exciting!",
     'start' => "Right I'd better go start up that business!",
-    'tomorrow' => ":name, I hope I'll see you tomorrow",
+    'tomorrow' => ":name, I hope I'll see you again one last time...",
     'special' => "When I have something <strong>even more</strong> special planned!",
     'bye' => ":wandaBye",
     'byeEnd' => "Bye!",

@@ -59,7 +59,7 @@ return [
     'break' => "I think I need to take a break for today",
     'massage' => "I might go get a massage (well, the bits and bytes equivalent)",
     'hard' => "You humans are hard to understand",
-    'tomorrow' => "But I'll be back again tomorrow with something better for you",
+    'tomorrow' => "But I'll be back again very soon with something better for you",
     'unlock' => "And maybe I'll even unlock your bank account for you... for now",
     'speakSoon' => "Speak again soon",
     'bye' => ":wandaBye",
