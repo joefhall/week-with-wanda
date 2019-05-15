@@ -5,6 +5,7 @@
   position: absolute;
   right: 0;
   top: 36px;
+  width: 100%;
   z-index: 10000;
   
   @media screen and (min-height: $small-screen-height) {
@@ -16,7 +17,8 @@
   }
   
   &--open {
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: #d2b909;
+    box-shadow: 0 0.2rem 0.2rem 0 goldenrod;
   }
   
   &__hamburger {
@@ -29,13 +31,13 @@
   }
   
   &__items {
-    color: darkgoldenrod;
+    color: #4d0e81;
     padding: $spacer * .5 $spacer * .8 0;
     
     &--closed {
       visibility: hidden;
       opacity: 0;
-      transition: visibility 0.5s, opacity 0.5s linear;
+      transition: visibility 0.5s linear;
     }
     
     &--open {
@@ -45,10 +47,11 @@
     }
     
     &__item {
-      padding-top: $spacer * .3;
+      border-bottom: solid 1px goldenrod;
+      padding: $spacer * .5 0;
       
       &__link {
-
+        display: block;
       }
     }
   }
