@@ -464,7 +464,6 @@ return [
       'user' => [
         'revealText',
       ],
-      'emotion' => 'new-identity',
     ],
     'mission' => [
       'type' => 'none',

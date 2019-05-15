@@ -17,7 +17,6 @@ return [
         'user' => [
           'helloNone',
         ],
-        'emotion' => 'new-identity',
       ],
       'wall' => [
         'type' => 'none',
