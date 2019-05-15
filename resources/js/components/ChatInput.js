@@ -181,7 +181,7 @@ class ChatInput extends React.Component {
           
         case 'loginEmail':
           return (
-            <ChatInputText name="email" placeholder="Your email" onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} />
+            <ChatInputText minLength={5} name="email" placeholder="Your email" onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} />
           );
           break;
           
@@ -206,7 +206,7 @@ class ChatInput extends React.Component {
 
         case 'signupEmail':
           return (
-            <ChatInputText name="email" placeholder="Your email" onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} />
+            <ChatInputText minLength={5} name="email" placeholder="Your email" onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} />
           );
           break;
           
@@ -231,7 +231,7 @@ class ChatInput extends React.Component {
           
         case 'text':
           return (
-            <ChatInputText placeholder="" onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} />
+            <ChatInputText minLength={7} placeholder="" onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} />
           );
           break;
           
