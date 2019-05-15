@@ -50,7 +50,7 @@ export default class ChatInputTextArea extends React.Component {
     this.validate();
     
     if (!this.state.errorMessage) {
-      this.props.onFormSubmit(this.state.inputText);
+      this.props.onFormSubmit(this.state.inputText.trim());
     }
   };
 

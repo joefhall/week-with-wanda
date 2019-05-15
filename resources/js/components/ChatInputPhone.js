@@ -34,10 +34,10 @@ export default class ChatInputPhone extends React.Component {
   onFormSubmit = event => {
     event.preventDefault();
     
-    this.validatePhoneNumber(this.state.inputValue);
+    this.validatePhoneNumber(this.state.inputValue.trim());
     
     if (!this.state.errorMessage) {
-      this.props.onFormSubmit(this.state.inputValue);
+      this.props.onFormSubmit(this.state.inputValue.trim());
     }
   };
 
