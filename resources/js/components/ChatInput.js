@@ -133,7 +133,7 @@ class ChatInput extends React.Component {
       switch(this.props.input.type) {
         case 'aiViews':
           return (
-            <ChatInputAiViews minLength={40} onComplete={this.addAndSendMessage} onBlur={showWanda} onFocus={hideWandaOnSmallScreens} placeholder="How do you want AI to be in the future?" rows="3" userInput={this.props.input.userInput} />
+            <ChatInputAiViews minLength={30} onComplete={this.addAndSendMessage} onBlur={showWanda} onFocus={hideWandaOnSmallScreens} placeholder="How do you want AI to be in the future?" rows="3" userInput={this.props.input.userInput} />
           );
           break;
           
@@ -253,7 +253,7 @@ class ChatInput extends React.Component {
           
         case 'textArea':
           return (
-            <ChatInputTextArea minLength={40} placeholder="" onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} rows="2" />
+            <ChatInputTextArea minLength={30} placeholder="" onBlur={showWanda} onFocus={hideWandaOnSmallScreens} onFormSubmit={this.receiveTextInput} rows="2" />
           );
           break;
 
