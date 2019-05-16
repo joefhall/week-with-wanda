@@ -19,6 +19,7 @@ class DoPasswordResetHidden extends React.Component {
         <input type="hidden" name="email" value={this.props.user.email} />
         <input type="hidden" name="password" value={this.props.user.password} />
         <input type="hidden" name="password_confirmation" value={this.props.user.password} />
+        <input type="checkbox" name="remember" checked className="d-none" />
       </form>
     );
   }
