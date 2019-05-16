@@ -30,7 +30,7 @@
     <meta name="twitter:title" content="A Week With Wanda – the new AI game exploring the dark side of artifical intelligence">
     <meta name="twitter:description" content="Let virtual assistant Wanda 'improve' your life for a week to see the hilarious and sometimes horrifying results!">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:image" content="https://weekwithwanda.com/images/social_sharing.png">
+    <meta name="twitter:image" content="https://weekwithwanda.com/img/social_sharing.png">
     <meta name="twitter:site" content="@weekwithwanda">
     <meta name="twitter:creator" content="@joefhall">
 
@@ -38,7 +38,7 @@
     <meta property="og:title" content="A Week With Wanda – the new AI game exploring the dark side of artifical intelligence" />
     <meta property="og:description" content="Let virtual assistant Wanda 'improve' your life for a week to see the hilarious and sometimes horrifying results!">
     <meta property="og:url" content="https://weekwithwanda.com/" />
-    <meta property="og:image" content="https://weekwithwanda.com/images/social_sharing.png" />
+    <meta property="og:image" content="https://weekwithwanda.com/img/social_sharing.png" />
     <meta property="og:image:width" content="484" />
     <meta property="og:image:height" content="262" />
     <meta property="fb:app_id" content="603526126776384" />
