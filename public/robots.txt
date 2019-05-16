@@ -1,3 +1,8 @@
 User-agent: *
 Disallow: /api/
 Disallow: /api/*
+Disallow: /emotions
+Disallow: /oauth/*
+Disallow: /scenarios
+Disallow: /scenarios/*
+Disallow: /wall/create
