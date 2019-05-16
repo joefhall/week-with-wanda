@@ -41,6 +41,7 @@
     <meta property="og:image" content="https://weekwithwanda.com/images/social_sharing.png" />
     <meta property="og:image:width" content="484" />
     <meta property="og:image:height" content="262" />
+    <meta property="fb:app_id" content="603526126776384" />
 
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css" rel="stylesheet" type="text/css" />
