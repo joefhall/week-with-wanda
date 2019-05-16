@@ -138,6 +138,7 @@ return [
         'description' => "Wilmo, a promising young male ballet star",
       ],
     ],
+    'textMessagesWarning' => "<em>Please note: I may not be able to send text messages in your country</em>",
   ],
 
   'user' => [

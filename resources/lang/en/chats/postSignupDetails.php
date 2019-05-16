@@ -18,7 +18,7 @@ return [
     'checkEmailResend' => "Ok I've sent you another email to :email (you might need to wait a minute or check your spam folder) - can you copy the code from there please and paste it below?",
     'checkEmailChange' => "Alrighty, I've sent a new email to that address - can you grab the code from that message and paste it in below?",
     'whatsYourNewEmail' => "What do you want to change your email to?",
-    'contactPreferences' => "Ok fab. So, I need to be in touch with you over the coming week. How would you like me to do that?",
+    'contactPreferences' => "Ok fab. So, I need to be in touch with you over the coming week. How would you like me to do that? :textMessagesWarning",
     'whatsMobileNumber' => 'Cool, and what\'s your country and mobile number :name? <span id="country-code" data-country=":country"></span>',
     'whatsYourNewMobileNumber' => 'What do you want to change your number to? <span id="country-code" data-country=":country"></span>',
     'checkMobileNumber' => "Lovely, now just to confirm that's your number I've texted you a code - can you type that in please?",
