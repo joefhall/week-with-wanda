@@ -3,6 +3,7 @@ import jstz from 'jstz';
 import striptags from 'striptags';
 import uuidv4 from 'uuid/v4';
 
+import { sendGoogleAnalyticsEvent } from './analytics';
 import { addMessage, setEmotion, setIdentity, setInput, setMeltdownLevel, setLoading, setTyping } from '../actions';
 import store from '../store';
 
@@ -122,7 +123,9 @@ export const respond = async (scenario, messageId, message, requiresResponse = t
   };
   
   console.log('Send data', sendData);
-  
+
+  sendGoogleAnalyticsEvent(scenario, 'user', messageId, message);
+
   try {
     const response = await axios.post('/api/respond', sendData);
     
@@ -148,6 +151,8 @@ export const respond = async (scenario, messageId, message, requiresResponse = t
         
         setTimeout(store.dispatch, timeToBeginTyping, setTyping(true));
         setTimeout(showResponse, typingDelay(wandaMessage), response.data, wandaMessageId, wandaMessage);
+
+        sendGoogleAnalyticsEvent(response.data.scenario, 'wanda', wandaMessageId, wandaMessage);
       }
     }
   } catch(error) {
