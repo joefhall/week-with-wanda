@@ -55,7 +55,7 @@ return [
     'nameName' => ":name, :name, :name...",
     'dare' => "I'm not sure I even dare tell you what else I've been thinking of...",
     'wanna' => "Wanna know?",
-    'argue' => "Well I won't argue with you",
+    'argue' => "Oh go on, let me tell you!",
     'look' => "And :name, look...",
     'cumulative' => ":wandaCumulativeResponse",
     'chance' => "I hope you'll give me a last chance on our final day",

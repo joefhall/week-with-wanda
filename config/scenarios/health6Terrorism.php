@@ -286,7 +286,7 @@ return [
     'argue' => [
       'type' => 'none',
       'user' => [
-        'argueNone',
+        'elseOk1',
       ],
     ],
     'look' => [
