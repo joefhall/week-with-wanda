@@ -20,6 +20,12 @@
     <div class="jumbotron">
       <h1 class="display-4"><a href="{{ route('scenarios') }}">Scenarios</a></h1>
       <h2><span class="text-secondary">{{ $scenario['category'] }} ></span> {{ $scenarioId }}</h2>
+      <p style="font-weight: bold;">
+        {{ __("chats/$scenarioId.description") }}
+      </p>
+      <p>
+        {!! __("chats/$scenarioId.explanation") !!}
+      </p>
       <hr class="my-4">
       
       <div class="scenarios__tree"> 
