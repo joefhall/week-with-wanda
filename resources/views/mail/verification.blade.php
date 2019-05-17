@@ -11,7 +11,15 @@
 </p>
 
 <p>
+  ⬇⬇⬇⬇⬇
+</p>
+
+<p style="font-size: 24px; color: #9400D3;">
   <strong>{{ $verificationTokenId }}</strong>
+</p>
+
+<p>
+  ⬆⬆⬆⬆⬆
 </p>
 
 <p>
