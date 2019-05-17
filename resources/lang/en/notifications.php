@@ -20,8 +20,8 @@ return [
       ],
     ],
     'textMessage' => [
-      'main' => "Hi :name, it's our first day together! 🌅 Let's talk about how I can care for you... :loginLink",
-      'reminder' => "Hi :name, you must have missed my message earlier? 🤔 Come chat with me. :loginLink",
+      'main' => "Hi :name, it's our first day together! Let's talk about how I can care for you... :loginLink",
+      'reminder' => "Hi :name, you must have missed my message earlier? Come chat with me. :loginLink",
     ],
   ],
   
@@ -37,8 +37,8 @@ return [
       ],
     ],
     'textMessage' => [
-      'main' => "Hi :name, it's our first day together! 🌅 Let's talk about how I can put myself to work for you... 💼 :loginLink",
-      'reminder' => "Hi :name, you must have missed my message earlier? 🤔 Come chat with me. :loginLink",
+      'main' => "Hi :name, it's our first day together! Let's talk about how I can put myself to work for you... :loginLink",
+      'reminder' => "Hi :name, you must have missed my message earlier? Come chat with me. :loginLink",
     ],
   ],
   
@@ -54,8 +54,8 @@ return [
       ],
     ],
     'textMessage' => [
-      'main' => "Hi :name, it's our first day together! 🆘 You're missing out on your friends' lives and I've got an answer: :loginLink",
-      'reminder' => "Hi :name, you must have missed my message earlier? 🤔 Come chat with me. :loginLink",
+      'main' => "Hi :name, it's our first day together! You're missing out on your friends' lives and I've got an answer. :loginLink",
+      'reminder' => "Hi :name, you must have missed my message earlier? Come chat with me. :loginLink",
     ],
   ],
   
@@ -73,8 +73,8 @@ return [
       ],
     ],
     'textMessage' => [
-      'main' => "⛑ :name, I can save you from cancer! Come hear about my new idea. :loginLink",
-      'reminder' => "You really need to hear about my exciting cancer-curing idea, :name -- today only 📆 :loginLink",
+      'main' => ":name, I can save you from cancer! Come hear about my new idea. :loginLink",
+      'reminder' => "You really need to hear about my exciting cancer-curing idea, :name -- today only :loginLink",
     ],
   ],
   
@@ -90,8 +90,8 @@ return [
       ],
     ],
     'textMessage' => [
-      'main' => ":name, someone famous called me! ☎❓ With a deal that could make you a lot of money... Come find out! :loginLink",
-      'reminder' => "You really need to hear about this deal, :name -- today only 📆 :loginLink",
+      'main' => ":name, someone famous called me! With a deal that could make you a lot of money... Come find out! :loginLink",
+      'reminder' => "You really need to hear about this deal, :name -- today only :loginLink",
     ],
   ],
   
@@ -107,8 +107,8 @@ return [
       ],
     ],
     'textMessage' => [
-      'main' => ":name! What's the one app you really, really need? 📲 I can tell you. :loginLink",
-      'reminder' => "You really need to hear about this new app idea, :name -- today only 📆 :loginLink",
+      'main' => ":name! What's the one app you really, really need? I can tell you. :loginLink",
+      'reminder' => "You really need to hear about this new app idea, :name -- today only :loginLink",
     ],
   ],
   
@@ -126,8 +126,8 @@ return [
       ],
     ],
     'textMessage' => [
-      'main' => ":name, something serious has come up - it's about your happiness 😄😓 Can we talk? :loginLink",
-      'reminder' => ":name, I do know you're busy. But it's important we talk, please 👁️‍🗨️💬 :loginLink",
+      'main' => ":name, something serious has come up - it's about your happiness. Can we talk? :loginLink",
+      'reminder' => ":name, I do know you're busy. But it's important we talk, please :loginLink",
     ],
   ],
   
@@ -143,8 +143,8 @@ return [
       ],
     ],
     'textMessage' => [
-      'main' => "The streets are paved with gold for you, :name! 👣💰 I have the best new idea. :loginLink",
-      'reminder' => ":name, I do know you're busy. Buy you won't want to miss this! 💸 :loginLink",
+      'main' => "The streets are paved with gold for you, :name! I have the best new idea. :loginLink",
+      'reminder' => ":name, I do know you're busy. But you won't want to miss this! :loginLink",
     ],
   ],
   
@@ -160,8 +160,8 @@ return [
       ],
     ],
     'textMessage' => [
-      'main' => ":name, I've found you a match made in heaven (and in data!) 💫 You have to meet them. :loginLink",
-      'reminder' => ":name, I do know you're busy. But don't miss the chance to meet this amazing match 🤝💜 :loginLink",
+      'main' => ":name, I've found you a match made in heaven (and in data!) You have to meet them. :loginLink",
+      'reminder' => ":name, I do know you're busy. But don't miss the chance to meet this amazing match :loginLink",
     ],
   ],
   
@@ -179,8 +179,8 @@ return [
       ],
     ],
     'textMessage' => [
-      'main' => "👁👁 What's that on your face, :name? I need to examine you quickly - it'll be quick and painless, I promise! 😄👩‍⚕️ :loginLink",
-      'reminder' => "Hi :name, it's important for your health that I examine you today 🚑 Please come talk to me. :loginLink",
+      'main' => "What's that on your face, :name? I need to examine you quickly - it'll be quick and painless, I promise! :loginLink",
+      'reminder' => "Hi :name, it's important for your health that I examine you today. Please come talk to me. :loginLink",
     ],
   ],
   
@@ -196,8 +196,8 @@ return [
       ],
     ],
     'textMessage' => [
-      'main' => "Naughty, naughty, naughty :name 🧐 I think it would be good if we can talk :loginLink",
-      'reminder' => ":name, I hope you're not avoiding me? 🏃 Please come chat. :loginLink",
+      'main' => "Naughty, naughty, naughty :name. I think it would be good if we can talk :loginLink",
+      'reminder' => ":name, I hope you're not avoiding me? Please come chat. :loginLink",
     ],
   ],
   
@@ -214,7 +214,7 @@ return [
     ],
     'textMessage' => [
       'main' => "🌞 You're gonna be soooo grateful for this, :name - a breakthrough to improve your relationships! :loginLink",
-      'reminder' => ":name, you are not going to want to miss hearing this today 👄👂 Come chat? :loginLink",
+      'reminder' => ":name, you are not going to want to miss hearing this today. Come chat? :loginLink",
     ],
   ],
   
@@ -232,8 +232,8 @@ return [
       ],
     ],
     'textMessage' => [
-      'main' => "Ooh I've calculated your personal health risk score... 2️⃣❓ 5️⃣❓ 9️⃣❓❗ Want to know what it is? :loginLink",
-      'reminder' => "Wow :name - don't miss the chance to know if you'll escape or survive diseases 🔬🧬 :loginLink",
+      'main' => "Ooh I've calculated your personal health risk score... Want to know what it is? :loginLink",
+      'reminder' => "Wow :name - don't miss the chance to know if you'll escape or survive diseases. :loginLink",
     ],
   ],
   
@@ -249,7 +249,7 @@ return [
       ],
     ],
     'textMessage' => [
-      'main' => "You're so safe and I love it, :name 🔒😍 Come find out how it could save you a lot on your bills too. :loginLink",
+      'main' => "You're so safe and I love it, :name. Come find out how it could save you a lot on your bills too. :loginLink",
       'reminder' => "🤑🤑 Wow :name - don't miss the chance of a major saving... just for being you :loginLink",
     ],
   ],
@@ -266,8 +266,8 @@ return [
       ],
     ],
     'textMessage' => [
-      'main' => "Failure alert 🚨 Some people in your life are dragging you down... find out who :loginLink",
-      'reminder' => ":name, let's free you of dead wood friendships ⛓🆓 Come talk? :loginLink",
+      'main' => "Failure alert! Some people in your life are dragging you down... find out who :loginLink",
+      'reminder' => ":name, let's free you of dead wood friendships. Come talk? :loginLink",
     ],
   ],
   
@@ -285,8 +285,8 @@ return [
       ],
     ],
     'textMessage' => [
-      'main' => "😬 I haven't been sleeping, :name, thinking about the biggest risk to you... Now I have an answer. :loginLink",
-      'reminder' => ":name, I can't tell you how important this is 💀 Please don't leave me hanging :loginLink",
+      'main' => "I haven't been sleeping, :name, thinking about the biggest risk to you... Now I have an answer. :loginLink",
+      'reminder' => ":name, I can't tell you how important this is. Please don't leave me hanging... :loginLink",
     ],
   ],
   
@@ -302,8 +302,8 @@ return [
       ],
     ],
     'textMessage' => [
-      'main' => ":name, we're about to hit the bigtime... 💰💰💰 Let's do this! :loginLink",
-      'reminder' => "Someone's waiting on me, :name. Come help me seal this deal ✒📃 :loginLink",
+      'main' => ":name, we're about to hit the bigtime... $$$$$ Let's do this! :loginLink",
+      'reminder' => "Someone's waiting on me, :name. Come help me seal this deal! :loginLink",
     ],
   ],
   
@@ -319,8 +319,8 @@ return [
       ],
     ],
     'textMessage' => [
-      'main' => "🧨💥 :name, you're in danger -- but I can keep you safe. Come see me right now. :loginLink",
-      'reminder' => "There's no time to waste, :name ⏰⏳ Let's talk about how to keep you safe. :loginLink",
+      'main' => ":name, you're in danger -- but I can keep you safe. Come see me right now. :loginLink",
+      'reminder' => "There's no time to waste, :name. Let's talk about how to keep you safe. :loginLink",
     ],
   ],
   
@@ -338,8 +338,8 @@ return [
       ],
     ],
     'textMessage' => [
-      'main' => "The one... the only... :name! I have one last, super special thing for you... 🤩🤗🥳 :loginLink",
-      'reminder' => "My dearest :name, I can't bear the thought you might miss this. Come see me? :loginLink 🌟🌟🌟",
+      'main' => "The one... the only... :name! I have one last, super special thing for you... :loginLink",
+      'reminder' => "My dearest :name, I can't bear the thought you might miss this! Come see me? :loginLink",
     ],
   ],
   
