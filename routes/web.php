@@ -34,6 +34,7 @@ Route::post('/wall/create', 'WandaWallController@store')->name('wall-create');
 Route::get('/emotions', 'EmotionController@index')->name('emotions');
 Route::get('/scenarios', 'ScenarioController@index')->name('scenarios');
 Route::get('/scenarios/{scenarioId}', 'ScenarioController@show');
+Route::get('/reports', 'ReportsController@index')->name('reports');
 
 Route::group(['middleware' => ['web'], 'prefix' => 'api/'], function () {
   Route::get('history', 'ChatController@history');
