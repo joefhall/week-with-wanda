@@ -15,7 +15,7 @@ return [
   'wanda' => [
     'hello' => "Well hi there! I'm Wanda",
     'imWanda' => "I'm here to change your life...",
-    'video' => "<iframe src='https://player.vimeo.com/video/335835769' width='200' height='200' frameborder='0' allow='autoplay; fullscreen' allowfullscreen></iframe>",
+    'video' => "<iframe src='https://player.vimeo.com/video/335835769' style='width: 200px; height: 200px;' width='200' height='200' frameborder='0' allow='autoplay; fullscreen' allowfullscreen></iframe>",
     'soGood' => "It's so good you're here",
     'initialObservation' => ":wandaInitialObservation",
     'soTellMe' => "Well that's excellent! So tell me...",
@@ -42,7 +42,7 @@ return [
     'moreInfoNotPersuaded' => "I'm sorry to hear that! You can email my maker at <a href='mailto:hello@weekwithwanda.com' target='_blank'>hello@weekwithwanda.com</a> if you'd like to ask them any questions. Unless you're up for just giving it a go...?",
     'greatChoice' => "Great choice!! 🤩",
     'signupChoice' => "Now how would you like to sign up so we can get going?",
-    'whatsYourName' => ":WandaGreat. Ok first up, what's your name?",
+    'whatsYourName' => ":WandaGreat. Ok first up, what can I call you?",
     'whatsYourEmail' => "And what's your email?",
     'invalidEmail' => "Sorry, that doesn't look like a valid email address. Take another go?",
     'userExists' => "Hey it looks like you've already signed up? <a href='/login'>Try logging in instead</a>",
