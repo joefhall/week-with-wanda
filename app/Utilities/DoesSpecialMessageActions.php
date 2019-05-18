@@ -4,6 +4,7 @@ namespace App\Utilities;
 
 use App\Jobs\DeleteUser;
 use App\Jobs\FinishWeek;
+use App\Jobs\GetCountry;
 use App\Jobs\ScheduleWeek;
 use App\Jobs\SendVerificationEmail;
 use App\Jobs\SendVerificationTextMessage;
@@ -75,6 +76,9 @@ trait DoesSpecialMessageActions
         if ($userMessageId === 'begin') {
           $this->userRepository->updateField($userId, 'timezone', $userMessage ?? 'Europe/London');
         }
+        if ($userMessageId === 'hello' || $userMessageId === 'hi') {
+          GetCountry::dispatch($userId, $request->ip())->onQueue('high');
+        }        
         if ($userMessageId === 'betterHealth') {
           $this->userRepository->updateField($userId, 'better_health', true);
         }
@@ -85,7 +89,7 @@ trait DoesSpecialMessageActions
           $this->userRepository->updateField($userId, 'better_relationships', true);
         }
         if ($userMessageId === 'signupPasswordNone') {
-          $this->userRepository->register($userId, $userMessage, $request->ip());
+          $this->userRepository->register($userId, $userMessage);
         }
         if ($userMessageId === 'signupFacebook' || $userMessageId === 'signupPasswordNone') {
           $this->userRepository->updateField($userId, 'current_scenario', 'postSignupDetails');
@@ -99,13 +103,13 @@ trait DoesSpecialMessageActions
         if (in_array($wandaMessageId, ['checkEmail', 'checkEmailChange', 'checkEmailResend'])) {
           SendVerificationEmail::dispatch($userId)->onQueue('high');
         }
-        if ($wandaMessageId === 'contactPreferences') {
+        if ($wandaMessageId === 'contactPreferences' || $wandaMessageId === 'contactFyi') {
           $this->userRepository->updateField($userId, 'email_verified_at', Carbon::now());
         }
-        if ($userMessageId === 'contactEmailOnly' || $userMessageId === 'contactTextMessageOnly' || $userMessageId === 'contactBoth') {
+        if ($userMessageId === 'contactEmailOnly' || $userMessageId === 'contactBoth') {
           ScheduleWeek::dispatch($userId);
 
-          if ($userMessageId === 'contactTextMessageOnly' || $userMessageId === 'contactBoth') {
+          if ($userMessageId === 'contactBoth') {
             $this->userRepository->updateField($userId, 'send_text_messages', true);
           }
           if ($userMessageId === 'contactEmailOnly' || $userMessageId === 'contactBoth') {

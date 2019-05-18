@@ -72,7 +72,8 @@ trait ValidatesChatInput
         
         if ($user->verificationTokens()->where('uuid', strtolower($userMessage))->count()) {
           $user->email_verified_at = Carbon::now();
-          return 'verified';
+
+          return $this->validateTextMessagingAvailability($user->country) ? 'verified' : 'verifiedNoTextMessaging';
         }
         
         return 'notVerified';
@@ -92,6 +93,24 @@ trait ValidatesChatInput
         return 'notVerified';
         
         break;
+        
+      case 'textMessagingAvailable':
+        $user = User::find($userId);
+        
+        return $this->validateTextMessagingAvailability($user->country) ? 'valid' : 'invalid';
+        
+        break;
     }
+  }
+  
+  /**
+   * Validates whether text messaging is available for user's country.
+   *
+   * @param string $countryCode
+   * @return string
+   */
+  public function validateTextMessagingAvailability(string $countryCode)
+  {
+    return !in_array($countryCode, config('textMessaging.countries.disallowed'));
   }
 }

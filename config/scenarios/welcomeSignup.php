@@ -411,7 +411,15 @@ return [
       ],
       'doLoginFacebook' => [
         'scenario' => 'postSignupDetails',
-        'wanda' => 'contactPreferences',
+        'wanda' => [
+          'validate' => [
+            'validator' => 'textMessagingAvailable',
+            'responses' => [
+              'valid' => 'contactPreferences',
+              'invalid' => 'contactFyi',
+            ],
+          ],
+        ],
       ],
     ],
 

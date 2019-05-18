@@ -108,7 +108,6 @@ trait GetsChat
         'randomFemaleName' => '$this->getFakeFirstNames($user->country, \'female\', 1)',
         'randomMaleName' => '$this->getFakeFirstNames($user->country, \'male\', 1)',
         'randomSurname' => '$this->getFakeSurname($user->country)',
-        'textMessagesWarning' => '$this->textMessagesWarning($user->country)',
         'wandaConjunction' => '$this->getConjunction(\'user\', $previousUserMessageId)',
         'wandaCumulativeResponse' => '$this->getWandaCumulativeResponse()',
         'wandaPersuader' => '$persuaderText[\'persuader\']',
@@ -124,29 +123,6 @@ trait GetsChat
     }
     
     return $chatData;
-  }
-  
-  /**
-   * If user is in a country where we know text messages may not be delivered,
-   * warn them if they try to add their mobile number during signup.
-   *
-   * @param string $countryCode
-   * @return string
-   */
-  public function textMessagesWarning(string $countryCode)
-  {
-    $countriesWithTextMessageProblems = [
-      'AE',
-      'IN',
-      'SA',
-      'TR',
-    ];
-
-    if (in_array($countryCode, $countriesWithTextMessageProblems)) {
-      return __('chats/common.wanda.textMessagesWarning');
-    }
-
-    return '';
   }
   
   /**

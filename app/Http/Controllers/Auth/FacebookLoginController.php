@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Jobs\GetCountry;
 use App\Repositories\UserRepository;
 use App\User;
 use Auth;
@@ -102,7 +101,6 @@ class FacebookLoginController extends Controller
           $authUser->email = $facebookUser->email;
           $authUser->email_verified_at = Carbon::now();
           $authUser->facebook_id = $facebookUser->id;
-          GetCountry::dispatch($authUser->id, $request->ip())->onQueue('high');
         }
       }
       

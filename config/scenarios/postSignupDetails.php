@@ -60,6 +60,13 @@ return [
       ],
       'emotion' => 'thumbs-up',
     ],
+    'contactFyi' => [
+      'type' => 'none',
+      'user' => [
+        'contactEmailOnly',
+      ],
+      'emotion' => 'thumbs-up',
+    ],
     'whatsMobileNumber' => [
       'type' => 'signupMobileNumber',
       'user' => [
@@ -151,6 +158,7 @@ return [
           'validator' => 'emailVerify',
           'responses' => [
             'verified' => 'contactPreferences',
+            'verifiedNoTextMessaging' => 'contactFyi',
             'notVerified' => 'checkEmailAgain',
           ],
         ],

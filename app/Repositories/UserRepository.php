@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Jobs\GetCountry;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -48,19 +47,17 @@ class UserRepository
   }
   
   /**
-   * Update a field of a user's record.
+   * Register a new user.
    *
    * @param int $userId
    * @param string $password
-   * @param string $ip
    * @return void
    */
-  public function register(int $userId, string $password, string $ip) {    
+  public function register(int $userId, string $password) {    
     $this->updateField($userId, 'first_name', $this->getMessageFromChatHistory($userId, 'user', 'myName'));
     $this->updateField($userId, 'email', $this->getMessageFromChatHistory($userId, 'user', 'myEmail'));
     $this->updateField($userId, 'password', bcrypt($password));
     $this->updateMessageFromChatHistory($userId, 'user', 'signupPasswordNone', str_repeat('*', strlen($password)));
-    GetCountry::dispatch($userId, $ip)->onQueue('high');
   }
   
   /**
