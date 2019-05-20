@@ -111,6 +111,7 @@
         window.location.href.indexOf('verify') > -1
       ) {
         document.querySelector('#preview-notice').classList.add('d-none');
+        document.write("<style>.site-menu {display: block;}</style>");
       }
       
       function enterPreviewCode(event) {
