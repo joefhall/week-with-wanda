@@ -77,6 +77,11 @@
   </head>
   
   <body>
+    <style>
+      .site-menu {
+        display: none;
+      }
+    </style>
     <div id="preview-notice" style="position: absolute; z-index: 10000; width: 100vw; height: 100vh; padding: 150px 30px 0; background-color: darkviolet; color: white; text-align: center;">
       <h1 style="font-family: 'Pacifico', 'Arial', sans-serif;">A Week With Wanda</h1>
       <p>The game is currently available for selected people to preview only.</p>
@@ -90,7 +95,6 @@
       </form>
     </div>
     <script>
-//       alert(`Width: ${document.documentElement.clientWidth}/${window.innerWidth}/${window.outerWidth}/${window.screen.availWidth}, Height: ${document.documentElement.clientHeight}/${window.innerHeight}/${window.outerHeight}/${window.screen.availHeight}`);
       var authNotRequired = [
         @foreach($authNotRequired as $scenarioId => $notRequired)
           @if($notRequired)
@@ -119,6 +123,7 @@
         if (previewCodeInput.value.toLowerCase().trim() === 'alive') {
           previewNotice.classList.add('d-none');
           previewCodeInput.blur();
+          document.querySelector('.site-menu').style.display = 'block'; 
         } else {
           previewErrorMessage.classList.add('d-block');
         }
