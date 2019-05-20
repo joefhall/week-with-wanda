@@ -2,22 +2,20 @@
   background-image: url(/img/emotions/base.gif);
   background-position: center top;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   filter: brightness(115%) saturate(140%);
   line-height: 0;
-  min-height: calc((100vw / (400 / 225)) - #{$small-screen-vertical-crop});
+  overflow: visible;
   position: relative;
   top: -$small-screen-vertical-crop;
   
   @media screen and (min-height: $small-screen-height) {
-    min-height: calc(100vw / (400 / 225));
     top: 0;
   }
   
   @include media-breakpoint-up(sm) {
     border-top-left-radius: $spacer * .5;
     border-top-right-radius: $spacer * .5;
-    min-height: 225px;
   }
   
   &__image {
@@ -37,7 +35,6 @@
     line-height: 1.1;
     position: absolute;
     top: calc(25px + (#{$small-screen-vertical-crop} / 1.5));
-    width: 100%;
     
     @media screen and (min-height: $small-screen-height) {
       top: 12px;

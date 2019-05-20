@@ -1,24 +1,22 @@
 .site-menu {
   border-bottom-left-radius: $spacer * .8;
   line-height: 1.5;
+  overflow: visible;
   padding: $spacer;
   position: absolute;
   right: 0;
-  top: 36px;
+  top: 0;
   width: 100%;
   z-index: 10000;
-  
-  @media screen and (min-height: $small-screen-height) {
-    top: 0;
-  }
   
   &--closed {
     
   }
   
   &--open {
-    background-color: #d2b909;
+    background-color: gold;
     box-shadow: 0 0.2rem 0.2rem 0 goldenrod;
+    display: block;
   }
   
   &__hamburger {
@@ -31,7 +29,7 @@
   }
   
   &__items {
-    color: #4d0e81;
+    color: darkviolet;
     padding: $spacer * .5 $spacer * .8 0;
     
     &--closed {

@@ -6,6 +6,7 @@ import ChatInput from './ChatInput';
 import ChatLoading from './ChatLoading';
 import ChatMessages from './ChatMessages';
 import ChatWanda from './ChatWanda';
+import SiteMenu from './SiteMenu';
 
 class Chat extends React.Component {
   constructor() {
@@ -39,8 +40,9 @@ class Chat extends React.Component {
   
   render() {
     return (
-      <div  style={{ height: this.state.height }}>
+      <div className="d-flex align-items-center justify-content-center" style={{ height: this.state.height }}>
         <div className="chat">
+          <SiteMenu />
           <ChatWanda />
           <ChatLoading />
           { this.renderMainPane() }

@@ -4,6 +4,7 @@
   flex-flow: column;
   height: 100%;
   max-width: 400px;
+  overflow: visible;
   position: relative;
   width: 100vw;
   
@@ -31,7 +32,8 @@
     background-color: white;
     flex: 1 1 auto;
     height: 80%;
-    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
     padding: $spacer * .25 0;
     
     &__bottom {
