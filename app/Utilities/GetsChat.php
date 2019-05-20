@@ -571,7 +571,7 @@ trait GetsChat
    * @param string $name
    * @return string
    */
-  public function randomCommon(string $who, string $messageId, int $count = 1, string $name = '')
+  public function randomCommon(string $who, string $messageId, int $count, string $name = '')
   {
     $chatData = compact('name');
 
