@@ -67,7 +67,7 @@ const showError = errorMessage => {
   
   if (!errorMessageDisplayed) {
     const emoji = '💩';
-    const message = `<div class='chat__messages__message__error'>${errorMessage}. You could try refreshing the page - or email my maker at <a href='mailto:hello@weekwithwanda.com'>hello@weekwithwanda.com</a> if this continues.</div>`;
+    const message = `<div class='chat__messages__message__error'>${errorMessage}. <strong>Try hitting refresh</strong> (or if this continues email my maker <a href='mailto:hello@weekwithwanda.com'>hello@weekwithwanda.com</a>)</div>`;
     const emotion = 'thumbs-down';
 
     store.dispatch(setEmotion(emotion));
@@ -157,7 +157,7 @@ export const respond = async (scenario, messageId, message, requiresResponse = t
     }
   } catch(error) {
     console.log(`An error occured getting Wanda's response back from the server: ${error}`);
-    showError("Sorry! I couldn't connect to Wanda HQ - it could be your internet connection");
+    showError("Sorry! I couldn't connect - it could be your internet");
   }
 };
 
@@ -207,7 +207,7 @@ export const getHistory = async () => {
     }
   } catch(error) {
     console.log(`An error occured getting user's chat history back from the server: ${error}`);
-    showError("Sorry! I couldn't connect to Wanda HQ - it could be your internet connection");
+    showError("Sorry! I couldn't connect - it could be your internet");
   }
 };
 

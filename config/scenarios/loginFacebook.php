@@ -23,9 +23,15 @@ return [
       'greatThanksFacebook' => [
         'type' => 'doLoginFacebook',
         'user' => [
-          'doLoginFacebook',
+          'doLoginFacebookNone',
         ],
         'emotion' => 'thumbs-up',
+      ],
+      'justASec' => [
+        'type' => 'end',
+        'user' => [
+          'justASecNone',
+        ],
       ],
     ],
   
@@ -36,7 +42,10 @@ return [
       'loginFacebook' => [
         'wanda' => 'greatThanksFacebook',
       ],
-      'doLoginFacebook' => [
+      'doLoginFacebookNone' => [
+        'wanda' => 'justASec',
+      ],
+      'justASecNone' => [
         'wanda' => '',
       ],
     ],

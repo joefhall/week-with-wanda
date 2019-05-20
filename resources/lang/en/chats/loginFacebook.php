@@ -15,6 +15,7 @@ return [
   'wanda' => [
     'hello' => "Hello! Let's get you logged back in!",
     'greatThanksFacebook' => "Great - logging you in now",
+    'justASec' => "Just a second...",
   ],
 
   'user' => [

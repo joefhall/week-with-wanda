@@ -23,7 +23,7 @@ return [
     'greatThanksFacebook' => [
       'type' => 'doLoginFacebook',
       'user' => [
-        'doLoginFacebook',
+        'doLoginFacebookNone',
       ],
       'emotion' => 'thumbs-up',
     ],
@@ -59,6 +59,12 @@ return [
         'sendingPasswordResetNone',
       ],
     ],
+    'justASec' => [
+      'type' => 'end',
+      'user' => [
+        'justASecNone',
+      ],
+    ],
   ],
 
   'user' => [
@@ -68,7 +74,10 @@ return [
     'loginFacebook' => [
       'wanda' => 'greatThanksFacebook',
     ],
-    'doLoginFacebook' => [
+    'doLoginFacebookNone' => [
+      'wanda' => 'justASec',
+    ],
+    'justASecNone' => [
       'wanda' => '',
     ],
     'login' => [
@@ -89,13 +98,13 @@ return [
       'wanda' => 'greatThanks',
     ],
     'doLogin' => [
-      'wanda' => '',
+      'wanda' => 'justASec',
     ],
     'sendPasswordReset' => [
       'wanda' => 'sendingPasswordReset',
     ],
     'sendingPasswordResetNone' => [
-      'wanda' => '',
+      'wanda' => 'justASec',
     ],
   ],
 

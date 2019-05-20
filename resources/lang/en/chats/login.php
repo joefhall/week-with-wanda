@@ -20,6 +20,7 @@ return [
     'whatsYourPassword' => "Great, and what's your password?",
     'greatThanks' => "Thank you!",
     'sendingPasswordReset' => "Ok – doing that for you now...",
+    'justASec' => "Just a second...",
   ],
 
   'user' => [
