@@ -9,6 +9,14 @@
     <title>A Week With Wanda - Scenarios</title>
 
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet" type="text/css" />
+    
+    <style>
+      html,
+      body {
+        position: static;
+        overflow: visible;
+      }
+    </style>
   </head>
   
   <body>

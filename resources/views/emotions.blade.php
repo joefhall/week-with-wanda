@@ -4,6 +4,11 @@
     <title>A Week With Wanda - Emotions</title>
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet" type="text/css" />
     <style>
+      html,
+      body {
+        position: static;
+        overflow: visible;
+      }
       .emotion-image {
         height: 141px;
         width: 250px;
