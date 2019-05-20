@@ -43,7 +43,7 @@ return [
     'doBetter' => "I'll try to do better next time and find something else that'll change your life! Better go for now.",
     'bye' => ":wandaBye",
     'gladLoveIt' => "Ah :name, I just knew you'd like it",
-    'byeEnd' => "Bye!",
+    'byeEnd' => "Bye! ...And if you enjoyed today, would you share me so I can help other people? <img class='chat__messages__message__bubble__image chat__messages__message__bubble__image--below-text' alt='Sharing image' src='/img/share/health1BotCare.png' />",
   ],
 
   'user' => [

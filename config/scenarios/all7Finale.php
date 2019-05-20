@@ -559,7 +559,7 @@ return [
       ],
     ],
     'thanks' => [
-      'type' => 'end',
+      'type' => 'share',
       'user' => [
         'thanksNone',
       ],

@@ -330,7 +330,7 @@ return [
       ],
     ],
     'bye' => [
-      'type' => 'end',
+      'type' => 'share',
       'user' => [
         'byeNone',
       ],

@@ -87,7 +87,7 @@ return [
     'tomorrow' => "I'll see you very soon though :name – when I'll have a new idea you'll <strong>definitely</strong> love!",
     'tomorrowEmoji' => "🙌",
     'bye' => "Sure thing. :wandaBye",
-    'byeEnd' => "Bye!",
+    'byeEnd' => "Bye! ...And if you have a moment will you share me please? <img class='chat__messages__message__bubble__image chat__messages__message__bubble__image--below-text' alt='Sharing image' src='/img/share/health3DepressedListening.png' />",
   ],
 
   'user' => [

@@ -27,14 +27,14 @@
     <meta name="description" content="Let virtual assistant Wanda 'improve' your life for a week to see the hilarious -- and sometimes horrifying -- results!">
     <link rel="canonical" href="{{ env('APP_URL') }}" />
 
-    <meta name="twitter:title" content="A Week With Wanda 🤖😬😂 The new AI game">
+    <meta name="twitter:title" content="A Week With Wanda 🤖😬😂 A game about AI's dark side">
     <meta name="twitter:description" content="Let virtual assistant Wanda 'improve' your life for a week to see the hilarious -- and sometimes horrifying -- results!">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@weekwithwanda">
     <meta name="twitter:creator" content="@joefhall">
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="A Week With Wanda 🤖😬😂 A new AI game - the dark side of artifical intelligence... let virtual assistant Wanda 'improve' your life!" />
+    <meta property="og:title" content="A Week With Wanda 🤖😬😂 A game about the dark side of AI... let virtual assistant Wanda 'improve' your life!" />
     <meta property="og:description" content="Spend 7 days with Wanda to see the hilarious -- and sometimes horrifying -- results!">
     
     @if ($share)

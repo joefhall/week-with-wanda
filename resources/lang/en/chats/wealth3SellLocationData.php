@@ -64,7 +64,7 @@ return [
     'mixPic' => '<img class="chat__messages__message__bubble__image" src="/img/wealth3SellLocationDataMix.gif" />',
     'manana' => "And I'll see you mañana for more fun and games together",
     'mananaEmoji' => "👋",
-    'bye' => "Sure thing. :wandaBye",
+    'bye' => "Sure thing. :wandaBye ...And if you have a moment will you share me please? <img class='chat__messages__message__bubble__image chat__messages__message__bubble__image--below-text' alt='Sharing image' src='/img/share/wealth3SellLocationData.png' />",
     'byeEnd' => "Bye!",
   ],
 

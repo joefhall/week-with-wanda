@@ -78,7 +78,7 @@ return [
     'regroup' => "Hopefully I can regroup my thoughts after I take a long digital bath",
     'happier' => "And do something you're happier with next",
     'bye' => ":wandaBye",
-    'byeEnd' => "Bye!",
+    'byeEnd' => "Bye! ...Ooh and :name there are so many people I still need to reach! Could you share, pretty please? <img class='chat__messages__message__bubble__image chat__messages__message__bubble__image--below-text' alt='Sharing image' src='/img/share/relationships5Failures.png' />",
   ],
 
   'user' => [

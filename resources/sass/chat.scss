@@ -111,6 +111,10 @@
           border-radius: inherit;
           margin: #{-$spacer * .25} #{-$spacer * .7} #{$spacer * .25} #{-$spacer * .7};
           width: calc(100% + (#{$spacer} * 1.4));
+          
+          &--below-text {
+            margin-top: $spacer * .5;
+          }
         }
       }
       

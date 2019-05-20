@@ -11,6 +11,7 @@ import ChatInputCloseWindow from './ChatInputCloseWindow';
 import ChatInputPassword from './ChatInputPassword';
 import ChatInputPasswordCreate from './ChatInputPasswordCreate';
 import ChatInputPhone from './ChatInputPhone';
+import ChatInputShare from './ChatInputShare';
 import ChatInputText from './ChatInputText';
 import ChatInputTextArea from './ChatInputTextArea';
 import ChatMessages from './ChatMessages';
@@ -201,6 +202,12 @@ class ChatInput extends React.Component {
         case 'sendPasswordReset':
           return (
             <SendPasswordResetHidden />
+          );
+          break;
+          
+        case 'share':
+          return (
+            <ChatInputShare scenario={this.props.input.scenario} />
           );
           break;
 

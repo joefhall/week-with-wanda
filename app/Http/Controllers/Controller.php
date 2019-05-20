@@ -33,9 +33,16 @@ class Controller extends BaseController
   )
   {
     $authNotRequired = config('scenarios.authNotRequired');
+    $share = $request->share;
     
     return response()->view('app', compact(
-      'loggedIn', 'getHistory', 'startScenario', 'startMessage', 'passwordResetToken', 'authNotRequired'
+      'loggedIn',
+      'getHistory',
+      'startScenario',
+      'startMessage',
+      'passwordResetToken',
+      'authNotRequired',
+      'share'
     ));
   }
 }

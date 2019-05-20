@@ -38,9 +38,42 @@
         background-color: $main-colour !important;
         color: white !important;
       }
+      
       &--unselected {
         background-color: white !important;
         color: $main-colour !important;
+      }
+      
+      &__share {
+        &--facebook {
+          background-color: #3C5A99;
+          border-color: #3C5A99;
+          color: white !important;
+          
+          &:hover {
+            background-color: #5983dd;
+            border-color: #5983dd;
+            color: white !important;
+          }
+        }
+
+        &--twitter {
+          background-color: #00aced;
+          border-color: #00aced;
+          color: white !important;
+          
+          &:hover {
+            background-color: #3ac0f2;
+            border-color: #3ac0f2;
+            color: white !important;
+          }
+        }
+        
+        &__icon {
+          height: $spacer * 2.5;
+          margin-right: $spacer * .5;
+          width: $spacer * 2.5;
+        }
       }
     }
 

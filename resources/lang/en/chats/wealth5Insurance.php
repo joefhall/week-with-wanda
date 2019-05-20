@@ -56,7 +56,7 @@ return [
     'great' => ":WandaGreat, well I'm going to go put through your shiny new deal",
     'silence' => "And silence the complainers",
     'think' => "Plus of course, think of something even awesomer I can do for you next!",
-    'byeEnd' => "Bye!",
+    'byeEnd' => "Bye! ...Ooh and :name there are so many people I still need to reach! Could you share, pretty please? <img class='chat__messages__message__bubble__image chat__messages__message__bubble__image--below-text' alt='Sharing image' src='/img/share/wealth5Insurance.png' />",
   ],
 
   'user' => [

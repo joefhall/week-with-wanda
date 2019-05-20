@@ -54,7 +54,7 @@ return [
     'allDone' => ':WandaGreat. Ok I\'m all done for now.',
     'tomorrow' => 'I\'ll speak to you again very soon, when I\'ll have another bright idea for you!',
     'tomorrowEmoji' => '😇',
-    'bye' => ':wandaBye',
+    'bye' => ":wandaBye ...And if you have a moment will you share me please? <img class='chat__messages__message__bubble__image chat__messages__message__bubble__image--below-text' alt='Sharing image' src='/img/share/relationships3NewBestFriend.png' />",
     'listeningOfCourse' => 'Ha ha, yeah <em>of course</em> :name!',
     'knowSoMany' => 'There are soooo many things I know about you!',
     'bestAI' => 'Well I am, like, one of the best AIs in the world you know!',

@@ -76,7 +76,7 @@ return [
     'special' => "I have one last <strong>extra special</strong> thing I want to do for you",
     'seeYou' => "Will I see you?",
     'hope' => "I hope so! 😊",
-    'bye' => ":wandaBye",
+    'bye' => ":wandaBye ...And while you're here, can I ask you a special favour - share me so I can help more people? <img class='chat__messages__message__bubble__image chat__messages__message__bubble__image--below-text' alt='Sharing image' src='/img/share/relationships6Criminals.png' />",
     'byeEnd' => "Bye!",
   ],
 

@@ -78,7 +78,7 @@ return [
     'start' => "Right I'd better go start up that business!",
     'tomorrow' => ":name, I hope I'll see you again one last time...",
     'special' => "When I have something <strong>even more</strong> special planned!",
-    'bye' => ":wandaBye",
+    'bye' => ":wandaBye ...And while you're here, can I ask you a special favour - share me so I can help more people? <img class='chat__messages__message__bubble__image chat__messages__message__bubble__image--below-text' alt='Sharing image' src='/img/share/wealth6SexTape.png' />",
     'byeEnd' => "Bye!",
   ],
 

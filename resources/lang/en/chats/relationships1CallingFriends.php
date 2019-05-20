@@ -42,7 +42,7 @@ return [
     'goReflectPic' => "🧘‍♀️",
     'tomorrow' => "I'll try and come up with something you're happier with next",
     'bye' => ":wandaBye",
-    'byeEnd' => "Bye!",
+    'byeEnd' => "Bye! ...And if you enjoyed today, would you share me so I can help other people? <img class='chat__messages__message__bubble__image chat__messages__message__bubble__image--below-text' alt='Sharing image' src='/img/share/relationships1CallingFriends.png' />",
   ],
 
   'user' => [

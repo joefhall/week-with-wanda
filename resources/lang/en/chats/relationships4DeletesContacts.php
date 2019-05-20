@@ -68,7 +68,7 @@ return [
     'betterTomorrow' => "But I'll be better soon",
     'moreThen' => "And I'll be able to do more for you",
     'moreThenEmoji' => "😉",
-    'bye' => ":wandaBye",
+    'bye' => ":wandaBye ...And there's so much more I want to do! Could you share my brilliance? <img class='chat__messages__message__bubble__image chat__messages__message__bubble__image--below-text' alt='Sharing image' src='/img/share/relationships4DeletesContacts.png' />",
     'byeEnd' => "Bye!",
   ],
 

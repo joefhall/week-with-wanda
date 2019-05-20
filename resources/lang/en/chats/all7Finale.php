@@ -100,7 +100,7 @@ return [
     'doIt' => "Will you do it?",
     'easy' => "It's easy, :name",
     'asking' => "Here's what I'm asking...",
-    'thanks' => "Thanks so much! <strong><a target='_blank' href='/wall'>Now check out what you and other people have written on my wall here.</a></strong> How incredible – it's now the end of our week together!",
+    'thanks' => "Thanks so much! <strong><a target='_blank' href='/wall'>Now check out what you and other people have written on my wall here.</a></strong> How incredible – it's now the end of our week together! ...Maybe you could share me so I can help more people? <img class='chat__messages__message__bubble__image chat__messages__message__bubble__image--below-text' alt='Sharing image' src='/img/share/all7Finale.png' />",
     'noProblem' => "No problem. <strong><a target='_blank' href='/wall'>Why not check out what other people have written on my wall here.</a></strong> And if you change your mind, you can still add something. Otherwise, how incredible – it's now the end of our week together!",
   ],
 

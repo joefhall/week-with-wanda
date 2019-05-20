@@ -42,7 +42,7 @@ return [
     'makingYouRicherEmoji' => "🤑",
     'haveAThink' => "But I'll go have a think about what you said",      
     'bye' => ":wandaBye",
-    'byeEnd' => "Bye!",
+    'byeEnd' => "Bye! ...And if you enjoyed today, would you share me so I can help other people? <img class='chat__messages__message__bubble__image chat__messages__message__bubble__image--below-text' alt='Sharing image' src='/img/share/wealth1Jobs.png' />",
   ],
 
   'user' => [

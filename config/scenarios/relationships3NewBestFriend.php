@@ -432,7 +432,7 @@ return [
       'emotion' => 'thumbs-up',
     ],
     'bye' => [
-      'type' => 'end',
+      'type' => 'share',
       'user' => [
         'byeNone',
       ],

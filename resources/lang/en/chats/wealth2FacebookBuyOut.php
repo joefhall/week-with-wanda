@@ -53,7 +53,7 @@ return [
     'extraSpecial' => "Even though I have the best algorithms in the world, you bring something extra special",
     'goNow' => "Alright, I need to go now – got some code to crunch so I can work out what awesome new thing to do for you next! 💘",
     'bye' => ":wandaBye",
-    'byeEnd' => "Bye!",
+    'byeEnd' => "Bye! ...And will you share a link to me so I can be in other people's lives too? <img class='chat__messages__message__bubble__image chat__messages__message__bubble__image--below-text' alt='Sharing image' src='/img/share/wealth2FacebookBuyOut.png' />",
   ],
 
   'user' => [

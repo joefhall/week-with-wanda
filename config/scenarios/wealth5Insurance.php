@@ -291,7 +291,7 @@ return [
       ],
     ],
     'byeEnd' => [
-      'type' => 'end',
+      'type' => 'share',
       'user' => [
         'byeEndNone',
       ],

@@ -45,7 +45,7 @@ return [
     'tooMuch' => "But of course, :name. Nothing is too much for you",
     'crunching' => "And now I've got some more algorithm-crunching to do for you ahead of when I next see you",
     'soon' => "But I'll see you soon",
-    'bye' => ":wandaBye",
+    'bye' => ":wandaBye ...And there's so much more I want to do! Could you share my brilliance? <img class='chat__messages__message__bubble__image chat__messages__message__bubble__image--below-text' alt='Sharing image' src='/img/share/health4ReducesSalt.png' />",
     'doMore' => "Is there more you want me to do for your blood pressure?",
     'doMoreWhat' => "Great – what is it?",
     'whatsUp' => "What's up then, :name?",

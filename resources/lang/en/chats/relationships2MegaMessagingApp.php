@@ -54,7 +54,7 @@ return [
     'government' => "Oh, and an extra bonus – your government want to work with me on it, something about \"sharing data to fight crime\". Great news all round!",
     'betterGo' => "Anyhow, better go speak to my other users now. See you soon for more great things!",
     'bye' => ":wandaBye",
-    'byeEnd' => "Bye!",
+    'byeEnd' => "Bye! ...And will you share a link to me so I can be in other people's lives too? <img class='chat__messages__message__bubble__image chat__messages__message__bubble__image--below-text' alt='Sharing image' src='/img/share/relationships2MegaMessagingApp.png' />",
   ],
 
   'user' => [

@@ -62,7 +62,7 @@ return [
     'chanceSpecial' => "When I'll do something <em>extra special</em> for you",
     'thanks' => "Ok, thank you :name",
     'seeYou' => "I hope I'll see you again one last time!",
-    'bye' => ":wandaBye",
+    'bye' => ":wandaBye ...And while you're here, can I ask you a special favour - share me so I can help more people? <img class='chat__messages__message__bubble__image chat__messages__message__bubble__image--below-text' alt='Sharing image' src='/img/share/health6Terrorism.png' />",
     'enough' => "Well sometimes even the greatest political power –– it isn't enough",
     'directly' => "We might need to act <em>directly</em> to protect you...",
     'military' => "In a <em>military</em> way I mean...",

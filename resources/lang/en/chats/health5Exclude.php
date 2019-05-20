@@ -50,7 +50,7 @@ return [
     'go' => "Actually – I'd better go work on them now!",
     'double' => "Maybe telling them I'll double their medication costs will persuade them!",
     'tomorrow' => "See you again very soon when I'll have more inspiration for how I can help you!",
-    'bye' => ":wandaBye",
+    'bye' => ":wandaBye ...Ooh and :name there are so many people I still need to reach! Could you share, pretty please? <img class='chat__messages__message__bubble__image chat__messages__message__bubble__image--below-text' alt='Sharing image' src='/img/share/health5Exclude.png' />",
     'pharmacies' => "But :name, we've been monitoring <em>these people</em> in pharmacies too",
     'medication' => "18% of the time they don't even pick up their medication!",
     'help' => "They're not helping themselves, so why in hell should we help them?",

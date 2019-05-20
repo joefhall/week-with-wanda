@@ -254,7 +254,7 @@ return [
       'emotion' => 'base',
     ],
     'bye' => [
-      'type' => 'end',
+      'type' => 'share',
       'user' => [
         'byeNone',
       ],

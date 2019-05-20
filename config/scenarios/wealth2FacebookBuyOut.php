@@ -282,7 +282,7 @@ return [
       'emotion' => 'waving',
     ],
     'byeEnd' => [
-      'type' => 'end',
+      'type' => 'share',
       'user' => [
         'byeEndNone',
       ],

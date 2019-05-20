@@ -62,7 +62,7 @@ return [
     'tomorrow' => "But I'll be back again very soon with something better for you",
     'unlock' => "And maybe I'll even unlock your bank account for you... for now",
     'speakSoon' => "Speak again soon",
-    'bye' => ":wandaBye",
+    'bye' => ":wandaBye ...And there's so much more I want to do! Could you share my brilliance? <img class='chat__messages__message__bubble__image chat__messages__message__bubble__image--below-text' alt='Sharing image' src='/img/share/wealth4BankAccount.png' />",
     'done' => "Great. That's done now.",
     'better' => "Your life will be much better with me in control",
     'remember' => "Remember, stay away from any shopping!",
