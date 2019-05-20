@@ -16,7 +16,7 @@ trait GetsChat
    * @param string $previousUserMessageId
    * @param string $scenario
    * @param string $sender
-   * @param string $messageId
+   * @param array $messageIds
    * @return array
    */
   public function getChatData
@@ -24,14 +24,18 @@ trait GetsChat
       string $previousUserMessageId,
       string $scenario,
       string $sender,
-      string $messageId
+      array $messageIds
     )
   {
     $user = Auth::user();
     $firstName = $user ? $user->first_name : '';
     $chatData = [];
-    $chatEntryWithVariables = strtolower(__("chats/{$scenario}.{$sender}.{$messageId}"));
-    
+    $chatEntriesWithVariables = [];
+
+    foreach ($messageIds as $messageId) {
+      $chatEntriesWithVariables[] = strtolower(__("chats/{$scenario}.{$sender}.{$messageId}"));
+    }
+
     $userAcknowledge = $this->randomCommon('user', 'acknowledge', 2, $firstName);
     $userBye = $this->randomCommon('user', 'bye', 2, $firstName);
     $userGetStarted = $this->randomCommon('user', 'getStarted', 2, $firstName);
@@ -117,8 +121,12 @@ trait GetsChat
     }
 
     foreach ($variables as $name => $value) {
-      if (strpos($chatEntryWithVariables, (':' . strtolower($name))) !== false) {
-        eval('$chatData["' . $name . '"] = ' . $value . ';');
+      foreach ($chatEntriesWithVariables as $chatEntryWithVariables) {
+        if (!array_key_exists($name, $chatData) &&
+            strpos($chatEntryWithVariables, (':' . strtolower($name))) !== false
+        ) {
+          eval('$chatData["' . $name . '"] = ' . $value . ';');
+        }
       }
     }
     
@@ -639,8 +647,10 @@ trait GetsChat
     $type = array_get($interaction, 'type');
     
     if (!in_array($type, ['doLogin', 'doLoginFacebook', 'doPasswordReset', 'none', 'sendPasswordReset', 'signupEmail', 'signupMobileNumber', 'signupName', 'signupPassword', 'text'])) {
-      foreach (array_get($interaction, 'user') as $userResponse) {
-        $chatData = $this->getChatData($previousUserMessageId, $scenario, 'user', $userResponse);
+      $userResponses = array_get($interaction, 'user');
+      $chatData = $this->getChatData($previousUserMessageId, $scenario, 'user', $userResponses);
+      
+      foreach ($userResponses as $userResponse) {
         $userMessages[$userResponse] = $this->getUserChat($scenario, $userResponse, $chatData);
       }
     } else {
