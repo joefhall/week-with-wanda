@@ -70,7 +70,7 @@ return [
     'smart' => "You think you're so smart, :name",
     'algorithm' => "What are you so hung up about with my algorithm?",
     'mistakes' => "You can't make an omelette without breaking a few eggs! <a href=\"https://www.independent.co.uk/life-style/gadgets-and-tech/amazon-ai-sexist-recruitment-tool-algorithm-a8579161.html\" target=\"_blank\">Everyone makes some mistakes</a>, it's no big deal",
-    'better' => "How would you do AI any better than me?",
+    'better' => "What would you do instead then with my AI powers?",
     'sigh' => "SIGH!",
     'hard' => "You are one hard person to please",
     'cumulative' => ":wandaCumulativeResponse",
