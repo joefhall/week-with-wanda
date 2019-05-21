@@ -113,7 +113,7 @@ trait GetsChat
         'randomMaleName' => '$this->getFakeFirstNames($user->country, \'male\', 1)',
         'randomSurname' => '$this->getFakeSurname($user->country)',
         'wandaConjunction' => '$this->getConjunction(\'user\', $previousUserMessageId)',
-        'wandaCumulativeResponse' => '$this->getWandaCumulativeResponse()',
+        'wandaCumulativeResponse' => '$this->getWandaCumulativeResponse($user)',
         'wandaPersuader' => '$persuaderText[\'persuader\']',
         'wandaPersuaderPronoun' => '$persuaderText[\'pronoun\']',
         'wandaPreviousSentimentResponse' => '$this->getResponseToSentiment(\'user\', $previousUserMessageId)',
@@ -221,14 +221,26 @@ trait GetsChat
    * Gets Wanda's response to the cumulative reactions from the user to previous scenarios
    * i.e. overall on previous days has the user liked what Wanda has done, a mix or disliked it.
    *
+   * @param User $user
    * @return string
    */
-  public function getWandaCumulativeResponse()
+  public function getWandaCumulativeResponse(User $user)
   {
-    // TODO: get this working, looking at the combination of different scenario reactions
-    $reaction = 'negative';
-    
-    return __("chats/common.wanda.cumulativeResponses.{$reaction}")[0];
+    $meltdownAverage = ($user->current_day > 0) ? $user->meltdown_level / $user->current_day : 0;
+
+    switch (true) {
+      case $meltdownAverage === 0:
+        $reaction = 'positive';
+        break;
+      case $meltdownAverage > 0 && $meltdownAverage < 0.75:
+        $reaction = 'mixed';
+        break;
+      case $meltdownAverage >= 0.75:
+        $reaction = 'negative';
+        break;
+    }
+
+    return $this->randomCommon('wanda', "cumulativeResponses.{$reaction}", 1);
   }
   
   /**

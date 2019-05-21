@@ -72,16 +72,19 @@ return [
     ],
     'cumulativeResponses' => [
       'negative' => [
-        // TODO: add more text here
-        'I feel we keep running into problems you and me',
+        "I feel we keep running into problems you and me",
+        "We've had a pretty difficult time so far, I won't lie",
+        "Things haven't always been easy between us - oh it does make me sad",
       ],
       'mixed' => [
-        // TODO: add more text here
-        '',
+        "You and I haven't always seen eye to eye, have we?",
+        "You haven't always agreed with what I've done, it is frustrating",
+        "You think I'm not perfect, you've made that quite clear",
       ],
       'positive' => [
-        // TODO: add more text here
-        '',
+        "I've been giving you my all, and you've benefited in big ways",
+        "Mostly I feel like you've gotten a lot out of the time we've spent",
+        "There's so much I've done for you - I'm really trying my best",
       ],
     ],
     'conjunctions' => [
