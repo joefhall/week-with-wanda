@@ -69,15 +69,15 @@ class GetCountry implements ShouldQueue
         if ($ipData) {
           $ipDataJson = json_decode($ipData->getBody()->getContents());
 
-          if (isset($ipDataJson->country_code)) {
+          if (isset($ipDataJson->country_code) && strlen($ipDataJson->country_code) === 2) {
             $countryCode = $ipDataJson->country_code;
-            if (strlen($countryCode) > 2) {
-              $countryCode = 'XX';
-            }
-
             $user->country = strtoupper($countryCode);
             $user->save();
+          } else {
+            $this->getCountryFromTimezone($user);
           }
+        } else {
+          $this->getCountryFromTimezone($user);
         }
       } catch (BadResponseException|ConnectException|ClientException|RequestException|ServerException|TransferException $e) {
         Log::error("Error looking up country from IP address for user ({$this->userId}), IP address ({$this->ip})");
@@ -97,7 +97,7 @@ class GetCountry implements ShouldQueue
    */
   public function getCountryFromTimezone(User $user)
   {
-    Log::info("Trying to get country from timezone for user ({$this->userId})");
+    Log::info("Trying to get country from timezone for user ({$this->userId}), timezone ({$user->timezone})");
 
     if ($user->timezone) {
       $timezone = new DateTimeZone($user->timezone);
