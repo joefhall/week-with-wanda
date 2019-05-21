@@ -157,6 +157,9 @@ return [
     'getStarted' => [
       "So what's going on?",
       "What do you have in store for me today?",
+      "What have been up to?",
+      "Tell me the news",
+      "What's going on in Wanda world?",
     ],
     'agree' => [
       "Totally",
