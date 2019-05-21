@@ -57,8 +57,6 @@ const latestEmotion = chatHistory => {
     return message.hasOwnProperty('emotion') && message.emotion;
   });
   
-  console.log('Latest message with emotion', latestMessageWithEmotion);
-  
   return latestMessageWithEmotion === undefined ? 'base' : latestMessageWithEmotion.emotion;
 };
 
@@ -105,15 +103,12 @@ export const timezone = () => {
 };
 
 const typingDelay = messageText => {
-  console.log('Typing delay', timeToBeginTyping + (striptags(messageText).length * 50));
   const delayTime = timeToBeginTyping + (striptags(messageText).length * 30);
   
   return delayTime > minTypingTime ? delayTime : minTypingTime;
 };
 
 export const respond = async (scenario, messageId, message, requiresResponse = true) => {
-  console.log('Trying to send user response');
-  
   const sendData = {
     session: sessionId,
     scenario: scenario,
@@ -121,8 +116,6 @@ export const respond = async (scenario, messageId, message, requiresResponse = t
     message: message,
     requiresResponse: requiresResponse
   };
-  
-  console.log('Send data', sendData);
 
   sendGoogleAnalyticsEvent(scenario, 'user', messageId, message);
 
@@ -133,8 +126,6 @@ export const respond = async (scenario, messageId, message, requiresResponse = t
       console.log(`An error occured getting Wanda's response: ${response.data.error}`);
       showError(response.data.error);
     } else {
-      console.log('Message response:', response.data);
-      
       if (response.data.wanda) {
         const wandaMessageId = Object.keys(response.data.wanda)[0];
         const wandaMessage = response.data.wanda[wandaMessageId];
@@ -162,8 +153,6 @@ export const respond = async (scenario, messageId, message, requiresResponse = t
 };
 
 export const getHistory = async () => {
-  console.log('Trying to get user chat history');
-  
   try {
     const response = await axios.get('/api/history');
     
@@ -172,7 +161,6 @@ export const getHistory = async () => {
       showError(response.data.error);
     } else {
       let chatHistory = response.data;
-      console.log('User chat history:', chatHistory);
       
       const startScenario = document.head.querySelector('meta[name="start-scenario"]').content;
       const startMessage = document.head.querySelector('meta[name="start-message"]').content;
@@ -187,7 +175,6 @@ export const getHistory = async () => {
         const latestChatEntry = chatHistory.slice(-1)[0];
         const penultimateChatEntry = chatHistory.slice(-2)[0];
         const latestWandaChatEntry = latestChatEntry.sender === 'wanda' ? latestChatEntry : penultimateChatEntry;
-        console.log('Latest Wanda chat entry:', latestWandaChatEntry);
         
         store.dispatch(setInput(latestWandaChatEntry.scenario, latestWandaChatEntry.type, latestWandaChatEntry.userInput, latestWandaChatEntry.meltdownLevel));
         store.dispatch(setEmotion(latestEmotion(chatHistory)));

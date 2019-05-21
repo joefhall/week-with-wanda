@@ -21,8 +21,6 @@ class ChatAiViews extends React.Component {
   };
   
   getViews = async () => {
-    console.log('Trying to get AI views from server');
-
     try {
       const response = await axios.get('/api/ai-views');
 
@@ -32,8 +30,6 @@ class ChatAiViews extends React.Component {
           error: true
         });
       } else {
-        console.log('AI views response:', response.data);
-
         this.setState({
           aiViews: response.data.views,
           countryName: response.data.countryName,

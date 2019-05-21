@@ -10,7 +10,6 @@ export default class App extends React.Component {
   };
 
   refreshCSRFToken = () => {
-    console.log('Refreshing page');
     window.location.reload(true);
   };
 

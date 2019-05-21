@@ -1,6 +1,4 @@
 export const sendGoogleAnalyticsEvent = (scenario, sender, messageId, message) => {
-  console.log('Sending Google Analytics event');
-  
   try {
     window.gtag('event', messageId, {
       'event_category': scenario,

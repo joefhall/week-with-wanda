@@ -39,8 +39,6 @@ class ChatWanda extends React.Component {
       emotion = this.props.identity;
     }
     
-    console.log('Emotion is...', emotion);
-    
     return (
       <div className="chat__wanda" style={{ minHeight: `${this.state.minHeight}px`, maxHeight: '1000px' }}>
         <ChatMeltdown />

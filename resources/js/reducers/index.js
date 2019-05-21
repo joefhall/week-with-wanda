@@ -1,9 +1,6 @@
 import  { combineReducers } from 'redux';
 
 const emotionReducer = (state = [], action) => {
-  console.log('Emotion reducer state', state);
-  console.log('Emotion reducer action', action);
-  
   if (action && action.type === 'EMOTION_SET') {
     return action.payload.emotion;
   }
@@ -12,9 +9,6 @@ const emotionReducer = (state = [], action) => {
 };
 
 const identityReducer = (state = [], action) => {
-  console.log('Identity reducer state', state);
-  console.log('Identity reducer action', action);
-  
   if (action && action.type === 'IDENTITY_SET') {
     return action.payload.identity;
   }
@@ -23,8 +17,6 @@ const identityReducer = (state = [], action) => {
 };
 
 const inputReducer = (state = {}, action) => {
-  console.log('Input reducer state', state);
-  console.log('Input reducer action', action);
   if (action && action.type === 'INPUT_SET') {
     return action.payload;
   }
@@ -33,9 +25,6 @@ const inputReducer = (state = {}, action) => {
 };
 
 const meltdownLevelReducer = (state = [], action) => {
-  console.log('Meltdown level reducer state', state);
-  console.log('Meltdown level reducer action', action);
-  
   if (action && action.type === 'MELTDOWN_LEVEL_SET') {
     return action.payload.meltdownLevel;
   }
@@ -44,8 +33,6 @@ const meltdownLevelReducer = (state = [], action) => {
 };
 
 const messagesReducer = (state = [], action) => {
-  console.log('Messages reducer state', state);
-  console.log('Messages reducer action', action);
   if (action.type === 'USER_MESSAGE_INPUTTED' || action.type === 'WANDA_MESSAGE_RECEIVED') {
     return [
       ...state,
@@ -65,8 +52,6 @@ const typingReducer = (state = [], action) => {
 };
 
 const userPropertyReducer = (state = {}, action) => {
-  console.log('User property reducer state', state);
-  console.log('User property reducer action', action);
   if (action.type === 'USER_PROPERTY_SET') {
     state[action.payload.property] = action.payload.value;
   }

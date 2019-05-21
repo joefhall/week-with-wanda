@@ -40,7 +40,6 @@ class ChatMessages extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log('Chat messages updated');
     this.jumpToBottom(!this.isLoading());
     this.addImagesOnLoad();
   }

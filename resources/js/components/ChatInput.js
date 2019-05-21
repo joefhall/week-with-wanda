@@ -35,8 +35,6 @@ class ChatInput extends React.Component {
   };
 
   receiveTextInput = inputText => {
-    console.log('Input type', this.props.input.type);
-    
     let messageId;
     
     switch(this.props.input.type) {
@@ -126,8 +124,6 @@ class ChatInput extends React.Component {
   }
 
   renderInput() {
-    console.log('Render input:', this.props.input);
-    
     if (this.props.input && this.props.input.type) {
       let userInputFiltered;
       

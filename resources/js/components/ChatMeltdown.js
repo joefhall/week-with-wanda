@@ -52,7 +52,6 @@ class ChatMeltdown extends React.Component {
         (this.props.meltdownLevel == Math.round(this.props.meltdownLevel) ||
         this.props.meltdownLevel - lastWandaMessage.meltdownLevel >= 1)
       ) {
-        console.log('Starting meltdown transition', lastWandaMessage.id, lastWandaMessage.meltdownLevel, 'Level', this.props.meltdownLevel, 'rounded', Math.round(this.props.meltdownLevel));
         this.startMeltdownTransition();
         const delay = 500 + (this.props.meltdownLevel * 250);
         setTimeout(this.endMeltdownTransition, delay);
@@ -61,8 +60,6 @@ class ChatMeltdown extends React.Component {
   }
   
   render() {
-    console.log('Meltdown level is...', this.props.meltdownLevel);
-    
     const identity = (this.props.identity && !Array.isArray(this.props.identity)) ? this.props.identity : null;
     
     const crackImage = document.querySelector('.chat__meltdown__cracks');
