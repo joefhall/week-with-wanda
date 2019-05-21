@@ -3,7 +3,14 @@
 namespace App\Jobs;
 
 use App\User;
+use DateTimeZone;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\BadResponseException;
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ServerException;
+use GuzzleHttp\Exception\TransferException;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -74,8 +81,31 @@ class GetCountry implements ShouldQueue
         }
       } catch (BadResponseException|ConnectException|ClientException|RequestException|ServerException|TransferException $e) {
         Log::error("Error looking up country from IP address for user ({$this->userId}), IP address ({$this->ip})");
+        $this->getCountryFromTimezone($user);
       } catch (Exception $e) {
         Log::error("Error looking up country from IP address for user ({$this->userId}), IP address ({$this->ip})");
+        $this->getCountryFromTimezone($user);
+      }
+    }
+  }
+
+  /**
+   * If cannot get timezone from IP address, get it from timezone (though may not be as accurate).
+   *
+   * @param User $user
+   * @return string
+   */
+  public function getCountryFromTimezone(User $user)
+  {
+    Log::info("Trying to get country from timezone for user ({$this->userId})");
+
+    if ($user->timezone) {
+      $timezone = new DateTimeZone($user->timezone);
+      $location = $timezone->getLocation();
+
+      if ($location && array_has($location, 'country_code') && strlen($location['country_code']) === 2) {
+        $user->country = strtoupper($location['country_code']);
+        $user->save();
       }
     }
   }
