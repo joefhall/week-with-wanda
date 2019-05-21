@@ -45,7 +45,7 @@ return [
     'ach' => "Ach, :name!! Seriously?! Don't rain on my parade! What's the problemo?",
     'paranoid' => "There's no need to be paranoid! Really, why does that bother you?",
     'moveOn' => "But the world needs to move on. Why isn't this a good thing?",
-    'okWhat' => "Really? Ok what?",
+    'okWhat' => "Really? Ok what's the issue?",
     'enoughReason' => "Hmmmmmmmm. But is that really a good enough reason to block my multi-billion 💲💲💲 deal?",
     'oneWay' => "Welllllll..... I guess that's one way of looking at things",
     'easierLife' => "You're not making my life easier though, :name – or your own!",

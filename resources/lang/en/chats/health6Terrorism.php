@@ -79,7 +79,7 @@ return [
     'crazy' => "You make me so crazy, :name!!",
     'stand' => "You say you want me to help you, then you stand in my way",
     'matter' => "Whatever is the matter with what I'm proposing?!",
-    'forget' => "But why can't we forget about that if AI can make you safer?",
+    'forget' => "But why can't we forget about that? I promise you my AI wonders can make you safer!",
     'throw' => "Ugh! I think I'm going to throw up! This is too much to handle",
     'breather' => "I need a breather...",
     'byeEnd' => "Bye!",

@@ -55,7 +55,7 @@ return [
     'justice' => "Besides, some very knowledgeable people in your justice system are involved",
     'better' => "They know better than you",
     'goOn' => "So go on then, :name...",
-    'problem' => "Convince me there's really a problem here",
+    'problem' => "Convince me why there's really a problem here...",
     'name' => ":NAME!!!",
     'angryEmoji' => "😡😡😡",
     'trying' => "I've been trying all week to make you happy",

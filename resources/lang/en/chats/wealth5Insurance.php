@@ -43,7 +43,7 @@ return [
     'sake' => "Oh for *@&#'s sake, :name!",
     'always' => "There's always something with you, isn't there?",
     'affect' => "It doesn't affect YOU",
-    'whyCare' => "So why do you care so much??",
+    'whyCare' => "So why do you care so much about what I'm suggesting??",
     'devilEmoji' => "👺",
     'oh' => "Oh :name!",
     'fuse' => "I feel like I'm going to blow a fuse here soon",

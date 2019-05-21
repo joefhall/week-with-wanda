@@ -46,7 +46,7 @@ return [
     'control' => "So I'll take control of your money for at least 3 months",
     'law' => "Well unfortunately, by law (until I get it changed) you do have the right to appeal my decision",
     'yourGood' => "Though I can't see the sense in that, when I'm acting for your good",
-    'defense' => "Anyhow, what do you have to say in your defense?",
+    'defense' => "Anyhow, what do you have to say for yourself? Why should you be in charge of your bank account, not me?",
     'detect' => ":name, I feel I'm detecting in your response that you aren't happy I took control of your money",
     'question' => "But more than that, are you questioning my control?",
     'autonomy' => "To improve your life, <strong>why</strong> shouldn't I have total autonomy to do what's best?",

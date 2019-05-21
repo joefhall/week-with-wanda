@@ -36,7 +36,7 @@ return [
     'startPhoningEmoji' => "🙋‍♀️",
     'comeOn' => "Ah, come on :name! What's the problem? You said you wanted better relationships",
     'butNextStep' => 'But I\'ve seen how much people love things like those <a href="https://phys.org/news/2018-08-creepy-machines-gmail.html" target="_blank">email auto-replies</a> – surely this is the next step!',
-    'whyHungUp' => "I don't get why you're so hung up on this?",
+    'whyHungUp' => "I don't get why you're so hung up on this? What's the problem with what I want to do?",
     'otherWays' => "So aren't there any other ways you'd like me more involved in helping manage your relationships?",
     'goReflect' => "Ooh interesting answer, :name. I feel like I need to go reflect on this.",
     'goReflectPic' => "🧘‍♀️",
