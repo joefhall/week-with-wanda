@@ -149,10 +149,13 @@ return [
       "And hello to you",
       "Hi there",
       "Aloha",
+      "Hello, hello",
     ],
     'acknowledge' => [
       "Well thanks",
       "Er, ok",
+      "Uh yeah",
+      "Right",
     ],
     'getStarted' => [
       "So what's going on?",
@@ -173,7 +176,7 @@ return [
       "Not really",
       "Nope",
       "No way",
-      "Nah",
+      "No, no, no",
       "No, Wanda",
     ],
     'great' => [
@@ -222,6 +225,7 @@ return [
       "Thank you - I appreciate it",
       "Ok thanks",
       "Merci, as they say in French",
+      "Thank yoooou",
     ],
     'bye' => [
       "Bye, Wanda",
