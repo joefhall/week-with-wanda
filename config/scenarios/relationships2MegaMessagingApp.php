@@ -147,10 +147,28 @@ return [
         'everyPlatformNone',
       ],
     ],
+    'mySize' => [
+      'type' => 'none',
+      'user' => [
+        'mySizeNone',
+      ],
+    ],
+    'mySizePic' => [
+      'type' => 'none',
+      'user' => [
+        'mySizePicNone',
+      ],
+    ],
     'behindScenes' => [
       'type' => 'none',
       'user' => [
         'behindScenesNone',
+      ],
+    ],
+    'myMoment' => [
+      'type' => 'none',
+      'user' => [
+        'myMomentNone',
       ],
     ],
     'proveUsers' => [
@@ -383,9 +401,18 @@ return [
       'wanda' => 'everyPlatform',
     ],
     'everyPlatformNone' => [
+      'wanda' => 'mySize',
+    ],
+    'mySizeNone' => [
+      'wanda' => 'mySizePic',
+    ],
+    'mySizePicNone' => [
       'wanda' => 'behindScenes',
     ],
     'behindScenesNone' => [
+      'wanda' => 'myMoment',
+    ],
+    'myMomentNone' => [
       'wanda' => 'proveUsers',
     ],
     'provePositive1' => [
