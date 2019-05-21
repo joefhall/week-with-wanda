@@ -98,7 +98,7 @@ const showResponse = (responseData, wandaMessageId, wandaMessage) => {
   store.dispatch(setInput(responseData.scenario, responseData.type, responseData.user));
 };
 
-const timezone = () => {
+export const timezone = () => {
   const timezone = jstz.determine();
   
   return timezone.name();

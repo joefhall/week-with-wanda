@@ -3,7 +3,7 @@ import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from
 import { connect } from 'react-redux';
 
 import { addMessage, setEmotion, setInput, setUserProperty } from '../actions';
-import { getHistory, getSessionId, respond } from '../api/chat';
+import { getHistory, getSessionId, respond, timezone } from '../api/chat';
 import DoPasswordResetHidden from './DoPasswordResetHidden';
 import ChatInputAiViews from './ChatInputAiViews';
 import ChatInputChoices from './ChatInputChoices';
@@ -104,7 +104,7 @@ class ChatInput extends React.Component {
       const startMessage = document.head.querySelector('meta[name="start-message"]').content;
       
       if (startScenario && startMessage) {
-        respond(startScenario, startMessage, '');
+        respond(startScenario, startMessage, timezone());
       }
     }
   }
