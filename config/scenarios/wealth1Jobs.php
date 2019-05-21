@@ -57,6 +57,18 @@ return [
         'wantToWorkNone',
       ],
     ],
+    'superComputer' => [
+      'type' => 'none',
+      'user' => [
+        'superComputerNone',
+      ],
+    ],
+    'superComputerPic' => [
+      'type' => 'none',
+      'user' => [
+        'superComputerPicNone',
+      ],
+    ],
     'doneTraining' => [
       'type' => 'none',
       'user' => [
@@ -263,6 +275,12 @@ return [
       'wanda' => 'wantToWork',
     ],
     'wantToWorkNone' => [
+      'wanda' => 'superComputer',
+    ],
+    'superComputerNone' => [
+      'wanda' => 'superComputerPic',
+    ],
+    'superComputerPicNone' => [
       'wanda' => 'doneTraining',
     ],
     'doneTrainingNone' => [
