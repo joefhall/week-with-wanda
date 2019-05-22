@@ -11,6 +11,15 @@ let checkMessagesDisplayedTimer;
 const minTypingTime = 1000;
 const sessionId = uuidv4();
 const timeToBeginTyping = 250;
+window.navigationOccurred = false;
+
+window.addEventListener('beforeunload', (event) => {
+  window.navigationOccurred = true;
+});
+
+window.addEventListener('pagehide', (event) => {
+  window.navigationOccurred = true;
+});
 
 const checkMessagesDisplayed = wandaMessagesCount => {
   const wandaMessagesBubbles = document.querySelectorAll('.chat__messages__message__bubble--wanda');
@@ -62,8 +71,8 @@ const latestEmotion = chatHistory => {
 
 const showError = errorMessage => {
   const errorMessageDisplayed = document.querySelector('.chat__messages__message__error');
-  
-  if (!errorMessageDisplayed) {
+
+  if (!errorMessageDisplayed && !window.navigationOccurred) {
     const emoji = '💩';
     const message = `<div class='chat__messages__message__error'>${errorMessage}. <strong>Try hitting refresh</strong> (or if this continues email my maker <a href='mailto:hello@weekwithwanda.com'>hello@weekwithwanda.com</a>)</div>`;
     const emotion = 'thumbs-down';
