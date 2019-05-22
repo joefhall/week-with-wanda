@@ -25,7 +25,7 @@
 
     <meta name="title" content="A Week With Wanda 🤖😬😂 A new AI game - the dark side of artifical intelligence">
     <meta name="description" content="Let virtual assistant Wanda 'improve' your life for a week to see the hilarious -- and sometimes horrifying -- results!">
-    <link rel="canonical" href="{{ env('APP_URL') }}" />
+    <link rel="canonical" href="{{ url()->current() }}" />
 
     <meta name="twitter:title" content="A Week With Wanda 🤖😬😂 A game about AI's dark side">
     <meta name="twitter:description" content="Let virtual assistant Wanda 'improve' your life for a week to see the hilarious -- and sometimes horrifying -- results!">
@@ -39,13 +39,13 @@
     
     @if ($share)
       <meta name="twitter:image" content="{{ env('APP_URL') }}/img/share/{{$share}}.png" />
-      <meta property="og:url" content="{{ env('APP_URL') }}/?share={{$share}}" />
+      <meta property="og:url" content="{{ url()->full() }}" />
       <meta property="og:image" content="{{ env('APP_URL') }}/img/share/{{$share}}.png" />
       <meta property="og:image:width" content="800" />
       <meta property="og:image:height" content="400" />
     @else
       <meta name="twitter:image" content="{{ env('APP_URL') }}/img/share/main.png">
-      <meta property="og:url" content="{{ env('APP_URL') }}" />
+      <meta property="og:url" content="{{ url()->full() }}" />
       <meta property="og:image" content="{{ env('APP_URL') }}/img/share/main.png" />
       <meta property="og:image:width" content="484" />
       <meta property="og:image:height" content="262" />
