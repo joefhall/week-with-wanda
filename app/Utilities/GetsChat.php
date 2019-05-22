@@ -24,7 +24,7 @@ trait GetsChat
       string $previousUserMessageId,
       string $scenario,
       string $sender,
-      array $messageIds
+      array $messageIds = null
     )
   {
     $user = Auth::user();
@@ -32,8 +32,10 @@ trait GetsChat
     $chatData = [];
     $chatEntriesWithVariables = [];
 
-    foreach ($messageIds as $messageId) {
-      $chatEntriesWithVariables[] = strtolower(__("chats/{$scenario}.{$sender}.{$messageId}"));
+    if ($messageIds) {
+      foreach ($messageIds as $messageId) {
+        $chatEntriesWithVariables[] = strtolower(__("chats/{$scenario}.{$sender}.{$messageId}"));
+      }
     }
 
     $userAcknowledge = $this->randomCommon('user', 'acknowledge', 2, $firstName);
