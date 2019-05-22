@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Sound from 'react-sound';
 
 import ChatMeltdown from './ChatMeltdown';
 
@@ -30,15 +31,41 @@ class ChatWanda extends React.Component {
     this.resize();
     window.onresize = this.resize;
   }
-  
+
+  renderSound = emotion => {
+    const sounds = [
+      'angry',
+      'clapping',
+      'complimenting',
+      'elated',
+      'frustrated',
+      'heart',
+      'meltdown',
+      'shocked',
+      'thumbs-down',
+      'thumbs-up',
+      'unhappy',
+      'waving',
+    ];
+
+    if (sounds.includes(emotion)) {
+      return (
+        <Sound
+          url={`/audio/emotions/${emotion}.mp3`}
+          playStatus={Sound.status.PLAYING}
+        />
+      );
+    }
+  };
+
   render() {
     let emotion = (this.props.emotion && !Array.isArray(this.props.emotion)) ? this.props.emotion : 'base';
     const identity = (this.props.identity && !Array.isArray(this.props.identity)) ? this.props.identity : null;
-    
+
     if (identity) {
       emotion = this.props.identity;
     }
-    
+
     return (
       <div className="chat__wanda" style={{ minHeight: `${this.state.minHeight}px`, maxHeight: '1000px' }}>
         <ChatMeltdown />
@@ -63,6 +90,8 @@ class ChatWanda extends React.Component {
         <img src="/img/emotions/thumbs-up.gif" className="invisible h-0" alt="Wanda making thumbs up gesture" />
         <img src="/img/emotions/unhappy.gif" className="invisible h-0" alt="Wanda looking unhappy" />
         <img src="/img/emotions/waving.gif" className="invisible h-0" alt="Wanda waving" />
+
+        { this.renderSound(emotion) }
       </div>
     );
   }
