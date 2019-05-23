@@ -55,6 +55,12 @@ return [
         ],
         'emotion' => 'base',
       ],
+      'logBackInEnd' => [
+        'type' => 'end',
+        'user' => [
+          'logBackInEndNone',
+        ],
+      ],
       'moreInfo' => [
         'type' => 'none',
         'user' => [
@@ -379,7 +385,10 @@ return [
         'wanda' => 'signupChoice',
       ],
       'logBackIn' => [
-        'wanda' => 'logBackInNone',
+        'wanda' => 'logBackInEnd',
+      ],
+      'logBackInEndNone' => [
+        'wanda' => '',
       ],
       'signupFacebook' => [
         'wanda' => 'greatThanksFacebook',
