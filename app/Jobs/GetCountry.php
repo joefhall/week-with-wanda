@@ -69,7 +69,7 @@ class GetCountry implements ShouldQueue
         if ($ipData) {
           $ipDataJson = json_decode($ipData->getBody()->getContents());
 
-          if (isset($ipDataJson->country_code) && strlen($ipDataJson->country_code) === 2) {
+          if (isset($ipDataJson->country_code) && strlen($ipDataJson->country_code) === 2 && $ipDataJson->country_code !== '??') {
             $countryCode = $ipDataJson->country_code;
             $user->country = strtoupper($countryCode);
             $user->save();
@@ -103,7 +103,7 @@ class GetCountry implements ShouldQueue
       $timezone = new DateTimeZone($user->timezone);
       $location = $timezone->getLocation();
 
-      if ($location && array_has($location, 'country_code') && strlen($location['country_code']) === 2) {
+      if ($location && array_has($location, 'country_code') && strlen($location['country_code']) === 2 && $location['country_code'] !== '??') {
         $user->country = strtoupper($location['country_code']);
         $user->save();
       }
