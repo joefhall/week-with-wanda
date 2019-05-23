@@ -242,7 +242,7 @@ trait GetsChat
         break;
     }
 
-    return $this->randomCommon('wanda', "cumulativeResponses.{$reaction}", 1);
+    return $this->randomCommon('wanda', "cumulativeResponses.{$reaction}", 1, '');
   }
   
   /**
