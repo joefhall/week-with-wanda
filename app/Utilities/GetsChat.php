@@ -28,7 +28,7 @@ trait GetsChat
     )
   {
     $user = Auth::user();
-    $firstName = $user ? $user->first_name : '';
+    $firstName = ($user && $user->first_name) ? $user->first_name : '';
     $chatData = [];
     $chatEntriesWithVariables = [];
 
