@@ -8,6 +8,7 @@ class LoginHidden extends React.Component {
     if (document.head.querySelector('meta[name="logged-in"]').content === 'true') {
       this.props.followUpAction(Object.keys(this.props.input.userInput)[0], '');
     } else {
+      window.navigationOccurred = true;
       document.querySelector('#hidden-login-form').submit();
     }
   }
