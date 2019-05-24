@@ -116,6 +116,13 @@
             margin-top: $spacer * .5;
           }
         }
+
+        &__share {
+          &__icon {
+            height: 32px;
+            width: 32px;
+          }
+        }
       }
       
       &__time {
