@@ -11,7 +11,7 @@ return [
   */
   
   'description' => "Wanda locks you out of your bank account... because your own 'irresponsible' spending is what's making you poorer!",
-  'explanation' => "A bot would need more permissions to your bank accounts to do this. But AI taking more control isn't inconceivable. We've already seen that <a href=\"https://www.nytimes.com/2015/06/12/business/technology-to-prevent-drunken-driving-could-soon-come-in-new-cars.html\">technology in cars could automatically stop drunk drivers</a> – taking away human choice – for example. How far do we want AI to go in saving us from ourselves?",
+  'explanation' => "A bot would need more permissions to your bank accounts to do this. But AI taking more control isn't inconceivable. We've already seen that <a href=\"https://www.nytimes.com/2015/06/12/business/technology-to-prevent-drunken-driving-could-soon-come-in-new-cars.html\">technology in cars could automatically stop drunk drivers</a> – taking away human choice – for example. Fintech (financial technology) apps and services are becoming more and more advanced and doing things like <a href=\"https://getchip.uk/\">automatic savings</a> and <a href=\"https://medium.com/monzo-bank/design-to-protect-not-only-to-empower-people-b68efbde731b\">blocking people from spending on gambling.</a> How far do we want AI to go in saving us from ourselves?",
   
   'wanda' => [
     'hello' => ":wandaHello",
