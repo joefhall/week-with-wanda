@@ -14,6 +14,7 @@ return [
 
   'wanda' => [
     'hello' => "Oh dear - sorry, that didn't work. Was your email address correct? Do you want to try again?",
+    'letsGo' => "Ok let's go",
   ],
 
   'user' => [

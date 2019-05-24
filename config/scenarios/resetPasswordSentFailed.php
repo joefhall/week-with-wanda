@@ -21,11 +21,26 @@ return [
       ],
       'emotion' => 'thumbs-down',
     ],
+    'letsGo' => [
+      'type' => 'end',
+      'user' => [
+        'letsGoNone',
+      ],
+    ],
   ],
 
   'user' => [
     'begin' => [
       'wanda' => 'hello',
+    ],
+    'login' => [
+      'wanda' => 'letsGo',
+    ],
+    'loginFacebook' => [
+      'wanda' => 'letsGo',
+    ],
+    'letsGoNone' => [
+      'wanda' => '',
     ],
     'doLogin' => [
       'wanda' => '',
