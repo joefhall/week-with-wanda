@@ -32,7 +32,17 @@ class ChatWanda extends React.Component {
     window.onresize = this.resize;
   }
 
-  renderSound = emotion => {
+  renderSound = (emotion, playing) => {
+    return (
+      <Sound
+        autoLoad={true}
+        playStatus={playing ? Sound.status.PLAYING : Sound.status.STOPPED}
+        url={`/audio/emotions/${emotion}.mp3`}
+      />
+    );
+  };
+
+  renderSounds = emotion => {
     const sounds = [
       'angry',
       'clapping',
@@ -48,14 +58,13 @@ class ChatWanda extends React.Component {
       'waving',
     ];
 
-    if (sounds.includes(emotion)) {
+    return sounds.map(sound => {
       return (
-        <Sound
-          url={`/audio/emotions/${emotion}.mp3`}
-          playStatus={Sound.status.PLAYING}
-        />
+        <div key={`sound-${sound}`}>
+          { this.renderSound(sound, sound === emotion) }
+        </div>
       );
-    }
+    });
   };
 
   render() {
@@ -91,7 +100,7 @@ class ChatWanda extends React.Component {
         <img src="/img/emotions/unhappy.gif" className="invisible h-0" alt="Wanda looking unhappy" />
         <img src="/img/emotions/waving.gif" className="invisible h-0" alt="Wanda waving" />
 
-        { this.renderSound(emotion) }
+        { this.renderSounds(emotion) }
       </div>
     );
   }
