@@ -19,6 +19,36 @@ return [
       ],
       'emotion' => 'thumbs-up',
     ],
+    'about1a' => [
+      'type' => 'none',
+      'user' => [
+        'about1aNone',
+      ],
+    ],
+    'about1b' => [
+      'type' => 'none',
+      'user' => [
+        'about1bNone',
+      ],
+    ],
+    'about1c' => [
+      'type' => 'none',
+      'user' => [
+        'tellMeMore',
+      ],
+    ],
+    'about1d' => [
+      'type' => 'none',
+      'user' => [
+        'about1dNone',
+      ],
+    ],
+    'about1e' => [
+      'type' => 'none',
+      'user' => [
+        'about1eNone',
+      ],
+    ],
     'about2' => [
       'type' => 'none',
       'user' => [
@@ -135,6 +165,21 @@ return [
       'wanda' => 'about1',
     ],
     'about1None' => [
+      'wanda' => 'about1a',
+    ],
+    'about1aNone' => [
+      'wanda' => 'about1b',
+    ],
+    'about1bNone' => [
+      'wanda' => 'about1c',
+    ],
+    'tellMeMore' => [
+      'wanda' => 'about1d',
+    ],
+    'about1dNone' => [
+      'wanda' => 'about1e',
+    ],
+    'about1eNone' => [
       'wanda' => 'about2',
     ],
     'about2None' => [

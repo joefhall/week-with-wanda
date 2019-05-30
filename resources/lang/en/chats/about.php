@@ -11,9 +11,14 @@ return [
   'description' => "About, credits and contact details",
   
   'wanda' => [
-    'about1' => "Hello! Welcome to A Week With Wanda",
-    'about2' => "It's a web-based game hoping to get more people thinking about the role artificial intelligence (AI) should be playing in our lives",
-    'about3' => "And giving you the chance to share your views",
+    'about1' => "Hello! Welcome to a week with me... Wanda!",
+    'about1a' => "I'm the most advanced AI (artificial intelligence) assistant on the planet",
+    'about1b' => "I use <em>meta machine learning</em> – which means I've searched the far reaches of artificial intelligence and learnt from everything other bots and algorithms are doing. I'm a combination of many, many AIs all put together into one!",
+    'about1c' => "Siri and Alexa, eat your heart out! I can do <strong>soooo</strong> much more. And the great news is, you get to try me for free!",
+    'about1d' => "Ok actually I told you a little white lie above...",
+    'about1e' => "😇😈",
+    'about2' => "In fact... I'm a web-based game hoping to get more people thinking about the role artificial intelligence should be playing in our lives",
+    'about3' => "And I give you the chance to share your views",
     'about4' => "Nothing I 'do' is real – it's all a simulation. But it's inspired by lots of real AI",
     'about5' => "Some of it is already happening today – in some cases even more extreme things are happening in real life",
     'about6' => "In other cases my actions are a combination of existing trends, to create something fictional and maybe humorous but (quite possibly) conceivable",
@@ -33,6 +38,7 @@ return [
   ],
 
   'user' => [
+    'tellMeMore' => "Tell me more",
     'aboutWho' => "Who's behind it?",
     'aboutThanks' => "Who needs a thank you?",
   ],
