@@ -32,7 +32,7 @@ return [
       ],
     ],
     'about1c' => [
-      'type' => 'none',
+      'type' => 'choice',
       'user' => [
         'tellMeMore',
       ],

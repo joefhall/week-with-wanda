@@ -17,7 +17,7 @@ return [
     'about1c' => "Siri and Alexa, eat your heart out! I can do <strong>soooo</strong> much more. And the great news is, you get to try me for free!",
     'about1d' => "Ok actually I told you a little white lie above...",
     'about1e' => "😇😈",
-    'about2' => "In fact... I'm a web-based game hoping to get more people thinking about the role artificial intelligence should be playing in our lives",
+    'about2' => "In fact... I'm a game hoping to get more people thinking about the role artificial intelligence should be playing in our lives",
     'about3' => "And I give you the chance to share your views",
     'about4' => "Nothing I 'do' is real – it's all a simulation. But it's inspired by lots of real AI",
     'about5' => "Some of it is already happening today – in some cases even more extreme things are happening in real life",
@@ -38,7 +38,7 @@ return [
   ],
 
   'user' => [
-    'tellMeMore' => "Tell me more",
+    'tellMeMore' => "Tell me even more...",
     'aboutWho' => "Who's behind it?",
     'aboutThanks' => "Who needs a thank you?",
   ],
