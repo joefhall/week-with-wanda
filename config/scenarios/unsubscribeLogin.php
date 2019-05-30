@@ -53,6 +53,18 @@ return [
       ],
       'emotion' => 'thumbs-up',
     ],
+    'sendingPasswordReset' => [
+      'type' => 'sendPasswordReset',
+      'user' => [
+        'sendingPasswordResetNone',
+      ],
+    ],
+    'justASec' => [
+      'type' => 'end',
+      'user' => [
+        'justASecNone',
+      ],
+    ],
   ],
 
   'user' => [
@@ -78,6 +90,15 @@ return [
     ],
     'myPassword' => [
       'wanda' => 'greatThanks',
+    ],
+    'sendPasswordReset' => [
+      'wanda' => 'sendingPasswordReset',
+    ],
+    'sendingPasswordResetNone' => [
+      'wanda' => 'justASec',
+    ],
+    'justASecNone' => [
+      'wanda' => '',
     ],
   ],
     
