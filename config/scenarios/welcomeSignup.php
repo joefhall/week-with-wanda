@@ -49,9 +49,9 @@ return [
       'whatWantDo' => [
         'type' => 'choice',
         'user' => [
-          'findOutMore',
           'getStarted',
           'logBackIn',
+          'findOutMore',
         ],
         'emotion' => 'base',
       ],
