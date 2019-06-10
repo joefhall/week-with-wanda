@@ -12,6 +12,9 @@
 */
 
 Auth::routes();
+Route::get('register', function() {
+  return redirect()->route('home');
+});
 Route::get('login-failed', 'Auth\LoginController@loginFailed')->name('login-failed');
 Route::get('login-facebook', 'Auth\FacebookLoginController@showLoginWithFacebookForm')->middleware('guest')->name('facebookLogin');
 Route::get('login/facebook', 'Auth\FacebookLoginController@redirectToProvider');
