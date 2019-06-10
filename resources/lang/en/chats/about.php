@@ -13,7 +13,7 @@ return [
   'wanda' => [
     'about1' => "Hello! Welcome to a week with me... Wanda!",
     'about1a' => "I'm the most advanced AI (artificial intelligence) assistant on the planet",
-    'about1b' => "I use <em>meta machine learning</em> – which means I've searched the far reaches of artificial intelligence and learnt from everything other bots and algorithms are doing. I'm a combination of many, many AIs all put together into one!",
+    'about1b' => "I've searched the far reaches of artificial intelligence and learnt what other AIs are doing – I'm a combination of lots of them all put together!",
     'about1c' => "Siri and Alexa, eat your heart out! I can do <strong>soooo</strong> much more. And the great news is, you get to try me for free!",
     'about1d' => "Ok actually I told you a little white lie above...",
     'about1e' => "😇😈",
@@ -38,7 +38,7 @@ return [
   ],
 
   'user' => [
-    'tellMeMore' => "Tell me even more...",
+    'tellMeMore' => "Hang on, is that really true?",
     'aboutWho' => "Who's behind it?",
     'aboutThanks' => "Who needs a thank you?",
   ],
