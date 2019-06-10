@@ -57,7 +57,6 @@ class UserRepository
     $this->updateField($userId, 'first_name', $this->getMessageFromChatHistory($userId, 'user', 'myName'));
     $this->updateField($userId, 'email', $this->getMessageFromChatHistory($userId, 'user', 'myEmail'));
     $this->updateField($userId, 'password', bcrypt($password));
-    $this->updateMessageFromChatHistory($userId, 'user', 'signupPasswordNone', str_repeat('*', strlen($password)));
   }
   
   /**
@@ -228,6 +227,10 @@ class UserRepository
     if ($userMessageId !== 'begin') {
       Log::info("Storing chat history - user($userId), scenario($currentScenario), sender(user), userMessage($userMessageId)");
       
+      if ($userMessageId === 'signupPasswordNone') {
+        $userMessage = str_repeat('*', strlen($userMessage));
+      }
+
       $this->addToChatHistory($userId, [
         'sender' => 'user',
         'scenario' => $currentScenario,
