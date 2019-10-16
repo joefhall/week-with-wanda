@@ -74,7 +74,7 @@ const showError = errorMessage => {
 
   if (!errorMessageDisplayed && !window.navigationOccurred) {
     const emoji = '💩';
-    const message = `<div class='chat__messages__message__error'>${errorMessage}. <strong>Try hitting refresh</strong> (or if this continues email my maker <a href='mailto:hello@weekwithwanda.com'>hello@weekwithwanda.com</a>)</div>`;
+    const message = `<div class='chat__messages__message__error'>${errorMessage}. <strong>Try hitting refresh</strong> (or if this continues email my maker <a href='mailto:weekwithwanda@gmail.com'>weekwithwanda@gmail.com</a>)</div>`;
     const emotion = 'thumbs-down';
 
     store.dispatch(setEmotion(emotion));

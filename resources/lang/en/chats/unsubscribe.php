@@ -22,7 +22,7 @@ return [
     'sad' => "I'm sad",
     'sadEmoji' => "😭",
     'delete' => "But I'll delete you now – and this is the last you'll hear from me... unless you fancy signing up again!",
-    'feedback' => "If you have any feedback you want to send my maker, you can reach them at <a href='mailto:hello@weekwithwanda.com'>hello@weekwithwanda.com</a>",
+    'feedback' => "If you have any feedback you want to send my maker, you can reach them at <a href='mailto:weekwithwanda@gmail.com'>weekwithwanda@gmail.com</a>",
   ],
 
   'user' => [

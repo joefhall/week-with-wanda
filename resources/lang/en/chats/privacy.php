@@ -24,7 +24,7 @@ return [
     'privacy10' => "I capture some general site usage stats via Google Analytics, but not data that could identify you personally",
     'privacy11' => "I only use a cookie to remember you so that you don't need to log in again each time",
     'privacy12' => "I use a few external services e.g. to send you emails and text messages (and they keep logs of messages sent), otherwise your data is not shared with anyone else and it never will be",
-    'privacy13' => "In case you need to contact him, the data controller is Joe Hall of 72 Richborne Terrace, London, SW8 1AX, UK (<a href='mailto:hello@weekwithwanda.com'>hello@weekwithwanda.com</a>)",
+    'privacy13' => "In case you need to contact him, the data controller is Joe Hall of 72 Richborne Terrace, London, SW8 1AX, UK (<a href='mailto:weekwithwanda@gmail.com'>weekwithwanda@gmail.com</a>)",
     'privacy14' => "He's the only person with access to your data (not even Mozilla who funded the project) and like I say, even he can't see it after your week is over and your data's been deleted",
     'privacy15' => "He's doing his best to keep your data secure and follow GDPR and other laws and good practices",
     'privacy16' => "🙂",

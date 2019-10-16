@@ -39,7 +39,7 @@ return [
     'moreInfoPersuade4' => "Also it'll be loads of fun!",
     'moreInfoPersuade4Emoji' => "😸",
     'moreInfoPersuadeWhatSay' => "Are you in?",
-    'moreInfoNotPersuaded' => "I'm sorry to hear that! You can email my maker at <a href='mailto:hello@weekwithwanda.com' target='_blank'>hello@weekwithwanda.com</a> if you'd like to ask them any questions. Unless you're up for just giving it a go...?",
+    'moreInfoNotPersuaded' => "I'm sorry to hear that! You can email my maker at <a href='mailto:weekwithwanda@gmail.com' target='_blank'>weekwithwanda@gmail.com</a> if you'd like to ask them any questions. Unless you're up for just giving it a go...?",
     'greatChoice' => "Great choice!! 🤩",
     'signupChoice' => "Now how would you like to sign up so we can get going?",
     'whatsYourName' => ":WandaGreat. Ok first up, what can I call you?",
