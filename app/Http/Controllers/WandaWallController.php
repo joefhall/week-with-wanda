@@ -120,9 +120,9 @@ class WandaWallController extends Controller
   public function store(Request $request)
   {
     WallEntry::create([
-      'comment' => $request->input('comment'),
-      'country_name' => $request->input('countryName'),
-      'name' => $request->input('name'),
+      'comment' => strip_tags($request->input('comment')),
+      'country_name' => strip_tags($request->input('countryName')),
+      'name' => strip_tags($request->input('name')),
     ]);
     
     return redirect()->route('wall');
