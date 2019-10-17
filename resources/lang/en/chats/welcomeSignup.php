@@ -15,7 +15,7 @@ return [
   'wanda' => [
     'hello' => "Well hi there! I'm Wanda",
     'imWanda' => "I'm here to change your life...",
-    'video' => "<iframe width='200' height='200' style='display: block; margin-bottom: 0.5em;' src='https://www.youtube.com/embed/EmDxx2ghYug' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe> <a href='https://bit.ly/2VIuY0u' target='_blank'><img class='chat__messages__message__bubble__share__icon' alt='Facebook logo' src='/img/share/facebook.svg' /></a> <a href='https://twitter.com/weekwithwanda/status/1131197690631606272' target='_blank'><img class='chat__messages__message__bubble__share__icon' alt='Twitter logo' src='/img/share/twitter.svg' /></a>",
+    'video' => "<iframe width='200' height='200' style='display: block; margin-bottom: 0.5em;' src='https://www.youtube.com/embed/r7U-DbUoWok' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe> <a href='https://bit.ly/2VIuY0u' target='_blank'><img class='chat__messages__message__bubble__share__icon' alt='Facebook logo' src='/img/share/facebook.svg' /></a> <a href='https://twitter.com/weekwithwanda/status/1131197690631606272' target='_blank'><img class='chat__messages__message__bubble__share__icon' alt='Twitter logo' src='/img/share/twitter.svg' /></a>",
     'soGood' => "It's so good you're here",
     'initialObservation' => ":wandaInitialObservation",
     'soTellMe' => "Well that's excellent! So tell me...",
