@@ -1,7 +1,7 @@
 import axios from 'axios';
 import jstz from 'jstz';
 import striptags from 'striptags';
-import uuidv4 from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';
 
 import { sendGoogleAnalyticsEvent } from './analytics';
 import { addMessage, setEmotion, setIdentity, setInput, setMeltdownLevel, setLoading, setTyping } from '../actions';
