@@ -41,7 +41,7 @@ return [
     'moreInfoPersuadeWhatSay' => "Are you in?",
     'moreInfoNotPersuaded' => "I'm sorry to hear that! You can email my maker at <a href='mailto:weekwithwanda@gmail.com' target='_blank'>weekwithwanda@gmail.com</a> if you'd like to ask them any questions. Unless you're up for just giving it a go...?",
     'greatChoice' => "Great choice!! 🤩",
-    'signupChoice' => "Now how would you like to sign up so we can get going?",
+    'signupChoice' => "Let's sign you up so we can get going",
     'whatsYourName' => ":WandaGreat. Ok first up, what can I call you?",
     'whatsYourEmail' => "And what's your email?",
     'invalidEmail' => "Sorry, that doesn't look like a valid email address. Take another go?",
