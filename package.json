@@ -21,7 +21,7 @@
         "babel-preset-react": "^6.23.0",
         "bootstrap": "^4.5.3",
         "cross-env": "^7.0.3",
-        "handlebars": "^4.7.6",
+        "handlebars": "^4.7.7",
         "jquery": "^3.5.1",
         "laravel-mix": "^5.0.5",
         "laravel-mix-polyfill": "^2.0.0",
